@@ -1,7 +1,5 @@
 package application;
 
-import java.net.URL;
-
 import controller.ScreenController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

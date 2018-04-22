@@ -45,6 +45,7 @@ public class ScreenController {
 	 * @param fxmlname
 	 */
 	public void activate(String fxmlname) {
+		//setRoot for defining root node of scene graph
 		scene.setRoot(sceneMap.get(fxmlname));
 	}
 
