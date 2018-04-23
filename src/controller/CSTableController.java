@@ -1,9 +1,12 @@
-package application;
+package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * CustomerTableController contains method for handling all event recieve from
@@ -36,12 +39,50 @@ public class CSTableController {
 	@FXML
 	private Button clear;
 	@FXML
+	private Button ok;
+	@FXML
 	private TextField display;
 
-	private int number = 0;
+	private String number = "";
 
 	public void button1Handler(ActionEvent event) {
 		numberButtonHandler(button1.getText());
+	}
+
+	public void button2Handler(ActionEvent event) {
+		numberButtonHandler(button2.getText());
+	}
+
+	public void button3Handler(ActionEvent event) {
+		numberButtonHandler(button3.getText());
+	}
+
+	public void button4Handler(ActionEvent event) {
+		numberButtonHandler(button4.getText());
+	}
+
+	public void button5Handler(ActionEvent event) {
+		numberButtonHandler(button5.getText());
+	}
+
+	public void button6Handler(ActionEvent event) {
+		numberButtonHandler(button6.getText());
+	}
+
+	public void button7Handler(ActionEvent event) {
+		numberButtonHandler(button7.getText());
+	}
+
+	public void button8Handler(ActionEvent event) {
+		numberButtonHandler(button8.getText());
+	}
+
+	public void button9Handler(ActionEvent event) {
+		numberButtonHandler(button9.getText());
+	}
+
+	public void button0Handler(ActionEvent event) {
+		numberButtonHandler(button0.getText());
 	}
 
 	/**
@@ -51,15 +92,12 @@ public class CSTableController {
 	 * @param event
 	 */
 	public void numberButtonHandler(String number) {
-		int input = 0;
 		try {
-			input = Integer.parseInt(number);
+			this.number += number;
 		} catch (NullPointerException ex) {
 			ex.printStackTrace();
-		} catch (IllegalArgumentException ex) {
-			ex.printStackTrace();
 		}
-		this.number += input;
+		display.setText(this.number);
 		clear();
 	}
 
@@ -70,8 +108,18 @@ public class CSTableController {
 	 * @param event
 	 */
 	public void clearButtonHandler(ActionEvent event) {
-		this.number = 0;
+		this.number = "";
 		clear();
+	}
+
+	/**
+	 * Handler for ok button. If the number input is two-digits and not more
+	 * than maximum limit then the next Scene is activated.
+	 * 
+	 * @param event
+	 */
+	public void okButtonHandler(ActionEvent event) {
+		
 	}
 
 	/**

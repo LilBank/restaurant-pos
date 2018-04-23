@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="391.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CSTableController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="391.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CSTableController">
    <children>
       <Pane layoutX="96.0" layoutY="130.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <padding>
@@ -33,7 +33,7 @@
                   <Font name="MS Gothic" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="button2" alignment="CENTER" layoutX="157.0" layoutY="176.0" mnemonicParsing="false" onAction="#numberButtonHandler" prefHeight="68.0" prefWidth="68.0" text="2">
+            <Button fx:id="button2" alignment="CENTER" layoutX="157.0" layoutY="176.0" mnemonicParsing="false" onAction="#button2Handler" prefHeight="68.0" prefWidth="68.0" text="2">
                <padding>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>
@@ -41,7 +41,7 @@
                   <Font name="MS Gothic" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="button3" alignment="CENTER" layoutX="232.0" layoutY="176.0" mnemonicParsing="false" onAction="#numberButtonHandler" prefHeight="68.0" prefWidth="68.0" text="3">
+            <Button fx:id="button3" alignment="CENTER" layoutX="232.0" layoutY="176.0" mnemonicParsing="false" onAction="#button3Handler" prefHeight="68.0" prefWidth="68.0" text="3">
                <padding>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>
@@ -49,7 +49,7 @@
                   <Font name="MS Gothic" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="button4" alignment="CENTER" layoutX="81.0" layoutY="252.0" mnemonicParsing="false" onAction="#numberButtonHandler" prefHeight="68.0" prefWidth="68.0" text="4">
+            <Button fx:id="button4" alignment="CENTER" layoutX="81.0" layoutY="252.0" mnemonicParsing="false" onAction="#button4Handler" prefHeight="68.0" prefWidth="68.0" text="4">
                <padding>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>
@@ -57,7 +57,7 @@
                   <Font name="MS Gothic" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="button5" alignment="CENTER" layoutX="157.0" layoutY="252.0" mnemonicParsing="false" onAction="#numberButtonHandler" prefHeight="68.0" prefWidth="68.0" text="5">
+            <Button fx:id="button5" alignment="CENTER" layoutX="157.0" layoutY="252.0" mnemonicParsing="false" onAction="#button5Handler" prefHeight="68.0" prefWidth="68.0" text="5">
                <padding>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>
@@ -65,7 +65,7 @@
                   <Font name="MS Gothic" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="button6" alignment="CENTER" layoutX="232.0" layoutY="252.0" mnemonicParsing="false" onAction="#numberButtonHandler" prefHeight="68.0" prefWidth="68.0" text="6">
+            <Button fx:id="button6" alignment="CENTER" layoutX="232.0" layoutY="252.0" mnemonicParsing="false" onAction="#button6Handler" prefHeight="68.0" prefWidth="68.0" text="6">
                <padding>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>
@@ -73,7 +73,7 @@
                   <Font name="MS Gothic" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="button7" alignment="CENTER" layoutX="81.0" layoutY="328.0" mnemonicParsing="false" onAction="#numberButtonHandler" prefHeight="68.0" prefWidth="68.0" text="7">
+            <Button fx:id="button7" alignment="CENTER" layoutX="81.0" layoutY="328.0" mnemonicParsing="false" onAction="#button7Handler" prefHeight="68.0" prefWidth="68.0" text="7">
                <padding>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>
@@ -81,7 +81,7 @@
                   <Font name="MS Gothic" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="button8" alignment="CENTER" layoutX="157.0" layoutY="328.0" mnemonicParsing="false" onAction="#numberButtonHandler" prefHeight="68.0" prefWidth="68.0" text="8">
+            <Button fx:id="button8" alignment="CENTER" layoutX="157.0" layoutY="328.0" mnemonicParsing="false" onAction="#button8Handler" prefHeight="68.0" prefWidth="68.0" text="8">
                <padding>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>
@@ -89,7 +89,7 @@
                   <Font name="MS Gothic" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="button9" alignment="CENTER" layoutX="232.0" layoutY="328.0" mnemonicParsing="false" onAction="#numberButtonHandler" prefHeight="68.0" prefWidth="68.0" text="9">
+            <Button fx:id="button9" alignment="CENTER" layoutX="232.0" layoutY="328.0" mnemonicParsing="false" onAction="#button9Handler" prefHeight="68.0" prefWidth="68.0" text="9">
                <padding>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>
@@ -105,7 +105,7 @@
                   <Font name="MS Gothic" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="button0" alignment="CENTER" layoutX="157.0" layoutY="404.0" mnemonicParsing="false" onAction="#numberButtonHandler" prefHeight="68.0" prefWidth="68.0" text="0">
+            <Button fx:id="button0" alignment="CENTER" layoutX="157.0" layoutY="404.0" mnemonicParsing="false" onAction="#button0Handler" prefHeight="68.0" prefWidth="68.0" text="0">
                <padding>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>
@@ -113,7 +113,7 @@
                   <Font name="MS Gothic" size="20.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" layoutX="232.0" layoutY="404.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="68.0" text="ok">
+            <Button fx:id="ok" alignment="CENTER" layoutX="232.0" layoutY="404.0" mnemonicParsing="false" onAction="#okButtonHandler" prefHeight="68.0" prefWidth="68.0" text="ok">
                <padding>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>
@@ -124,4 +124,7 @@
          </children>
       </Pane>
    </children>
+   <padding>
+      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+   </padding>
 </AnchorPane>

@@ -21,11 +21,13 @@ public class Main extends Application {
 			// ScreenController object for switching scenes
 			ScreenController screenController = new ScreenController(scene);
 			screenController.addScene("customer-table", FXMLLoader.load(getClass().getResource("customer-table.fxml")));
+			screenController.addScene("customer-menu", FXMLLoader.load(getClass().getResource("customer-menu.fxml")));
 			// Set the scene
 			screenController.activate("customer-table");
 			// Show the scene
 			stage.setScene(scene);
 			stage.sizeToScene();
+			stage.setResizable(false);
 			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();

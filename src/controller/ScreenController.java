@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 /**
  * ScreenController class to keep track of the different scene.
@@ -13,6 +14,7 @@ import javafx.scene.layout.Pane;
  *
  */
 public class ScreenController {
+	private Stage stage;
 	private Map<String, Pane> sceneMap = new HashMap<>();
 	private Scene scene;
 
