@@ -40,6 +40,11 @@
                   <Font name="MS Gothic" size="20.0" />
                </font>
             </Button>
+            <Label layoutX="93.0" layoutY="115.0" prefHeight="27.0" prefWidth="744.0" text="___________________________________________________________________________________________________" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
