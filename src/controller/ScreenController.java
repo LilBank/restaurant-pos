@@ -4,7 +4,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 /**
- * An Interface class containing method for controlling screen scenes.
+ * An Interface class containing method for controlling windows.
  * 
  * @author Piyawat & Vichapol
  *

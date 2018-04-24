@@ -8,6 +8,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * An abstract class that extends Application for subclass to contain method for
+ * launching javafx scenes.
+ * 
+ * @author Piyawat & Vichapol
+ *
+ */
 public abstract class AbstractWindow extends Application {
 
 	private String fxmlfile = "";
