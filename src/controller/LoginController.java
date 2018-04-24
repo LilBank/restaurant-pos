@@ -11,6 +11,7 @@ public class LoginController {
 	private Button login;
 
 	public void loginButtonHandler(ActionEvent event) {
+		
 		ScreenController.switchWindow((Stage) login.getScene().getWindow(), new CSTable());
 	}
 }

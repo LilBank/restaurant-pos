@@ -8,6 +8,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * CSMenu class that extends Application for capable of running the method
+ * switchWindow. Mainly this window contains menu for customer which picture of
+ * the menu is provided too.
+ * 
+ * @author Piyawat & Vichapol
+ *
+ */
 public class CSMenu extends Application {
 
 	@Override
@@ -25,6 +33,7 @@ public class CSMenu extends Application {
 			stage.sizeToScene();
 			stage.setTitle("Menu");
 			stage.setResizable(false);
+			stage.centerOnScreen();
 			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();

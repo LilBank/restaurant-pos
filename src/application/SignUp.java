@@ -1,5 +1,35 @@
 package application;
 
-public class SignUp {
+import java.net.URL;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class SignUp extends Application {
+
+	@Override
+	public void start(Stage stage) throws Exception {
+		try {
+			String fxmlfile = "signup.fxml";
+			URL url = getClass().getResource(fxmlfile);
+			// Load the FXML and get reference to the loader
+			FXMLLoader loader = new FXMLLoader(url);
+			// Create scene graph from file (UI)
+			Parent root = loader.load();
+			// Show the scene
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.sizeToScene();
+			stage.setTitle("Login");
+			stage.setResizable(false);
+			stage.centerOnScreen();
+			stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

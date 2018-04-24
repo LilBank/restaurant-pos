@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -15,8 +15,10 @@
                   <Font name="MS Gothic" size="40.0" />
                </font>
             </Label>
-            <Button fx:id="login" layoutX="420.0" layoutY="292.0" mnemonicParsing="false" onAction="#loginButtonHandler" prefHeight="47.0" prefWidth="90.0" text="testSwitch" />
          </children>
+         <padding>
+            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+         </padding>
       </Pane>
    </children>
 </AnchorPane>

@@ -1,5 +1,7 @@
 package controller;
 
+import application.CSMenu;
+import application.CSTable;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
- * CustomerTableController contains method for handling all event recieve from
+ * CustomerTableController contains method for handling all event receive from
  * the UserInterface.
  * 
  * @author Piyawat & Vichapol
@@ -120,7 +122,7 @@ public class CSTableController {
 	 * @param event
 	 */
 	public void okButtonHandler(ActionEvent event) {
-
+		ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new CSMenu());
 	}
 
 	/**

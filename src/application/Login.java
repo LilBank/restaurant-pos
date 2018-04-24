@@ -8,20 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * CSTable class that extends Application for capable of running the method
- * switchWindow. This window is for entering the customers table number for food
- * ordering.
- * 
- * @author Piyawat & Vichapol
- *
- */
-public class CSTable extends Application {
-
+public class Login extends Application {
 	@Override
 	public void start(Stage stage) {
 		try {
-			String fxmlfile = "customer-table.fxml";
+			String fxmlfile = "login.fxml";
 			URL url = getClass().getResource(fxmlfile);
 			// Load the FXML and get reference to the loader
 			FXMLLoader loader = new FXMLLoader(url);
@@ -31,13 +22,13 @@ public class CSTable extends Application {
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.sizeToScene();
-			stage.setTitle("Table Number");
+			stage.setTitle("Login");
 			stage.setResizable(false);
 			stage.centerOnScreen();
 			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
 
+	}
 }
