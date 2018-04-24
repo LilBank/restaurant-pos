@@ -2,6 +2,7 @@ package controller;
 
 import application.CSMenu;
 import application.CSTable;
+import application.Main;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,6 +46,8 @@ public class CSTableController {
 	private Button ok;
 	@FXML
 	private TextField display;
+	@FXML
+	private Button back;
 
 	private String number = "";
 
@@ -89,8 +92,17 @@ public class CSTableController {
 	}
 
 	/**
-	 * Handler for every number button. If argument is acceptable the it is
-	 * parse to String for later display.
+	 * Handler for back button. When event receive the Start Up scene is shown.
+	 * 
+	 * @param event
+	 */
+	public void backButtonHandler(ActionEvent event) {
+		ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new Main());
+	}
+
+	/**
+	 * Handler for every number button. When event receive, and if argument is
+	 * acceptable the it is parse to String for later display.
 	 * 
 	 * @param event
 	 */
@@ -105,8 +117,8 @@ public class CSTableController {
 	}
 
 	/**
-	 * Handler for clear button. Sets the display and private number attribute
-	 * empty.
+	 * Handler for clear button. When event receive, sets the display and
+	 * private number attribute empty.
 	 * 
 	 * @param event
 	 */
@@ -116,8 +128,9 @@ public class CSTableController {
 	}
 
 	/**
-	 * Handler for ok button. If the number input is two-digits and not more
-	 * than maximum limit then the next Scene is activated.
+	 * Handler for ok button. When event receive, if the number input is
+	 * two-digits and not more than maximum limit then the next Scene is
+	 * activated.
 	 * 
 	 * @param event
 	 */

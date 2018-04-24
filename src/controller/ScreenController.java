@@ -1,20 +1,22 @@
 package controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
- * ScreenController class to keep track of the different scene.
+ * An Interface class containing method for controlling screen scenes.
  * 
  * @author Piyawat & Vichapol
  *
  */
-public class ScreenController {
+public interface ScreenController {
+	/**
+	 * Method for switching scene by receiving current stage and another window
+	 * that extends Application.(switchWindow(from,to))
+	 * 
+	 * @param Stage
+	 * @param Application
+	 */
 	public static void switchWindow(Stage window, Application app) {
 		try {
 			app.start(window);
