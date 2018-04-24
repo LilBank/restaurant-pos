@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -15,6 +18,28 @@
                   <Font name="MS Gothic" size="40.0" />
                </font>
             </Label>
+            <Label layoutX="140.0" layoutY="198.0" prefHeight="70.0" prefWidth="122.0" text="USERNAME:">
+               <font>
+                  <Font name="MS Gothic" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="140.0" layoutY="338.0" prefHeight="70.0" prefWidth="122.0" text="PASSWORD:">
+               <font>
+                  <Font name="MS Gothic" size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="username" layoutX="283.0" layoutY="208.0" prefHeight="50.0" prefWidth="430.0" />
+            <PasswordField fx:id="password" layoutX="283.0" layoutY="348.0" prefHeight="50.0" prefWidth="430.0" />
+            <Button fx:id="login" layoutX="283.0" layoutY="482.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="116.0" text="Login">
+               <font>
+                  <Font name="MS Gothic" size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="cancel" layoutX="532.0" layoutY="482.0" mnemonicParsing="false" onAction="#cancelButtonHandler" prefHeight="59.0" prefWidth="116.0" text="Cancel">
+               <font>
+                  <Font name="MS Gothic" size="20.0" />
+               </font>
+            </Button>
          </children>
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
