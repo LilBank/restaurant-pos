@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
@@ -16,7 +15,7 @@
                   <Font name="MS Gothic" size="40.0" />
                </font>
             </Label>
-            <Button layoutX="420.0" layoutY="292.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="90.0" text="testSwitch" />
+            <Button fx:id="login" layoutX="420.0" layoutY="292.0" mnemonicParsing="false" onAction="#loginButtonHandler" prefHeight="47.0" prefWidth="90.0" text="testSwitch" />
          </children>
       </Pane>
    </children>
