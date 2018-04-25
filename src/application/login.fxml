@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
-      <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <Pane layoutX="5.0" layoutY="5.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
             <Label layoutX="283.0" layoutY="27.0" prefHeight="88.0" prefWidth="365.0" text="KNOWING RESTAURANT">
                <font>
@@ -30,14 +30,14 @@
             </Label>
             <TextField fx:id="username" layoutX="283.0" layoutY="208.0" prefHeight="50.0" prefWidth="430.0" />
             <PasswordField fx:id="password" layoutX="283.0" layoutY="348.0" prefHeight="50.0" prefWidth="430.0" />
-            <Button fx:id="login" layoutX="283.0" layoutY="482.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="116.0" text="Login">
+            <Button fx:id="login" layoutX="247.0" layoutY="448.0" mnemonicParsing="false" prefHeight="101.0" prefWidth="186.0" text="Login">
                <font>
-                  <Font name="MS Gothic" size="20.0" />
+                  <Font name="MS Gothic" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="cancel" layoutX="532.0" layoutY="482.0" mnemonicParsing="false" onAction="#cancelButtonHandler" prefHeight="59.0" prefWidth="116.0" text="Cancel">
+            <Button fx:id="cancel" layoutX="572.0" layoutY="448.0" mnemonicParsing="false" onAction="#cancelButtonHandler" prefHeight="101.0" prefWidth="172.0" text="Cancel">
                <font>
-                  <Font name="MS Gothic" size="20.0" />
+                  <Font name="MS Gothic" size="24.0" />
                </font>
             </Button>
             <Label layoutX="93.0" layoutY="115.0" prefHeight="27.0" prefWidth="744.0" text="___________________________________________________________________________________________________" textAlignment="CENTER">

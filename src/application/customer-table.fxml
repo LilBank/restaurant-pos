@@ -107,7 +107,7 @@
             </Button>
             <Button fx:id="back" layoutX="14.0" layoutY="456.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="26.0" prefWidth="36.0" text="&lt;-">
                <font>
-                  <Font size="10.0" />
+                  <Font name="Agency FB" size="18.0" />
                </font>
             </Button>
             <Button fx:id="button0" alignment="CENTER" layoutX="157.0" layoutY="404.0" mnemonicParsing="false" onAction="#button0Handler" prefHeight="68.0" prefWidth="68.0" text="0">

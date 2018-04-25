@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StartUpController">
    <children>
-      <Pane layoutX="73.0" layoutY="37.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <Pane layoutX="5.0" layoutY="5.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
          </padding>
@@ -19,21 +19,26 @@
                   <Font name="MS Gothic" size="30.0" />
                </font>
             </Label>
-            <Button fx:id="csMode" layoutX="433.0" layoutY="133.0" mnemonicParsing="false" onAction="#csModeButtonHandler" prefHeight="100.0" prefWidth="131.0" text="Customer Mode">
+            <Button fx:id="csMode" layoutX="422.0" layoutY="151.0" mnemonicParsing="false" onAction="#csModeButtonHandler" prefHeight="100.0" prefWidth="131.0" text="Customer Mode">
                <font>
-                  <Font name="MS Gothic" size="16.0" />
+                  <Font name="MS Gothic" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="login" layoutX="24.0" layoutY="133.0" mnemonicParsing="false" onAction="#loginButtonHandler" prefHeight="100.0" prefWidth="131.0" text="Login">
+            <Button fx:id="login" layoutX="34.0" layoutY="151.0" mnemonicParsing="false" onAction="#loginButtonHandler" prefHeight="100.0" prefWidth="131.0" text="Login">
                <font>
-                  <Font name="MS Gothic" size="20.0" />
+                  <Font name="MS Gothic" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="signUp" layoutX="229.0" layoutY="133.0" mnemonicParsing="false" onAction="#signUpButtonHandler" prefHeight="100.0" prefWidth="131.0" text="Sign Up">
+            <Button fx:id="signUp" layoutX="229.0" layoutY="151.0" mnemonicParsing="false" onAction="#signUpButtonHandler" prefHeight="100.0" prefWidth="131.0" text="Sign Up">
                <font>
-                  <Font name="MS Gothic" size="20.0" />
+                  <Font name="MS Gothic" size="24.0" />
                </font>
             </Button>
+            <Label alignment="CENTER" layoutX="70.0" layoutY="85.0" prefHeight="26.0" prefWidth="449.0" text="_____________________________________________________________________________________________________________" textAlignment="CENTER">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
