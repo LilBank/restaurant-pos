@@ -5,26 +5,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CSMenuController">
    <children>
-      <Pane layoutX="115.0" layoutY="94.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <Pane layoutX="5.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
          </padding>
          <children>
-            <Button layoutX="492.0" layoutY="111.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="132.0" text="Table1" />
-            <Button layoutX="295.0" layoutY="405.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="132.0" text="Table2" />
-            <Button layoutX="295.0" layoutY="250.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="132.0" text="Table3" />
-            <Button layoutX="295.0" layoutY="111.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="132.0" text="Button" />
-            <Button layoutX="100.0" layoutY="250.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="132.0" text="Button" />
-            <Button layoutX="100.0" layoutY="405.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="132.0" text="Button" />
-            <Button layoutX="687.0" layoutY="405.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="132.0" text="Button" />
-            <Button layoutX="687.0" layoutY="250.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="132.0" text="Button" />
-            <Button layoutX="687.0" layoutY="111.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="132.0" text="Button" />
-            <Button layoutX="492.0" layoutY="405.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="132.0" text="Button" />
-            <Button layoutX="492.0" layoutY="250.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="132.0" text="Button" />
-            <Button layoutX="100.0" layoutY="111.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="132.0" text="Button" />
-            <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="48.0" text="Back" />
+            <Button fx:id="back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="33.0" prefWidth="71.0" text="Back" />
+            <Button fx:id="newImage" layoutX="798.0" layoutY="18.0" mnemonicParsing="false" onAction="#insertImageHandler" prefHeight="52.0" prefWidth="109.0" text="New Image" />
          </children>
       </Pane>
    </children>
