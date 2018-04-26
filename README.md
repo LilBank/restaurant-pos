@@ -8,8 +8,8 @@ Menu buttons are created from menu stored in database.
 
 ## Developers: 
 
-1. Piyawat Setthitikun [bankkeez](https://github.com/bankkeez)
-2. Vichaphol Thamsuthikul [kimvcp](https://github.com/kimvcp) 
+1. Piyawat Setthitikun ([bankkeez](https://github.com/bankkeez))
+2. Vichaphol Thamsuthikul ([kimvcp](https://github.com/kimvcp)) 
 
 ## Reason of Creating this application
 
