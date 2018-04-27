@@ -6,21 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DBManager {
-	static final String DB_URL = "jdbc:mysql://35.194.158.90:3306/BankDB?useSSL=false";
-	static final String USER = "bank";
-	static final String PASS = "helloworld";
-	// static final Connection connection = null;
+import util.PropertyManager;
 
-	// static {
-	// try {
-	// Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-	// } catch (SQLException e) {
-	// e.printStackTrace();
-	// }
-	// }
+public class DBManager {
 
 	public static int login(String user, String pass) {
+		PropertyManager pm = PropertyManager.getInstance();
+		String DB_URL = pm.getProperty("database.url");
+		String USER = pm.getProperty("database.user");
+		String PASS = pm.getProperty("database.password");
 		try {
 			Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
 			Statement statement = connection.createStatement();
