@@ -24,13 +24,18 @@ public class CSMenuController {
 	Button back;
 	@FXML
 	Button newImage;
+	/** ListView showing the items */
 	@FXML
 	ListView<Label> listItems;
+	/** Combined with list view */
 	@FXML
 	ListProperty<Label> listProperty = new SimpleListProperty<>();
-
+	/** List of all images */
 	List<Label> folderImage = new ArrayList<>();
 
+	/**
+	 * Bind listView with ListProperty at the beginning.
+	 */
 	@FXML
 	public void initialize() {
 		listProperty.set(FXCollections.observableArrayList(folderImage));
@@ -46,16 +51,25 @@ public class CSMenuController {
 		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new CSTable());
 	}
 
-	public void insertImageHandler(ActionEvent event) throws MalformedURLException {
+	/**
+	 * Method for handling newImage button. Insert image to the list view.
+	 * 
+	 * @throws MalformedURLException
+	 */
+	public void insertImageHandler(ActionEvent event) {
 		FileChooser chooser = new FileChooser();
 		File selectedFile = chooser.showOpenDialog(new Stage());
 		System.out.print(selectedFile.getAbsolutePath());
-		Image image = new Image(selectedFile.toURI().toURL().toExternalForm());
+		Image image = null;
+		try {
+			image = new Image(selectedFile.toURI().toURL().toExternalForm());
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
 		Label food = new Label();
 		food.setGraphic(new ImageView(image));
 		folderImage.add(food);
 		listProperty.set(FXCollections.observableArrayList(folderImage));
 	}
 
-	
 }
