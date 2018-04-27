@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.CSTable;
+import application.Main;
+import application.SignUp;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
@@ -24,6 +26,10 @@ public class CSMenuController {
 	Button back;
 	@FXML
 	Button newImage;
+	@FXML
+	Button deleteImage;
+	@FXML
+	Button logout;
 	/** ListView showing the items */
 	@FXML
 	ListView<Label> listItems;
@@ -40,15 +46,6 @@ public class CSMenuController {
 	public void initialize() {
 		listProperty.set(FXCollections.observableArrayList(folderImage));
 		listItems.itemsProperty().bind(listProperty);
-	}
-
-	/**
-	 * Handler for back button. When event receive the CS table scene is shown.
-	 * 
-	 * @param event
-	 */
-	public void backButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new CSTable());
 	}
 
 	/**
@@ -72,4 +69,28 @@ public class CSMenuController {
 		listProperty.set(FXCollections.observableArrayList(folderImage));
 	}
 
+	/**
+	 * Method for handling deleteImage button. Delete image in the list view.
+	 * 
+	 */
+	public void deleteImageHandler(ActionEvent event) {
+		folderImage.remove(0);
+		listProperty.set(FXCollections.observableArrayList(folderImage));
+	}
+
+	/**
+	 * Handler for back button. When event receive the CS table scene is shown.
+	 * 
+	 */
+	public void backButtonHandler(ActionEvent event) {
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new CSTable());
+	}
+
+	/**
+	 * Handler for logout button. When event recieve the Start up scene is shown.
+	 * 
+	 */
+	public void logoutHandler(ActionEvent event) {
+		ScreenController.switchWindow((Stage) logout.getScene().getWindow(), new Main());
+	}
 }

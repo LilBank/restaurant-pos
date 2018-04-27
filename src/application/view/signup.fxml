@@ -33,7 +33,7 @@
             <PasswordField fx:id="password2" layoutX="287.0" layoutY="407.0" prefHeight="50.0" prefWidth="430.0" />
             <Button fx:id="cancel" layoutX="545.0" layoutY="498.0" mnemonicParsing="false" onAction="#cancelButtonHandler" prefHeight="99.0" prefWidth="189.0" text="Cancel">
                <font>
-                  <Font name="MS Gothic" size="20.0" />
+                  <Font name="MS Gothic" size="25.0" />
                </font>
             </Button>
             <Label layoutX="68.0" layoutY="397.0" prefHeight="70.0" prefWidth="219.0" text="RE-TYPE PASSWORD:">
@@ -43,7 +43,7 @@
             </Label>
             <Button fx:id="confirm" layoutX="239.0" layoutY="498.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="189.0" text="Confirm">
                <font>
-                  <Font name="MS Gothic" size="20.0" />
+                  <Font name="MS Gothic" size="25.0" />
                </font>
             </Button>
             <Label layoutX="93.0" layoutY="122.0" prefHeight="27.0" prefWidth="745.0" text="___________________________________________________________________________________________________">
