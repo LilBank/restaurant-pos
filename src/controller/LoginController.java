@@ -2,6 +2,7 @@ package controller;
 
 import application.CSTable;
 import application.Main;
+import database.DBManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -26,10 +27,6 @@ public class LoginController {
 	@FXML
 	private PasswordField password;
 
-	public void loginButtonHandler(ActionEvent event) {
-		
-	}
-
 	/**
 	 * Method for handling cancel button. When event receive Main scene is
 	 * shown.
@@ -38,5 +35,11 @@ public class LoginController {
 	 */
 	public void cancelButtonHandler(ActionEvent event) {
 		ScreenController.switchWindow((Stage) cancel.getScene().getWindow(), new Main());
+	}
+
+	public void loginButtonHandler(ActionEvent event) {
+		int tmp = DBManager.login(username.getText(), password.getText());
+		if (tmp == 1)
+			ScreenController.switchWindow((Stage) cancel.getScene().getWindow(), new Main());
 	}
 }
