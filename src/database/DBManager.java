@@ -8,6 +8,13 @@ import java.sql.Statement;
 
 import util.PropertyManager;
 
+/**
+ * DBManager contains method for managing data on database. Also associate with
+ * classes that use database.
+ * 
+ * @author Piyawat & Vichapol
+ *
+ */
 public class DBManager {
 
 	public static int login(String user, String pass) {
