@@ -14,7 +14,7 @@ public class Main extends AbstractWindow {
 	@Override
 	public void start(Stage stage) {
 		try {
-			super.setFilename("startup.fxml");
+			super.setFilename("view/startup.fxml");
 			super.start(stage);
 			stage.setTitle("Start Up");
 		} catch (Exception e) {

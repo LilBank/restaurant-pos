@@ -15,7 +15,7 @@ public class CSMenu extends AbstractWindow {
 	@Override
 	public void start(Stage stage) {
 		try {
-			super.setFilename("customer-menu.fxml");
+			super.setFilename("view/customer-menu.fxml");
 			super.start(stage);
 			stage.setTitle("Menu");
 		} catch (Exception e) {

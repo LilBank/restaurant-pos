@@ -15,7 +15,7 @@ public class CSTable extends AbstractWindow {
 	@Override
 	public void start(Stage stage) {
 		try {
-			super.setFilename("customer-table.fxml");
+			super.setFilename("view/customer-table.fxml");
 			super.start(stage);
 			stage.setTitle("Table Number");
 		} catch (Exception e) {
