@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.function.BinaryOperator;
 
 import application.CSTable;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -27,8 +30,17 @@ public class CSMenuController {
 	@FXML
 	Button newImage;
 	@FXML
-	ListView<Image> listItems = new ListView<>();
+	ListView<Label> listItems;
+	@FXML
+	ListProperty<Label> listProperty = new SimpleListProperty<>();
+
 	List<Image> folderImage = new ArrayList<>();
+
+	@FXML
+	public void initialize() {
+		listProperty.set(FXCollections.observableArrayList(folderImage));
+		listItems.itemsProperty().bind(listProperty);
+	}
 
 	/**
 	 * Handler for back button. When event receive the CS table scene is shown.
@@ -45,14 +57,16 @@ public class CSMenuController {
 		System.out.print(selectedFile.getAbsolutePath());
 		Image image = new Image(selectedFile.toURI().toURL().toExternalForm());
 		folderImage.add(image);
+		listProperty.set(FXCollections.observableArrayList(folderImage));
 		reloadListItems();
 	}
 
 	public void reloadListItems() {
-		for (Image image : folderImage) {
+		for (Label image : folderImage) {
 			Label food = new Label();
-			listItems.add;
 			food.setGraphic(new ImageView(image));
+			listItems.getItems().addAll(food);
 		}
+		listItems.refresh();
 	}
 }
