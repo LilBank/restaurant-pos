@@ -34,7 +34,7 @@ public class CSMenuController {
 	@FXML
 	ListProperty<Label> listProperty = new SimpleListProperty<>();
 
-	List<Image> folderImage = new ArrayList<>();
+	List<Label> folderImage = new ArrayList<>();
 
 	@FXML
 	public void initialize() {
@@ -56,17 +56,11 @@ public class CSMenuController {
 		File selectedFile = chooser.showOpenDialog(new Stage());
 		System.out.print(selectedFile.getAbsolutePath());
 		Image image = new Image(selectedFile.toURI().toURL().toExternalForm());
-		folderImage.add(image);
+		Label food = new Label();
+		food.setGraphic(new ImageView(image));
+		folderImage.add(food);
 		listProperty.set(FXCollections.observableArrayList(folderImage));
-		reloadListItems();
 	}
 
-	public void reloadListItems() {
-		for (Label image : folderImage) {
-			Label food = new Label();
-			food.setGraphic(new ImageView(image));
-			listItems.getItems().addAll(food);
-		}
-		listItems.refresh();
-	}
+	
 }
