@@ -21,6 +21,13 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+/**
+ * A class of manager mode in the application. Containing functions to add and
+ * delete image in the customer view.
+ * 
+ * @author Piyawat & Vichaphol
+ *
+ */
 public class CSMenuController {
 	@FXML
 	Button back;
@@ -56,16 +63,15 @@ public class CSMenuController {
 	public void insertImageHandler(ActionEvent event) {
 		FileChooser chooser = new FileChooser();
 		File selectedFile = chooser.showOpenDialog(new Stage());
-		System.out.print(selectedFile.getAbsolutePath());
 		Image image = null;
 		try {
 			image = new Image(selectedFile.toURI().toURL().toExternalForm());
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		Label food = new Label();
-		food.setGraphic(new ImageView(image));
-		folderImage.add(food);
+		Label foods = new Label();
+		foods.setGraphic(new ImageView(image));
+		folderImage.add(foods);
 		listProperty.set(FXCollections.observableArrayList(folderImage));
 	}
 
