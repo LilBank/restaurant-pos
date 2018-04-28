@@ -1,6 +1,6 @@
 package controller;
 
-import application.CSMenu;
+import application.MGMenu;
 import application.CSTable;
 import application.Main;
 import javafx.application.Application;
@@ -135,7 +135,7 @@ public class CSTableController {
 	 * @param event
 	 */
 	public void okButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new CSMenu());
+		ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new MGMenu());
 	}
 
 	/**

@@ -10,12 +10,12 @@ import javafx.stage.Stage;
  * @author Piyawat & Vichapol
  *
  */
-public class CSMenu extends AbstractWindow {
+public class MGMenu extends AbstractWindow {
 
 	@Override
 	public void start(Stage stage) {
 		try {
-			super.setFilename("view/customer-menu.fxml");
+			super.setFilename("view/manager-menu.fxml");
 			super.start(stage);
 			stage.setTitle("Menu");
 		} catch (Exception e) {
