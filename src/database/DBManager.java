@@ -60,7 +60,11 @@ public class DBManager {
 		// not in any cases
 		return -1;
 	}
-
+	/**
+	 * 
+	 * @param user
+	 * @param pass
+	 */
 	public static void signUp(String user, String pass) {
 		try {
 			Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -72,10 +76,14 @@ public class DBManager {
 			e.printStackTrace();
 		}
 	}
+
 	/**
+	 * Method for retrieving data from the database to check whether if the
+	 * username inputed has already exist or not.
 	 * 
-	 * @param user
-	 * @return
+	 * @param username
+	 *            from Login's window
+	 * @return false if username match, true if no match
 	 */
 	public static boolean checkUser(String user) {
 		try {
@@ -89,7 +97,7 @@ public class DBManager {
 			if (rs.next()) {
 				dbInt = rs.getInt("access type");
 			}
-			if (dbInt==1||dbInt==2) {
+			if (dbInt == 1 || dbInt == 2) {
 				// username exists
 				return false;
 			}
