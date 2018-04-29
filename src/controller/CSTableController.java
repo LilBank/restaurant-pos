@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
@@ -55,6 +56,16 @@ public class CSTableController {
 	private Alert alert;
 
 	private String number = "";
+
+	/**
+	 * JavaFX calls the initialize() method of your controller when it creates
+	 * the UI form, after the components have been created and @FXML annotated
+	 * attributes have been set. This is to limit textfield char to 2.
+	 */
+	public void initialize() {
+		display.setTextFormatter(
+				new TextFormatter<String>(change -> change.getControlNewText().length() <= 2 ? change : null));
+	}
 
 	public void button1Handler(ActionEvent event) {
 		numberButtonHandler(button1.getText());
@@ -140,10 +151,12 @@ public class CSTableController {
 	 * @param event
 	 */
 	public void okButtonHandler(ActionEvent event) {
-		if (number.length() >= 2 || number.length() == 0) {
-			alert = new Alert(AlertType.ERROR, "Please input the correct table number.", ButtonType.OK);
+		if (number.length() == 0) {
+			alert = new Alert(AlertType.ERROR, "Please input table number.", ButtonType.OK);
 			alert.show();
 		}
+		alert = new Alert(AlertType.ERROR, "ต้องทำต่อจ้าา", ButtonType.OK);
+		alert.show();
 	}
 
 	/**
