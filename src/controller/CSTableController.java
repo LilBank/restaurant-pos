@@ -8,8 +8,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 /**
@@ -48,6 +51,8 @@ public class CSTableController {
 	private TextField display;
 	@FXML
 	private Button back;
+	@FXML
+	private Alert alert;
 
 	private String number = "";
 
@@ -102,7 +107,7 @@ public class CSTableController {
 
 	/**
 	 * Handler for every number button. When event receive, and if argument is
-	 * acceptable the it is parse to String for later display.
+	 * acceptable then it is parse to String for later display.
 	 * 
 	 * @param event
 	 */
@@ -117,7 +122,7 @@ public class CSTableController {
 	}
 
 	/**
-	 * Handler for clear button. When event receive, sets the display and
+	 * Handler for clear button. When event receive, sets the display and the
 	 * private number attribute empty.
 	 * 
 	 * @param event
@@ -135,7 +140,10 @@ public class CSTableController {
 	 * @param event
 	 */
 	public void okButtonHandler(ActionEvent event) {
-		//ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new MGMenu());
+		if (number.length() >= 2 || number.length() == 0) {
+			alert = new Alert(AlertType.ERROR, "Please input the correct table number.", ButtonType.OK);
+			alert.show();
+		}
 	}
 
 	/**

@@ -36,8 +36,8 @@ public class SignUpController {
 
 	/**
 	 * Method for handling confirm button. When event receive then the
-	 * implementation below is done. Every fail cases are checked properly and
-	 * in each cases contains different Alert box reply message.
+	 * implementation below is done. Every fail cases gives different Alert box
+	 * reply message.
 	 * 
 	 * @param event
 	 */

@@ -3,9 +3,8 @@ package application;
 import javafx.stage.Stage;
 
 /**
- * CSMenu class that extends AbstractWindow for capable of running the method
- * switchWindow. Mainly this window contains menu for customer which picture of
- * the menu is provided too.
+ * MGMenu class that extends AbstractWindow for capable of running the method
+ * switchWindow. Mainly this window is for manager who could edit the menu.
  * 
  * @author Piyawat & Vichapol
  *
