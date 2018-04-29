@@ -52,14 +52,13 @@ public class LoginController {
 		int accessLevel = DBManager.login(username.getText(), password.getText());
 		// int = 2 for manager mode
 		if (accessLevel == 2) {
-			// ScreenController.switchWindow((Stage)
-			// cancel.getScene().getWindow(), new Main());
-			alert = new Alert(AlertType.NONE, "ºË“π®È““““", ButtonType.OK);
+			alert = new Alert(AlertType.NONE, "ºË“π√–¥—∫ 2 ®È““““", ButtonType.OK);
 			alert.show();
 		}
 		// int = 1 for normal mode
 		if (accessLevel == 1) {
-
+			alert = new Alert(AlertType.NONE, "ºË“π√–¥—∫ 1 ®È““““", ButtonType.OK);
+			alert.show();
 		}
 		// wrong password
 		if (accessLevel == 0) {

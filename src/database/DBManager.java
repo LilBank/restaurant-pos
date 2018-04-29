@@ -60,17 +60,22 @@ public class DBManager {
 		// not in any cases
 		return -1;
 	}
+
 	/**
+	 * Method for inserting data(new user's data) to the database. The access
+	 * type is set to 1 by default but can be change later on.
 	 * 
-	 * @param user
-	 * @param pass
+	 * @param username
+	 *            from SignUp window
+	 * @param password
+	 *            from SignUp window
 	 */
 	public static void signUp(String user, String pass) {
 		try {
 			Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
 			Statement statement = connection.createStatement();
-			sqlCommand = "INSERT INTO User (name,password,access type) VALUES (" + "'" + user + "'" + ", '" + pass
-					+ "', '1')";
+			sqlCommand = "INSERT INTO `User` (`name`, `password`, `access type`)" + "VALUES" + "(" + "'" + user + "'"
+					+ ", '" + pass + "', '1')";
 			statement.executeUpdate(sqlCommand);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -82,7 +87,7 @@ public class DBManager {
 	 * username inputed has already exist or not.
 	 * 
 	 * @param username
-	 *            from Login's window
+	 *            from SignUp window
 	 * @return false if username match, true if no match
 	 */
 	public static boolean checkUser(String user) {
