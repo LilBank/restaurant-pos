@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.support.ConnectionSource;
+
 import util.PropertyManager;
 
 /**
@@ -16,12 +19,12 @@ import util.PropertyManager;
  *
  */
 public class DBManager {
+	private static PropertyManager pm = PropertyManager.getInstance();
+	private static String DB_URL = pm.getProperty("database.url");
+	private static String USER = pm.getProperty("database.user");
+	private static String PASS = pm.getProperty("database.password");
 
 	public static int login(String user, String pass) {
-		PropertyManager pm = PropertyManager.getInstance();
-		String DB_URL = pm.getProperty("database.url");
-		String USER = pm.getProperty("database.user");
-		String PASS = pm.getProperty("database.password");
 		try {
 			Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
 			Statement statement = connection.createStatement();
@@ -36,10 +39,6 @@ public class DBManager {
 			ex.printStackTrace();
 		}
 		return 0;
-	}
-
-	public static void createUser(String user, String pass) {
-
 	}
 
 }

@@ -135,7 +135,7 @@ public class CSTableController {
 	 * @param event
 	 */
 	public void okButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new MGMenu());
+		//ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new MGMenu());
 	}
 
 	/**
