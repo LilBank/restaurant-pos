@@ -1,8 +1,8 @@
 package controller;
 
-import javax.swing.JFrame;
-
+import application.Login;
 import application.Main;
+import database.DBManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -36,21 +36,48 @@ public class SignUpController {
 
 	/**
 	 * Method for handling confirm button. When event receive then the
-	 * implementation below is worked.
+	 * implementation below is done. Every fail cases are checked properly and
+	 * in each cases contains different Alert box reply message.
 	 * 
 	 * @param event
 	 */
 	public void confirmButtonHandler(ActionEvent event) {
+		// empty username textfield
 		if (username.getText().equals("")) {
 			alert = new Alert(AlertType.ERROR, "Username is empty.", ButtonType.OK);
+			alert.show();
 		}
-		if (!password.getText().equals(password2.getText())) {
+		// either password field is empty
+		else if (password.getText().equals("") || password2.getText().equals("")) {
+			alert = new Alert(AlertType.ERROR, "Password or the confirmation is empty!", ButtonType.OK);
+			alert.show();
+		}
+		// password mismatch
+		else if (!password.getText().equals(password2.getText())) {
 			alert = new Alert(AlertType.ERROR, "Password and the confirmation does not match.", ButtonType.OK);
+			alert.show();
 		}
-		if (password.getText().equals(password2.getText())) {
-			alert = new Alert(AlertType.NONE, "¼èÒ¹¨éÒÒÒÒ", ButtonType.OK);
+		// password match
+		else if (password.getText().equals(password2.getText())) {
+			// check username existence
+			boolean allow = DBManager.checkUser(username.getText());
+			if (!allow) {
+				alert = new Alert(AlertType.ERROR, "Username already exist! Please use another username.",
+						ButtonType.OK);
+				alert.show();
+			}
+			if (allow) {
+				alert = new Alert(AlertType.NONE,
+						"You are registered as an restaurant employee. Press ok to continue...", ButtonType.OK);
+				alert.showAndWait().ifPresent(response -> {
+					if (response == ButtonType.OK) {
+						DBManager.signUp(username.getText(), password.getText());
+						ScreenController.switchWindow((Stage) confirm.getScene().getWindow(), new Login());
+					}
+				});
+			}
 		}
-		alert.show();
+
 	}
 
 	/**

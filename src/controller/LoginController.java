@@ -5,9 +5,12 @@ import application.Main;
 import database.DBManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 /**
@@ -26,6 +29,8 @@ public class LoginController {
 	private TextField username;
 	@FXML
 	private PasswordField password;
+	// Alert dialog
+	private Alert alert;
 
 	/**
 	 * Method for handling cancel button. When event receive Main scene is
@@ -37,9 +42,34 @@ public class LoginController {
 		ScreenController.switchWindow((Stage) cancel.getScene().getWindow(), new Main());
 	}
 
+	/**
+	 * Method for handling login button. When event receive the implementation
+	 * below is done.
+	 * 
+	 * @param event
+	 */
 	public void loginButtonHandler(ActionEvent event) {
-		int tmp = DBManager.login(username.getText(), password.getText());
-		if (tmp == 1)
-			ScreenController.switchWindow((Stage) cancel.getScene().getWindow(), new Main());
+		int accessLevel = DBManager.login(username.getText(), password.getText());
+		// int = 2 for manager mode
+		if (accessLevel == 2) {
+			// ScreenController.switchWindow((Stage)
+			// cancel.getScene().getWindow(), new Main());
+			alert = new Alert(AlertType.NONE, "ºË“π®È““““", ButtonType.OK);
+			alert.show();
+		}
+		// int = 1 for normal mode
+		if (accessLevel == 1) {
+
+		}
+		// wrong password
+		if (accessLevel == 0) {
+			alert = new Alert(AlertType.ERROR, "Wrong password!", ButtonType.OK);
+			alert.show();
+		}
+		// User does not exists
+		if (accessLevel == -1) {
+			alert = new Alert(AlertType.ERROR, "User does not exists!", ButtonType.OK);
+			alert.show();
+		}
 	}
 }
