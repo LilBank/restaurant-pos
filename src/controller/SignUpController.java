@@ -58,7 +58,7 @@ public class SignUpController {
 			alert.show();
 		}
 		// password match
-		else if (password.getText().equals(password2.getText())) {
+		else {
 			// check username existence
 			boolean allow = DBManager.checkUser(username.getText());
 			if (!allow) {

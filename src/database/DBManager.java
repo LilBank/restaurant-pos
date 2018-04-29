@@ -34,10 +34,8 @@ public class DBManager {
 	 */
 	public static int login(String user, String pass) {
 		try {
-			Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-			Statement statement = connection.createStatement();
 			sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
-			ResultSet rs = statement.executeQuery(sqlCommand);
+			ResultSet rs = retrieveData(sqlCommand);
 			String dbPass = "";
 			if (rs.next()) {
 				dbPass = rs.getString("password");
@@ -89,11 +87,9 @@ public class DBManager {
 	 */
 	public static boolean checkUser(String user) {
 		try {
-			Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-			Statement statement = connection.createStatement();
 			// check if username does exists
 			sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
-			ResultSet rs = statement.executeQuery(sqlCommand);
+			ResultSet rs = retrieveData(sqlCommand);
 			int dbInt = 0;
 			// if username found in database then changed the value of dbInt
 			if (rs.next()) {
@@ -108,6 +104,19 @@ public class DBManager {
 		}
 		// username does not exist
 		return true;
+	}
+
+	// during in test for shortening codes
+	public static ResultSet retrieveData(String sqlCommand) {
+		try {
+			Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+			Statement statement = connection.createStatement();
+			return statement.executeQuery(sqlCommand);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		// never reaches
+		return null;
 	}
 
 }

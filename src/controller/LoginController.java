@@ -49,26 +49,39 @@ public class LoginController {
 	 * @param event
 	 */
 	public void loginButtonHandler(ActionEvent event) {
-		int accessLevel = DBManager.login(username.getText(), password.getText());
-		// int = 2 for manager mode
-		if (accessLevel == 2) {
-			alert = new Alert(AlertType.NONE, "ºË“π√–¥—∫ 2 ®È““““", ButtonType.OK);
+		// empty username textfield
+		if (username.getText().equals("")) {
+			alert = new Alert(AlertType.ERROR, "Username is empty.", ButtonType.OK);
 			alert.show();
 		}
-		// int = 1 for normal mode
-		if (accessLevel == 1) {
-			alert = new Alert(AlertType.NONE, "ºË“π√–¥—∫ 1 ®È““““", ButtonType.OK);
+		// either password field is empty
+		else if (password.getText().equals("")) {
+			alert = new Alert(AlertType.ERROR, "Password or the confirmation is empty!", ButtonType.OK);
 			alert.show();
 		}
-		// wrong password
-		if (accessLevel == 0) {
-			alert = new Alert(AlertType.ERROR, "Wrong password!", ButtonType.OK);
-			alert.show();
-		}
-		// User does not exists
-		if (accessLevel == -1) {
-			alert = new Alert(AlertType.ERROR, "User does not exists!", ButtonType.OK);
-			alert.show();
+		// check if this user is valid
+		else {
+			int accessLevel = DBManager.login(username.getText(), password.getText());
+			// int = 2 for manager mode
+			if (accessLevel == 2) {
+				alert = new Alert(AlertType.NONE, "ºË“π√–¥—∫ 2 ®È““““", ButtonType.OK);
+				alert.show();
+			}
+			// int = 1 for normal mode
+			if (accessLevel == 1) {
+				alert = new Alert(AlertType.NONE, "ºË“π√–¥—∫ 1 ®È““““", ButtonType.OK);
+				alert.show();
+			}
+			// wrong password
+			if (accessLevel == 0) {
+				alert = new Alert(AlertType.ERROR, "Wrong password!", ButtonType.OK);
+				alert.show();
+			}
+			// User does not exists
+			if (accessLevel == -1) {
+				alert = new Alert(AlertType.ERROR, "User does not exists!", ButtonType.OK);
+				alert.show();
+			}
 		}
 	}
 }
