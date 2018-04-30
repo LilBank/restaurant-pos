@@ -22,7 +22,6 @@ public abstract class AbstractWindow extends Application {
 	@Override
 	public void start(Stage stage) {
 		try {
-			//setUserAgentStylesheet(STYLESHEET_MODENA);
 			URL url = getClass().getResource(fxmlfile);
 			// Load the FXML and get reference to the loader
 			FXMLLoader loader = new FXMLLoader(url);
@@ -30,7 +29,7 @@ public abstract class AbstractWindow extends Application {
 			Parent root = loader.load();
 			// Show the scene
 			Scene scene = new Scene(root);
-			//sets a beautiful theme
+			// sets a beautiful theme
 			stage.setScene(scene);
 			stage.sizeToScene();
 			stage.setResizable(false);
@@ -41,6 +40,12 @@ public abstract class AbstractWindow extends Application {
 		}
 	}
 
+	/**
+	 * Set the filename for getting the wanted resource used by FXMLLoader.
+	 * 
+	 * @param name
+	 *            of fxml file
+	 */
 	public void setFilename(String name) {
 		this.fxmlfile = name;
 	}

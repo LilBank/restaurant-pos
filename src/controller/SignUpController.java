@@ -36,7 +36,7 @@ public class SignUpController {
 
 	/**
 	 * Method for handling confirm button. When event receive then the
-	 * implementation below is done. Every fail cases gives different Alert box
+	 * implementation below is done. Every fail cases gives different Alert
 	 * reply message.
 	 * 
 	 * @param event
@@ -47,7 +47,7 @@ public class SignUpController {
 			alert = new Alert(AlertType.ERROR, "Username is empty.", ButtonType.OK);
 			alert.show();
 		}
-		// either password field is empty
+		// either password or password2 field is empty
 		else if (password.getText().equals("") || password2.getText().equals("")) {
 			alert = new Alert(AlertType.ERROR, "Password or the confirmation is empty!", ButtonType.OK);
 			alert.show();

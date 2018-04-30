@@ -52,7 +52,7 @@ public class DBManager {
 		} catch (NullPointerException ex) {
 			ex.printStackTrace();
 		}
-		// not in any cases
+		// not in any cases (ResultSet == null)
 		return -1;
 	}
 
@@ -115,7 +115,7 @@ public class DBManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		// never reaches
+		// never reaches because DB_URL is always found
 		return null;
 	}
 

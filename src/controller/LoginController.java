@@ -56,10 +56,10 @@ public class LoginController {
 		}
 		// either password field is empty
 		else if (password.getText().equals("")) {
-			alert = new Alert(AlertType.ERROR, "Password or the confirmation is empty!", ButtonType.OK);
+			alert = new Alert(AlertType.ERROR, "Password is empty!", ButtonType.OK);
 			alert.show();
 		}
-		// check if this user is valid
+		// check if this user is valid in which access level
 		else {
 			int accessLevel = DBManager.login(username.getText(), password.getText());
 			// int = 2 for manager mode
