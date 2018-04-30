@@ -25,12 +25,12 @@
             </TableView>
             <ButtonBar layoutX="200.0" layoutY="536.0" prefHeight="90.0" prefWidth="190.0">
               <buttons>
-                <Button mnemonicParsing="false" prefHeight="69.0" style="-fx-background-radius: 100;" text="Order">
+                <Button fx:id="order" mnemonicParsing="false" prefHeight="69.0" style="-fx-background-radius: 100;" text="Order">
                      <font>
                         <Font name="Agency FB" size="24.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="69.0" prefWidth="100.0" style="-fx-background-radius: 100;" text="Pay">
+                  <Button fx:id="pay" mnemonicParsing="false" prefHeight="69.0" prefWidth="100.0" style="-fx-background-radius: 100;" text="Pay">
                      <font>
                         <Font name="Agency FB" size="24.0" />
                      </font>
@@ -43,13 +43,14 @@
                </font>
             </Label>
             <ListView layoutX="400.0" layoutY="47.0" prefHeight="593.0" prefWidth="542.0" />
+            <ListView layoutX="400.0" layoutY="47.0" prefHeight="593.0" prefWidth="542.0" />
             <ButtonBar layoutX="400.0" prefHeight="49.0" prefWidth="182.0">
               <buttons>
-                <Button minWidth="0.0" mnemonicParsing="false" prefHeight="26.0" style="-fx-background-radius: 50;" text="All" />
-                  <Button mnemonicParsing="false" style="-fx-background-radius: 50;" text="Search " />
+                <Button fx:id="foodView" minWidth="0.0" mnemonicParsing="false" prefHeight="26.0" style="-fx-background-radius: 50;" text="Food" />
+                  <Button fx:id="drinkView" mnemonicParsing="false" style="-fx-background-radius: 50;" text="Drink" />
               </buttons>
             </ButtonBar>
-            <Label layoutX="75.0" layoutY="448.0" prefHeight="37.0" prefWidth="119.0" text="&quot;Price&quot;">
+            <Label fx:id="totalPrice" layoutX="75.0" layoutY="448.0" prefHeight="37.0" prefWidth="119.0" text="&quot;Price&quot;">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
