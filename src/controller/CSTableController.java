@@ -156,7 +156,9 @@ public class CSTableController {
 			alert = new Alert(AlertType.ERROR, "Please input table number.", ButtonType.OK);
 			alert.show();
 		}
-		ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new CSMenu(number));
+//		alert = new Alert(AlertType.ERROR, "ต้องทำต่อจ้าา", ButtonType.OK);
+//		alert.show();
+		ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new CSMenu());
 	}
 
 	/**

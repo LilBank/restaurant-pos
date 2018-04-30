@@ -23,8 +23,13 @@
                 <TableColumn minWidth="0.0" prefWidth="80.800048828125" text="Price" />
               </columns>
             </TableView>
-            <ButtonBar layoutX="200.0" layoutY="536.0" prefHeight="90.0" prefWidth="190.0">
+            <ButtonBar layoutX="111.0" layoutY="539.0" prefHeight="101.0" prefWidth="273.0">
               <buttons>
+                  <Button fx:id="back" minWidth="74.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="70.0" prefWidth="107.0" style="-fx-background-radius: 50;" text="Back">
+                     <font>
+                        <Font name="Agency FB" size="24.0" />
+                     </font>
+                  </Button>
                 <Button fx:id="order" mnemonicParsing="false" prefHeight="69.0" style="-fx-background-radius: 100;" text="Order">
                      <font>
                         <Font name="Agency FB" size="24.0" />
@@ -55,6 +60,7 @@
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Label>
+            <Button fx:id="logout" layoutX="874.0" layoutY="12.0" mnemonicParsing="false" onAction="#logoutButtonHandler" style="-fx-background-radius: 50;" text="Logout" />
          </children>
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
