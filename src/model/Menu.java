@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 /**
  * An object that represents a Menu, consist of name and price attribute. Also
  * contain method for accessing private attributes.
@@ -8,7 +10,7 @@ package model;
  *
  */
 
-public class Menu {
+public class Menu implements Comparable<Menu>{
 
 	private String name;
 	private int price;
@@ -36,18 +38,38 @@ public class Menu {
 		return this.price;
 	}
 
-//	/**
-//	 * Equal method for Menu Class.
-//	 * 
-//	 * @return return true if object's name match this.name
-//	 */
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (obj == null)
-//			return false;
-//		if (obj.getClass() != this.getClass())
-//			return false;
-//		return ((Menu) obj).getName().equals(this.getName());
-//	}
+	/**
+	 * Equal method for Menu Class. Override the method for containsKey to work
+	 * with Menu.
+	 *
+	 * @return true if name matches
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		//if both are null return true
+		if (obj == this)
+			return true;
+		//similar to obj.getClass() != this.getClass()
+		if (!(obj instanceof Menu)) {
+			return false;
+		}
+		Menu o = (Menu) obj;
+		// similar to this.name.equals(o.getName())
+		return Objects.equals(this.name, o.getName());
+	}
+
+	/**
+	 * Overridden method for containsKey to work with Menu.
+	 */
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.name, this.price);
+	}
+	
+	//underconstrution
+	@Override
+	public int compareTo(Menu o) {
+		return 0;
+	}
 
 }
