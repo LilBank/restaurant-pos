@@ -1,7 +1,11 @@
 package application;
 
 import javafx.stage.Stage;
+
 /**
+ * CSMenu class that extends AbstractWindow for capable of running the method
+ * switchWindow. This window is for selecting the food, which can be edited, in
+ * the customer mode.
  * 
  * @author Piyawat & Vichaphol
  *

@@ -1,6 +1,7 @@
 package controller;
 
 import application.MGMenu;
+import application.CSMenu;
 import application.CSTable;
 import application.Main;
 import javafx.application.Application;
@@ -157,6 +158,7 @@ public class CSTableController {
 		}
 		alert = new Alert(AlertType.ERROR, "ต้องทำต่อจ้าา", ButtonType.OK);
 		alert.show();
+		ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new CSMenu());
 	}
 
 	/**
