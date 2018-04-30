@@ -11,6 +11,18 @@ import javafx.stage.Stage;
  *
  */
 public class CSMenu extends AbstractWindow {
+
+	private String tablenumber;
+
+	// for getting the table number from CSTable
+	public CSMenu(String input) {
+		this.tablenumber = input;
+	}
+
+	public int getTableNumber() {
+		return Integer.parseInt(this.tablenumber);
+	}
+
 	public void start(Stage stage) {
 		try {
 			super.setFilename("view/customer-menu.fxml");
