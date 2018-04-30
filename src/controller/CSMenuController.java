@@ -1,7 +1,5 @@
 package controller;
 
-import javax.swing.text.TabableView;
-
 import javafx.beans.property.ListProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,7 +22,7 @@ public class CSMenuController {
 	@FXML
 	private Label totalPrice;
 	@FXML
-	private TableView table;
+	private TableView<String> table;
 	@FXML
 	private ListView<Label> foodList;
 	@FXML

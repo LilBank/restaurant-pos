@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
@@ -12,7 +13,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CSMenuController">
    <children>
-      <Pane prefHeight="640.0" prefWidth="940.0">
+      <Pane prefHeight="640.0" prefWidth="940.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
             <TableView prefHeight="440.0" prefWidth="400.0">
               <columns>
@@ -22,9 +23,9 @@
                 <TableColumn minWidth="0.0" prefWidth="80.800048828125" text="Price" />
               </columns>
             </TableView>
-            <ButtonBar layoutX="206.0" layoutY="536.0" prefHeight="90.0" prefWidth="162.0">
+            <ButtonBar layoutX="200.0" layoutY="536.0" prefHeight="90.0" prefWidth="190.0">
               <buttons>
-                <Button mnemonicParsing="false" prefHeight="69.0" style="-fx-background-radius: 100;" text="Send">
+                <Button mnemonicParsing="false" prefHeight="69.0" style="-fx-background-radius: 100;" text="Order">
                      <font>
                         <Font name="Agency FB" size="24.0" />
                      </font>
@@ -54,6 +55,9 @@
                </font>
             </Label>
          </children>
+         <padding>
+            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+         </padding>
       </Pane>
    </children>
 </AnchorPane>
