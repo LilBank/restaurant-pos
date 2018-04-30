@@ -60,7 +60,7 @@
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Label>
-            <Button fx:id="logout" layoutX="874.0" layoutY="12.0" mnemonicParsing="false" onAction="#logoutButtonHandler" style="-fx-background-radius: 50;" text="Logout" />
+            <Button fx:id="logout" layoutX="874.0" layoutY="12.0" mnemonicParsing="false" onAction="#logoutButtonHandler" prefHeight="25.0" prefWidth="45.0" style="-fx-background-radius: 50;" text="Exit" />
          </children>
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
