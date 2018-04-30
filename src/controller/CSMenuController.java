@@ -39,9 +39,8 @@ public class CSMenuController {
 	@FXML
 	private Label totalPrice;
 	@FXML
-	private TableView table;
+	private TableColumn<CSTableController, String> table;
 
-	private SimpleStringProperty id = new SimpleStringProperty("");
 	private SimpleStringProperty name = new SimpleStringProperty("");
 	private SimpleStringProperty quantity = new SimpleStringProperty("");
 	private SimpleStringProperty price = new SimpleStringProperty("");
@@ -51,8 +50,9 @@ public class CSMenuController {
 
 	@FXML
 	public void initialize() {
-		// id.set(FXCollections.observableList(nameCollector);
-		// listItems.itemsProperty().bind(listProperty);
+//			foodliset.set(FXCollections.observableList(nameCollector);
+//		 listItems.itemsProperty().bind(listProperty);
+		
 	}
 
 	public void sendButtonHandler() {

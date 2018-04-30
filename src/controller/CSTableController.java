@@ -158,7 +158,7 @@ public class CSTableController {
 		}
 //		alert = new Alert(AlertType.ERROR, "ต้องทำต่อจ้าา", ButtonType.OK);
 //		alert.show();
-		ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new CSMenu());
+		ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new CSMenu("15"));
 	}
 
 	/**
