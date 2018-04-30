@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="controller.CSMenuController">
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CSMenuController">
    <children>
       <Pane prefHeight="640.0" prefWidth="940.0">
          <children>
@@ -25,12 +24,12 @@
             </TableView>
             <ButtonBar layoutX="206.0" layoutY="536.0" prefHeight="90.0" prefWidth="162.0">
               <buttons>
-                <Button mnemonicParsing="false" prefHeight="69.0" text="Send">
+                <Button mnemonicParsing="false" prefHeight="69.0" style="-fx-background-radius: 100;" text="Send">
                      <font>
                         <Font name="Agency FB" size="24.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="69.0" prefWidth="100.0" text="Pay">
+                  <Button mnemonicParsing="false" prefHeight="69.0" prefWidth="100.0" style="-fx-background-radius: 100;" text="Pay">
                      <font>
                         <Font name="Agency FB" size="24.0" />
                      </font>
@@ -45,8 +44,8 @@
             <ListView layoutX="400.0" layoutY="47.0" prefHeight="593.0" prefWidth="542.0" />
             <ButtonBar layoutX="400.0" prefHeight="49.0" prefWidth="182.0">
               <buttons>
-                <Button minWidth="0.0" mnemonicParsing="false" prefHeight="26.0" text="All" />
-                  <Button mnemonicParsing="false" text="Search " />
+                <Button minWidth="0.0" mnemonicParsing="false" prefHeight="26.0" style="-fx-background-radius: 50;" text="All" />
+                  <Button mnemonicParsing="false" style="-fx-background-radius: 50;" text="Search " />
               </buttons>
             </ButtonBar>
             <Label layoutX="75.0" layoutY="448.0" prefHeight="37.0" prefWidth="119.0" text="&quot;Price&quot;">

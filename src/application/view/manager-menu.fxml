@@ -14,10 +14,10 @@
          </padding>
          <children>
             <Button fx:id="back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="26.0" prefWidth="71.0" style="-fx-background-radius: 100;" text="Back" />
-            <Button fx:id="newImage" layoutX="131.0" layoutY="18.0" mnemonicParsing="false" onAction="#insertImageHandler" prefHeight="52.0" prefWidth="109.0" text="New Image" />
+            <Button fx:id="newImage" layoutX="131.0" layoutY="18.0" mnemonicParsing="false" onAction="#insertImageHandler" prefHeight="52.0" prefWidth="109.0" style="-fx-background-radius: 50;" text="New Image" />
             <ListView fx:id="listItems" layoutX="21.0" layoutY="85.0" prefHeight="523.0" prefWidth="888.0" />
-            <Button fx:id="deleteImage" layoutX="268.0" layoutY="18.0" mnemonicParsing="false" onAction="#deleteImageHandler" prefHeight="52.0" prefWidth="107.0" text="Delete" />
-            <Button fx:id="logout" layoutX="403.0" layoutY="18.0" mnemonicParsing="false" onAction="#logoutHandler" prefHeight="52.0" prefWidth="107.0" text="Logout" />
+            <Button fx:id="deleteImage" layoutX="268.0" layoutY="18.0" mnemonicParsing="false" onAction="#deleteImageHandler" prefHeight="52.0" prefWidth="107.0" style="-fx-background-radius: 50;" text="Delete" />
+            <Button fx:id="logout" layoutX="403.0" layoutY="18.0" mnemonicParsing="false" onAction="#logoutHandler" prefHeight="52.0" prefWidth="107.0" style="-fx-background-radius: 50;" text="Logout" />
          </children>
       </Pane>
    </children>

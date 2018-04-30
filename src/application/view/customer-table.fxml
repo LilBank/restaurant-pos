@@ -105,7 +105,7 @@
                   <Font name="MS Gothic" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="back" layoutX="14.0" layoutY="456.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="26.0" prefWidth="36.0" text="&lt;-">
+            <Button fx:id="back" layoutX="14.0" layoutY="456.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="26.0" prefWidth="36.0" style="-fx-background-radius: 10;" text="&lt;-">
                <font>
                   <Font name="Agency FB" size="18.0" />
                </font>
