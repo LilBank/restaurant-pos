@@ -20,7 +20,7 @@ import javafx.stage.Stage;
  * CustomerTableController contains method for handling all event receive from
  * the UserInterface.
  * 
- * @author Piyawat & Vichapol
+ * @author Piyawat & Vichaphol
  *
  */
 public class CSTableController {

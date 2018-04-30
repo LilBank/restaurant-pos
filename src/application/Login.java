@@ -7,7 +7,7 @@ import javafx.stage.Stage;
  * switchWindow. This window is for user to login in to their account for
  * further use.
  * 
- * @author Piyawat & Vichapol
+ * @author Piyawat & Vichaphol
  *
  */
 public class Login extends AbstractWindow {

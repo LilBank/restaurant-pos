@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  * SignUpController contains method for handling all event receive from the
  * UserInterface.
  * 
- * @author Piyawat & Vichapol
+ * @author Piyawat & Vichaphol
  *
  */
 public class SignUpController {

@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 /**
  * An Interface class containing method for controlling windows.
  * 
- * @author Piyawat & Vichapol
+ * @author Piyawat & Vichaphol
  *
  */
 public interface ScreenController {

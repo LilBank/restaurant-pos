@@ -7,7 +7,7 @@ import javafx.stage.Stage;
  * switchWindow. This window is for entering the customers table number for food
  * ordering.
  * 
- * @author Piyawat & Vichapol
+ * @author Piyawat & Vichaphol
  *
  */
 public class CSTable extends AbstractWindow {

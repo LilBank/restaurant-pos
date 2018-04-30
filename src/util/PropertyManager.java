@@ -7,7 +7,7 @@ import java.util.Properties;
 /**
  * Provide access to application configuration data.
  * 
- * @author Piyawat & Vichapol & Teacher James
+ * @author Piyawat & Vichaphol & Teacher James
  *
  */
 public class PropertyManager {

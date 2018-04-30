@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  * LoginController contains method for handling all event receive from the
  * UserInterface.
  * 
- * @author Piyawat & Vichapol
+ * @author Piyawat & Vichaphol
  *
  */
 public class LoginController {
@@ -44,7 +44,7 @@ public class LoginController {
 
 	/**
 	 * Method for handling login button. When event receive the implementation
-	 * below is done.
+	 * below is done. Login when the username and password match .
 	 * 
 	 * @param event
 	 */

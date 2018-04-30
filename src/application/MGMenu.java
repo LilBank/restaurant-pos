@@ -6,7 +6,7 @@ import javafx.stage.Stage;
  * MGMenu class that extends AbstractWindow for capable of running the method
  * switchWindow. Mainly this window is for manager who could edit the menu.
  * 
- * @author Piyawat & Vichapol
+ * @author Piyawat & Vichaphol
  *
  */
 public class MGMenu extends AbstractWindow {
@@ -16,7 +16,7 @@ public class MGMenu extends AbstractWindow {
 		try {
 			super.setFilename("view/manager-menu.fxml");
 			super.start(stage);
-			stage.setTitle("Menu");
+			stage.setTitle("Manager Menu");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

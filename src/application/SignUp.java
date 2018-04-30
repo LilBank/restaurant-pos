@@ -7,7 +7,7 @@ import javafx.stage.Stage;
  * switchWindow. This window is for new user to register his/her account to the
  * database.
  * 
- * @author Piyawat & Vichapol
+ * @author Piyawat & Vichaphol
  *
  */
 public class SignUp extends AbstractWindow {

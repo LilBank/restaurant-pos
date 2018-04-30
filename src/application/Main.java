@@ -6,7 +6,7 @@ import javafx.stage.Stage;
  * Main class that runs StartUp of the program with three options. Login,
  * SignUP, CustomerMode.
  * 
- * @author Piyawat & Vichapol
+ * @author Piyawat & Vichaphol
  *
  */
 public class Main extends AbstractWindow {

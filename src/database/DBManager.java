@@ -12,7 +12,7 @@ import util.PropertyManager;
  * DBManager contains method for managing data on database. Also associate with
  * classes that use the database.
  * 
- * @author Piyawat & Vichapol
+ * @author Piyawat & Vichaphol
  *
  */
 public class DBManager {
