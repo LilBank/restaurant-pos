@@ -115,7 +115,7 @@ public class Order {
 		om.addOrder(new Menu("cocoa", 20));
 		om.addOrder(new Menu("Steak", 100));
 		// test removing
-		om.removeOrder(new Menu("cocoa", 20));
+//		om.removeOrder(new Menu("cocoa", 20));
 		om.removeOrder(new Menu("Steak", 100));
 		om.removeOrder(new Menu("water", 10));
 		om.printOrders();
