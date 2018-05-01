@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -36,7 +37,7 @@ public class CSMenuController {
 	@FXML
 	private Button logout;
 	@FXML
-	private Label totalPrice;
+	private TextField totalPrice;
 	@FXML
 	private TableColumn<CSTableController, String> table;
 
