@@ -49,16 +49,22 @@ public class CSMenuController {
 	private ListView<Label> foodList;
 	@FXML
 	private ListView<Label> drinkList;
-	private ListProperty<Label> listProperty;
+	@FXML
+	ListProperty<Label> listProperty = new SimpleListProperty<>();
+	List<Label> folderImage = new ArrayList<>();
 
 	final ObservableList<Food> data = FXCollections.observableArrayList(new Food("Pizza", 1, 50),
 			new Food("Ham", 1, 20));
 
 	@FXML
 	public void initialize() {
+		listProperty.set(FXCollections.observableArrayList(folderImage));
+		foodList.itemsProperty().bind(listProperty);
 		createTableColumn();
 	}
+
 	/**
+	 * Add column to the table with the set data.
 	 * 
 	 */
 	public void createTableColumn() {
@@ -72,9 +78,24 @@ public class CSMenuController {
 		priceC.setMinWidth(100);
 		priceC.setCellValueFactory(new PropertyValueFactory<Food, Integer>("price"));
 		table.setItems(data);
-		table.getColumns().addAll(nameC,quantityC,priceC);
+		table.getColumns().addAll(nameC, quantityC, priceC);
 	}
-	
+
+	/**
+	 * Handler for food button.
+	 * 
+	 */
+	public void foodButtonHandler(ActionEvent event) {
+
+	}
+
+	/**
+	 * Handler for drink button.
+	 * 
+	 */
+	public void drinkButtonHandler(ActionEvent event) {
+	}
+
 	/**
 	 * Handler for order button. When event receive the CS checkbill scene is shown.
 	 * 

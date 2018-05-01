@@ -7,6 +7,7 @@ import java.util.List;
 
 import application.CSTable;
 import application.Main;
+import application.ManagerSelection;
 import application.SignUp;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -44,7 +45,7 @@ public class MGMenuController {
 	@FXML
 	ListProperty<Label> listProperty = new SimpleListProperty<>();
 	/** List of all images */
-	List<Label> folderImage = new ArrayList<>();
+	public List<Label> folderImage = new ArrayList<>();
 
 	/**
 	 * Bind listView with ListProperty at the beginning.
@@ -89,7 +90,7 @@ public class MGMenuController {
 	 * 
 	 */
 	public void backButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new CSTable());
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new ManagerSelection());
 	}
 
 	/**
