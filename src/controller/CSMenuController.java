@@ -38,17 +38,18 @@ public class CSMenuController {
 	@FXML
 	private Button back;
 	@FXML
-	private Button logout;
+	private Button exit;
 	@FXML
 	private TextField totalPrice;
 	@FXML
 	private TableView<Food> table;
 	@FXML
 	private TableColumn<Food, ?> tableColumn;
-
+	@FXML
 	private ListView<Label> foodList;
+	@FXML
+	private ListView<Label> drinkList;
 	private ListProperty<Label> listProperty;
-	List<String> nameCollector = new ArrayList<>();
 
 	final ObservableList<Food> data = FXCollections.observableArrayList(new Food("Pizza", 1, 50),
 			new Food("Ham", 1, 20));
@@ -57,7 +58,9 @@ public class CSMenuController {
 	public void initialize() {
 		createTableColumn();
 	}
-
+	/**
+	 * 
+	 */
 	public void createTableColumn() {
 		TableColumn nameC = new TableColumn("Name");
 		nameC.setMinWidth(200);
@@ -71,10 +74,7 @@ public class CSMenuController {
 		table.setItems(data);
 		table.getColumns().addAll(nameC,quantityC,priceC);
 	}
-	public void sendButtonHandler() {
-		int total = Integer.parseInt(totalPrice.getText());
-	}
-
+	
 	/**
 	 * Handler for order button. When event receive the CS checkbill scene is shown.
 	 * 
@@ -95,7 +95,7 @@ public class CSMenuController {
 	 * Handler for logout button. When event recieve the Start up scene is shown.
 	 * 
 	 */
-	public void logoutButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) logout.getScene().getWindow(), new Main());
+	public void exitButtonHandler(ActionEvent event) {
+		ScreenController.switchWindow((Stage) exit.getScene().getWindow(), new Main());
 	}
 }

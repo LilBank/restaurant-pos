@@ -16,6 +16,13 @@
       <Pane layoutX="5.0" layoutY="5.0" prefHeight="640.0" prefWidth="940.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
             <TableView fx:id="table" prefHeight="440.0" prefWidth="400.0" />
+            <Label layoutX="99.0" layoutY="457.0" prefHeight="49.0" prefWidth="58.0" text="Total: ">
+               <font>
+                  <Font name="Agency FB" size="29.0" />
+               </font>
+            </Label>
+            <ListView fx:id="drinkList" layoutX="400.0" layoutY="47.0" prefHeight="593.0" prefWidth="542.0" />
+            <ListView fx:id="foodList" layoutX="400.0" layoutY="47.0" prefHeight="593.0" prefWidth="542.0" />
             <ButtonBar layoutX="111.0" layoutY="539.0" prefHeight="101.0" prefWidth="273.0">
               <buttons>
                   <Button fx:id="back" minWidth="74.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="70.0" prefWidth="107.0" style="-fx-background-radius: 50;" text="Back">
@@ -30,20 +37,13 @@
                   </Button>
               </buttons>
             </ButtonBar>
-            <Label layoutX="99.0" layoutY="457.0" prefHeight="49.0" prefWidth="58.0" text="Total: ">
-               <font>
-                  <Font name="Agency FB" size="29.0" />
-               </font>
-            </Label>
-            <ListView layoutX="400.0" layoutY="47.0" prefHeight="593.0" prefWidth="542.0" />
-            <ListView layoutX="400.0" layoutY="47.0" prefHeight="593.0" prefWidth="542.0" />
             <ButtonBar layoutX="400.0" prefHeight="49.0" prefWidth="182.0">
               <buttons>
                 <Button fx:id="foodView" minWidth="0.0" mnemonicParsing="false" prefHeight="26.0" style="-fx-background-radius: 50;" text="Food" />
                   <Button fx:id="drinkView" mnemonicParsing="false" style="-fx-background-radius: 50;" text="Drink" />
               </buttons>
             </ButtonBar>
-            <Button fx:id="logout" layoutX="874.0" layoutY="12.0" mnemonicParsing="false" onAction="#logoutButtonHandler" prefHeight="25.0" prefWidth="45.0" style="-fx-background-radius: 50;" text="Exit" />
+            <Button fx:id="exit" layoutX="874.0" layoutY="12.0" mnemonicParsing="false" onAction="#exitButtonHandler" prefHeight="25.0" prefWidth="45.0" style="-fx-background-radius: 50;" text="Exit" />
             <TextField fx:id="totalPrice" disable="true" layoutX="186.0" layoutY="457.0" prefHeight="49.0" prefWidth="182.0" />
          </children>
          <padding>
