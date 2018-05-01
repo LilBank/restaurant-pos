@@ -9,7 +9,7 @@ import jdk.management.resource.internal.TotalResourceContext;
 
 /**
  * CustomerCheckBillController contains method for handling all event receive
- * from the UserInterface.
+ * from the UserInterface. **more specific**
  * 
  * @author Piyawat & Vichaphol
  *
@@ -89,12 +89,14 @@ public class CSCheckBillController {
 		this.CSmoney += number;
 		customerPay.setText(CSmoney + "");
 	}
+
 	/**
 	 * 
 	 */
 	public void calculateChange() {
-		
+
 	}
+
 	/**
 	 * Set the customer paid money to 0 and clear the textfield.
 	 * 

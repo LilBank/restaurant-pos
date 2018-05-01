@@ -87,7 +87,7 @@ public class DBManager {
 	 */
 	public static boolean checkUser(String user) {
 		try {
-			// check if username does exists
+			// check if username does exist
 			sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
 			ResultSet rs = retrieveData(sqlCommand);
 			int dbInt = 0;
@@ -96,7 +96,7 @@ public class DBManager {
 				dbInt = rs.getInt("access type");
 			}
 			if (dbInt == 1 || dbInt == 2) {
-				// username exists
+				// username exist
 				return false;
 			}
 		} catch (SQLException e) {

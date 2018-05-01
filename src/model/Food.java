@@ -3,6 +3,12 @@ package model;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+/**
+ * during in test for the table
+ * 
+ * @author testing
+ *
+ */
 public class Food {
 	private final SimpleStringProperty name;
 	private final SimpleIntegerProperty quantity;

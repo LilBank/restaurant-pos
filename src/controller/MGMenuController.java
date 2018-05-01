@@ -5,10 +5,8 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.CSTable;
 import application.Main;
-import application.ManagerSelection;
-import application.SignUp;
+import application.ManagerTableView;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
@@ -23,8 +21,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
- * A class of manager mode in the application. Containing functions to add and
- * delete image in the customer view.
+ * A controller class for manager mode in the application. Containing functions
+ * to add and delete image in the customer view.
  * 
  * @author Piyawat & Vichaphol
  *
@@ -55,10 +53,11 @@ public class MGMenuController {
 		listProperty.set(FXCollections.observableArrayList(folderImage));
 		listItems.itemsProperty().bind(listProperty);
 	}
-	
-	public List<Label> getImage(){
+
+	public List<Label> getImage() {
 		return folderImage;
 	}
+
 	/**
 	 * Method for handling newImage button. Insert image to the list view.
 	 * 
@@ -93,11 +92,12 @@ public class MGMenuController {
 	 * 
 	 */
 	public void backButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new ManagerSelection());
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new ManagerTableView());
 	}
 
 	/**
-	 * Handler for logout button. When event recieve the Start up scene is shown.
+	 * Handler for logout button. When event recieve the Start up scene is
+	 * shown.
 	 * 
 	 */
 	public void logoutHandler(ActionEvent event) {

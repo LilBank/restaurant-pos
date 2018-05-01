@@ -1,14 +1,9 @@
 package controller;
 
-import application.MGMenu;
 import application.CSMenu;
-import application.CSTable;
 import application.Main;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;

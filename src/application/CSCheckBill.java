@@ -4,13 +4,25 @@ import javafx.stage.Stage;
 
 /**
  * CheckBill class that extends AbstractWindow for capable of running the method
- * switchWindow. This is the last process of the application which can
- * calculates the money paid by customer and also print the receipt.
+ * switchWindow. This is the last process of the application which can calculate
+ * the money paid by the customer and also print the receipt.
  * 
  * @author Piyawat & Vichaphol
  *
  */
 public class CSCheckBill extends AbstractWindow {
+
+	private String total;
+
+	// for getting the total from CSMenu
+	public CSCheckBill(String total) {
+		this.total = total;
+	}
+
+	public int getTotal() {
+		return Integer.parseInt(this.total);
+	}
+
 	@Override
 	public void start(Stage stage) {
 		try {

@@ -1,16 +1,10 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.text.TabableView;
-
 import application.CSCheckBill;
 import application.CSTable;
 import application.Main;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -32,7 +26,7 @@ import model.Food;
  * @author Piyawat & Vichaphol
  *
  */
-public class CSMenuController extends MGMenuController{
+public class CSMenuController extends MGMenuController {
 	@FXML
 	private Button order;
 	@FXML
@@ -101,11 +95,12 @@ public class CSMenuController extends MGMenuController{
 	}
 
 	/**
-	 * Handler for order button. When event receive the CS checkbill scene is shown.
+	 * Handler for order button. When event receive the CS checkbill scene is
+	 * shown.
 	 * 
 	 */
 	public void orderButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) order.getScene().getWindow(), new CSCheckBill());
+		ScreenController.switchWindow((Stage) order.getScene().getWindow(), new CSCheckBill(totalPrice.getText()));
 	}
 
 	/**
@@ -117,7 +112,8 @@ public class CSMenuController extends MGMenuController{
 	}
 
 	/**
-	 * Handler for logout button. When event recieve the Start up scene is shown.
+	 * Handler for logout button. When event recieve the Start up scene is
+	 * shown.
 	 * 
 	 */
 	public void exitButtonHandler(ActionEvent event) {

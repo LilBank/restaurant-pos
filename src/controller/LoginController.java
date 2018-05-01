@@ -1,9 +1,7 @@
 package controller;
 
-import application.CSTable;
-import application.MGMenu;
 import application.Main;
-import application.ManagerSelection;
+import application.ManagerTableView;
 import database.DBManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -67,7 +65,7 @@ public class LoginController {
 			if (accessLevel == 2) {
 				alert = new Alert(AlertType.NONE, "Welcome to Manager Mode", ButtonType.OK);
 				alert.show();
-				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new ManagerSelection());
+				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new ManagerTableView());
 			}
 			// int = 1 for normal mode
 			if (accessLevel == 1) {
