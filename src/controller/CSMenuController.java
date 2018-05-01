@@ -32,7 +32,7 @@ import model.Food;
  * @author Piyawat & Vichaphol
  *
  */
-public class CSMenuController {
+public class CSMenuController extends MGMenuController{
 	@FXML
 	private Button order;
 	@FXML
@@ -49,17 +49,19 @@ public class CSMenuController {
 	private ListView<Label> foodList;
 	@FXML
 	private ListView<Label> drinkList;
+	/** Combined with food list view */
 	@FXML
-	ListProperty<Label> listProperty = new SimpleListProperty<>();
-	List<Label> folderImage = new ArrayList<>();
+	ListProperty<Label> foodListProperty = new SimpleListProperty<>();
 
 	final ObservableList<Food> data = FXCollections.observableArrayList(new Food("Pizza", 1, 50),
 			new Food("Ham", 1, 20));
 
 	@FXML
 	public void initialize() {
-		listProperty.set(FXCollections.observableArrayList(folderImage));
-		foodList.itemsProperty().bind(listProperty);
+		foodList.setVisible(false);
+		drinkList.setVisible(false);
+		foodListProperty.set(FXCollections.observableArrayList(getImage()));
+		foodList.itemsProperty().bind(foodListProperty);
 		createTableColumn();
 	}
 
@@ -82,18 +84,20 @@ public class CSMenuController {
 	}
 
 	/**
-	 * Handler for food button.
+	 * Handler for food button. When pressed, the food view will be shown.
 	 * 
 	 */
 	public void foodButtonHandler(ActionEvent event) {
-
+		foodList.setVisible(true);
+		foodListProperty.set(FXCollections.observableArrayList(getImage()));
 	}
 
 	/**
-	 * Handler for drink button.
+	 * Handler for drink button. When pressed, the drink view will be shown.
 	 * 
 	 */
 	public void drinkButtonHandler(ActionEvent event) {
+		drinkList.setVisible(true);
 	}
 
 	/**

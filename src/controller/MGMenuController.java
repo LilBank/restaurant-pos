@@ -45,7 +45,7 @@ public class MGMenuController {
 	@FXML
 	ListProperty<Label> listProperty = new SimpleListProperty<>();
 	/** List of all images */
-	public List<Label> folderImage = new ArrayList<>();
+	public static List<Label> folderImage = new ArrayList<>();
 
 	/**
 	 * Bind listView with ListProperty at the beginning.
@@ -55,7 +55,10 @@ public class MGMenuController {
 		listProperty.set(FXCollections.observableArrayList(folderImage));
 		listItems.itemsProperty().bind(listProperty);
 	}
-
+	
+	public List<Label> getImage(){
+		return folderImage;
+	}
 	/**
 	 * Method for handling newImage button. Insert image to the list view.
 	 * 

@@ -89,7 +89,17 @@ public class CSCheckBillController {
 		this.CSmoney += number;
 		customerPay.setText(CSmoney + "");
 	}
-
+	/**
+	 * 
+	 */
+	public void calculateChange() {
+		
+	}
+	/**
+	 * Set the customer paid money to 0 and clear the textfield.
+	 * 
+	 * @param event
+	 */
 	public void clearButtonHandler(ActionEvent event) {
 		this.CSmoney = 0;
 		customerPay.clear();
