@@ -50,6 +50,8 @@ public class CSMenuController extends MGMenuController {
 	final ObservableList<Food> data = FXCollections.observableArrayList(new Food("Pizza", 1, 50),
 			new Food("Ham", 1, 20));
 
+	private static String tablenumber;
+
 	@FXML
 	public void initialize() {
 		foodList.setVisible(false);
@@ -118,5 +120,15 @@ public class CSMenuController extends MGMenuController {
 	 */
 	public void exitButtonHandler(ActionEvent event) {
 		ScreenController.switchWindow((Stage) exit.getScene().getWindow(), new Main());
+	}
+
+	// during in test
+	public static void setTable(String arg) {
+		tablenumber = arg;
+	}
+
+	// during in test
+	public int getTable() {
+		return Integer.parseInt(tablenumber);
 	}
 }

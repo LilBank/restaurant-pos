@@ -1,5 +1,6 @@
 package application;
 
+import controller.CSMenuController;
 import javafx.stage.Stage;
 
 /**
@@ -12,15 +13,9 @@ import javafx.stage.Stage;
  */
 public class CSMenu extends AbstractWindow {
 
-	private String tablenumber;
-
-	// for getting the table number from CSTable
+	// for setting the tablenumber to CSMenuController
 	public CSMenu(String input) {
-		this.tablenumber = input;
-	}
-
-	public int getTableNumber() {
-		return Integer.parseInt(this.tablenumber);
+		CSMenuController.setTable(input);
 	}
 
 	public void start(Stage stage) {
