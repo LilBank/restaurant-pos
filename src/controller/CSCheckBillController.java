@@ -2,7 +2,15 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+/**
+ * CustomerCheckBillController contains method for handling all event receive from
+ * the UserInterface.
+ * 
+ * @author Piyawat & Vichaphol 
+ *
+ */
 public class CSCheckBillController {
 	@FXML
 	private Button thousand;
@@ -22,4 +30,10 @@ public class CSCheckBillController {
 	private Button two;
 	@FXML
 	private Button one;
+	@FXML
+	private TextField total;
+	@FXML
+	private TextField customerPay;
+	@FXML
+	private TextField change;
 }

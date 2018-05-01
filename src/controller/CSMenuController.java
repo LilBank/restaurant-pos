@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.text.TabableView;
 
+import application.CSCheckBill;
 import application.CSTable;
 import application.Main;
 import javafx.beans.property.ListProperty;
@@ -31,8 +32,6 @@ public class CSMenuController {
 	@FXML
 	private Button order;
 	@FXML
-	private Button pay;
-	@FXML
 	private Button back;
 	@FXML
 	private Button logout;
@@ -50,13 +49,21 @@ public class CSMenuController {
 
 	@FXML
 	public void initialize() {
-//			foodliset.set(FXCollections.observableList(nameCollector);
-//		 listItems.itemsProperty().bind(listProperty);
-		
+		// foodliset.set(FXCollections.observableList(nameCollector);
+		// listItems.itemsProperty().bind(listProperty);
+
 	}
 
 	public void sendButtonHandler() {
 		int total = Integer.parseInt(totalPrice.getText());
+	}
+
+	/**
+	 * Handler for order button. When event receive the CS checkbill scene is shown.
+	 * 
+	 */
+	public void orderButtonHandler(ActionEvent event) {
+		ScreenController.switchWindow((Stage) order.getScene().getWindow(), new CSCheckBill());
 	}
 
 	/**

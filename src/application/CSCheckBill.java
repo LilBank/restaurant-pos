@@ -10,13 +10,13 @@ import javafx.stage.Stage;
  * @author Piyawat & Vichaphol
  *
  */
-public class CheckBill extends AbstractWindow {
+public class CSCheckBill extends AbstractWindow {
 	@Override
 	public void start(Stage stage) {
 		try {
-			super.setFilename("view/customer-checkbill");
+			super.setFilename("view/customer-checkbill.fxml");
+			super.start(stage);
 			stage.setTitle("Check Bill");
-			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -30,12 +30,7 @@
                         <Font name="Agency FB" size="24.0" />
                      </font>
                   </Button>
-                <Button fx:id="order" mnemonicParsing="false" prefHeight="69.0" style="-fx-background-radius: 100;" text="Order">
-                     <font>
-                        <Font name="Agency FB" size="24.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="pay" mnemonicParsing="false" prefHeight="69.0" prefWidth="100.0" style="-fx-background-radius: 100;" text="Pay">
+                <Button fx:id="order" mnemonicParsing="false" onAction="#orderButtonHandler" prefHeight="69.0" style="-fx-background-radius: 100;" text="Order">
                      <font>
                         <Font name="Agency FB" size="24.0" />
                      </font>
