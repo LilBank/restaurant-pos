@@ -5,7 +5,6 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,14 +15,7 @@
    <children>
       <Pane layoutX="5.0" layoutY="5.0" prefHeight="640.0" prefWidth="940.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
-            <TableView prefHeight="440.0" prefWidth="400.0">
-              <columns>
-                  <TableColumn prefWidth="75.0" text="ID" />
-                <TableColumn prefWidth="171.19998168945312" text="Name" />
-                  <TableColumn prefWidth="69.59999084472656" text="Quantity" />
-                <TableColumn minWidth="0.0" prefWidth="80.800048828125" text="Price" />
-              </columns>
-            </TableView>
+            <TableView fx:id="table" prefHeight="440.0" prefWidth="400.0" />
             <ButtonBar layoutX="111.0" layoutY="539.0" prefHeight="101.0" prefWidth="273.0">
               <buttons>
                   <Button fx:id="back" minWidth="74.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="70.0" prefWidth="107.0" style="-fx-background-radius: 50;" text="Back">
