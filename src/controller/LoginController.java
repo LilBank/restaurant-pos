@@ -2,6 +2,7 @@ package controller;
 
 import application.Main;
 import application.ManagerTableView;
+import application.TableView;
 import database.DBManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,7 +34,8 @@ public class LoginController {
 	private Alert alert;
 
 	/**
-	 * Method for handling cancel button. When event receive Main scene is shown.
+	 * Method for handling cancel button. When event receive Main scene is
+	 * shown.
 	 * 
 	 * @param event
 	 */
@@ -42,8 +44,8 @@ public class LoginController {
 	}
 
 	/**
-	 * Method for handling login button. When event receive the implementation below
-	 * is done. Login when the username and password match .
+	 * Method for handling login button. When event receive the implementation
+	 * below is done. Login when the username and password match .
 	 * 
 	 * @param event
 	 */
@@ -63,14 +65,15 @@ public class LoginController {
 			int accessLevel = DBManager.login(username.getText(), password.getText());
 			// int = 2 for manager mode
 			if (accessLevel == 2) {
-				alert = new Alert(AlertType.NONE, "Welcome to Manager Mode", ButtonType.OK);
+				alert = new Alert(AlertType.NONE, "Welcome to Manager " + username.getText(), ButtonType.OK);
 				alert.show();
 				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new ManagerTableView());
 			}
 			// int = 1 for normal mode
 			if (accessLevel == 1) {
-				alert = new Alert(AlertType.NONE, "ºË“π√–¥—∫ 1 ®È““““", ButtonType.OK);
+				alert = new Alert(AlertType.NONE, "Welcome " + username.getText(), ButtonType.OK);
 				alert.show();
+				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new TableView());
 			}
 			// wrong password
 			if (accessLevel == 0) {
@@ -79,7 +82,7 @@ public class LoginController {
 			}
 			// User does not exists
 			if (accessLevel == -1) {
-				alert = new Alert(AlertType.ERROR, "User does not exists!", ButtonType.OK);
+				alert = new Alert(AlertType.ERROR, "User does not exist!", ButtonType.OK);
 				alert.show();
 			}
 		}
