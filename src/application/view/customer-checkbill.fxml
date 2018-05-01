@@ -9,81 +9,86 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CSCheckBillController">
    <children>
-      <Pane prefHeight="318.0" prefWidth="588.0">
+      <Pane prefHeight="370.0" prefWidth="588.0">
          <children>
-            <Button layoutX="14.0" layoutY="36.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="89.0" text="1000">
+            <Button fx:id="thousand" layoutX="14.0" layoutY="36.0" mnemonicParsing="false" onAction="#thousandButtonHandler" prefHeight="82.0" prefWidth="89.0" text="1000">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="192.0" layoutY="36.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="89.0" text="100">
+            <Button fx:id="oneHundred" layoutX="192.0" layoutY="36.0" mnemonicParsing="false" onAction="#oneHundredButtonHandler" prefHeight="82.0" prefWidth="89.0" text="100">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="103.0" layoutY="36.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="89.0" text="500">
+            <Button fx:id="fiveHundred" layoutX="103.0" layoutY="36.0" mnemonicParsing="false" onAction="#fiveHundredButtonHandler" prefHeight="82.0" prefWidth="89.0" text="500">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="118.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="89.0" text="50">
+            <Button fx:id="fifty" layoutX="14.0" layoutY="118.0" mnemonicParsing="false" onAction="#fiftyButtonHandler" prefHeight="82.0" prefWidth="89.0" text="50">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="192.0" layoutY="118.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="89.0" text="10">
+            <Button fx:id="ten" layoutX="192.0" layoutY="118.0" mnemonicParsing="false" onAction="#tenButtonHandler" prefHeight="82.0" prefWidth="89.0" text="10">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="103.0" layoutY="118.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="89.0" text="20">
+            <Button fx:id="twenty" layoutX="103.0" layoutY="119.0" mnemonicParsing="false" onAction="#twentyButtonHandler" prefHeight="82.0" prefWidth="89.0" text="20">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="200.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="89.0" text="5">
+            <Button fx:id="five" layoutX="14.0" layoutY="200.0" mnemonicParsing="false" onAction="#fiveButtonHandler" prefHeight="82.0" prefWidth="89.0" text="5">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="192.0" layoutY="200.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="89.0" text="1">
+            <Button fx:id="one" layoutX="192.0" layoutY="200.0" mnemonicParsing="false" onAction="#oneButtonHandler" prefHeight="82.0" prefWidth="89.0" text="1">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="103.0" layoutY="200.0" mnemonicParsing="false" prefHeight="82.0" prefWidth="89.0" text="2">
+            <Button fx:id="two" layoutX="103.0" layoutY="200.0" mnemonicParsing="false" onAction="#twoButtonHandler" prefHeight="82.0" prefWidth="89.0" text="2">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Label layoutX="381.0" layoutY="36.0" prefHeight="29.0" prefWidth="47.0" text="Total: ">
+            <Label layoutX="368.0" layoutY="47.0" prefHeight="29.0" prefWidth="47.0" text="Total: ">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="478.0" layoutY="241.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="89.0" style="-fx-background-radius: 50;" text="Pay">
+            <Button layoutX="462.0" layoutY="272.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="104.0" style="-fx-background-radius: 50;" text="Pay">
                <font>
-                  <Font name="Agency FB" size="24.0" />
+                  <Font name="Agency FB" size="36.0" />
                </font>
             </Button>
-            <Button layoutX="373.0" layoutY="241.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="89.0" style="-fx-background-radius: 50;" text="Print">
+            <Button layoutX="346.0" layoutY="272.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="104.0" style="-fx-background-radius: 50;" text="Print">
                <font>
-                  <Font name="Agency FB" size="24.0" />
+                  <Font name="Agency FB" size="36.0" />
                </font>
             </Button>
-            <Label layoutX="381.0" layoutY="84.0" prefHeight="39.0" prefWidth="47.0" text="Cash:">
+            <Label layoutX="368.0" layoutY="97.0" prefHeight="39.0" prefWidth="47.0" text="Cash:">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="368.0" layoutY="140.0" prefHeight="39.0" prefWidth="60.0" text="Change:">
+            <Label layoutX="355.0" layoutY="153.0" prefHeight="39.0" prefWidth="60.0" text="Change:">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Label>
-            <TextField disable="true" layoutX="443.0" layoutY="36.0" prefHeight="25.0" prefWidth="123.0" />
-            <TextField disable="true" layoutX="443.0" layoutY="91.0" prefHeight="25.0" prefWidth="123.0" />
-            <TextField disable="true" layoutX="443.0" layoutY="147.0" prefHeight="25.0" prefWidth="123.0" />
+            <TextField fx:id="total" alignment="CENTER_RIGHT" disable="true" layoutX="443.0" layoutY="49.0" prefHeight="25.0" prefWidth="123.0" />
+            <TextField fx:id="customerPay" alignment="CENTER_RIGHT" disable="true" layoutX="443.0" layoutY="104.0" prefHeight="25.0" prefWidth="123.0" />
+            <TextField fx:id="change" alignment="CENTER_RIGHT" disable="true" layoutX="443.0" layoutY="160.0" prefHeight="25.0" prefWidth="123.0" />
+            <Button layoutX="192.0" layoutY="301.0" mnemonicParsing="false" onAction="#clearButtonHandler" prefHeight="39.0" prefWidth="89.0" style="-fx-background-radius: 50;" text="Clear">
+               <font>
+                  <Font name="Agency FB" size="24.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>
