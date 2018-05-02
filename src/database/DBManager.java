@@ -5,7 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
+import javafx.scene.control.Button;
 import util.PropertyManager;
 
 /**
@@ -33,9 +35,9 @@ public class DBManager {
 	 *         user doesn't exists
 	 */
 	public static int login(String user, String pass) {
+		sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
 		try {
-			sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
-			ResultSet rs = retrieveData(sqlCommand);
+			ResultSet rs = getData(sqlCommand);
 			String dbPass = "";
 			if (rs.next()) {
 				dbPass = rs.getString("password");
@@ -66,11 +68,11 @@ public class DBManager {
 	 *            from SignUp window
 	 */
 	public static void signUp(String user, String pass) {
+		sqlCommand = "INSERT INTO `User` (`name`, `password`, `access type`)" + "VALUES" + "(" + "'" + user + "'"
+				+ ", '" + pass + "', '1')";
 		try {
 			Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
 			Statement statement = connection.createStatement();
-			sqlCommand = "INSERT INTO `User` (`name`, `password`, `access type`)" + "VALUES" + "(" + "'" + user + "'"
-					+ ", '" + pass + "', '1')";
 			statement.executeUpdate(sqlCommand);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -86,10 +88,10 @@ public class DBManager {
 	 * @return false if username match, true if no match
 	 */
 	public static boolean checkUser(String user) {
+		// check if username does exist
+		sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
 		try {
-			// check if username does exist
-			sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
-			ResultSet rs = retrieveData(sqlCommand);
+			ResultSet rs = getData(sqlCommand);
 			int dbInt = 0;
 			// if username found in database then changed the value of dbInt
 			if (rs.next()) {
@@ -105,9 +107,25 @@ public class DBManager {
 		// username does not exist
 		return true;
 	}
+	
+	//during in test
+	public static List<Button> getButtons(String arg) {
+		List<Button> temp = null;
+		sqlCommand = "SELECT * FROM Menu";
+		try {
+			ResultSet rs = getData(sqlCommand);
+			while (rs.next()) {
+				String text = rs.getString("name");
+				temp.add(new Button(text));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return temp;
+	}
 
 	// during in test for shortening codes
-	public static ResultSet retrieveData(String sqlCommand) {
+	public static ResultSet getData(String sqlCommand) {
 		try {
 			Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
 			Statement statement = connection.createStatement();

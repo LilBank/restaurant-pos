@@ -2,17 +2,12 @@ package controller;
 
 import application.CSTable;
 import application.Main;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import model.Food;
+//import model.Food;
 
 /**
  * CSMenuController(customer) contains method for handling all event receive from the
@@ -31,33 +26,12 @@ public class CSOrderController {
 	private Button exit;
 	@FXML
 	private TextField totalPrice;
-	@FXML
-	private TableView<Food> table;
-	@FXML
-	private TableColumn<Food, ?> tableColumn;
-
-//	final ObservableList<Food> data = FXCollections.observableArrayList(new Food("Pizza", 1, 50),
-//			new Food("Ham", 1, 20));
-
+	
 	private static String tablenumber;
 
 	@FXML
 	public void initialize() {
-		createTableColumn();
-	}
 
-	//during in test
-	public void createTableColumn() {
-		TableColumn nameC = new TableColumn("Name");
-		nameC.setMinWidth(200);
-		nameC.setCellValueFactory(new PropertyValueFactory<Food, String>("name"));
-		TableColumn quantityC = new TableColumn("Quantity");
-		quantityC.setMinWidth(100);
-		quantityC.setCellValueFactory(new PropertyValueFactory<Food, Integer>("quantity"));
-		TableColumn priceC = new TableColumn("Price");
-		priceC.setMinWidth(100);
-		priceC.setCellValueFactory(new PropertyValueFactory<Food, Integer>("price"));
-		table.getColumns().addAll(nameC, quantityC, priceC);
 	}
 
 	// during in test
