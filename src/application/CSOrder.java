@@ -1,6 +1,6 @@
 package application;
 
-import controller.CSMenuController;
+import controller.CSOrderController;
 import javafx.stage.Stage;
 
 /**
@@ -15,7 +15,7 @@ public class CSOrder extends AbstractWindow {
 
 	// for setting the tablenumber to CSMenuController
 	public CSOrder(String input) {
-		CSMenuController.setTable(input);
+		CSOrderController.setTable(input);
 	}
 
 	public void start(Stage stage) {

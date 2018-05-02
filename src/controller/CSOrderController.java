@@ -1,6 +1,5 @@
 package controller;
 
-import application.CheckBill;
 import application.CSTable;
 import application.Main;
 import javafx.beans.property.ListProperty;
@@ -10,7 +9,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -26,7 +24,7 @@ import model.Food;
  * @author Piyawat & Vichaphol
  *
  */
-public class CSMenuController {
+public class CSOrderController {
 	@FXML
 	private Button order;
 	@FXML
