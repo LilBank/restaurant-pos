@@ -102,22 +102,22 @@ public class Order {
 	public static void main(String[] args) {
 		Order om = Order.getInstance();
 		// test adding
-		om.addOrder(new Drink("cocoa", 20));
-		om.addOrder(new Food("Steak", 100));
-		om.addOrder(new Drink("water", 10));
-		om.addOrder(new Drink("water", 10));
-		om.addOrder(new Food("Steak", 100));
+		om.addOrder(new Menu("cocoa", 20));
+		om.addOrder(new Menu("Steak", 100));
 		om.addOrder(new Menu("water", 10));
-		om.addOrder(new Drink("cocoa", 20));
-		om.addOrder(new Food("Steak", 100));;
-		om.addOrder(new Drink("water", 10));
-		om.addOrder(new Drink("cocoa", 20));
-		om.addOrder(new Drink("cocoa", 20));
-		om.addOrder(new Food("Steak", 100));
+		om.addOrder(new Menu("water", 10));
+		om.addOrder(new Menu("Steak", 100));
+		om.addOrder(new Menu("water", 10));
+		om.addOrder(new Menu("cocoa", 20));
+		om.addOrder(new Menu("Steak", 100));;
+		om.addOrder(new Menu("water", 10));
+		om.addOrder(new Menu("cocoa", 20));
+		om.addOrder(new Menu("cocoa", 20));
+		om.addOrder(new Menu("Steak", 100));
 		// test removing
-		om.removeOrder(new Drink("cocoa", 20));
-		om.removeOrder(new Food("Steak", 100));
-		om.removeOrder(new Drink("water", 10));
+		om.removeOrder(new Menu("cocoa", 20));
+		om.removeOrder(new Menu("Steak", 100));
+		om.removeOrder(new Menu("water", 10));
 		om.printOrders();
 		System.out.println(om.getOrders().size());
 	}
