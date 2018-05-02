@@ -66,7 +66,7 @@ public class Menu implements Comparable<Menu>{
 		return Objects.hash(this.name, this.price);
 	}
 	
-	//under constrution
+	//under construction
 	@Override
 	public int compareTo(Menu o) {
 		return 0;
