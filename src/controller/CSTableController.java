@@ -1,6 +1,6 @@
 package controller;
 
-import application.CSMenu;
+import application.CSOrder;
 import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -153,7 +153,7 @@ public class CSTableController {
 			ok.setDisable(false);
 		}
 		else {
-			ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new CSMenu(number));
+			ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new CSOrder(number));
 		}
 	}
 

@@ -11,16 +11,16 @@ import javafx.stage.Stage;
  * @author Piyawat & Vichaphol
  *
  */
-public class CSMenu extends AbstractWindow {
+public class CSOrder extends AbstractWindow {
 
 	// for setting the tablenumber to CSMenuController
-	public CSMenu(String input) {
+	public CSOrder(String input) {
 		CSMenuController.setTable(input);
 	}
 
 	public void start(Stage stage) {
 		try {
-			super.setFilename("view/customer-menu.fxml");
+			super.setFilename("view/customer-order.fxml");
 			super.start(stage);
 			stage.setTitle("Customer Menu");
 		} catch (Exception e) {
