@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Food;
 
@@ -37,20 +38,22 @@ public class MGOrderController {
 	// final ObservableList<Food> data = FXCollections.observableArrayList(new
 	// Food("Pizza", 1, 50),
 	// new Food("Ham", 1, 20));
-
+	// will be used when generate button is done
+	@FXML
+	private Pane foodpane;
+	@FXML
+	private Pane drinkpane;
+	@FXML
+	private Button temp;
+	
 	private static String tablenumber;
-	private static String user;
 
 	@FXML
 	public void initialize() {
 		createTableColumn();
-
 	}
 
-	/**
-	 * Add column to the table with the set data.
-	 * 
-	 */
+	//during in test
 	public void createTableColumn() {
 		TableColumn nameC = new TableColumn("Name");
 		nameC.setMinWidth(200);
@@ -66,8 +69,7 @@ public class MGOrderController {
 
 	// during in test
 	public void orderButtonHandler(ActionEvent event) {
-		// ScreenController.switchWindow((Stage) order.getScene().getWindow(),
-		// new CSCheckBill(totalPrice.getText()));
+
 	}
 
 	/**

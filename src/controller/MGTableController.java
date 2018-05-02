@@ -44,14 +44,6 @@ public class MGTableController {
 	@FXML
 	private Button button08;
 
-	// will be used when generate button is done
-	@FXML
-	private Pane foodpane;
-	@FXML
-	private Pane drinkpane;
-	@FXML
-	private Button temp;
-
 	@FXML
 	public void intialize() {
 
@@ -90,7 +82,7 @@ public class MGTableController {
 	}
 
 	/**
-	 * Handler for every table button. When event receive the WorkerOrder scene
+	 * Handler for every table button. When event receive the MGOrder scene
 	 * is shown.
 	 * 
 	 * @param button

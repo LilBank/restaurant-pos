@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 /**
  * MGOrder(manager) class that extends AbstractWindow for capable of running
  * the method switchWindow. This window is for selecting the food, observing
- * customer's order,remove an order, and check their bills.
+ * customer's order, remove an order, and check their bills.
  * 
  * @author Piyawat & Vichaphol
  *

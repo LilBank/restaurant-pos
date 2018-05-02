@@ -42,7 +42,9 @@ public class CheckBillController {
 	private TextField change;
 
 	/** the money paid by the customer */
-	private int CSmoney;
+	private int csMoney;
+
+	private static int csBill;
 
 	@FXML
 	public void initialize() {
@@ -102,8 +104,8 @@ public class CheckBillController {
 	 *            to sum
 	 */
 	public void sumMoney(int number) {
-		this.CSmoney += number;
-		customerPay.setText(CSmoney + "");
+		this.csMoney += number;
+		customerPay.setText(csMoney + "");
 	}
 
 	/**
@@ -112,7 +114,7 @@ public class CheckBillController {
 	 */
 	public void calculateChange() {
 		int totalMoney = Integer.parseInt(total.getText());
-		change.setText(totalMoney - this.CSmoney + "");
+		change.setText(totalMoney - this.csMoney + "");
 	}
 
 	/**
@@ -121,7 +123,13 @@ public class CheckBillController {
 	 * @param event
 	 */
 	public void clearButtonHandler(ActionEvent event) {
-		this.CSmoney = 0;
+		this.csMoney = 0;
 		customerPay.clear();
 	}
+	
+	//during in test
+	public static void setBill(String arg) {
+		csBill = Integer.parseInt(arg);
+	}
+	
 }

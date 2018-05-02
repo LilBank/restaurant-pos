@@ -12,6 +12,7 @@ import javafx.stage.Stage;
  *
  */
 public class EMOrder extends AbstractWindow {
+	
 	//for setting the tablenumber to EMOrderController
 	public EMOrder(String input) {
 		EMOrderController.setTable(input);
