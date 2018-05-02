@@ -33,50 +33,67 @@ public class CheckBillController {
 	private Button two;
 	@FXML
 	private Button one;
+	/** TextField of Total money */
 	@FXML
 	private TextField total;
+	/** TextField of money paid by customer */
 	@FXML
 	private TextField customerPay;
+	/** TextField of customer's change */
 	@FXML
 	private TextField change;
 
 	/** the money paid by the customer */
 	private int CSmoney;
 
+	@FXML
+	public void initialize() {
+		total.setText("");
+	}
+
 	public void thousandButtonHandler(ActionEvent event) {
 		sumMoney(Integer.parseInt(thousand.getText()));
+		calculateChange();
 	}
 
 	public void fiveHundredButtonHandler(ActionEvent event) {
 		sumMoney(Integer.parseInt(fiveHundred.getText()));
+		calculateChange();
 	}
 
 	public void oneHundredButtonHandler(ActionEvent event) {
 		sumMoney(Integer.parseInt(oneHundred.getText()));
+		calculateChange();
 	}
 
 	public void fiftyButtonHandler(ActionEvent event) {
 		sumMoney(Integer.parseInt(fifty.getText()));
+		calculateChange();
 	}
 
 	public void twentyButtonHandler(ActionEvent event) {
 		sumMoney(Integer.parseInt(twenty.getText()));
+		calculateChange();
 	}
 
 	public void tenButtonHandler(ActionEvent event) {
 		sumMoney(Integer.parseInt(ten.getText()));
+		calculateChange();
 	}
 
 	public void fiveButtonHandler(ActionEvent event) {
 		sumMoney(Integer.parseInt(five.getText()));
+		calculateChange();
 	}
 
 	public void twoButtonHandler(ActionEvent event) {
 		sumMoney(Integer.parseInt(two.getText()));
+		calculateChange();
 	}
 
 	public void oneButtonHandler(ActionEvent event) {
 		sumMoney(Integer.parseInt(one.getText()));
+		calculateChange();
 	}
 
 	/**
@@ -94,7 +111,8 @@ public class CheckBillController {
 	 * 
 	 */
 	public void calculateChange() {
-
+		int totalMoney = Integer.parseInt(total.getText());
+		change.setText(totalMoney - this.CSmoney + "");
 	}
 
 	/**
