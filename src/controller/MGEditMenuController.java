@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.MGTableView;
 import application.Main;
 import application.ManagerTableView;
 import javafx.beans.property.ListProperty;
@@ -94,7 +95,7 @@ public class MGEditMenuController {
 	 * 
 	 */
 	public void backButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new ManagerTableView());
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new MGTableView());
 	}
 
 	/**
