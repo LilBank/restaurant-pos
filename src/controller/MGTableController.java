@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.Pane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
@@ -25,6 +26,15 @@ public class MGTableController {
 	private Button logout;
 	@FXML
 	Alert alert;
+	@FXML
+	private Pane pane;
+	@FXML
+	private Button temp;
+
+	@FXML
+	public void intialize() {
+
+	}
 
 	/**
 	 * Handler for image button. When event receive the edit menu scene is
@@ -40,8 +50,7 @@ public class MGTableController {
 	 * 
 	 */
 	public void logoutButtonHandler(ActionEvent event) {
-		alert = new Alert(AlertType.CONFIRMATION, "Are you sure you want to log out ?",
-				ButtonType.OK);
+		alert = new Alert(AlertType.CONFIRMATION, "Are you sure you want to log out ?", ButtonType.OK);
 		alert.showAndWait().ifPresent(response -> {
 			if (response == ButtonType.OK) {
 				ScreenController.switchWindow((Stage) logout.getScene().getWindow(), new Login());

@@ -26,7 +26,7 @@ import model.Food;
  * @author Piyawat & Vichaphol
  *
  */
-public class CSMenuController extends MGMenuController {
+public class CSMenuController {
 	@FXML
 	private Button order;
 	@FXML
@@ -40,12 +40,12 @@ public class CSMenuController extends MGMenuController {
 	@FXML
 	private TableColumn<Food, ?> tableColumn;
 	@FXML
-	private ListView<Label> foodList;
+	private ListView<Button> foodList;
 	@FXML
-	private ListView<Label> drinkList;
+	private ListView<Button> drinkList;
 	/** Combined with food list view */
 	@FXML
-	ListProperty<Label> foodListProperty = new SimpleListProperty<>();
+	ListProperty<Button> foodListProperty = new SimpleListProperty<>();
 
 	final ObservableList<Food> data = FXCollections.observableArrayList(new Food("Pizza", 1, 50),
 			new Food("Ham", 1, 20));
@@ -56,7 +56,7 @@ public class CSMenuController extends MGMenuController {
 	public void initialize() {
 		foodList.setVisible(false);
 		drinkList.setVisible(false);
-		foodListProperty.set(FXCollections.observableArrayList(getImage()));
+		foodListProperty.set(FXCollections.observableArrayList(MGMenuController.getImage()));
 		foodList.itemsProperty().bind(foodListProperty);
 		createTableColumn();
 	}
@@ -85,7 +85,7 @@ public class CSMenuController extends MGMenuController {
 	 */
 	public void foodButtonHandler(ActionEvent event) {
 		foodList.setVisible(true);
-		foodListProperty.set(FXCollections.observableArrayList(getImage()));
+		foodListProperty.set(FXCollections.observableArrayList(MGMenuController.getImage()));
 	}
 
 	/**

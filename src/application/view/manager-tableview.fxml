@@ -8,7 +8,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MGTableController">
    <children>
-      <Pane prefHeight="640.0" prefWidth="940.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <Pane fx:id="pane" prefHeight="640.0" prefWidth="940.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
             <Button fx:id="logout" layoutX="872.0" layoutY="31.0" mnemonicParsing="false" onAction="#logoutButtonHandler" style="-fx-background-radius: 50;" text="Logout" />
             <Button fx:id="image" alignment="CENTER" layoutX="574.0" layoutY="21.0" minWidth="33.0" mnemonicParsing="false" onAction="#imageButtonHandler" prefHeight="45.0" prefWidth="115.0" style="-fx-background-radius: 100;" text="Edit Menu">

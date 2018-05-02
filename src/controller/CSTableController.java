@@ -58,6 +58,7 @@ public class CSTableController {
 	 * UI form, after the components have been created and @FXML annotated
 	 * attributes have been set. This is to limit textfield char to 2.
 	 */
+	@FXML
 	public void initialize() {
 		display.setTextFormatter(
 				new TextFormatter<String>(change -> change.getControlNewText().length() <= 2 ? change : null));

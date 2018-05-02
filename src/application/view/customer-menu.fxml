@@ -39,7 +39,7 @@
             </ButtonBar>
             <ButtonBar layoutX="400.0" prefHeight="49.0" prefWidth="182.0">
               <buttons>
-                <Button fx:id="foodView" minWidth="0.0" mnemonicParsing="false" prefHeight="26.0" style="-fx-background-radius: 50;" text="Food" />
+                <Button fx:id="foodView" minWidth="0.0" mnemonicParsing="false" onAction="#foodButtonHandler" prefHeight="26.0" style="-fx-background-radius: 50;" text="Food" />
                   <Button fx:id="drinkView" mnemonicParsing="false" style="-fx-background-radius: 50;" text="Drink" />
               </buttons>
             </ButtonBar>

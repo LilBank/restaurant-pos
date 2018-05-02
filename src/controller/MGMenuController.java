@@ -38,12 +38,12 @@ public class MGMenuController {
 	Button logout;
 	/** ListView showing the items */
 	@FXML
-	ListView<Label> listItems;
+	ListView<Button> listItems;
 	/** Combined with list view */
 	@FXML
-	ListProperty<Label> listProperty = new SimpleListProperty<>();
+	ListProperty<Button> listProperty = new SimpleListProperty<>();
 	/** List of all images */
-	public static List<Label> folderImage = new ArrayList<>();
+	public static List<Button> folderImage = new ArrayList<>();
 
 	/**
 	 * Bind listView with ListProperty at the beginning.
@@ -54,7 +54,7 @@ public class MGMenuController {
 		listItems.itemsProperty().bind(listProperty);
 	}
 
-	public List<Label> getImage() {
+	public static List<Button> getImage() {
 		return folderImage;
 	}
 
@@ -72,8 +72,11 @@ public class MGMenuController {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
-		Label foods = new Label();
-		foods.setGraphic(new ImageView(image));
+		Button foods = new Button();
+		ImageView view = new ImageView(image);
+		view.setFitHeight(100);
+		view.setFitWidth(100);
+		foods.setGraphic(view);
 		folderImage.add(foods);
 		listProperty.set(FXCollections.observableArrayList(folderImage));
 	}
@@ -83,7 +86,7 @@ public class MGMenuController {
 	 * 
 	 */
 	public void deleteImageHandler(ActionEvent event) {
-		folderImage.remove(0);
+		folderImage.remove(folderImage.size()-1);
 		listProperty.set(FXCollections.observableArrayList(folderImage));
 	}
 
