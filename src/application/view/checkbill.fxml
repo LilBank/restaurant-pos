@@ -62,7 +62,7 @@
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="462.0" layoutY="272.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="104.0" style="-fx-background-radius: 50;" text="Pay">
+            <Button defaultButton="true" layoutX="462.0" layoutY="272.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="104.0" style="-fx-background-radius: 50;" text="Pay">
                <font>
                   <Font name="Agency FB" size="36.0" />
                </font>

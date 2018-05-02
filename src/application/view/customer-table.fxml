@@ -118,7 +118,7 @@
                   <Font name="MS Gothic" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="ok" alignment="CENTER" layoutX="232.0" layoutY="404.0" mnemonicParsing="false" onAction="#okButtonHandler" prefHeight="68.0" prefWidth="68.0" text="ok">
+            <Button fx:id="ok" alignment="CENTER" defaultButton="true" layoutX="232.0" layoutY="404.0" mnemonicParsing="false" onAction="#okButtonHandler" prefHeight="68.0" prefWidth="68.0" text="ok">
                <padding>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>
