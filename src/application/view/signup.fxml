@@ -41,7 +41,7 @@
                   <Font name="MS Gothic" size="25.0" />
                </font>
             </Label>
-            <Button fx:id="confirm" layoutX="239.0" layoutY="498.0" mnemonicParsing="false" onAction="#confirmButtonHandler" prefHeight="99.0" prefWidth="189.0" style="-fx-background-radius: 50;" text="Confirm">
+            <Button fx:id="confirm" defaultButton="true" layoutX="239.0" layoutY="498.0" mnemonicParsing="false" onAction="#confirmButtonHandler" prefHeight="99.0" prefWidth="189.0" style="-fx-background-radius: 50;" text="Confirm">
                <font>
                   <Font name="MS Gothic" size="25.0" />
                </font>

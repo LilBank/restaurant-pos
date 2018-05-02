@@ -21,7 +21,7 @@
                   <Font name="Agency FB" size="29.0" />
                </font>
             </Label>
-          <Button fx:id="order" layoutX="133.0" layoutY="554.0" mnemonicParsing="false" onAction="#orderButtonHandler" prefHeight="69.0" prefWidth="107.0" style="-fx-background-radius: 100;" text="Order">
+          <Button fx:id="order" layoutX="133.0" layoutY="554.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="107.0" style="-fx-background-radius: 100;" text="Order">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
@@ -31,7 +31,7 @@
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="261.0" layoutY="554.0" minWidth="74.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="130.0" style="-fx-background-radius: 50;" text="Check Bill">
+            <Button fx:id="checkBill" layoutX="261.0" layoutY="554.0" minWidth="74.0" mnemonicParsing="false" onAction="#checkBillButtonHandler" prefHeight="70.0" prefWidth="130.0" style="-fx-background-radius: 50;" text="Check Bill">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>

@@ -21,7 +21,7 @@
                   <Font name="Agency FB" size="29.0" />
                </font>
             </Label>
-          <Button fx:id="order" layoutX="293.0" layoutY="554.0" mnemonicParsing="false" onAction="#orderButtonHandler" prefHeight="69.0" prefWidth="107.0" style="-fx-background-radius: 100;" text="Order">
+          <Button fx:id="order" defaultButton="true" layoutX="293.0" layoutY="554.0" mnemonicParsing="false" onAction="#orderButtonHandler" prefHeight="69.0" prefWidth="107.0" style="-fx-background-radius: 100;" text="Order">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>

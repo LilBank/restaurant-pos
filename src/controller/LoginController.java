@@ -65,13 +65,13 @@ public class LoginController {
 			int accessLevel = DBManager.login(username.getText(), password.getText());
 			// int = 2 for manager mode
 			if (accessLevel == 2) {
-				alert = new Alert(AlertType.NONE, "Welcome to Manager " + username.getText(), ButtonType.OK);
+				alert = new Alert(AlertType.NONE, "Welcome manager: " + username.getText(), ButtonType.OK);
 				alert.show();
 				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new MGTableView());
 			}
 			// int = 1 for normal mode
 			if (accessLevel == 1) {
-				alert = new Alert(AlertType.NONE, "Welcome " + username.getText(), ButtonType.OK);
+				alert = new Alert(AlertType.NONE, "Welcome waiter: " + username.getText(), ButtonType.OK);
 				alert.show();
 				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new EMTableView());
 			}

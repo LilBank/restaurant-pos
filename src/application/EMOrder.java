@@ -22,7 +22,7 @@ public class EMOrder extends AbstractWindow {
 		try {
 			super.setFilename("view/normal-order.fxml");
 			super.start(stage);
-			stage.setTitle("Customer Menu");
+			stage.setTitle("Waiter Menu");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
