@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -37,27 +38,32 @@ public class CSMenuController {
 	private TextField totalPrice;
 	@FXML
 	private TableView<Food> table;
+	/** List view of food */
 	@FXML
-	private TableColumn<Food, ?> tableColumn;
+	private ListView<Button> foodListView;
+	/** List view of drink */ 
 	@FXML
-	private ListView<Button> foodList;
-	@FXML
-	private ListView<Button> drinkList;
+	private ListView<Button> drinkListView;
 	/** Combined with food list view */
 	@FXML
 	ListProperty<Button> foodListProperty = new SimpleListProperty<>();
-
+	/** Combined with drink list view */
+	@FXML
+	ListProperty<Button> drinkListProperty = new SimpleListProperty<>();
+	
+	/** Initialize all menu in the table */
 	final ObservableList<Food> data = FXCollections.observableArrayList(new Food("Pizza", 1, 50),
 			new Food("Ham", 1, 20));
-
+	
 	private static String tablenumber;
 
 	@FXML
 	public void initialize() {
-		foodList.setVisible(false);
-		drinkList.setVisible(false);
+		foodListView.setVisible(false);
+		drinkListView.setVisible(false);
 		foodListProperty.set(FXCollections.observableArrayList(MGEditMenuController.getImage()));
-		foodList.itemsProperty().bind(foodListProperty);
+		drinkListProperty.set(FXCollections.observableArrayList(MGEditMenuController.getImage()));
+		foodListView.itemsProperty().bind(foodListProperty);
 		createTableColumn();
 	}
 
@@ -84,7 +90,7 @@ public class CSMenuController {
 	 * 
 	 */
 	public void foodButtonHandler(ActionEvent event) {
-		foodList.setVisible(true);
+		foodListView.setVisible(true);
 		foodListProperty.set(FXCollections.observableArrayList(MGEditMenuController.getImage()));
 	}
 
@@ -93,7 +99,7 @@ public class CSMenuController {
 	 * 
 	 */
 	public void drinkButtonHandler(ActionEvent event) {
-		drinkList.setVisible(true);
+		drinkListView.setVisible(true);
 	}
 
 	// during in test
