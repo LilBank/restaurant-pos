@@ -1,5 +1,6 @@
 package controller;
 
+import application.CheckBill;
 import application.EMTableView;
 import application.Main;
 import javafx.event.ActionEvent;
@@ -22,6 +23,8 @@ import model.Food;
 public class EMOrderController {
 	@FXML
 	private Button order;
+	@FXML
+	private Button checkBill;
 	@FXML
 	private Button back;
 	@FXML
@@ -63,9 +66,9 @@ public class EMOrderController {
 	}
 
 	// during in test
-	public void orderButtonHandler(ActionEvent event) {
-		// ScreenController.switchWindow((Stage) order.getScene().getWindow(),
-		// new CSCheckBill(totalPrice.getText()));
+	public void checkBillButtonHandler(ActionEvent event) {
+		 ScreenController.switchWindow((Stage) checkBill.getScene().getWindow(),
+		 new CheckBill(totalPrice.getText()));
 	}
 
 	/**
