@@ -12,10 +12,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
- * TableController class contains method for handling event from the
- * normal-tableview ui. Methods can look up orders in each table.
+ * EMTableController(employee) class contains method for handling event from the
+ * UserInterface.Contains method that can look up orders in each table with permission to
+ * manage tables.
  * 
- * @author Piyawat & Vichapol
+ * @author Piyawat & Vichaphol
  *
  */
 public class EMTableController {

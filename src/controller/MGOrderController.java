@@ -1,6 +1,5 @@
 package controller;
 
-import application.CSTable;
 import application.MGTableView;
 import application.Main;
 import javafx.event.ActionEvent;
@@ -13,6 +12,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Food;
 
+/**
+ * MGOrderController(manager) contains method for handling all event receive
+ * from the UserInterface. Contains method for viewing and ordering customer
+ * orders with permission to remove customer's order.
+ * 
+ * @author Piyawat & Vichaphol
+ *
+ */
 public class MGOrderController {
 	@FXML
 	private Button order;

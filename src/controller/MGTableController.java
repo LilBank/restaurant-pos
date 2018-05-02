@@ -13,9 +13,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 /**
- * MGTableController class contains method for handling event from the
- * manager-tableview ui. Those methods can also switch to other manager window
- * and view all the tables.
+ * MGTableController(manager) class contains method for handling event from the
+ * UserInterface. Contains method that can look up orders in each table with
+ * full permission to manage the restaurant.
  * 
  * @author Piyawat & Vichapol
  *

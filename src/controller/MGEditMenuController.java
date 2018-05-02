@@ -20,8 +20,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
- * A controller class for manager mode in the application. Containing functions
- * to add and delete image in the customer view.
+ * MGTableController(manager) class contains method for handling event from the
+ * UserInterface. Contains method for adding menu with picture or removing a
+ * menu.
  * 
  * @author Piyawat & Vichaphol
  *
@@ -101,7 +102,8 @@ public class MGEditMenuController {
 	}
 
 	/**
-	 * Handler for logout button. When event recieve the Start up scene is shown.
+	 * Handler for logout button. When event recieve the Start up scene is
+	 * shown.
 	 * 
 	 */
 	public void logoutHandler(ActionEvent event) {
