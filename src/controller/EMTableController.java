@@ -41,14 +41,6 @@ public class EMTableController {
 	@FXML
 	private Button button08;
 
-	// will be used when generate button is done
-	@FXML
-	private Pane foodpane;
-	@FXML
-	private Pane drinkpane;
-	@FXML
-	private Button temp;
-
 	/**
 	 * Handler for logout button. When event receive the login scene is shown.
 	 * 

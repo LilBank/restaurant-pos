@@ -44,14 +44,6 @@ public class MGTableController {
 	@FXML
 	private Button button08;
 
-	// will be used when generate button is done
-	@FXML
-	private Pane foodpane;
-	@FXML
-	private Pane drinkpane;
-	@FXML
-	private Button temp;
-
 	@FXML
 	public void intialize() {
 

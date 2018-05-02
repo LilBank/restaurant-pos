@@ -9,12 +9,14 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Food;
 
 /**
- * EMOrderController(employee) contains method for handling all event receive from the
- * UserInterface. Contains method for viewing and ordering customer orders.
+ * EMOrderController(employee) contains method for handling all event receive
+ * from the UserInterface. Contains method for viewing and ordering customer
+ * orders.
  * 
  * @author Piyawat & Vichaphol
  *
@@ -32,6 +34,14 @@ public class EMOrderController {
 	private TableView<Food> table;
 	@FXML
 	private TableColumn<Food, ?> tableColumn;
+
+	// will be used when generate button is done
+	@FXML
+	private Pane foodpane;
+	@FXML
+	private Pane drinkpane;
+	@FXML
+	private Button temp;
 
 	// final ObservableList<Food> data = FXCollections.observableArrayList(new
 	// Food("Pizza", 1, 50),
