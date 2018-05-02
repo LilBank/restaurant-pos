@@ -2,11 +2,8 @@ package controller;
 
 import application.MGTableView;
 import application.Main;
-<<<<<<< HEAD
 import application.MGTableView;
-=======
->>>>>>> branch 'master' of https://github.com/bankkeez/projectx-restaurantPOS.git
-import application.TableView;
+import application.EMTableView;
 import database.DBManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -77,7 +74,7 @@ public class LoginController {
 			if (accessLevel == 1) {
 				alert = new Alert(AlertType.NONE, "Welcome " + username.getText(), ButtonType.OK);
 				alert.show();
-				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new TableView());
+				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new EMTableView());
 			}
 			// wrong password
 			if (accessLevel == 0) {

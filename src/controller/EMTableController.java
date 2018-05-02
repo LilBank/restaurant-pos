@@ -18,7 +18,7 @@ import javafx.stage.Stage;
  * @author Piyawat & Vichapol
  *
  */
-public class TableController {
+public class EMTableController {
 	@FXML
 	private Button logout;
 	@FXML

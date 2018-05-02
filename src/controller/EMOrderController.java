@@ -1,6 +1,7 @@
 package controller;
 
 import application.CSTable;
+import application.EMTableView;
 import application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -69,7 +70,7 @@ public class EMOrderController {
 	 * 
 	 */
 	public void backButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new CSTable());
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new EMTableView());
 	}
 
 	/**

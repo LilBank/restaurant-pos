@@ -2,7 +2,7 @@ package application;
 
 import javafx.stage.Stage;
 
-public class TableView extends AbstractWindow {
+public class EMTableView extends AbstractWindow {
 	
 	@Override
 	public void start(Stage stage) {

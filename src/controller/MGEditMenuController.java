@@ -7,10 +7,6 @@ import java.util.List;
 
 import application.MGTableView;
 import application.Main;
-<<<<<<< HEAD
-import application.MGTableView;
-=======
->>>>>>> branch 'master' of https://github.com/bankkeez/projectx-restaurantPOS.git
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
