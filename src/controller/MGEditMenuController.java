@@ -7,7 +7,6 @@ import java.util.List;
 
 import application.MGTableView;
 import application.Main;
-import application.ManagerTableView;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;

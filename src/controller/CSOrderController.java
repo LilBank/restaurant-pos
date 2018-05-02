@@ -1,6 +1,7 @@
 package controller;
 
 import application.CSTable;
+import application.CheckBill;
 import application.Main;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -97,7 +98,7 @@ public class CSOrderController {
 	// during in test
 	public void orderButtonHandler(ActionEvent event) {
 		// ScreenController.switchWindow((Stage) order.getScene().getWindow(),
-		// new CSCheckBill(totalPrice.getText()));
+		// new CheckBill(totalPrice.getText()));
 	}
 
 	/**
