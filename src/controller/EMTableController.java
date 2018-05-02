@@ -42,9 +42,9 @@ public class EMTableController {
 
 	// will be used when generate button is done
 	@FXML
-	private Pane foodpane;
+	private Pane foodPane;
 	@FXML
-	private Pane drinkpane;
+	private Pane drinkPane;
 	@FXML
 	private Button temp;
 
