@@ -17,7 +17,7 @@ public class EMTableView extends AbstractWindow {
 		try {
 			super.setFilename("view/normal-tableview.fxml");
 			super.start(stage);
-			stage.setTitle("Sign Up");
+			stage.setTitle("Tableview");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

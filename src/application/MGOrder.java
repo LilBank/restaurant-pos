@@ -22,7 +22,7 @@ public class MGOrder extends AbstractWindow {
 		try {
 			super.setFilename("view/manager-order.fxml");
 			super.start(stage);
-			stage.setTitle("Customer Menu");
+			stage.setTitle("Manager Order");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

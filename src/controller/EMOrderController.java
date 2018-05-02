@@ -1,6 +1,5 @@
 package controller;
 
-import application.CheckBill;
 import application.EMTableView;
 import application.Main;
 import javafx.event.ActionEvent;
@@ -43,17 +42,6 @@ public class EMOrderController {
 	@FXML
 	public void initialize() {
 
-	}
-
-	// during in test
-<<<<<<< HEAD
-	public void orderButtonHandler(ActionEvent event) {
-
-=======
-	public void checkBillButtonHandler(ActionEvent event) {
-		 ScreenController.switchWindow((Stage) checkBill.getScene().getWindow(),
-		 new CheckBill(totalPrice.getText()));
->>>>>>> branch 'master' of https://github.com/bankkeez/projectx-restaurantPOS.git
 	}
 
 	/**

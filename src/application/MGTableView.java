@@ -16,7 +16,7 @@ public class MGTableView extends AbstractWindow {
 		try {
 			super.setFilename("view/manager-tableview.fxml");
 			super.start(stage);
-			stage.setTitle("Manager Mode");
+			stage.setTitle("Manager Tableview");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
