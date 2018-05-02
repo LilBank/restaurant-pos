@@ -90,7 +90,7 @@ public class MGTableController {
 	}
 
 	/**
-	 * Handler for every table button. When event receive the WorkerOrder scene
+	 * Handler for every table button. When event receive the MGOrder scene
 	 * is shown.
 	 * 
 	 * @param button

@@ -39,18 +39,13 @@ public class MGOrderController {
 	// new Food("Ham", 1, 20));
 
 	private static String tablenumber;
-	private static String user;
 
 	@FXML
 	public void initialize() {
 		createTableColumn();
-
 	}
 
-	/**
-	 * Add column to the table with the set data.
-	 * 
-	 */
+	//during in test
 	public void createTableColumn() {
 		TableColumn nameC = new TableColumn("Name");
 		nameC.setMinWidth(200);
@@ -66,8 +61,7 @@ public class MGOrderController {
 
 	// during in test
 	public void orderButtonHandler(ActionEvent event) {
-		// ScreenController.switchWindow((Stage) order.getScene().getWindow(),
-		// new CSCheckBill(totalPrice.getText()));
+
 	}
 
 	/**

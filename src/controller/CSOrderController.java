@@ -36,8 +36,8 @@ public class CSOrderController {
 	@FXML
 	private TableColumn<Food, ?> tableColumn;
 
-	final ObservableList<Food> data = FXCollections.observableArrayList(new Food("Pizza", 1, 50),
-			new Food("Ham", 1, 20));
+//	final ObservableList<Food> data = FXCollections.observableArrayList(new Food("Pizza", 1, 50),
+//			new Food("Ham", 1, 20));
 
 	private static String tablenumber;
 
@@ -46,10 +46,7 @@ public class CSOrderController {
 		createTableColumn();
 	}
 
-	/**
-	 * Add column to the table with the set data.
-	 * 
-	 */
+	//during in test
 	public void createTableColumn() {
 		TableColumn nameC = new TableColumn("Name");
 		nameC.setMinWidth(200);
@@ -60,14 +57,12 @@ public class CSOrderController {
 		TableColumn priceC = new TableColumn("Price");
 		priceC.setMinWidth(100);
 		priceC.setCellValueFactory(new PropertyValueFactory<Food, Integer>("price"));
-		table.setItems(data);
 		table.getColumns().addAll(nameC, quantityC, priceC);
 	}
 
 	// during in test
 	public void orderButtonHandler(ActionEvent event) {
-		// ScreenController.switchWindow((Stage) order.getScene().getWindow(),
-		// new CheckBill(totalPrice.getText()));
+		
 	}
 
 	/**

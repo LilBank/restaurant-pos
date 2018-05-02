@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 /**
  * EMTableController(employee) class contains method for handling event from the
- * UserInterface.Contains method that can look up orders in each table with permission to
+ * UserInterface. Contains method that can look up orders in each table with permission to
  * manage tables.
  * 
  * @author Piyawat & Vichaphol
@@ -95,7 +95,7 @@ public class EMTableController {
 	}
 
 	/**
-	 * Handler for every table button. When event receive the WorkerOrder scene
+	 * Handler for every table button. When event receive the EMOrder scene
 	 * is shown.
 	 * 
 	 * @param button
