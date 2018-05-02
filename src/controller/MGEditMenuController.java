@@ -64,6 +64,7 @@ public class MGEditMenuController {
 	 */
 	public void insertImageHandler(ActionEvent event) {
 		FileChooser chooser = new FileChooser();
+		/** Open file dialog and save it to file */
 		File selectedFile = chooser.showOpenDialog(new Stage());
 		Image image = null;
 		try {
@@ -73,6 +74,8 @@ public class MGEditMenuController {
 		}
 		Button foods = new Button();
 		ImageView view = new ImageView(image);
+
+		/** Set size of the imported image */
 		view.setFitHeight(100);
 		view.setFitWidth(100);
 		foods.setGraphic(view);
@@ -85,7 +88,7 @@ public class MGEditMenuController {
 	 * 
 	 */
 	public void deleteImageHandler(ActionEvent event) {
-		folderImage.remove(folderImage.size()-1);
+		folderImage.remove(folderImage.size() - 1);
 		listProperty.set(FXCollections.observableArrayList(folderImage));
 	}
 
@@ -98,8 +101,7 @@ public class MGEditMenuController {
 	}
 
 	/**
-	 * Handler for logout button. When event recieve the Start up scene is
-	 * shown.
+	 * Handler for logout button. When event recieve the Start up scene is shown.
 	 * 
 	 */
 	public void logoutHandler(ActionEvent event) {

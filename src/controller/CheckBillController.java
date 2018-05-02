@@ -97,7 +97,7 @@ public class CheckBillController {
 	}
 
 	/**
-	 * A method for increasing the money when the button is pressed.
+	 * A method for increasing the customer's money according to the button pressed.
 	 * 
 	 * @param number
 	 *            to sum
@@ -108,6 +108,7 @@ public class CheckBillController {
 	}
 
 	/**
+	 * Method for calculating customer's change. Set text and show in the UI.
 	 * 
 	 */
 	public void calculateChange() {
