@@ -3,7 +3,7 @@ package application;
 import javafx.stage.Stage;
 
 /**
- * CSTable class that extends AbstractWindow for capable of running the method
+ * CSTable(customer) class that extends AbstractWindow for capable of running the method
  * switchWindow. This window is for entering the customers table number for food
  * ordering.
  * 

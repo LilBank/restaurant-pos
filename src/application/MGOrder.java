@@ -1,6 +1,5 @@
 package application;
 
-import controller.EMOrderController;
 import controller.MGOrderController;
 import javafx.stage.Stage;
 
@@ -13,6 +12,8 @@ import javafx.stage.Stage;
  *
  */
 public class MGOrder extends AbstractWindow {
+	
+	//for setting the tablenumber to MGOrderController
 	public MGOrder(String input) {
 		MGOrderController.setTable(input);
 	}
