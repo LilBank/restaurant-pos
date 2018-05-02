@@ -26,6 +26,8 @@ public class MGTableController {
 	private Button logout;
 	@FXML
 	Alert alert;
+	
+	// will be used when generate button is done
 	@FXML
 	private Pane pane;
 	@FXML
