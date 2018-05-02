@@ -56,7 +56,7 @@ public class CSMenuController {
 	public void initialize() {
 		foodList.setVisible(false);
 		drinkList.setVisible(false);
-		foodListProperty.set(FXCollections.observableArrayList(MGMenuController.getImage()));
+		foodListProperty.set(FXCollections.observableArrayList(MGEditMenuController.getImage()));
 		foodList.itemsProperty().bind(foodListProperty);
 		createTableColumn();
 	}
@@ -85,7 +85,7 @@ public class CSMenuController {
 	 */
 	public void foodButtonHandler(ActionEvent event) {
 		foodList.setVisible(true);
-		foodListProperty.set(FXCollections.observableArrayList(MGMenuController.getImage()));
+		foodListProperty.set(FXCollections.observableArrayList(MGEditMenuController.getImage()));
 	}
 
 	/**

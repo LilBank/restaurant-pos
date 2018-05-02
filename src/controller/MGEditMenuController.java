@@ -26,7 +26,7 @@ import javafx.stage.Stage;
  * @author Piyawat & Vichaphol
  *
  */
-public class MGMenuController {
+public class MGEditMenuController {
 	@FXML
 	Button back;
 	@FXML
