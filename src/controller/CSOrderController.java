@@ -1,7 +1,6 @@
 package controller;
 
 import application.CSTable;
-import application.CheckBill;
 import application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,8 +15,9 @@ import javafx.stage.Stage;
 import model.Food;
 
 /**
- * CSMenuController contains method for handling all event receive from the
- * UserInterface.
+ * CSMenuController(customer) contains method for handling all event receive from the
+ * UserInterface. Contains method for customer to call for bill check and order
+ * dishes.
  * 
  * @author Piyawat & Vichaphol
  *

@@ -3,13 +3,11 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import jdk.management.resource.internal.TotalResourceContext;
 
 /**
  * CustomerCheckBillController contains method for handling all event receive
- * from the UserInterface. **more specific**
+ * from the UserInterface. Contains method for calculating customer bills.
  * 
  * @author Piyawat & Vichaphol
  *
@@ -97,7 +95,8 @@ public class CheckBillController {
 	}
 
 	/**
-	 * A method for increasing the customer's money according to the button pressed.
+	 * A method for increasing the customer's money according to the button
+	 * pressed.
 	 * 
 	 * @param number
 	 *            to sum

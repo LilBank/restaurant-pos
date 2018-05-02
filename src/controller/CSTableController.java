@@ -13,8 +13,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 /**
- * CustomerTableController contains method for handling all event receive from
- * the UserInterface.
+ * CustomerTableController(customer) contains method for handling all event receive from
+ * the UserInterface. Contains method for opening CSOrder for customer to order
+ * menu.
  * 
  * @author Piyawat & Vichaphol
  *
@@ -54,8 +55,8 @@ public class CSTableController {
 	private String number = "";
 
 	/**
-	 * JavaFX calls the initialize() method of your controller when it creates the
-	 * UI form, after the components have been created and @FXML annotated
+	 * JavaFX calls the initialize() method of your controller when it creates
+	 * the UI form, after the components have been created and @FXML annotated
 	 * attributes have been set. This is to limit textfield char to 2.
 	 */
 	@FXML
@@ -141,8 +142,9 @@ public class CSTableController {
 	}
 
 	/**
-	 * Handler for ok button. When event receive, if the number input is two-digits
-	 * and not more than maximum limit then the next Scene is activated.
+	 * Handler for ok button. When event receive, if the number input is
+	 * two-digits and not more than maximum limit then the next Scene is
+	 * activated.
 	 * 
 	 * @param event
 	 */
@@ -150,8 +152,7 @@ public class CSTableController {
 		if (number.length() == 0) {
 			alert = new Alert(AlertType.ERROR, "Please input table number.", ButtonType.OK);
 			alert.show();
-		}
-		else {
+		} else {
 			ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new CSOrder(number));
 		}
 	}

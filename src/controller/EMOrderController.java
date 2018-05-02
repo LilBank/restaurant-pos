@@ -1,10 +1,7 @@
 package controller;
 
-import application.CSTable;
 import application.EMTableView;
 import application.Main;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,6 +12,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Food;
 
+/**
+ * EMOrderController(employee) contains method for handling all event receive from the
+ * UserInterface. Contains method for viewing and ordering customer orders.
+ * 
+ * @author Piyawat & Vichaphol
+ *
+ */
 public class EMOrderController {
 	@FXML
 	private Button order;
@@ -34,7 +38,6 @@ public class EMOrderController {
 	// new Food("Ham", 1, 20));
 
 	private static String tablenumber;
-	private static String user;
 
 	@FXML
 	public void initialize() {

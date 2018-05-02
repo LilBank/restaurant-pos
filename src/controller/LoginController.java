@@ -2,7 +2,6 @@ package controller;
 
 import application.MGTableView;
 import application.Main;
-import application.MGTableView;
 import application.EMTableView;
 import database.DBManager;
 import javafx.event.ActionEvent;
