@@ -34,42 +34,42 @@
             </Button>
             <Pane layoutX="17.0" layoutY="84.0" prefHeight="540.0" prefWidth="900.0">
                <children>
-                  <Button layoutX="112.0" layoutY="93.0" mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0" text="1">
+                  <Button fx:id="button01" layoutX="112.0" layoutY="93.0" mnemonicParsing="false" onAction="#button01Handler" prefHeight="170.0" prefWidth="170.0" text="1">
                      <font>
                         <Font name="Agency FB" size="40.0" />
                      </font>
                   </Button>
-                  <Button layoutX="282.0" layoutY="93.0" mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0" text="2">
+                  <Button fx:id="button02" layoutX="282.0" layoutY="93.0" mnemonicParsing="false" onAction="#button02Handler" prefHeight="170.0" prefWidth="170.0" text="2">
                      <font>
                         <Font name="Agency FB" size="40.0" />
                      </font>
                   </Button>
-                  <Button layoutX="452.0" layoutY="93.0" mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0" text="3">
+                  <Button fx:id="button03" layoutX="452.0" layoutY="93.0" mnemonicParsing="false" onAction="#button03Handler" prefHeight="170.0" prefWidth="170.0" text="3">
                      <font>
                         <Font name="Agency FB" size="40.0" />
                      </font>
                   </Button>
-                  <Button layoutX="622.0" layoutY="93.0" mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0" text="4">
+                  <Button fx:id="button04" layoutX="622.0" layoutY="93.0" mnemonicParsing="false" onAction="#button04Handler" prefHeight="170.0" prefWidth="170.0" text="4">
                      <font>
                         <Font name="Agency FB" size="40.0" />
                      </font>
                   </Button>
-                  <Button layoutX="112.0" layoutY="263.0" mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0" text="5">
+                  <Button fx:id="button05" layoutX="112.0" layoutY="263.0" mnemonicParsing="false" onAction="#button05Handler" prefHeight="170.0" prefWidth="170.0" text="5">
                      <font>
                         <Font name="Agency FB" size="40.0" />
                      </font>
                   </Button>
-                  <Button layoutX="282.0" layoutY="263.0" mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0" text="6">
+                  <Button fx:id="button06" layoutX="282.0" layoutY="263.0" mnemonicParsing="false" onAction="#button06Handler" prefHeight="170.0" prefWidth="170.0" text="6">
                      <font>
                         <Font name="Agency FB" size="40.0" />
                      </font>
                   </Button>
-                  <Button layoutX="452.0" layoutY="263.0" mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0" text="7">
+                  <Button fx:id="button07" layoutX="452.0" layoutY="263.0" mnemonicParsing="false" onAction="#button07Handler" prefHeight="170.0" prefWidth="170.0" text="7">
                      <font>
                         <Font name="Agency FB" size="40.0" />
                      </font>
                   </Button>
-                  <Button layoutX="622.0" layoutY="263.0" mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0" text="8">
+                  <Button fx:id="button08" layoutX="622.0" layoutY="263.0" mnemonicParsing="false" onAction="#button08Handler" prefHeight="170.0" prefWidth="170.0" text="8">
                      <font>
                         <Font name="Agency FB" size="40.0" />
                      </font>

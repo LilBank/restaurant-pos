@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.Main;
-import application.ManagerTableView;
+import application.MGTableView;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
@@ -94,7 +94,7 @@ public class MGEditMenuController {
 	 * 
 	 */
 	public void backButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new ManagerTableView());
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new MGTableView());
 	}
 
 	/**

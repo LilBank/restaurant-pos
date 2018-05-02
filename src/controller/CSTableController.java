@@ -150,7 +150,6 @@ public class CSTableController {
 		if (number.length() == 0) {
 			alert = new Alert(AlertType.ERROR, "Please input table number.", ButtonType.OK);
 			alert.show();
-			ok.setDisable(false);
 		}
 		else {
 			ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new CSOrder(number));

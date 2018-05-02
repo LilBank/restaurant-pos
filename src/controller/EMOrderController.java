@@ -14,14 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Food;
 
-/**
- * CSMenuController contains method for handling all event receive from the
- * UserInterface.
- * 
- * @author Piyawat & Vichaphol
- *
- */
-public class CSOrderController {
+public class EMOrderController {
 	@FXML
 	private Button order;
 	@FXML
@@ -35,14 +28,17 @@ public class CSOrderController {
 	@FXML
 	private TableColumn<Food, ?> tableColumn;
 
-	final ObservableList<Food> data = FXCollections.observableArrayList(new Food("Pizza", 1, 50),
-			new Food("Ham", 1, 20));
+	// final ObservableList<Food> data = FXCollections.observableArrayList(new
+	// Food("Pizza", 1, 50),
+	// new Food("Ham", 1, 20));
 
 	private static String tablenumber;
+	private static String user;
 
 	@FXML
 	public void initialize() {
 		createTableColumn();
+
 	}
 
 	/**
@@ -59,7 +55,6 @@ public class CSOrderController {
 		TableColumn priceC = new TableColumn("Price");
 		priceC.setMinWidth(100);
 		priceC.setCellValueFactory(new PropertyValueFactory<Food, Integer>("price"));
-		table.setItems(data);
 		table.getColumns().addAll(nameC, quantityC, priceC);
 	}
 
@@ -95,4 +90,5 @@ public class CSOrderController {
 	public int getTable() {
 		return Integer.parseInt(tablenumber);
 	}
+
 }

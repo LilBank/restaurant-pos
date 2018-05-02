@@ -2,7 +2,7 @@ package application;
 
 import javafx.stage.Stage;
 
-public class ManagerTableView extends AbstractWindow {
+public class MGTableView extends AbstractWindow {
 	@Override
 	public void start(Stage stage) {
 		try{

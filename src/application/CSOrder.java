@@ -4,7 +4,7 @@ import controller.CSOrderController;
 import javafx.stage.Stage;
 
 /**
- * CSMenu class that extends AbstractWindow for capable of running the method
+ * CSOrder class that extends AbstractWindow for capable of running the method
  * switchWindow. This window is for selecting the food, which can be edited, in
  * the customer mode.
  * 
@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  */
 public class CSOrder extends AbstractWindow {
 
-	// for setting the tablenumber to CSMenuController
+	// for setting the tablenumber to CSOrderController
 	public CSOrder(String input) {
 		CSOrderController.setTable(input);
 	}
