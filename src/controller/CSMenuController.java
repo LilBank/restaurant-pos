@@ -1,13 +1,18 @@
 package controller;
 
-import application.CSTable;
 import application.CheckBill;
+import application.CSTable;
 import application.Main;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -22,7 +27,7 @@ import model.Food;
  * @author Piyawat & Vichaphol
  *
  */
-public class CSOrderController {
+public class CSMenuController {
 	@FXML
 	private Button order;
 	@FXML
@@ -33,16 +38,32 @@ public class CSOrderController {
 	private TextField totalPrice;
 	@FXML
 	private TableView<Food> table;
+	/** List view of food */
 	@FXML
-	private TableColumn<Food, ?> tableColumn;
-
+	private ListView<Button> foodListView;
+	/** List view of drink */ 
+	@FXML
+	private ListView<Button> drinkListView;
+	/** Combined with food list view */
+	@FXML
+	ListProperty<Button> foodListProperty = new SimpleListProperty<>();
+	/** Combined with drink list view */
+	@FXML
+	ListProperty<Button> drinkListProperty = new SimpleListProperty<>();
+	
+	/** Initialize all menu in the table */
 	final ObservableList<Food> data = FXCollections.observableArrayList(new Food("Pizza", 1, 50),
 			new Food("Ham", 1, 20));
-
+	
 	private static String tablenumber;
 
 	@FXML
 	public void initialize() {
+		foodListView.setVisible(false);
+		drinkListView.setVisible(false);
+		foodListProperty.set(FXCollections.observableArrayList(MGEditMenuController.getImage()));
+		drinkListProperty.set(FXCollections.observableArrayList(MGEditMenuController.getImage()));
+		foodListView.itemsProperty().bind(foodListProperty);
 		createTableColumn();
 	}
 
@@ -64,10 +85,27 @@ public class CSOrderController {
 		table.getColumns().addAll(nameC, quantityC, priceC);
 	}
 
+	/**
+	 * Handler for food button. When pressed, the food view will be shown.
+	 * 
+	 */
+	public void foodButtonHandler(ActionEvent event) {
+		foodListView.setVisible(true);
+		foodListProperty.set(FXCollections.observableArrayList(MGEditMenuController.getImage()));
+	}
+
+	/**
+	 * Handler for drink button. When pressed, the drink view will be shown.
+	 * 
+	 */
+	public void drinkButtonHandler(ActionEvent event) {
+		drinkListView.setVisible(true);
+	}
+
 	// during in test
 	public void orderButtonHandler(ActionEvent event) {
 		// ScreenController.switchWindow((Stage) order.getScene().getWindow(),
-		// new CheckBill(totalPrice.getText()));
+		// new CSCheckBill(totalPrice.getText()));
 	}
 
 	/**
@@ -79,7 +117,7 @@ public class CSOrderController {
 	}
 
 	/**
-	 * Handler for logout button. When event receive the Start up scene is
+	 * Handler for logout button. When event recieve the Start up scene is
 	 * shown.
 	 * 
 	 */

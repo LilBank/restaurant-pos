@@ -1,7 +1,11 @@
 package controller;
 
-import application.Main;
 import application.MGTableView;
+import application.Main;
+<<<<<<< HEAD
+import application.MGTableView;
+=======
+>>>>>>> branch 'master' of https://github.com/bankkeez/projectx-restaurantPOS.git
 import application.TableView;
 import database.DBManager;
 import javafx.event.ActionEvent;
