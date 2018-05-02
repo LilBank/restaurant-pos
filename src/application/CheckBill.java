@@ -10,12 +10,12 @@ import javafx.stage.Stage;
  * @author Piyawat & Vichaphol
  *
  */
-public class CSCheckBill extends AbstractWindow {
+public class CheckBill extends AbstractWindow {
 
 	private String total;
 
 	// for getting the total from CSMenu
-	public CSCheckBill(String total) {
+	public CheckBill(String total) {
 		this.total = total;
 	}
 
@@ -26,7 +26,7 @@ public class CSCheckBill extends AbstractWindow {
 	@Override
 	public void start(Stage stage) {
 		try {
-			super.setFilename("view/customer-checkbill.fxml");
+			super.setFilename("view/checkbill.fxml");
 			super.start(stage);
 			stage.setTitle("Check Bill");
 		} catch (Exception e) {

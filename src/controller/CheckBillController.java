@@ -14,7 +14,7 @@ import jdk.management.resource.internal.TotalResourceContext;
  * @author Piyawat & Vichaphol
  *
  */
-public class CSCheckBillController {
+public class CheckBillController {
 	@FXML
 	private Button thousand;
 	@FXML

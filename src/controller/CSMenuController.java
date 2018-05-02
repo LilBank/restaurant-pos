@@ -1,6 +1,6 @@
 package controller;
 
-import application.CSCheckBill;
+import application.CheckBill;
 import application.CSTable;
 import application.Main;
 import javafx.beans.property.ListProperty;
@@ -96,13 +96,10 @@ public class CSMenuController extends MGMenuController {
 		drinkList.setVisible(true);
 	}
 
-	/**
-	 * Handler for order button. When event receive the CS checkbill scene is
-	 * shown.
-	 * 
-	 */
+	// during in test
 	public void orderButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) order.getScene().getWindow(), new CSCheckBill(totalPrice.getText()));
+		// ScreenController.switchWindow((Stage) order.getScene().getWindow(),
+		// new CSCheckBill(totalPrice.getText()));
 	}
 
 	/**
