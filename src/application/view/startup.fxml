@@ -24,7 +24,7 @@
                   <Font name="MS Gothic" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="login" layoutX="229.0" layoutY="145.0" mnemonicParsing="false" onMouseClicked="#loginButtonHandler" prefHeight="125.0" prefWidth="131.0" style="-fx-background-radius: 100;" text="Login">
+            <Button fx:id="login" defaultButton="true" layoutX="229.0" layoutY="145.0" mnemonicParsing="false" onMouseClicked="#loginButtonHandler" prefHeight="125.0" prefWidth="131.0" style="-fx-background-radius: 100;" text="Login">
                <font>
                   <Font name="MS Gothic" size="24.0" />
                </font>
