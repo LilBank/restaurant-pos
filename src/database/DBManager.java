@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.control.Button;
@@ -107,16 +108,16 @@ public class DBManager {
 		// username does not exist
 		return true;
 	}
-	
-	//during in test
-	public static List<Button> getButtons(String arg) {
-		List<Button> temp = null;
-		sqlCommand = "SELECT * FROM Menu";
+
+	// during in test
+	public static List<String> getButtons(String foodkind) {
+		List<String> temp = new ArrayList<>();
+		sqlCommand = "SELECT * FROM " + foodkind;
 		try {
 			ResultSet rs = getData(sqlCommand);
 			while (rs.next()) {
 				String text = rs.getString("name");
-				temp.add(new Button(text));
+				temp.add(text);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -100,6 +100,8 @@ public class Order {
 
 	// for testing
 	public static void main(String[] args) {
+		// List<String> temp = DBManager.getButtons("Menu");
+		// temp.forEach((x) -> System.out.println(x));
 		Order om = Order.getInstance();
 		// test adding
 		om.addOrder(new Menu("cocoa", 20));
@@ -109,7 +111,8 @@ public class Order {
 		om.addOrder(new Menu("Steak", 100));
 		om.addOrder(new Menu("water", 10));
 		om.addOrder(new Menu("cocoa", 20));
-		om.addOrder(new Menu("Steak", 100));;
+		om.addOrder(new Menu("Steak", 100));
+		;
 		om.addOrder(new Menu("water", 10));
 		om.addOrder(new Menu("cocoa", 20));
 		om.addOrder(new Menu("cocoa", 20));

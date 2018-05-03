@@ -1,12 +1,20 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import application.EMTableView;
 import application.Main;
+import database.DBManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -21,8 +29,6 @@ public class EMOrderController {
 	@FXML
 	private Button order;
 	@FXML
-	private Button checkBill;
-	@FXML
 	private Button back;
 	@FXML
 	private Button exit;
@@ -34,14 +40,21 @@ public class EMOrderController {
 	private Pane foodpane;
 	@FXML
 	private Pane drinkpane;
-	@FXML
-	private Button temp;
 
 	private static String tablenumber;
 
 	@FXML
 	public void initialize() {
-
+		List<String> texts = DBManager.getButtons("Menu");
+		System.out.println("get all names");
+		for (String text : texts) {
+			Button button = new Button(text);
+			button.setPrefSize(150, 150);
+			//button.setOnActon(...);
+			foodpane.getChildren().add(button);
+		}
+		System.out.println("buttons created and added to the list");
+		System.out.println("buttons added to the foodpane");
 	}
 
 	/**

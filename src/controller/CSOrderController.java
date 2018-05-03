@@ -1,7 +1,10 @@
 package controller;
 
+import java.util.List;
+
 import application.CSTable;
 import application.Main;
+import database.DBManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,9 +13,9 @@ import javafx.stage.Stage;
 //import model.Food;
 
 /**
- * CSMenuController(customer) contains method for handling all event receive from the
- * UserInterface. Contains method for customer to call for bill check and order
- * dishes.
+ * CSMenuController(customer) contains method for handling all event receive
+ * from the UserInterface. Contains method for customer to call for bill check
+ * and order dishes.
  * 
  * @author Piyawat & Vichaphol
  *
@@ -26,17 +29,17 @@ public class CSOrderController {
 	private Button exit;
 	@FXML
 	private TextField totalPrice;
-	
+
 	private static String tablenumber;
 
 	@FXML
 	public void initialize() {
-
+		
 	}
 
 	// during in test
 	public void orderButtonHandler(ActionEvent event) {
-		
+
 	}
 
 	/**

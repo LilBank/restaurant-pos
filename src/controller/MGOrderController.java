@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+
 import application.MGTableView;
 import application.Main;
 import javafx.event.ActionEvent;
@@ -39,7 +41,6 @@ public class MGOrderController {
 
 	@FXML
 	public void initialize() {
-
 	}
 
 	// during in test
