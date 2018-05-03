@@ -37,7 +37,7 @@ public class EMOrderController {
 
 	// will be used when generate button is done
 	@FXML
-	private Pane foodpane;
+	private HBox foodpane;
 	@FXML
 	private Pane drinkpane;
 
@@ -47,14 +47,15 @@ public class EMOrderController {
 	public void initialize() {
 		List<String> texts = DBManager.getButtons("Menu");
 		System.out.println("get all names");
+		foodpane.setSpacing(5);
 		for (String text : texts) {
 			Button button = new Button(text);
 			button.setPrefSize(150, 150);
-			//button.setOnActon(...);
+			// HBox.setMargin(button, new Insets(5));
+			// button.setOnActon(...);
 			foodpane.getChildren().add(button);
+
 		}
-		System.out.println("buttons created and added to the list");
-		System.out.println("buttons added to the foodpane");
 	}
 
 	/**
