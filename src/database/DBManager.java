@@ -1,5 +1,11 @@
 package database;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -9,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import util.PropertyManager;
 
 /**
@@ -32,8 +40,8 @@ public class DBManager {
 	 *            from Login's input
 	 * @param password
 	 *            from Login's input
-	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 =
-	 *         user doesn't exists
+	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 = user
+	 *         doesn't exists
 	 */
 	public static int login(String user, String pass) {
 		sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
@@ -60,8 +68,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for inserting data(new user's data) to the database. The access
-	 * type is set to 1 by default but can be change later on.
+	 * Method for inserting data(new user's data) to the database. The access type
+	 * is set to 1 by default but can be change later on.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -81,8 +89,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for retrieving data from the database to check whether if the
-	 * username inputed has already exist or not.
+	 * Method for retrieving data from the database to check whether if the username
+	 * inputed has already exist or not.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -110,7 +118,7 @@ public class DBManager {
 	}
 
 	// during in test
-	public static List<String> getButtons(String foodkind) {
+	public static List<String> getString(String foodkind) {
 		List<String> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + foodkind;
 		try {
@@ -136,6 +144,48 @@ public class DBManager {
 		}
 		// never reaches because DB_URL is always found
 		return null;
+	}
+
+	/**
+	 * Method for storing image from the database.
+	 */
+	public void ImageToDB() {
+		// sqlCommand = "INSERT INTO `Images` (`id`, `path`, `image`) VALUES ('', '',
+		// '');
+		try {
+			Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+			Statement statement = connection.createStatement();
+			statement.executeUpdate(sqlCommand);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public ImageView getImage() {
+		sqlCommand = "SELECT * FROM ";
+		ImageView imageView = null;
+		try {
+			ResultSet rs = getData(sqlCommand);
+			while (rs.next()) {
+				InputStream is = rs.getBinaryStream(1);
+				OutputStream os = new FileOutputStream(new File(""));
+				byte[] contents = new byte[1024];
+				int size = is.read(contents);
+				while (size != -1) {
+					os.write(contents, 0, size);
+				}
+				Image image = new Image(is);
+				imageView = new ImageView(image);
+				return imageView;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return imageView;
 	}
 
 }

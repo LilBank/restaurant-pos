@@ -10,8 +10,8 @@ import javafx.scene.image.ImageView;
 public class CachingImageFactory extends ImageFactory {
 	@Override
 	public ImageView getImage(String filename) {
-		
-		return ;
+		//using map
+		return null;
 		
 	}
 }
