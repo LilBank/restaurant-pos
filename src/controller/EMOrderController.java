@@ -10,6 +10,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -37,7 +39,7 @@ public class EMOrderController {
 
 	// will be used when generate button is done
 	@FXML
-	private HBox foodpane;
+	private ButtonBar foodpane;
 	@FXML
 	private Pane drinkpane;
 
@@ -47,13 +49,14 @@ public class EMOrderController {
 	public void initialize() {
 		List<String> texts = DBManager.getButtons("Menu");
 		System.out.println("get all names");
-		foodpane.setSpacing(5);
-		for (String text : texts) {
-			Button button = new Button(text);
+		
+		for (int i = 0; i < texts.size(); i++) {
+			Button button = new Button(texts.get(i));
 			button.setPrefSize(150, 150);
 			// HBox.setMargin(button, new Insets(5));
 			// button.setOnActon(...);
-			foodpane.getChildren().add(button);
+			ButtonBar.setButtonData(button,ButtonData.YES);
+			foodpane.getButtons().add(button);
 
 		}
 	}
@@ -67,8 +70,7 @@ public class EMOrderController {
 	}
 
 	/**
-	 * Handler for logout button. When event receive the Start up scene is
-	 * shown.
+	 * Handler for logout button. When event receive the Start up scene is shown.
 	 * 
 	 */
 	public void exitButtonHandler(ActionEvent event) {
