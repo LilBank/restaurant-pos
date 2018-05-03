@@ -36,8 +36,8 @@ public class SignUpController {
 
 	/**
 	 * Method for handling confirm button. When event receive then the
-	 * implementation below is done. Every fail cases gives different Alert
-	 * reply message.
+	 * implementation below is done. Every fail cases gives different Alert reply
+	 * message.
 	 * 
 	 * @param event
 	 */
@@ -64,11 +64,13 @@ public class SignUpController {
 			if (!allow) {
 				alert = new Alert(AlertType.ERROR, "Username already exist! Please use another username.",
 						ButtonType.OK);
+				alert.setHeaderText("Inputfield Error");
 				alert.show();
 			}
 			if (allow) {
 				alert = new Alert(AlertType.NONE,
 						"You are registered as an restaurant employee. Press ok to continue...", ButtonType.OK);
+				alert.setHeaderText("Congratulations");
 				alert.showAndWait().ifPresent(response -> {
 					if (response == ButtonType.OK) {
 						DBManager.signUp(username.getText(), password.getText());
@@ -80,8 +82,7 @@ public class SignUpController {
 	}
 
 	/**
-	 * Method for handling cancel button. When event receive Main scene is
-	 * shown.
+	 * Method for handling cancel button. When event receive Main scene is shown.
 	 * 
 	 * @param event
 	 */
