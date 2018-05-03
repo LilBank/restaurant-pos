@@ -49,13 +49,15 @@ public class EMOrderController {
 	public void initialize() {
 		List<String> texts = DBManager.getButtons("Menu");
 		System.out.println("get all names");
-		
-		for (int i = 0; i < texts.size(); i++) {
+
+		for (int i = 0; i < texts.size(); i += 5) {
 			Button button = new Button(texts.get(i));
 			button.setPrefSize(150, 150);
 			// HBox.setMargin(button, new Insets(5));
 			// button.setOnActon(...);
-			ButtonBar.setButtonData(button,ButtonData.YES);
+			button.setLayoutX(i);
+			button.setLayoutY(i);
+			ButtonBar.setButtonData(button, ButtonData.YES);
 			foodpane.getButtons().add(button);
 
 		}

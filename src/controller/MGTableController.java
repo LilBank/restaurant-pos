@@ -106,6 +106,7 @@ public class MGTableController {
 	 */
 	public void logoutButtonHandler(ActionEvent event) {
 		alert = new Alert(AlertType.CONFIRMATION, "Are you sure you want to log out ?", ButtonType.OK);
+		alert.setHeaderText("Confirmation");
 		alert.showAndWait().ifPresent(response -> {
 			if (response == ButtonType.OK) {
 				ScreenController.switchWindow((Stage) logout.getScene().getWindow(), new Login());

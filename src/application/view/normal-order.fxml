@@ -44,7 +44,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ButtonBar fx:id="foodpane" prefHeight="611.0" prefWidth="542.0" />
+                              <ButtonBar fx:id="foodpane" centerShape="false" focusTraversable="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="611.0" prefWidth="542.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
