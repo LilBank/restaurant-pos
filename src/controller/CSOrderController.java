@@ -8,10 +8,12 @@ import database.DBManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 //import model.Food;
@@ -40,31 +42,34 @@ public class CSOrderController {
 	private FlowPane drinkpane;
 
 	private static String tablenumber;
-	private static List<String> foodname = DBManager.getFoodname("Foods");
-	private static List<String> drinkname = DBManager.getFoodname("Drinks");
-	private static List<String> urlImage = DBManager.getImageURL("Images");
+	private static List<String> foodname = DBManager.getText("Foods", "name");
+	private static List<String> drinkname = DBManager.getText("Drinks", "name");
+	private static List<String> foodUrl = DBManager.getText("Foods", "url");
+	private static List<String> drinkUrl = DBManager.getText("Foods", "url");
 
 	@FXML
 	public void initialize() {
 		// adding buttons to foodpane
 		System.out.println(tablenumber);
-		setImage(foodname);
-		setImage(drinkname);
+		System.out.println(drinkname);
+		setImage(foodpane, foodname, foodUrl);
+		setImage(drinkpane, drinkname, drinkUrl);
 	}
 
-	public void setImage(List<String> name) {
+	public void setImage(FlowPane pane, List<String> name, List<String> url) {
 		int i = 0;
-		for (String text : foodname) {
+		for (String text : name) {
 			Button button = new Button(text);
-			Image image = new Image(urlImage.get(i));
+			Image image = new Image(url.get(0));
 			i++;
 			ImageView view = new ImageView(image);
 			view.setFitHeight(100);
 			view.setFitWidth(100);
+			button.setPrefSize(100, 100);
 			button.setWrapText(true);
 			button.setTextAlignment(TextAlignment.CENTER);
 			button.setGraphic(view);
-			foodpane.getChildren().add(button);
+			pane.getChildren().add(button);
 		}
 	}
 

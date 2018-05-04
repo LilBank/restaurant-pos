@@ -5,7 +5,6 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import application.TableView;
 import application.Main;
 import database.DBManager;
@@ -16,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextInputDialog;
@@ -38,7 +38,9 @@ public class MGEditMenuController {
 	@FXML
 	Button back;
 	@FXML
-	Button newImage;
+	Button newFood;
+	@FXML
+	Button newDrink;
 	@FXML
 	Button deleteImage;
 	@FXML
@@ -70,7 +72,24 @@ public class MGEditMenuController {
 	 * 
 	 * @throws MalformedURLException
 	 */
-	public void insertImageHandler(ActionEvent event) {
+	public void insertFoodHandler(ActionEvent event) {
+		createData("Foods", name, price, url);
+	}
+	/**
+	 * Method for handling newImage button. Insert image to the list view.
+	 * 
+	 * @throws MalformedURLException
+	 */
+	public void insertDrinkHandler(ActionEvent event) {
+		createData("Drinks", name, price, url);
+	}
+
+	/**
+	 * Method for handling newImage button. Insert image to the list view.
+	 * 
+	 * @throws MalformedURLException
+	 */
+	public void createData(String table, String name, String price, String url) {
 		// Ask user to input dialog.
 		TextInputDialog dialog = new TextInputDialog("");
 		dialog.setTitle("Input URL");
@@ -91,9 +110,9 @@ public class MGEditMenuController {
 			alert.setHeaderText("Inputfield Error");
 			alert.show();
 		} else {
-			result.ifPresent(name -> {
-				DBManager.ImageToDB("", result.get());
-			});
+			if (result.isPresent()) {
+				DBManager.InsertTo(table, name, price, url);
+			}
 			image = new Image(result.get());
 			Button foods = new Button();
 			ImageView view = new ImageView(image);

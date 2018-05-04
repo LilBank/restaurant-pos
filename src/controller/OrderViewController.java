@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 
 import application.TableView;
+import application.CheckBill;
 import application.Main;
 import database.DBManager;
 import javafx.event.ActionEvent;
@@ -29,6 +30,8 @@ public class OrderViewController {
 	private Button back;
 	@FXML
 	private Button exit;
+	@FXML
+	private Button checkBill;
 	@FXML
 	private TextField totalPrice;
 	@FXML
@@ -66,6 +69,13 @@ public class OrderViewController {
 	 */
 	public void backButtonHandler(ActionEvent event) {
 		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new TableView());
+	}
+	/**
+	 * Handler for back button. When event receive the CS table scene is shown.
+	 * 
+	 */
+	public void checkBillButtonHandler(ActionEvent event) {
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new CheckBill(null));
 	}
 
 	/**

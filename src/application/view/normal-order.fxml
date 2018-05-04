@@ -59,10 +59,9 @@
                            <children>
                               <ScrollPane hbarPolicy="NEVER">
                                  <content>
-                                    <FlowPane fx:id="foodpane1" prefHeight="200.0" prefWidth="531.0" />
+                                    <FlowPane fx:id="drinkpane" prefHeight="616.0" prefWidth="538.0" />
                                  </content>
                               </ScrollPane>
-                              <FlowPane fx:id="drinkpane" prefHeight="200.0" prefWidth="531.0" />
                            </children>
                         </AnchorPane>
                   </content>

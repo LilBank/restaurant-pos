@@ -30,8 +30,8 @@ public class DBManager {
 	 *            from Login's input
 	 * @param password
 	 *            from Login's input
-	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 =
-	 *         user doesn't exists
+	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 = user
+	 *         doesn't exists
 	 */
 	public static int login(String user, String pass) {
 		sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
@@ -58,8 +58,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for inserting data(new user's data) to the database. The access
-	 * type is set to 1 by default but can be change later on.
+	 * Method for inserting data(new user's data) to the database. The access type
+	 * is set to 1 by default but can be change later on.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -79,8 +79,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for retrieving data from the database to check whether if the
-	 * username inputed has already exist or not.
+	 * Method for retrieving data from the database to check whether if the username
+	 * inputed has already exist or not.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -107,14 +107,19 @@ public class DBManager {
 		return true;
 	}
 
-	// during in test
-	public static List<String> getFoodname(String foodkind) {
+	/**
+	 * 
+	 * @param table
+	 * @param column
+	 * @return
+	 */
+	public static List<String> getText(String table, String column) {
 		List<String> temp = new ArrayList<>();
-		sqlCommand = "SELECT * FROM " + foodkind;
+		sqlCommand = "SELECT * FROM " + table;
 		try {
 			ResultSet rs = getData(sqlCommand);
 			while (rs.next()) {
-				String text = rs.getString("name");
+				String text = rs.getString(column);
 				temp.add(text);
 			}
 		} catch (SQLException e) {
@@ -139,8 +144,9 @@ public class DBManager {
 	/**
 	 * Method for storing image from the database.
 	 */
-	public static void ImageToDB(String name, String url) {
-		sqlCommand = "INSERT INTO `Images` (`url`, `name`)" + "VALUES" + "(" + "'" + url + "'" + ", '" + name + "')";
+	public static void InsertTo(String foodtable, String name, String price, String url) {
+		sqlCommand = "INSERT INTO `" + foodtable + "` (`name`, `price`, `url`)" + "VALUES" + "(" + "'" + name + "'"
+				+ ", '" + price + "'" + "'" + url + "'" + ")";
 
 		try {
 			Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -149,27 +155,6 @@ public class DBManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * Method for getting list of URl.
-	 * 
-	 * @param name
-	 * @return list containing url
-	 */
-	public static List<String> getImageURL(String name) {
-		sqlCommand = "SELECT * FROM " + name;
-		List<String> temp = new ArrayList<>();
-		try {
-			ResultSet rs = getData(sqlCommand);
-			while (rs.next()) {
-				String url = rs.getString("url");
-				temp.add(url);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return temp;
 	}
 
 }
