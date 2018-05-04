@@ -42,10 +42,10 @@ public class CSOrderController {
 	private FlowPane drinkpane;
 
 	private static String tablenumber;
-	private static List<String> foodname = DBManager.getText("Foods", "name");
-	private static List<String> drinkname = DBManager.getText("Drinks", "name");
-	private static List<String> foodUrl = DBManager.getText("Foods", "url");
-	private static List<String> drinkUrl = DBManager.getText("Foods", "url");
+	private static List<String> foodname = DBManager.getFoodname("Foods", "name");
+	private static List<String> drinkname = DBManager.getFoodname("Drinks", "name");
+	private static List<String> foodUrl = DBManager.getFoodname("Foods", "url");
+	private static List<String> drinkUrl = DBManager.getFoodname("Foods", "url");
 
 	@FXML
 	public void initialize() {

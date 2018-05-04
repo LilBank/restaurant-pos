@@ -67,22 +67,22 @@ public class MGEditMenuController {
 		return folderImage;
 	}
 
-	/**
-	 * Method for handling newImage button. Insert image to the list view.
-	 * 
-	 * @throws MalformedURLException
-	 */
-	public void insertFoodHandler(ActionEvent event) {
-		createData("Foods", name, price, url);
-	}
-	/**
-	 * Method for handling newImage button. Insert image to the list view.
-	 * 
-	 * @throws MalformedURLException
-	 */
-	public void insertDrinkHandler(ActionEvent event) {
-		createData("Drinks", name, price, url);
-	}
+//	/**
+//	 * Method for handling newImage button. Insert image to the list view.
+//	 * 
+//	 * @throws MalformedURLException
+//	 */
+//	public void insertFoodHandler(ActionEvent event) {
+//		createData("Foods", name, price, url);
+//	}
+//	/**
+//	 * Method for handling newImage button. Insert image to the list view.
+//	 * 
+//	 * @throws MalformedURLException
+//	 */
+//	public void insertDrinkHandler(ActionEvent event) {
+//		createData("Drinks", name, price, url);
+//	}
 
 	/**
 	 * Method for handling newImage button. Insert image to the list view.

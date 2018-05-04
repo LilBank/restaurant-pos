@@ -15,9 +15,9 @@ import util.ScreenController;
 import util.UserManager;
 
 /**
- * TableViewController(manager/employee) class contains method for handling event from the
- * UserInterface. Contains method that can look up orders in each table with
- * full permission to manage the restaurant.
+ * TableViewController(manager/employee) class contains method for handling
+ * event from the UserInterface. Contains method that can look up orders in each
+ * table with full permission to manage the restaurant.
  * 
  * @author Piyawat & Vichapol
  *
@@ -49,7 +49,8 @@ public class TableViewController {
 	private Button button08;
 
 	// for single implementation
-	private static boolean admin = UserManager.getInstance().getUser().isAdmin();
+	private static UserManager um = UserManager.getInstance();
+	private static boolean admin = um.getUser().isAdmin();
 
 	@FXML
 	public void initialize() {
@@ -60,9 +61,9 @@ public class TableViewController {
 			manageUser.setDisable(true);
 			manageUser.setVisible(false);
 		}
-		System.out.println(UserManager.getInstance().getUser().getUsername());
-		System.out.println(UserManager.getInstance().getUser().getAccessLevel());
-		System.out.println(admin);
+		System.out.println("username: " + um.getUser().getUsername());
+		System.out.println("access level: " + um.getUser().getAccessLevel());
+		System.out.println("is admin: " + admin);
 	}
 
 	public void button01Handler(ActionEvent event) {

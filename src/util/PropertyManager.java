@@ -11,6 +11,7 @@ import java.util.Properties;
  *
  */
 public class PropertyManager {
+	
 	public static final String RESTAURANT_CONFIG = "restaurant.config";
 	private static PropertyManager pm;
 	private Properties properties;

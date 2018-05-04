@@ -23,7 +23,7 @@ public class CSOrder extends AbstractWindow {
 		try {
 			super.setFilename("view/customer-order.fxml");
 			super.start(stage);
-			stage.setTitle("Customer Menu");
+			stage.setTitle("Menu");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

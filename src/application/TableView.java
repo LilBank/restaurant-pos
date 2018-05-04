@@ -15,9 +15,9 @@ public class TableView extends AbstractWindow {
 	@Override
 	public void start(Stage stage) {
 		try {
-			super.setFilename("view/manager-tableview.fxml");
+			super.setFilename("view/tableview.fxml");
 			super.start(stage);
-			stage.setTitle("Manager Tableview");
+			stage.setTitle("Tableview");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

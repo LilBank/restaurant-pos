@@ -1,5 +1,6 @@
 package application;
 
+import controller.CheckBillController;
 import javafx.stage.Stage;
 import util.AbstractWindow;
 
@@ -13,15 +14,9 @@ import util.AbstractWindow;
  */
 public class CheckBill extends AbstractWindow {
 
-	private String total;
-
-	// for getting the total from CSMenu
+	// for setting the bill in CheckBillController
 	public CheckBill(String total) {
-		this.total = total;
-	}
-
-	public int getTotal() {
-		return Integer.parseInt(this.total);
+		CheckBillController.setBill(total);
 	}
 
 	@Override

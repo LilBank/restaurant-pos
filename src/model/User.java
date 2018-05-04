@@ -1,7 +1,5 @@
 package model;
 
-import util.UserManager;
-
 /**
  * An object that represents a User. Consist of username and PrivilageEnum.
  * Contains method for getting private attributes and other uses.
@@ -11,9 +9,10 @@ import util.UserManager;
  */
 public class User {
 	private String username;
-	private PrivilageEnum privilage = PrivilageEnum.USER;
+	private PrivilegeEnum privilage = PrivilegeEnum.USER;
 
 	/**
+	 * Constructor for employee. Privilege is set to 1.
 	 * 
 	 * @param username
 	 */
@@ -21,23 +20,43 @@ public class User {
 		this.username = username;
 	}
 
-	public User(String username, PrivilageEnum num) {
+	/**
+	 * Constructor for manager. Privilege is set to 2.
+	 * 
+	 * @param username
+	 */
+	public User(String username, PrivilegeEnum num) {
 		this.username = username;
 		privilage = num;
 	}
 
+	/**
+	 * Check if the current user is administrator or not.
+	 * 
+	 * @return true if administrator
+	 */
 	public boolean isAdmin() {
-		if (2 == UserManager.getInstance().getUser().privilage.getNumber()) {
+		if (2 == privilage.getNumber()) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
+	/**
+	 * Return the current user username.
+	 * 
+	 * @return username
+	 */
 	public String getUsername() {
 		return this.username;
 	}
 
+	/**
+	 * Return the current access level in Integer.
+	 * 
+	 * @return int for access level
+	 */
 	public int getAccessLevel() {
 		return privilage.getNumber();
 	}

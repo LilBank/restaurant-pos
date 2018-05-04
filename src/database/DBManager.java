@@ -30,8 +30,8 @@ public class DBManager {
 	 *            from Login's input
 	 * @param password
 	 *            from Login's input
-	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 = user
-	 *         doesn't exists
+	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 =
+	 *         user doesn't exists
 	 */
 	public static int login(String user, String pass) {
 		sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
@@ -58,8 +58,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for inserting data(new user's data) to the database. The access type
-	 * is set to 1 by default but can be change later on.
+	 * Method for inserting data(new user's data) to the database. The access
+	 * type is set to 1 by default but can be change later on.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -79,8 +79,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for retrieving data from the database to check whether if the username
-	 * inputed has already exist or not.
+	 * Method for retrieving data from the database to check whether if the
+	 * username inputed has already exist or not.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -107,19 +107,30 @@ public class DBManager {
 		return true;
 	}
 
-	/**
-	 * 
-	 * @param table
-	 * @param column
-	 * @return
-	 */
-	public static List<String> getText(String table, String column) {
+	//during in test
+	public static List<String> getFoodname(String table, String column) {
 		List<String> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + table;
 		try {
 			ResultSet rs = getData(sqlCommand);
 			while (rs.next()) {
 				String text = rs.getString(column);
+				temp.add(text);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return temp;
+	}
+
+	// during in test
+	public static List<String> getFoodname(String foodkind) {
+		List<String> temp = new ArrayList<>();
+		sqlCommand = "SELECT * FROM " + foodkind;
+		try {
+			ResultSet rs = getData(sqlCommand);
+			while (rs.next()) {
+				String text = rs.getString("name");
 				temp.add(text);
 			}
 		} catch (SQLException e) {

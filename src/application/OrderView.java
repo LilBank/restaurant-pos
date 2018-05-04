@@ -21,9 +21,9 @@ public class OrderView extends AbstractWindow {
 
 	public void start(Stage stage) {
 		try {
-			super.setFilename("view/normal-order.fxml");
+			super.setFilename("view/orderview.fxml");
 			super.start(stage);
-			stage.setTitle("Waiter Order");
+			stage.setTitle("Menu");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

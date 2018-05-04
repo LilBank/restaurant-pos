@@ -2,7 +2,13 @@ package util;
 
 import model.User;
 
+/**
+ * 
+ * @author Piyawat & Vichaphol
+ *
+ */
 public class UserManager {
+	
 	private User user;
 	private static UserManager um;
 

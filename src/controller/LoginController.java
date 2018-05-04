@@ -12,7 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import model.PrivilageEnum;
+import model.PrivilegeEnum;
 import model.User;
 import util.ScreenController;
 import util.UserManager;
@@ -73,7 +73,7 @@ public class LoginController {
 				alert = new Alert(AlertType.NONE, "Welcome manager: " + username.getText(), ButtonType.OK);
 				alert.setHeaderText("Login Success");
 				alert.show();
-				UserManager.getInstance().setUser(new User(username.getText(), PrivilageEnum.ADMIN));
+				UserManager.getInstance().setUser(new User(username.getText(), PrivilegeEnum.ADMIN));
 				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new TableView());
 			}
 			// int = 1 for normal mode
