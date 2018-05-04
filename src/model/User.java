@@ -13,6 +13,10 @@ public class User {
 	private String username;
 	private PrivilageEnum privilage = PrivilageEnum.USER;
 
+	/**
+	 * 
+	 * @param username
+	 */
 	public User(String username) {
 		this.username = username;
 	}
