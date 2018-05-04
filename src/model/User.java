@@ -15,11 +15,18 @@ public class User {
 		privilage = num;
 	}
 
-	public boolean isAdmin(User user) {
-		if (user.privilage.getNumber() == UserManager.getInstance().getUser().privilage.getNumber()) {
+	public boolean isAdmin() {
+		if (2 == UserManager.getInstance().getUser().privilage.getNumber()) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+	
+	public String getUsername(){
+		return this.username;
+	}
+	public int getAccessLevel(){
+		return privilage.getNumber();
 	}
 }

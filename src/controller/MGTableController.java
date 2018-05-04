@@ -1,17 +1,18 @@
 package controller;
 
+import application.EMOrder;
 import application.Login;
 import application.MGMenu;
-import application.MGOrder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.layout.Pane;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import util.ScreenController;
+import util.UserManager;
 
 /**
  * MGTableController(manager) class contains method for handling event from the
@@ -23,7 +24,9 @@ import util.ScreenController;
  */
 public class MGTableController {
 	@FXML
-	private Button image;
+	private Button editMenu;
+	@FXML
+	private Button manageUser;
 	@FXML
 	private Button logout;
 	@FXML
@@ -45,9 +48,20 @@ public class MGTableController {
 	@FXML
 	private Button button08;
 
+	private static boolean admin = UserManager.getInstance().getUser().isAdmin();
+
 	@FXML
 	public void intialize() {
-
+//		if (!admin) {
+//			editMenu.disableProperty();
+//			// editMenu.setVisible(false);
+//			manageUser.disableProperty();
+//			// manageUser.setVisible(false);
+//		}
+		System.out.println("initializing");
+		System.out.println(UserManager.getInstance().getUser().getUsername());
+		System.out.println(UserManager.getInstance().getUser().getAccessLevel());
+		System.out.println(admin);
 	}
 
 	public void button01Handler(ActionEvent event) {
@@ -83,13 +97,13 @@ public class MGTableController {
 	}
 
 	/**
-	 * Handler for every table button. When event receive the MGOrder scene
-	 * is shown.
+	 * Handler for every table button. When event receive the MGOrder scene is
+	 * shown.
 	 * 
 	 * @param button
 	 */
 	public void tableButtonHandler(Button button) {
-		ScreenController.switchWindow((Stage) button.getScene().getWindow(), new MGOrder(button.getText()));
+		ScreenController.switchWindow((Stage) button.getScene().getWindow(), new EMOrder(button.getText()));
 	}
 
 	/**
@@ -97,8 +111,8 @@ public class MGTableController {
 	 * shown.
 	 * 
 	 */
-	public void imageButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) image.getScene().getWindow(), new MGMenu());
+	public void editMenuButtonHandler(MouseEvent event) {
+		ScreenController.switchWindow((Stage) editMenu.getScene().getWindow(), new MGMenu());
 	}
 
 	/**

@@ -2,7 +2,6 @@ package controller;
 
 import application.MGTableView;
 import application.Main;
-import application.EMTableView;
 import database.DBManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -74,6 +73,7 @@ public class LoginController {
 				alert = new Alert(AlertType.NONE, "Welcome manager: " + username.getText(), ButtonType.OK);
 				alert.setHeaderText("Login Success");
 				alert.show();
+				System.out.println("set user" + username.getText());
 				UserManager.getInstance().setUser(new User(username.getText(), PrivilageEnum.ADMIN));
 				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new MGTableView());
 			}
@@ -82,8 +82,9 @@ public class LoginController {
 				alert = new Alert(AlertType.NONE, "Welcome waiter: " + username.getText(), ButtonType.OK);
 				alert.setHeaderText("Login Success");
 				alert.show();
+				System.out.println("set user" + username.getText());
 				UserManager.getInstance().setUser(new User(username.getText()));
-				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new EMTableView());
+				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new MGTableView());
 			}
 			// wrong password
 			if (accessLevel == 0) {

@@ -2,7 +2,7 @@ package controller;
 
 import java.util.List;
 
-import application.EMTableView;
+import application.MGTableView;
 import application.Main;
 import database.DBManager;
 import javafx.event.ActionEvent;
@@ -66,7 +66,7 @@ public class EMOrderController {
 	 * 
 	 */
 	public void backButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new EMTableView());
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new MGTableView());
 	}
 
 	/**
