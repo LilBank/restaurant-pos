@@ -8,7 +8,7 @@ import java.util.Optional;
 
 import javax.swing.JOptionPane;
 
-import application.MGTableView;
+import application.TableView;
 import application.Main;
 import database.DBManager;
 import javafx.beans.property.ListProperty;
@@ -116,7 +116,7 @@ public class MGEditMenuController {
 	 * 
 	 */
 	public void backButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new MGTableView());
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new TableView());
 	}
 
 	/**

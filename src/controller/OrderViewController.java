@@ -2,7 +2,7 @@ package controller;
 
 import java.util.List;
 
-import application.MGTableView;
+import application.TableView;
 import application.Main;
 import database.DBManager;
 import javafx.event.ActionEvent;
@@ -23,7 +23,7 @@ import util.ScreenController;
  * @author Piyawat & Vichaphol & P' Jacky
  *
  */
-public class EMOrderController {
+public class OrderViewController {
 	@FXML
 	private Button order;
 	@FXML
@@ -66,7 +66,7 @@ public class EMOrderController {
 	 * 
 	 */
 	public void backButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new MGTableView());
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new TableView());
 	}
 
 	/**

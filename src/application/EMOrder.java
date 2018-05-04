@@ -1,6 +1,6 @@
 package application;
 
-import controller.EMOrderController;
+import controller.OrderViewController;
 import javafx.stage.Stage;
 import util.AbstractWindow;
 
@@ -16,7 +16,7 @@ public class EMOrder extends AbstractWindow {
 		
 	//for setting the tablenumber to EMOrderController
 	public EMOrder(String input) {
-		EMOrderController.setTable(input);
+		OrderViewController.setTable(input);
 	}
 
 	public void start(Stage stage) {

@@ -11,7 +11,7 @@ import util.AbstractWindow;
  * @author Piyawat & Vichaphol
  *
  */
-public class MGTableView extends AbstractWindow {
+public class TableView extends AbstractWindow {
 	@Override
 	public void start(Stage stage) {
 		try {

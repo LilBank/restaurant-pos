@@ -1,6 +1,6 @@
 package controller;
 
-import application.MGTableView;
+import application.TableView;
 import application.Main;
 import database.DBManager;
 import javafx.event.ActionEvent;
@@ -74,7 +74,7 @@ public class LoginController {
 				alert.setHeaderText("Login Success");
 				alert.show();
 				UserManager.getInstance().setUser(new User(username.getText(), PrivilageEnum.ADMIN));
-				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new MGTableView());
+				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new TableView());
 			}
 			// int = 1 for normal mode
 			if (accessLevel == 1) {
@@ -82,7 +82,7 @@ public class LoginController {
 				alert.setHeaderText("Login Success");
 				alert.show();
 				UserManager.getInstance().setUser(new User(username.getText()));
-				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new MGTableView());
+				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new TableView());
 			}
 			// wrong password
 			if (accessLevel == 0) {

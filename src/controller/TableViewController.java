@@ -22,7 +22,7 @@ import util.UserManager;
  * @author Piyawat & Vichapol
  *
  */
-public class MGTableController {
+public class TableViewController {
 	@FXML
 	private Button editMenu;
 	@FXML
@@ -48,6 +48,7 @@ public class MGTableController {
 	@FXML
 	private Button button08;
 
+	// for single implementation
 	private static boolean admin = UserManager.getInstance().getUser().isAdmin();
 
 	@FXML
