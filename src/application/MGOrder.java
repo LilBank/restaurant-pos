@@ -2,6 +2,7 @@ package application;
 
 import controller.MGOrderController;
 import javafx.stage.Stage;
+import util.AbstractWindow;
 
 /**
  * MGOrder(manager) class that extends AbstractWindow for capable of running

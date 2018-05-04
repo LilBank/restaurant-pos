@@ -1,6 +1,7 @@
 package application;
 
 import javafx.stage.Stage;
+import util.AbstractWindow;
 
 /**
  * Login class that extends AbstractWindow for capable of running the method

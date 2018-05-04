@@ -1,6 +1,7 @@
 package application;
 
 import javafx.stage.Stage;
+import util.AbstractWindow;
 
 /**
  * MGTableView(manager) class that extends AbstractWindow for capable of running

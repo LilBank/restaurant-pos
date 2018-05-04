@@ -1,6 +1,5 @@
 package controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import application.EMTableView;
@@ -8,23 +7,20 @@ import application.Main;
 import database.DBManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import util.ScreenController;
 
 /**
  * EMOrderController(employee) contains method for handling all event receive
  * from the UserInterface. Contains method for viewing and ordering customer
- * orders.
+ * orders. (With help form TA for spacing nodes)
  * 
- * @author Piyawat & Vichaphol
+ * @author Piyawat & Vichaphol & P' Jacky
  *
  */
 public class EMOrderController {
@@ -36,30 +32,32 @@ public class EMOrderController {
 	private Button exit;
 	@FXML
 	private TextField totalPrice;
-
-	// will be used when generate button is done
 	@FXML
-	private ButtonBar foodpane;
+	private FlowPane foodpane;
 	@FXML
-	private Pane drinkpane;
+	private FlowPane drinkpane;
 
 	private static String tablenumber;
+	private static List<String> foodname = DBManager.getFoodname("Menu");
+	private static List<String> drinkname = DBManager.getFoodname("Drinks");
 
 	@FXML
 	public void initialize() {
-		List<String> texts = DBManager.getButtons("Menu");
-		System.out.println("get all names");
-
-		for (int i = 0; i < texts.size(); i += 5) {
-			Button button = new Button(texts.get(i));
-			button.setPrefSize(150, 150);
-			// HBox.setMargin(button, new Insets(5));
-			// button.setOnActon(...);
-			button.setLayoutX(i);
-			button.setLayoutY(i);
-			ButtonBar.setButtonData(button, ButtonData.YES);
-			foodpane.getButtons().add(button);
-
+		// adding buttons to foodpane
+		System.out.println(tablenumber);
+		for (String text : foodname) {
+			Button button = new Button(text);
+			button.setPrefSize(100, 100);
+			button.setWrapText(true);
+			button.setTextAlignment(TextAlignment.CENTER);
+			foodpane.getChildren().add(button);
+		}
+		for (String text : drinkname) {
+			Button button = new Button(text);
+			button.setPrefSize(100, 100);
+			button.setWrapText(true);
+			button.setTextAlignment(TextAlignment.CENTER);
+			drinkpane.getChildren().add(button);
 		}
 	}
 
@@ -72,8 +70,9 @@ public class EMOrderController {
 	}
 
 	/**
-	 * Handler for logout button. When event receive the Start up scene is shown.
-	 * 
+	 * Handler for logout button. When event receive the Start up scene is
+	 * shown.
+	 * 	
 	 */
 	public void exitButtonHandler(ActionEvent event) {
 		ScreenController.switchWindow((Stage) exit.getScene().getWindow(), new Main());

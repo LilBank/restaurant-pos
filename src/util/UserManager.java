@@ -1,0 +1,27 @@
+package util;
+
+import model.User;
+
+public class UserManager {
+	private User user;
+	private static UserManager um;
+
+	private UserManager() {
+
+	}
+
+	public static UserManager getInstance() {
+		if (um == null) {
+			um = new UserManager();
+		}
+		return um;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public User getUser() {
+		return user;
+	}
+}

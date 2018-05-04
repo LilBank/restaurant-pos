@@ -11,6 +11,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import util.ScreenController;
 
 /**
  * MGTableController(manager) class contains method for handling event from the

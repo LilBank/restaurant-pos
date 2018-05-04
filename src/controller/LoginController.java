@@ -13,6 +13,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import model.PrivilageEnum;
+import model.User;
+import util.ScreenController;
+import util.UserManager;
 
 /**
  * LoginController contains method for handling all event receive from the
@@ -70,6 +74,7 @@ public class LoginController {
 				alert = new Alert(AlertType.NONE, "Welcome manager: " + username.getText(), ButtonType.OK);
 				alert.setHeaderText("Login Success");
 				alert.show();
+				UserManager.getInstance().setUser(new User(username.getText(), PrivilageEnum.ADMIN));
 				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new MGTableView());
 			}
 			// int = 1 for normal mode
@@ -77,6 +82,7 @@ public class LoginController {
 				alert = new Alert(AlertType.NONE, "Welcome waiter: " + username.getText(), ButtonType.OK);
 				alert.setHeaderText("Login Success");
 				alert.show();
+				UserManager.getInstance().setUser(new User(username.getText()));
 				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new EMTableView());
 			}
 			// wrong password

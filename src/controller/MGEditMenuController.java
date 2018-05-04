@@ -18,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import util.ScreenController;
 
 /**
  * MGTableController(manager) class contains method for handling event from the

@@ -2,6 +2,7 @@ package application;
 
 import controller.EMOrderController;
 import javafx.stage.Stage;
+import util.AbstractWindow;
 
 /**
  * EMOrder(employee) class that extends AbstractWindow for capable of running
@@ -12,7 +13,7 @@ import javafx.stage.Stage;
  *
  */
 public class EMOrder extends AbstractWindow {
-	
+		
 	//for setting the tablenumber to EMOrderController
 	public EMOrder(String input) {
 		EMOrderController.setTable(input);

@@ -1,6 +1,7 @@
 package application;
 
 import javafx.stage.Stage;
+import util.AbstractWindow;
 
 /**
  * EMTableView(employee) class that extends AbstractWindow for capable of

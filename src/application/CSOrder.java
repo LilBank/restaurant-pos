@@ -2,6 +2,7 @@ package application;
 
 import controller.CSOrderController;
 import javafx.stage.Stage;
+import util.AbstractWindow;
 
 /**
  * CSOrder(customer) class that extends AbstractWindow for capable of running the method

@@ -1,6 +1,7 @@
 package application;
 
 import javafx.stage.Stage;
+import util.AbstractWindow;
 
 /**
  * Main class that runs StartUp of the program with three options. Login,

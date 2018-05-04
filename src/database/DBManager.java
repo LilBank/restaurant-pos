@@ -118,7 +118,7 @@ public class DBManager {
 	}
 
 	// during in test
-	public static List<String> getString(String foodkind) {
+	public static List<String> getFoodname(String foodkind) {
 		List<String> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + foodkind;
 		try {
