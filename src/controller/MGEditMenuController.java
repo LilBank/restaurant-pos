@@ -14,9 +14,12 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -75,20 +78,33 @@ public class MGEditMenuController {
 		dialog.setContentText("Please Input URL:");
 		// Get the response value.
 		Image image = null;
+		Alert alert = null;
 		Optional<String> result = dialog.showAndWait();
-		result.ifPresent(name -> {
-			DBManager.ImageToDB("", result.get());
-		});
-		image = new Image(result.get());
-		Button foods = new Button();
-		ImageView view = new ImageView(image);
+		if (result.get().equals("")) {
+			alert = new Alert(AlertType.ERROR, "Input is empty.", ButtonType.OK);
+			alert.setHeaderText("Inputfield Error");
+			alert.show();
 
-		/** Set size of the imported image */
-		view.setFitHeight(100);
-		view.setFitWidth(100);
-		foods.setGraphic(view);
-		folderImage.add(foods);
-		listProperty.set(FXCollections.observableArrayList(folderImage));
+		}
+		if (!result.get().contains(".jpg")) {
+			alert = new Alert(AlertType.ERROR, "Url is incorrect", ButtonType.OK);
+			alert.setHeaderText("Inputfield Error");
+			alert.show();
+		} else {
+			result.ifPresent(name -> {
+				DBManager.ImageToDB("", result.get());
+			});
+			image = new Image(result.get());
+			Button foods = new Button();
+			ImageView view = new ImageView(image);
+
+			/** Set size of the imported image */
+			view.setFitHeight(100);
+			view.setFitWidth(100);
+			foods.setGraphic(view);
+			folderImage.add(foods);
+			listProperty.set(FXCollections.observableArrayList(folderImage));
+		}
 	}
 
 	/**
