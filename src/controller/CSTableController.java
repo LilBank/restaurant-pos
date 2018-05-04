@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import util.ScreenController;
@@ -66,43 +67,43 @@ public class CSTableController {
 				new TextFormatter<String>(change -> change.getControlNewText().length() <= 2 ? change : null));
 	}
 
-	public void button1Handler(ActionEvent event) {
+	public void button1Handler(MouseEvent event) {
 		numberButtonHandler(button1.getText());
 	}
 
-	public void button2Handler(ActionEvent event) {
+	public void button2Handler(MouseEvent event) {
 		numberButtonHandler(button2.getText());
 	}
 
-	public void button3Handler(ActionEvent event) {
+	public void button3Handler(MouseEvent event) {
 		numberButtonHandler(button3.getText());
 	}
 
-	public void button4Handler(ActionEvent event) {
+	public void button4Handler(MouseEvent event) {
 		numberButtonHandler(button4.getText());
 	}
 
-	public void button5Handler(ActionEvent event) {
+	public void button5Handler(MouseEvent event) {
 		numberButtonHandler(button5.getText());
 	}
 
-	public void button6Handler(ActionEvent event) {
+	public void button6Handler(MouseEvent event) {
 		numberButtonHandler(button6.getText());
 	}
 
-	public void button7Handler(ActionEvent event) {
+	public void button7Handler(MouseEvent event) {
 		numberButtonHandler(button7.getText());
 	}
 
-	public void button8Handler(ActionEvent event) {
+	public void button8Handler(MouseEvent event) {
 		numberButtonHandler(button8.getText());
 	}
 
-	public void button9Handler(ActionEvent event) {
+	public void button9Handler(MouseEvent event) {
 		numberButtonHandler(button9.getText());
 	}
 
-	public void button0Handler(ActionEvent event) {
+	public void button0Handler(MouseEvent event) {
 		numberButtonHandler(button0.getText());
 	}
 
@@ -111,7 +112,7 @@ public class CSTableController {
 	 * 
 	 * @param event
 	 */
-	public void backButtonHandler(ActionEvent event) {
+	public void backButtonHandler(MouseEvent event) {
 		ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new Main());
 	}
 
@@ -149,7 +150,7 @@ public class CSTableController {
 	 * 
 	 * @param event
 	 */
-	public void okButtonHandler(ActionEvent event) {
+	public void okButtonHandler(MouseEvent event) {
 		if (number.length() == 0) {
 			alert = new Alert(AlertType.ERROR, "Please input table number.", ButtonType.OK);
 			alert.show();

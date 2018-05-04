@@ -31,7 +31,7 @@
                </font>
             </Label>
             <PasswordField fx:id="password2" layoutX="287.0" layoutY="407.0" prefHeight="50.0" prefWidth="430.0" />
-            <Button fx:id="cancel" layoutX="545.0" layoutY="498.0" mnemonicParsing="false" onAction="#cancelButtonHandler" prefHeight="99.0" prefWidth="189.0" style="-fx-background-radius: 50;" text="Cancel">
+            <Button fx:id="cancel" layoutX="545.0" layoutY="498.0" mnemonicParsing="false" onMouseClicked="#cancelButtonHandler" prefHeight="99.0" prefWidth="189.0" style="-fx-background-radius: 50;" text="Cancel">
                <font>
                   <Font name="MS Gothic" size="25.0" />
                </font>
