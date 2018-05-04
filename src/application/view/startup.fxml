@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StartUpController">
    <children>
-      <Pane layoutX="5.0" layoutY="5.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <Pane layoutX="-4.0" layoutY="-5.0" prefHeight="382.0" prefWidth="607.0" style="-fx-background-color: iron;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="-5.0">
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
          </padding>
