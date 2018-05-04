@@ -5,17 +5,17 @@ import javafx.stage.Stage;
 import util.AbstractWindow;
 
 /**
- * EMOrder(employee) class that extends AbstractWindow for capable of running
+ * OrderView(manager/employee) class that extends AbstractWindow for capable of running
  * the method switchWindow. This window is for selecting the food, observing
  * customer's order, and check their bills.
  * 
  * @author Piyawat & Vichaphol
  *
  */
-public class EMOrder extends AbstractWindow {
+public class OrderView extends AbstractWindow {
 		
 	//for setting the tablenumber to EMOrderController
-	public EMOrder(String input) {
+	public OrderView(String input) {
 		OrderViewController.setTable(input);
 	}
 

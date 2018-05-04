@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import javax.swing.JOptionPane;
-
 import application.TableView;
 import application.Main;
 import database.DBManager;

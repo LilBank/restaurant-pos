@@ -4,13 +4,13 @@ import javafx.stage.Stage;
 import util.AbstractWindow;
 
 /**
- * MGMenu class that extends AbstractWindow for capable of running the method
+ * MGEditMenu(manager) class that extends AbstractWindow for capable of running the method
  * switchWindow. Mainly this window is for manager who could edit the menu.
  * 
  * @author Piyawat & Vichaphol
  *
  */
-public class MGMenu extends AbstractWindow {
+public class MGEditMenu extends AbstractWindow {
 
 	@Override
 	public void start(Stage stage) {

@@ -1,8 +1,8 @@
 package controller;
 
-import application.EMOrder;
+import application.OrderView;
 import application.Login;
-import application.MGMenu;
+import application.MGEditMenu;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -15,7 +15,7 @@ import util.ScreenController;
 import util.UserManager;
 
 /**
- * MGTableController(manager) class contains method for handling event from the
+ * TableViewController(manager/employee) class contains method for handling event from the
  * UserInterface. Contains method that can look up orders in each table with
  * full permission to manage the restaurant.
  * 
@@ -104,7 +104,7 @@ public class TableViewController {
 	 * @param button
 	 */
 	public void tableButtonHandler(Button button) {
-		ScreenController.switchWindow((Stage) button.getScene().getWindow(), new EMOrder(button.getText()));
+		ScreenController.switchWindow((Stage) button.getScene().getWindow(), new OrderView(button.getText()));
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class TableViewController {
 	 * 
 	 */
 	public void editMenuButtonHandler(MouseEvent event) {
-		ScreenController.switchWindow((Stage) editMenu.getScene().getWindow(), new MGMenu());
+		ScreenController.switchWindow((Stage) editMenu.getScene().getWindow(), new MGEditMenu());
 	}
 
 	/**

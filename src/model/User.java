@@ -2,6 +2,13 @@ package model;
 
 import util.UserManager;
 
+/**
+ * An object that represents a User. Consist of username and PrivilageEnum.
+ * Contains method for getting private attributes and other uses.
+ * 
+ * @author Piyawat & Vichphol & Taweerat
+ *
+ */
 public class User {
 	private String username;
 	private PrivilageEnum privilage = PrivilageEnum.USER;
@@ -22,11 +29,12 @@ public class User {
 			return false;
 		}
 	}
-	
-	public String getUsername(){
+
+	public String getUsername() {
 		return this.username;
 	}
-	public int getAccessLevel(){
+
+	public int getAccessLevel() {
 		return privilage.getNumber();
 	}
 }

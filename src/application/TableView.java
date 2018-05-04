@@ -4,7 +4,7 @@ import javafx.stage.Stage;
 import util.AbstractWindow;
 
 /**
- * MGTableView(manager) class that extends AbstractWindow for capable of running
+ * TableView(manager/employee) class that extends AbstractWindow for capable of running
  * the method switchWindow. The window is for employee to wait for customer
  * response with full permission to remove customer orders.
  * 

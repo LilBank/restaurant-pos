@@ -10,13 +10,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import util.ScreenController;
 
 /**
- * EMOrderController(employee) contains method for handling all event receive
+ * OrderController(manager/employee) contains method for handling all event receive
  * from the UserInterface. Contains method for viewing and ordering customer
  * orders. (With help form TA for spacing nodes)
  * 

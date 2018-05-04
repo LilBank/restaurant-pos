@@ -1,10 +1,7 @@
 package controller;
 
-import java.util.List;
-
 import application.CSTable;
 import application.Main;
-import database.DBManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
