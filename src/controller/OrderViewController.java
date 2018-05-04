@@ -20,7 +20,7 @@ import util.ScreenController;
  * from the UserInterface. Contains method for viewing and ordering customer
  * orders. (With help form TA for spacing nodes)
  * 
- * @author Piyawat & Vichaphol & P' Jacky
+ * @author Piyawat & Vichaphol & P'Jacky
  *
  */
 public class OrderViewController {
