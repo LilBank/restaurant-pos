@@ -1,12 +1,5 @@
 package database;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -14,10 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import util.PropertyManager;
 
 /**
@@ -41,8 +30,8 @@ public class DBManager {
 	 *            from Login's input
 	 * @param password
 	 *            from Login's input
-	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 = user
-	 *         doesn't exists
+	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 =
+	 *         user doesn't exists
 	 */
 	public static int login(String user, String pass) {
 		sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
@@ -69,8 +58,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for inserting data(new user's data) to the database. The access type
-	 * is set to 1 by default but can be change later on.
+	 * Method for inserting data(new user's data) to the database. The access
+	 * type is set to 1 by default but can be change later on.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -90,8 +79,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for retrieving data from the database to check whether if the username
-	 * inputed has already exist or not.
+	 * Method for retrieving data from the database to check whether if the
+	 * username inputed has already exist or not.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -161,9 +150,10 @@ public class DBManager {
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * Method for getting list of URl.
-	 *  
+	 * 
 	 * @param name
 	 * @return list containing url
 	 */

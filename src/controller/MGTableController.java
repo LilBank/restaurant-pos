@@ -51,14 +51,14 @@ public class MGTableController {
 	private static boolean admin = UserManager.getInstance().getUser().isAdmin();
 
 	@FXML
-	public void intialize() {
-//		if (!admin) {
-//			editMenu.disableProperty();
-//			// editMenu.setVisible(false);
-//			manageUser.disableProperty();
-//			// manageUser.setVisible(false);
-//		}
+	public void initialize() {
 		System.out.println("initializing");
+		if (!admin) {
+			editMenu.setDisable(true);
+			editMenu.setVisible(false);
+			manageUser.setDisable(true);
+			manageUser.setVisible(false);
+		}
 		System.out.println(UserManager.getInstance().getUser().getUsername());
 		System.out.println(UserManager.getInstance().getUser().getAccessLevel());
 		System.out.println(admin);
