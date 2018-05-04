@@ -4,9 +4,13 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import javax.swing.JOptionPane;
 
 import application.MGTableView;
 import application.Main;
+import database.DBManager;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
@@ -14,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -65,15 +70,18 @@ public class MGEditMenuController {
 	 * @throws MalformedURLException
 	 */
 	public void insertImageHandler(ActionEvent event) {
-		FileChooser chooser = new FileChooser();
-		/** Open file dialog and save it to file */
-		File selectedFile = chooser.showOpenDialog(new Stage());
+		// Ask user to input dialog.
+		TextInputDialog dialog = new TextInputDialog("");
+		dialog.setTitle("Input URL");
+		dialog.setHeaderText("Text Input Dialog");
+		dialog.setContentText("Please Input URL:");
+		// Get the response value.
 		Image image = null;
-		try {
-			image = new Image(selectedFile.toURI().toURL().toExternalForm());
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
+		Optional<String> result = dialog.showAndWait();
+		result.ifPresent(name -> {
+			DBManager.ImageToDB("", result.get());
+		});
+		image = new Image(result.get());
 		Button foods = new Button();
 		ImageView view = new ImageView(image);
 
@@ -83,6 +91,15 @@ public class MGEditMenuController {
 		foods.setGraphic(view);
 		folderImage.add(foods);
 		listProperty.set(FXCollections.observableArrayList(folderImage));
+	}
+
+	/**
+	 * during the test.
+	 */
+	public void chooseFile() {
+		FileChooser chooser = new FileChooser();
+		/** Open file dialog and save it to file */
+		File selectedFile = chooser.showOpenDialog(new Stage());
 	}
 
 	/**
@@ -103,8 +120,7 @@ public class MGEditMenuController {
 	}
 
 	/**
-	 * Handler for logout button. When event recieve the Start up scene is
-	 * shown.
+	 * Handler for logout button. When event recieve the Start up scene is shown.
 	 * 
 	 */
 	public void logoutHandler(ActionEvent event) {

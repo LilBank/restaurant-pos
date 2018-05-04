@@ -38,7 +38,7 @@ public class EMOrderController {
 	private FlowPane drinkpane;
 
 	private static String tablenumber;
-	private static List<String> foodname = DBManager.getFoodname("Menu");
+	private static List<String> foodname = DBManager.getFoodname("Foods");
 	private static List<String> drinkname = DBManager.getFoodname("Drinks");
 
 	@FXML

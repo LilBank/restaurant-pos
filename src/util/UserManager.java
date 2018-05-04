@@ -6,10 +6,6 @@ public class UserManager {
 	private User user;
 	private static UserManager um;
 
-	private UserManager() {
-
-	}
-
 	public static UserManager getInstance() {
 		if (um == null) {
 			um = new UserManager();

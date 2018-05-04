@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -149,9 +150,9 @@ public class DBManager {
 	/**
 	 * Method for storing image from the database.
 	 */
-	public void ImageToDB() {
-		// sqlCommand = "INSERT INTO `Images` (`id`, `path`, `image`) VALUES ('', '',
-		// '');
+	public static void ImageToDB(String name, String url) {
+		sqlCommand = "INSERT INTO `Images` (`url`, `name`)" + "VALUES" + "(" + "'" + url + "'" + ", '" + name + "')";
+
 		try {
 			Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
 			Statement statement = connection.createStatement();
@@ -160,32 +161,25 @@ public class DBManager {
 			e.printStackTrace();
 		}
 	}
-
-	public ImageView getImage() {
-		sqlCommand = "SELECT * FROM ";
-		ImageView imageView = null;
+	/**
+	 * Method for getting list of URl.
+	 *  
+	 * @param name
+	 * @return list containing url
+	 */
+	public static List<String> getImageURL(String name) {
+		sqlCommand = "SELECT * FROM " + name;
+		List<String> temp = new ArrayList<>();
 		try {
 			ResultSet rs = getData(sqlCommand);
 			while (rs.next()) {
-				InputStream is = rs.getBinaryStream(1);
-				OutputStream os = new FileOutputStream(new File(""));
-				byte[] contents = new byte[1024];
-				int size = is.read(contents);
-				while (size != -1) {
-					os.write(contents, 0, size);
-				}
-				Image image = new Image(is);
-				imageView = new ImageView(image);
-				return imageView;
+				String url = rs.getString("url");
+				temp.add(url);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
-		return imageView;
+		return temp;
 	}
 
 }
