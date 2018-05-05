@@ -9,22 +9,22 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="598.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StartUpController">
    <children>
-      <Pane layoutX="-4.0" layoutY="-5.0" prefHeight="382.0" prefWidth="607.0" style="-fx-background-color: iron;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="-5.0">
+      <Pane layoutX="-5.0" layoutY="-6.0" prefHeight="382.0" prefWidth="607.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="-6.0">
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
          </padding>
          <children>
-            <Label layoutX="229.0" layoutY="14.0" prefHeight="61.0" prefWidth="131.0" text="Start Up">
+            <Label layoutX="238.0" layoutY="14.0" prefHeight="61.0" prefWidth="131.0" text="Start Up">
                <font>
                   <Font name="MS Gothic" size="30.0" />
                </font>
             </Label>
-            <Button fx:id="csMode" layoutX="410.0" layoutY="145.0" mnemonicParsing="false" onMouseClicked="#csModeButtonHandler" prefHeight="125.0" prefWidth="131.0" style="-fx-background-radius: 100;" text="Customer Mode">
+            <Button fx:id="csMode" layoutX="421.0" layoutY="145.0" mnemonicParsing="false" onMouseClicked="#csModeButtonHandler" prefHeight="125.0" prefWidth="131.0" style="-fx-background-radius: 100;" text="Customer Mode">
                <font>
                   <Font name="MS Gothic" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="login" defaultButton="true" layoutX="229.0" layoutY="145.0" mnemonicParsing="false" onMouseClicked="#loginButtonHandler" prefHeight="125.0" prefWidth="131.0" style="-fx-background-radius: 100;" text="Login">
+            <Button fx:id="login" layoutX="238.0" layoutY="145.0" mnemonicParsing="false" onMouseClicked="#loginButtonHandler" prefHeight="125.0" prefWidth="131.0" style="-fx-background-radius: 100;" text="Login">
                <font>
                   <Font name="MS Gothic" size="24.0" />
                </font>
@@ -34,7 +34,7 @@
                   <Font name="MS Gothic" size="24.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" layoutX="70.0" layoutY="85.0" prefHeight="26.0" prefWidth="449.0" text="_____________________________________________________________________________________________________________" textAlignment="CENTER">
+            <Label alignment="CENTER" layoutX="79.0" layoutY="86.0" prefHeight="26.0" prefWidth="449.0" text="_____________________________________________________________________________________________________________" textAlignment="CENTER">
                <font>
                   <Font size="9.0" />
                </font>

@@ -48,7 +48,7 @@ public class CheckBillController {
 
 	@FXML
 	public void initialize() {
-		total.setText("");
+		total.setText(csBill + "");
 	}
 
 	public void thousandButtonHandler(ActionEvent event) {
@@ -97,8 +97,7 @@ public class CheckBillController {
 	}
 
 	/**
-	 * A method for increasing the customer's money according to the button
-	 * pressed.
+	 * A method for increasing the customer's money according to the button pressed.
 	 * 
 	 * @param number
 	 *            to sum
@@ -126,10 +125,10 @@ public class CheckBillController {
 		this.csMoney = 0;
 		customerPay.clear();
 	}
-	
-	//during in test
+
+	// during in test
 	public static void setBill(String arg) {
 		csBill = Integer.parseInt(arg);
 	}
-	
+
 }
