@@ -58,7 +58,7 @@ public class CSOrderController {
 		int i = 0;
 		for (String text : name) {
 			Button button = new Button(text);
-			Image image = new Image(url.get(0));
+			Image image = new Image(url.get(2));
 			i++;
 			ImageView view = new ImageView(image);
 			view.setFitHeight(100);
@@ -73,7 +73,7 @@ public class CSOrderController {
 
 	// during in test
 	public void orderButtonHandler(ActionEvent event) {
-		
+
 	}
 
 	/**

@@ -95,7 +95,7 @@ public class Order {
 
 	// for testing
 	public void printOrders() {
-		orders.forEach((k, v) -> System.out.println("key: " + k.getName() + " value:" + v));
+		orders.forEach((k, v) -> System.out.println("key: " + k.getName() + k.getPrice() + " value:" + v));
 	}
 
 	// for testing
