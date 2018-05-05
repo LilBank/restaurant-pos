@@ -15,6 +15,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.Menu;
 
 /**
  * ManagerUserController contains method for handling all event receive from the
@@ -25,16 +27,16 @@ import javafx.scene.control.TableView;
  */
 public class ManageUserController {
 	@FXML
-	private TableView<List<String>> table;
+	private TableView<String> table;
 	/** id Column */
 	@FXML
-	private TableColumn<List<Integer>, Integer> id;
+	private TableColumn<String, Integer> id;
 	/** name Column */
 	@FXML
-	private TableColumn<List<String>, String> name;
+	private TableColumn<String, String> name;
 	/** password Column */
 	@FXML
-	private TableColumn<List<String>, String> password;
+	private TableColumn<String, String> password;
 	@FXML
 	private Button remove;
 
@@ -44,7 +46,10 @@ public class ManageUserController {
 
 	@FXML
 	public void initialize() {
-
+		ObservableList<String> data = FXCollections.observableList(userID);
+		table.setItems(data);
+		table.getColumns().addAll(id, name, password);
+		// id.setCellValueFactory(new PropertyValueFactory<Menu, String>(""));
 	}
 
 	/**
