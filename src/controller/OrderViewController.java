@@ -16,9 +16,9 @@ import javafx.stage.Stage;
 import util.ScreenController;
 
 /**
- * OrderController(manager/employee) contains method for handling all event receive
- * from the UserInterface. Contains method for viewing and ordering customer
- * orders. (With help form TA for spacing nodes)
+ * OrderController(manager/employee) contains method for handling all event
+ * receive from the UserInterface. Contains method for viewing and ordering
+ * customer orders. (With help form TA for spacing nodes)
  * 
  * @author Piyawat & Vichaphol & P'Jacky
  *
@@ -40,8 +40,8 @@ public class OrderViewController {
 	private FlowPane drinkpane;
 
 	private static String tablenumber;
-	private static List<String> foodname = DBManager.getFoodname("Foods");
-	private static List<String> drinkname = DBManager.getFoodname("Drinks");
+	private static List<String> foodname;
+	private static List<String> drinkname;
 
 	@FXML
 	public void initialize() {
@@ -70,6 +70,7 @@ public class OrderViewController {
 	public void backButtonHandler(ActionEvent event) {
 		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new TableView());
 	}
+
 	/**
 	 * Handler for back button. When event receive the CS table scene is shown.
 	 * 
@@ -81,15 +82,32 @@ public class OrderViewController {
 	/**
 	 * Handler for logout button. When event receive the Start up scene is
 	 * shown.
-	 * 	
+	 * 
 	 */
 	public void exitButtonHandler(ActionEvent event) {
 		ScreenController.switchWindow((Stage) exit.getScene().getWindow(), new Main());
 	}
 
-	// during in test
-	public static void setTable(String arg) {
-		tablenumber = arg;
+	/**
+	 * Static method for scene before opening this scene to get the button text
+	 * and set as table number.
+	 * 
+	 * @param buttonText
+	 */
+	public static void setTable(String buttonText) {
+		tablenumber = buttonText;
+	}
+
+	/**
+	 * Static method for scene before opening this scene to get list of menu
+	 * names and set the List<String> attribute above.
+	 * 
+	 * @param List
+	 *            of menu names List<String>
+	 */
+	public static void setMenu(List<String> foodnames, List<String> drinknames) {
+		foodname = foodnames;
+		drinkname = drinknames;
 	}
 
 	// during in test

@@ -1,6 +1,10 @@
 package controller;
 
 import application.OrderView;
+import database.DBManager;
+
+import java.util.List;
+
 import application.Login;
 import application.MGEditMenu;
 import javafx.event.ActionEvent;
@@ -48,8 +52,11 @@ public class TableViewController {
 	@FXML
 	private Button button08;
 
-	// for single implementation
+	// for single instantiation
 	private static UserManager um = UserManager.getInstance();
+	private static List<String> foodname = DBManager.getFoodname("Foods");
+	private static List<String> drinkname = DBManager.getFoodname("Drinks");
+
 	private boolean admin = um.isAdmin();
 
 	@FXML
@@ -105,7 +112,8 @@ public class TableViewController {
 	 * @param button
 	 */
 	public void tableButtonHandler(Button button) {
-		ScreenController.switchWindow((Stage) button.getScene().getWindow(), new OrderView(button.getText()));
+		ScreenController.switchWindow((Stage) button.getScene().getWindow(),
+				new OrderView(button.getText(), foodname, drinkname));
 	}
 
 	/**
