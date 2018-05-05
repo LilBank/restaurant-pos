@@ -8,7 +8,7 @@ import model.User;
  *
  */
 public class UserManager {
-	
+
 	private User user;
 	private static UserManager um;
 
@@ -25,5 +25,18 @@ public class UserManager {
 
 	public User getUser() {
 		return user;
+	}
+
+	/**
+	 * Check if the current user is administrator or not.
+	 * 
+	 * @return true if administrator
+	 */
+	public boolean isAdmin() {
+		if (2 == user.getAccessLevel()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

@@ -82,7 +82,7 @@ public class LoginController {
 				alert = new Alert(AlertType.NONE, "Welcome waiter: " + username.getText(), ButtonType.OK);
 				alert.setHeaderText("Login Success");
 				alert.show();
-				UserManager.getInstance().setUser(new User(username.getText()));
+				UserManager.getInstance().setUser(new User(username.getText(), PrivilegeEnum.USER));
 				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new TableView());
 			}
 			// wrong password

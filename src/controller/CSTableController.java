@@ -138,7 +138,7 @@ public class CSTableController {
 	 * 
 	 * @param event
 	 */
-	public void clearButtonHandler(ActionEvent event) {
+	public void clearButtonHandler(MouseEvent event) {
 		this.number = "";
 		clear();
 	}
@@ -149,7 +149,7 @@ public class CSTableController {
 	 * 
 	 * @param event
 	 */
-	public void okButtonHandler(MouseEvent event) {
+	public void okButtonHandler(ActionEvent event) {
 		if (number.length() == 0) {
 			alert = new Alert(AlertType.ERROR, "Please input table number.", ButtonType.OK);
 			alert.show();

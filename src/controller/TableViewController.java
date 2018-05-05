@@ -50,7 +50,7 @@ public class TableViewController {
 
 	// for single implementation
 	private static UserManager um = UserManager.getInstance();
-	private static boolean admin = um.getUser().isAdmin();
+	private boolean admin = um.isAdmin();
 
 	@FXML
 	public void initialize() {
