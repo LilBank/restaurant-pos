@@ -15,9 +15,9 @@ import javafx.stage.Stage;
 import util.ScreenController;
 
 /**
- * CustomerTableController(customer) contains method for handling all event receive from
- * the UserInterface. Contains method for opening CSOrder for customer to order
- * menu.
+ * CustomerTableController(customer) contains method for handling all event
+ * receive from the UserInterface. Contains method for opening CSOrder for
+ * customer to order menu.
  * 
  * @author Piyawat & Vichaphol
  *
@@ -48,17 +48,17 @@ public class CSTableController {
 	@FXML
 	private Button ok;
 	@FXML
-	private TextField display;
-	@FXML
 	private Button back;
+	@FXML
+	private TextField display;
 	@FXML
 	private Alert alert;
 
 	private String number = "";
 
 	/**
-	 * JavaFX calls the initialize() method of your controller when it creates
-	 * the UI form, after the components have been created and @FXML annotated
+	 * JavaFX calls the initialize() method of your controller when it creates the
+	 * UI form, after the components have been created and @FXML annotated
 	 * attributes have been set. This is to limit textfield char to 2.
 	 */
 	@FXML
@@ -113,7 +113,7 @@ public class CSTableController {
 	 * @param event
 	 */
 	public void backButtonHandler(MouseEvent event) {
-		ScreenController.switchWindow((Stage) ok.getScene().getWindow(), new Main());
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new Main());
 	}
 
 	/**
@@ -144,9 +144,8 @@ public class CSTableController {
 	}
 
 	/**
-	 * Handler for ok button. When event receive, if the number input is
-	 * two-digits and not more than maximum limit then the next Scene is
-	 * activated.
+	 * Handler for ok button. When event receive, if the number input is two-digits
+	 * and not more than maximum limit then the next Scene is activated.
 	 * 
 	 * @param event
 	 */

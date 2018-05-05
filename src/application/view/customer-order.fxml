@@ -23,12 +23,12 @@
                   <Font name="Agency FB" size="29.0" />
                </font>
             </Label>
-          <Button fx:id="order" defaultButton="true" layoutX="293.0" layoutY="554.0" mnemonicParsing="false" onAction="#orderButtonHandler" prefHeight="69.0" prefWidth="107.0" style="-fx-background-radius: 100;" text="Order">
+          <Button fx:id="order" defaultButton="true" layoutX="277.0" layoutY="554.0" mnemonicParsing="false" onAction="#orderButtonHandler" prefHeight="69.0" prefWidth="107.0" style="-fx-background-radius: 100;" text="Order">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="back" layoutX="170.0" layoutY="553.0" minWidth="74.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="70.0" prefWidth="107.0" style="-fx-background-radius: 50;" text="Back">
+            <Button fx:id="back" layoutX="157.0" layoutY="554.0" minWidth="74.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="70.0" prefWidth="107.0" style="-fx-background-radius: 50;" text="Back">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
