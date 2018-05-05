@@ -12,6 +12,11 @@ public class UserManager {
 	private User user;
 	private static UserManager um;
 
+	/**
+	 * Return the instance of this class.
+	 * 
+	 * @return
+	 */
 	public static UserManager getInstance() {
 		if (um == null) {
 			um = new UserManager();
@@ -19,10 +24,20 @@ public class UserManager {
 		return um;
 	}
 
+	/**
+	 * Set the current profile user.
+	 * 
+	 * @param User
+	 */
 	public void setUser(User user) {
 		this.user = user;
 	}
 
+	/**
+	 * Get the current user profile.
+	 * 
+	 * @return current User
+	 */
 	public User getUser() {
 		return user;
 	}
