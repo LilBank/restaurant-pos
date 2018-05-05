@@ -3,7 +3,15 @@ package application;
 import javafx.stage.Stage;
 import util.AbstractWindow;
 
-public class ManageUser extends AbstractWindow{
+/**
+ * A User manager class that extends AbstractWindow for capable of running the
+ * method switchWindow. Mainly this window is for manager who could remove the
+ * user from the list and database.
+ * 
+ * @author Piyawat & Vichaphol
+ *
+ */
+public class ManageUser extends AbstractWindow {
 	@Override
 	public void start(Stage stage) {
 		try {
