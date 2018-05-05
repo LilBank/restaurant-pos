@@ -97,7 +97,7 @@
                   <Font name="MS Gothic" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="clear" alignment="CENTER" layoutX="81.0" layoutY="404.0" mnemonicParsing="false" onAction="#clearButtonHandler" onMouseClicked="#clearButtonHandler" prefHeight="68.0" prefWidth="68.0" text="clear">
+            <Button fx:id="clear" alignment="CENTER" layoutX="81.0" layoutY="404.0" mnemonicParsing="false" onAction="#clearButtonHandler" prefHeight="68.0" prefWidth="68.0" text="clear">
                <padding>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </padding>
