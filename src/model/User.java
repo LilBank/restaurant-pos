@@ -12,7 +12,7 @@ public class User {
 	private PrivilegeEnum privilage;
 
 	/**
-	 * Constructor for manager. Privilege is set to 2.
+	 * Constructor for user.
 	 * 
 	 * @param username
 	 */

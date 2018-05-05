@@ -40,6 +40,8 @@ public class OrderViewController {
 	private FlowPane drinkpane;
 
 	private static String tablenumber;
+
+	// for single instantiation
 	private static List<String> foodname;
 	private static List<String> drinkname;
 
