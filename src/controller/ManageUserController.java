@@ -5,14 +5,17 @@ import java.util.List;
 
 import database.DBManager;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -27,17 +30,20 @@ import model.User;
  *
  */
 public class ManageUserController {
+
+	// /** id Column */
+	// @FXML
+	// private TableColumn<User, Integer> id;
+	// /** name Column */
+	// @FXML
+	// private TableColumn<User, String> name;
+	// /** password Column */
+	// @FXML
+	// private TableColumn<User, String> password;
 	@FXML
-	private TableView<String> table;
-	/** id Column */
+	private ListView<User> listView;
 	@FXML
-	private TableColumn<String, Integer> id;
-	/** name Column */
-	@FXML
-	private TableColumn<String, String> name;
-	/** password Column */
-	@FXML
-	private TableColumn<String, String> password;
+	ListProperty<User> listProperty = new SimpleListProperty<>();
 	@FXML
 	private Button remove;
 
@@ -45,11 +51,11 @@ public class ManageUserController {
 
 	@FXML
 	public void initialize() {
-		System.out.println(userName);
-//		ObservableList<User> data = FXCollections.observableList(userID);
-//		table.setItems(data);
-//		table.getColumns().addAll(id, name, password);
-		// id.setCellValueFactory(new PropertyValueFactory<Menu, String>(""));
+		// ObservableList<User> data = FXCollections.observableList(userName);
+		// table.setItems(data);
+		// table.getColumns().addAll(id, name, password);
+		listProperty.set(FXCollections.observableArrayList(userName));
+		listView.itemsProperty().bind(listProperty);
 	}
 
 	/**
