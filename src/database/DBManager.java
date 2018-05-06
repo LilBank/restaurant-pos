@@ -1,6 +1,7 @@
 package database;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -73,8 +74,6 @@ public class DBManager {
 				return 0;
 			}
 		} catch (SQLException ex) {
-			ex.printStackTrace();
-		} catch (NullPointerException ex) {
 			ex.printStackTrace();
 		} finally {
 			try {
@@ -255,6 +254,43 @@ public class DBManager {
 			e.printStackTrace();
 		}
 
+	}
+
+	// during in test
+	public static boolean checkTable(String tableNumber) {
+		DatabaseMetaData dbm = null;
+		try {
+			dbm = connection.getMetaData();
+			ResultSet table = dbm.getTables(null, null, tableNumber, null);
+			// table exists
+			if (table.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		// table does not exist
+		return false;
+	}
+
+	// during in test
+	public static void createTable(String tableNumber) {
+		sqlCommand = "CREATE TABLE " + tableNumber + "(name VARCHAR (255), quantity INT(11), PRIMARY KEY (ID))";
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			stmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

@@ -113,6 +113,12 @@ public class TableViewController {
 	 * @param button
 	 */
 	public void tableButtonHandler(Button button) {
+		boolean exist = DBManager.checkTable("table" + button.getText());
+		if (!exist) {
+			String table = "table" + button.getText();
+			DBManager.createTable(table);
+		}
+		// if table is created or exists then this below is done
 		ScreenController.switchWindow((Stage) button.getScene().getWindow(),
 				new OrderView(button.getText(), foodname, drinkname));
 	}
