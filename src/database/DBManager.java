@@ -275,7 +275,7 @@ public class DBManager {
 
 	// during in test
 	public static void createTable(String tableNumber) {
-		sqlCommand = "CREATE TABLE " + tableNumber + "(name VARCHAR (255), quantity INT(11), PRIMARY KEY (ID))";
+		sqlCommand = "CREATE TABLE " + tableNumber + "(name VARCHAR (255), quantity INT(11))";
 		PreparedStatement stmt = null;
 		try {
 			stmt = connection.prepareStatement(sqlCommand);

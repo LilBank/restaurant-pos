@@ -117,6 +117,9 @@ public class TableViewController {
 		if (!exist) {
 			String table = "table" + button.getText();
 			DBManager.createTable(table);
+			System.out.println(table + " created");
+		} else {
+			System.out.println("table exists");
 		}
 		// if table is created or exists then this below is done
 		ScreenController.switchWindow((Stage) button.getScene().getWindow(),
