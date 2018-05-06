@@ -31,7 +31,7 @@
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="286.0" layoutY="566.0" minWidth="74.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="114.0" style="-fx-background-radius: 50;" text="Check Bill">
+            <Button fx:id="checkBill" layoutX="286.0" layoutY="566.0" minWidth="74.0" mnemonicParsing="false" onMouseClicked="#billButtonHandler" prefHeight="58.0" prefWidth="114.0" style="-fx-background-radius: 50;" text="Check Bill">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>

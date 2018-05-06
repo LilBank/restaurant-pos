@@ -68,39 +68,8 @@ public class OrderViewController {
 
 		// adding buttons to foodpane
 		System.out.println(tablenumber);
-		for (Menu food : foods) {
-			Button button = new Button(food.getName());
-			button.setPrefSize(100, 100);
-			button.setWrapText(true);
-			button.setTextAlignment(TextAlignment.CENTER);
-			button.setUserData(food);
-
-			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-				@Override
-				public void handle(MouseEvent event) {
-					o.addOrder((Menu) button.getUserData());
-					System.out.println(((Menu) button.getUserData()).getName());
-				}
-			});
-
-			foodpane.getChildren().add(button);
-		}
-		for (Menu drink : drinks) {
-			Button button = new Button(drink.getName());
-			button.setPrefSize(100, 100);
-			button.setWrapText(true);
-			button.setTextAlignment(TextAlignment.CENTER);
-
-			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-				@Override
-				public void handle(MouseEvent event) {
-					o.addOrder((Menu) button.getUserData());
-					System.out.println(((Menu) button.getUserData()).getName());
-				}
-			});
-
-			drinkpane.getChildren().add(button);
-		}
+		setMenu(foods, foodpane);
+		setMenu(drinks, drinkpane);
 	}
 
 	/**
@@ -138,8 +107,8 @@ public class OrderViewController {
 	 * Handler for back button. When event receive the CS table scene is shown.
 	 * 
 	 */
-	public void checkBillButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new CheckBill(null));
+	public void billButtonHandler(MouseEvent event) {
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new CheckBill(0 + ""));
 	}
 
 	/**
@@ -178,4 +147,30 @@ public class OrderViewController {
 		return Integer.parseInt(tablenumber);
 	}
 
+	/**
+	 * Private method for the controller to create and add buttons to the
+	 * container.
+	 * 
+	 * @param List<Menu>
+	 *            any menu list
+	 */
+	private void setMenu(List<Menu> items, FlowPane pane) {
+		for (Menu item : items) {
+			Button button = new Button(item.getName());
+			button.setPrefSize(100, 100);
+			button.setWrapText(true);
+			button.setTextAlignment(TextAlignment.CENTER);
+			button.setUserData(item);
+			// set handler for the button
+			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+				@Override
+				public void handle(MouseEvent event) {
+					o.addOrder((Menu) button.getUserData());
+					System.out.println(((Menu) button.getUserData()).getName());
+				}
+			});
+			// add button to the pane
+			pane.getChildren().add(button);
+		}
+	}
 }

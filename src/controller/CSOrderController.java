@@ -63,7 +63,7 @@ public class CSOrderController {
 			ImageView view = new ImageView(image);
 			view.setFitHeight(100);
 			view.setFitWidth(100);
-			button.setPrefSize(100, 100);
+			button.setPrefSize(150, 150);
 			button.setWrapText(true);
 			button.setTextAlignment(TextAlignment.CENTER);
 			button.setGraphic(view);
