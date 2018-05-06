@@ -15,6 +15,7 @@ public class Order {
 	private Map<Menu, Integer> orders;
 	private static Order instance;
 
+	// private constructor
 	private Order() {
 		// Lazy instantiation
 		orders = new LinkedHashMap<>();
@@ -87,7 +88,7 @@ public class Order {
 	}
 
 	/**
-	 * Remove all current ordering menus.
+	 * Remove all current orders.
 	 */
 	public void clearOrders() {
 		orders.clear();
@@ -99,28 +100,28 @@ public class Order {
 	}
 
 	// for testing
-//	public static void main(String[] args) {
-//		Order om = Order.getInstance();
-//		// test adding
-//		om.addOrder(new Menu("cocoa", 20));
-//		om.addOrder(new Menu("Steak", 100));
-//		om.addOrder(new Menu("water", 10));
-//		om.addOrder(new Menu("water", 10));
-//		om.addOrder(new Menu("Steak", 100));
-//		om.addOrder(new Menu("water", 10));
-//		om.addOrder(new Menu("cocoa", 20));
-//		om.addOrder(new Menu("Steak", 100));
-//		;
-//		om.addOrder(new Menu("water", 10));
-//		om.addOrder(new Menu("cocoa", 20));
-//		om.addOrder(new Menu("cocoa", 20));
-//		om.addOrder(new Menu("Steak", 100));
-//		// test removing
-//		om.removeOrder(new Menu("cocoa", 20));
-//		om.removeOrder(new Menu("Steak", 100));
-//		om.removeOrder(new Menu("water", 10));
-//		om.printOrders();
-//		System.out.println(om.getOrders().size());
-//	}
+	public static void main(String[] args) {
+		Order om = Order.getInstance();
+		// test adding
+		om.addOrder(new Menu("cocoa", 20));
+		om.addOrder(new Menu("Steak", 100));
+		om.addOrder(new Menu("water", 10));
+		om.addOrder(new Menu("water", 10));
+		om.addOrder(new Menu("Steak", 100));
+		om.addOrder(new Menu("water", 10));
+		om.addOrder(new Menu("cocoa", 20));
+		om.addOrder(new Menu("Steak", 100));
+
+		om.addOrder(new Menu("water", 10));
+		om.addOrder(new Menu("cocoa", 20));
+		om.addOrder(new Menu("cocoa", 20));
+		om.addOrder(new Menu("Steak", 100));
+		// test removing
+		om.removeOrder(new Menu("cocoa", 20));
+		om.removeOrder(new Menu("Steak", 100));
+		om.removeOrder(new Menu("water", 10));
+		om.printOrders();
+		System.out.println(om.getOrders().size());
+	}
 
 }

@@ -10,12 +10,17 @@ import java.util.Objects;
  *
  */
 
-public class Menu implements Comparable<Menu>{
+public class Menu implements Comparable<Menu> {
 
 	private String name;
 	private int price;
-	
 
+	/**
+	 * Constructor for Menu class.
+	 * 
+	 * @param name
+	 * @param price
+	 */
 	public Menu(String name, int price) {
 		this.name = name;
 		this.price = price;
@@ -47,10 +52,10 @@ public class Menu implements Comparable<Menu>{
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		//if both are null return true
+		// if both are null return true
 		if (obj == this)
 			return true;
-		//similar to obj.getClass() != this.getClass()
+		// similar to obj.getClass() != this.getClass()
 		if (!(obj instanceof Menu)) {
 			return false;
 		}
@@ -66,8 +71,8 @@ public class Menu implements Comparable<Menu>{
 	public int hashCode() {
 		return Objects.hash(this.name, this.price);
 	}
-	
-	//under construction
+
+	// under construction
 	@Override
 	public int compareTo(Menu o) {
 		return 0;
