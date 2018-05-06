@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import model.Menu;
 import util.ScreenController;
 
 /**
@@ -42,22 +43,22 @@ public class OrderViewController {
 	private static String tablenumber;
 
 	// for single instantiation
-	private static List<String> foodname;
-	private static List<String> drinkname;
+	private static List<Menu> foodname;
+	private static List<Menu> drinkname;
 
 	@FXML
 	public void initialize() {
 		// adding buttons to foodpane
 		System.out.println(tablenumber);
-		for (String text : foodname) {
-			Button button = new Button(text);
+		for (Menu text : foodname) {
+			Button button = new Button(text.getName());
 			button.setPrefSize(100, 100);
 			button.setWrapText(true);
 			button.setTextAlignment(TextAlignment.CENTER);
 			foodpane.getChildren().add(button);
 		}
-		for (String text : drinkname) {
-			Button button = new Button(text);
+		for (Menu text : drinkname) {
+			Button button = new Button(text.getName());
 			button.setPrefSize(100, 100);
 			button.setWrapText(true);
 			button.setTextAlignment(TextAlignment.CENTER);
@@ -107,7 +108,7 @@ public class OrderViewController {
 	 * @param List
 	 *            of menu names List<String>
 	 */
-	public static void setMenu(List<String> foodnames, List<String> drinknames) {
+	public static void setMenu(List<Menu> foodnames, List<Menu> drinknames) {
 		foodname = foodnames;
 		drinkname = drinknames;
 	}

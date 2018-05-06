@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import model.Menu;
 import util.PropertyManager;
 
 /**
@@ -107,7 +109,7 @@ public class DBManager {
 		return true;
 	}
 
-	//during in test
+	// during in test
 	public static List<String> getFoodname(String table, String column) {
 		List<String> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + table;
@@ -124,15 +126,17 @@ public class DBManager {
 	}
 
 	// during in test
-	public static List<String> getFoodname(String foodkind) {
-		//change to List<Menu>
-		List<String> temp = new ArrayList<>();
+	public static List<Menu> getFoodname(String foodkind) {
+		// change to List<Menu>
+		List<Menu> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + foodkind;
 		try {
 			ResultSet rs = getData(sqlCommand);
 			while (rs.next()) {
 				String text = rs.getString("name");
-				temp.add(text);
+				int price = rs.getInt("price");
+				Menu mn = new Menu(text, price);
+				temp.add(mn);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

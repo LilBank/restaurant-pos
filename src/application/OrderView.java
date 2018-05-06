@@ -4,6 +4,7 @@ import java.util.List;
 
 import controller.OrderViewController;
 import javafx.stage.Stage;
+import model.Menu;
 import util.AbstractWindow;
 
 /**
@@ -17,7 +18,7 @@ import util.AbstractWindow;
 public class OrderView extends AbstractWindow {
 
 	// for setting the tablenumber to EMOrderController
-	public OrderView(String input, List<String> foodnames, List<String> drinknames) {
+	public OrderView(String input, List<Menu> foodnames, List<Menu> drinknames) {
 		OrderViewController.setTable(input);
 		OrderViewController.setMenu(foodnames, drinknames);
 	}

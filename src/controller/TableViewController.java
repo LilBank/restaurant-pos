@@ -15,6 +15,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import model.Menu;
 import util.ScreenController;
 import util.UserManager;
 
@@ -54,8 +55,8 @@ public class TableViewController {
 
 	// for single instantiation
 	private static UserManager um = UserManager.getInstance();
-	private static List<String> foodname = DBManager.getFoodname("Foods");
-	private static List<String> drinkname = DBManager.getFoodname("Drinks");
+	private static List<Menu> foodname = DBManager.getFoodname("Foods");
+	private static List<Menu> drinkname = DBManager.getFoodname("Drinks");
 
 	private boolean admin = um.isAdmin();
 
