@@ -220,24 +220,6 @@ public class DBManager {
 		return temp;
 	}
 
-	// during in test
-	// public static List<User> getUser() {
-	// // change to List<Menu>
-	// List<User> temp = new ArrayList<>();
-	// sqlCommand = "SELECT * FROM " + "User";
-	// try {
-	// ResultSet rs = getData(sqlCommand);
-	// while (rs.next()) {
-	// String text = rs.getString("name");
-	// User user = new User(text, PrivilegeEnum.USER);
-	// temp.add(user);
-	// }
-	// } catch (SQLException e) {
-	// e.printStackTrace();
-	// }
-	// return temp;
-	// }
-
 	/**
 	 * Method for storing image from the database.
 	 */
@@ -256,7 +238,13 @@ public class DBManager {
 
 	}
 
-	// during in test
+	/**
+	 * Method for checking table existence in database.
+	 * 
+	 * @param table
+	 *            number
+	 * @return true if table exist, false if not
+	 */
 	public static boolean checkTable(String tableNumber) {
 		DatabaseMetaData dbm = null;
 		try {
@@ -273,7 +261,12 @@ public class DBManager {
 		return false;
 	}
 
-	// during in test
+	/**
+	 * Method for creating a new table in database.
+	 * 
+	 * @param table
+	 *            number
+	 */
 	public static void createTable(String tableNumber) {
 		sqlCommand = "CREATE TABLE " + tableNumber + "(name VARCHAR (255), quantity INT(11))";
 		PreparedStatement stmt = null;
@@ -293,4 +286,21 @@ public class DBManager {
 		}
 	}
 
+	// during in test
+	// public static List<User> getUser() {
+	// // change to List<Menu>
+	// List<User> temp = new ArrayList<>();
+	// sqlCommand = "SELECT * FROM " + "User";
+	// try {
+	// ResultSet rs = getData(sqlCommand);
+	// while (rs.next()) {
+	// String text = rs.getString("name");
+	// User user = new User(text, PrivilegeEnum.USER);
+	// temp.add(user);
+	// }
+	// } catch (SQLException e) {
+	// e.printStackTrace();
+	// }
+	// return temp;
+	// }
 }
