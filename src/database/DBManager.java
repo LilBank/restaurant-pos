@@ -193,8 +193,8 @@ public class DBManager {
 		// } catch (SQLException e) {
 		// e.printStackTrace();
 		// }
-		
-		//test connection
+
+		// test connection
 		String sql = "INSERT INTO " + foodtable + " VALUES (?,?,?)";
 		Connection connection;
 		try {
@@ -203,6 +203,7 @@ public class DBManager {
 			stmt.setString(1, name);
 			stmt.setString(2, price);
 			stmt.setString(3, url);
+			stmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

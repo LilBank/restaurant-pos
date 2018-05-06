@@ -17,7 +17,7 @@ public class ImageFactory {
 	 * 
 	 * @return object of a subclass
 	 */
-	ImageFactory getInstance() {
+	static ImageFactory getInstance() {
 		if (factory == null)
 			factory = new ImageFactory();
 		return factory;
