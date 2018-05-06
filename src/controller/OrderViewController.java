@@ -68,8 +68,8 @@ public class OrderViewController {
 
 		// adding buttons to foodpane
 		System.out.println(tablenumber);
-		setMenu(foods, foodpane);
-		setMenu(drinks, drinkpane);
+		setButtons(foods, foodpane);
+		setButtons(drinks, drinkpane);
 	}
 
 	/**
@@ -154,7 +154,7 @@ public class OrderViewController {
 	 * @param List<Menu>
 	 *            any menu list
 	 */
-	private void setMenu(List<Menu> items, FlowPane pane) {
+	private void setButtons(List<Menu> items, FlowPane pane) {
 		for (Menu item : items) {
 			Button button = new Button(item.getName());
 			button.setPrefSize(100, 100);
