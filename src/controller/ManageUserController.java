@@ -3,6 +3,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.Login;
 import database.DBManager;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ListProperty;
@@ -14,13 +15,18 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import model.Menu;
 import model.User;
+import util.ScreenController;
 
 /**
  * ManagerUserController contains method for handling all event receive from the
@@ -63,6 +69,12 @@ public class ManageUserController {
 	 * table and database.
 	 */
 	public void removeButtonHandler() {
+		Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure removing this user? ", ButtonType.OK);
+		alert.showAndWait().ifPresent(response -> {
+			if (response == ButtonType.OK) {
+			
+			}
+		});
 		
 	}
 }
