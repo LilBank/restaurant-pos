@@ -28,6 +28,10 @@ public class DBManager {
 	private static String PASS = pm.getProperty("database.password");
 	private static String sqlCommand;
 
+	static {
+
+	}
+
 	/**
 	 * Method for retrieving data from the database to check the Login's input.
 	 * 
@@ -35,13 +39,15 @@ public class DBManager {
 	 *            from Login's input
 	 * @param password
 	 *            from Login's input
-	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 = user
-	 *         doesn't exists
+	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 =
+	 *         user doesn't exists
 	 */
 	public static int login(String user, String pass) {
 		sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
 		try {
-			ResultSet rs = getData(sqlCommand);
+			Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+			PreparedStatement stmt = connection.prepareStatement(sqlCommand);
+			ResultSet rs = stmt.executeQuery();
 			String dbPass = "";
 			if (rs.next()) {
 				dbPass = rs.getString("password");
@@ -63,8 +69,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for inserting data(new user's data) to the database. The access type
-	 * is set to 1 by default but can be change later on.
+	 * Method for inserting data(new user's data) to the database. The access
+	 * type is set to 1 by default but can be change later on.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -84,8 +90,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for retrieving data from the database to check whether if the username
-	 * inputed has already exist or not.
+	 * Method for retrieving data from the database to check whether if the
+	 * username inputed has already exist or not.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -169,8 +175,8 @@ public class DBManager {
 	public static ResultSet getData(String sqlCommand) {
 		try {
 			Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-			Statement statement = connection.createStatement();
-			return statement.executeQuery(sqlCommand);
+			PreparedStatement statement = connection.prepareStatement(sqlCommand);
+			return statement.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -182,12 +188,14 @@ public class DBManager {
 	 * Method for storing image from the database.
 	 */
 	public static void InsertTo(String foodtable, String name, String price, String url) {
-		// sqlCommand = "INSERT INTO `" + foodtable + "` (`name`, `price`, `url`)" +
+		// sqlCommand = "INSERT INTO `" + foodtable + "` (`name`, `price`,
+		// `url`)" +
 		// "VALUES" + "(" + "'" + name + "'"
 		// + ", '" + price + "'" + "'" + url + "'" + ")";
 		//
 		// try {
-		// Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+		// Connection connection = DriverManager.getConnection(DB_URL, USER,
+		// PASS);
 		// Statement statement = connection.createStatement();
 		// statement.executeUpdate(sqlCommand);
 		// } catch (SQLException e) {
