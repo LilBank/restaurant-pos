@@ -21,7 +21,7 @@
                   <Font name="Agency FB" size="27.0" />
                </font>
             </Button>
-            <ListView layoutX="106.0" layoutY="111.0" prefHeight="377.0" prefWidth="729.0" />
+            <ListView fx:id="listView" layoutX="106.0" layoutY="111.0" prefHeight="377.0" prefWidth="729.0" />
          </children>
       </Pane>
    </children>

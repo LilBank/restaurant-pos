@@ -63,6 +63,6 @@ public class ManageUserController {
 	 * table and database.
 	 */
 	public void removeButtonHandler() {
-
+		
 	}
 }
