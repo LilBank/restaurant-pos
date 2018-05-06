@@ -2,6 +2,8 @@ package controller;
 
 import java.util.List;
 
+import javax.sound.midi.Soundbank;
+
 import application.TableView;
 import application.CheckBill;
 import application.Main;
@@ -14,6 +16,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import model.Menu;
+import model.User;
 import util.ScreenController;
 
 /**
@@ -83,8 +86,7 @@ public class OrderViewController {
 	}
 
 	/**
-	 * Handler for logout button. When event receive the Start up scene is
-	 * shown.
+	 * Handler for logout button. When event receive the Start up scene is shown.
 	 * 
 	 */
 	public void exitButtonHandler(ActionEvent event) {
@@ -92,8 +94,8 @@ public class OrderViewController {
 	}
 
 	/**
-	 * Static method for scene before opening this scene to get the button text
-	 * and set as table number.
+	 * Static method for scene before opening this scene to get the button text and
+	 * set as table number.
 	 * 
 	 * @param buttonText
 	 */
@@ -102,8 +104,8 @@ public class OrderViewController {
 	}
 
 	/**
-	 * Static method for scene before opening this scene to get list of menu
-	 * names and set the List<Menu> attribute above.
+	 * Static method for scene before opening this scene to get list of menu names
+	 * and set the List<Menu> attribute above.
 	 * 
 	 * @param List
 	 *            of menu names List<Menu>
