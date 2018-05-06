@@ -233,29 +233,14 @@ public class DBManager {
 	 * Method for storing image from the database.
 	 */
 	public static void InsertTo(String foodtable, String name, String price, String url) {
-		// sqlCommand = "INSERT INTO `" + foodtable + "` (`name`, `price`,
-		// `url`)" +
-		// "VALUES" + "(" + "'" + name + "'"
-		// + ", '" + price + "'" + "'" + url + "'" + ")";
-		//
-		// try {
-		// Connection connection = DriverManager.getConnection(DB_URL, USER,
-		// PASS);
-		// Statement statement = connection.createStatement();
-		// statement.executeUpdate(sqlCommand);
-		// } catch (SQLException e) {
-		// e.printStackTrace();
-		// }
-
 		// test connection
 		String sql = "INSERT INTO " + foodtable + " VALUES (?,?,?)";
 		try {
-			connection = DriverManager.getConnection(DB_URL, USER, PASS);
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, name);
 			stmt.setString(2, price);
 			stmt.setString(3, url);
-			stmt.execute();
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
