@@ -6,7 +6,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
@@ -17,23 +16,22 @@
    <children>
       <Pane layoutX="5.0" layoutY="5.0" prefHeight="640.0" prefWidth="940.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
-            <TableView fx:id="table" prefHeight="440.0" prefWidth="400.0" />
             <Label layoutX="99.0" layoutY="457.0" prefHeight="49.0" prefWidth="58.0" text="Total: ">
                <font>
                   <Font name="Agency FB" size="29.0" />
                </font>
             </Label>
-          <Button fx:id="order" layoutX="133.0" layoutY="554.0" mnemonicParsing="false" onMouseClicked="#orderButtonHandler" prefHeight="69.0" prefWidth="107.0" style="-fx-background-radius: 100;" text="Order">
+          <Button fx:id="order" layoutX="104.0" layoutY="566.0" mnemonicParsing="false" onMouseClicked="#orderButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 100;" text="Order">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="back" layoutX="14.0" layoutY="554.0" minWidth="74.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="70.0" prefWidth="107.0" style="-fx-background-radius: 50;" text="Back">
+            <Button fx:id="back" layoutX="14.0" layoutY="566.0" minWidth="74.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 50;" text="Back">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="261.0" layoutY="554.0" minWidth="74.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="130.0" style="-fx-background-radius: 50;" text="Check Bill">
+            <Button layoutX="286.0" layoutY="566.0" minWidth="74.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="114.0" style="-fx-background-radius: 50;" text="Check Bill">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
@@ -68,11 +66,17 @@
                 </Tab>
               </tabs>
             </TabPane>
-            <Button fx:id="remove" layoutX="14.0" layoutY="457.0" minWidth="69.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="76.0" style="-fx-background-radius: 50;" text="remove">
+            <Button fx:id="remove" layoutX="14.0" layoutY="499.0" minWidth="69.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 50;" text="remove">
                <font>
-                  <Font name="Agency FB" size="18.0" />
+                  <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
+            <Button fx:id="clear" layoutX="194.0" layoutY="566.0" mnemonicParsing="false" onMouseClicked="#clearButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 100;" text="Clear">
+               <font>
+                  <Font name="Agency FB" size="24.0" />
+               </font>
+            </Button>
+            <ScrollPane layoutX="-1.0" prefHeight="451.0" prefWidth="406.0" />
          </children>
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />

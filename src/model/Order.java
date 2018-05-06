@@ -99,30 +99,28 @@ public class Order {
 	}
 
 	// for testing
-	public static void main(String[] args) {
-		// List<String> temp = DBManager.getButtons("Menu");
-		// temp.forEach((x) -> System.out.println(x));
-		Order om = Order.getInstance();
-		// test adding
-		om.addOrder(new Menu("cocoa", 20));
-		om.addOrder(new Menu("Steak", 100));
-		om.addOrder(new Menu("water", 10));
-		om.addOrder(new Menu("water", 10));
-		om.addOrder(new Menu("Steak", 100));
-		om.addOrder(new Menu("water", 10));
-		om.addOrder(new Menu("cocoa", 20));
-		om.addOrder(new Menu("Steak", 100));
-		;
-		om.addOrder(new Menu("water", 10));
-		om.addOrder(new Menu("cocoa", 20));
-		om.addOrder(new Menu("cocoa", 20));
-		om.addOrder(new Menu("Steak", 100));
-		// test removing
-		om.removeOrder(new Menu("cocoa", 20));
-		om.removeOrder(new Menu("Steak", 100));
-		om.removeOrder(new Menu("water", 10));
-		om.printOrders();
-		System.out.println(om.getOrders().size());
-	}
+//	public static void main(String[] args) {
+//		Order om = Order.getInstance();
+//		// test adding
+//		om.addOrder(new Menu("cocoa", 20));
+//		om.addOrder(new Menu("Steak", 100));
+//		om.addOrder(new Menu("water", 10));
+//		om.addOrder(new Menu("water", 10));
+//		om.addOrder(new Menu("Steak", 100));
+//		om.addOrder(new Menu("water", 10));
+//		om.addOrder(new Menu("cocoa", 20));
+//		om.addOrder(new Menu("Steak", 100));
+//		;
+//		om.addOrder(new Menu("water", 10));
+//		om.addOrder(new Menu("cocoa", 20));
+//		om.addOrder(new Menu("cocoa", 20));
+//		om.addOrder(new Menu("Steak", 100));
+//		// test removing
+//		om.removeOrder(new Menu("cocoa", 20));
+//		om.removeOrder(new Menu("Steak", 100));
+//		om.removeOrder(new Menu("water", 10));
+//		om.printOrders();
+//		System.out.println(om.getOrders().size());
+//	}
 
 }

@@ -9,12 +9,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import model.Menu;
+import model.Order;
 import util.ScreenController;
 import util.UserManager;
 
@@ -29,6 +31,8 @@ import util.UserManager;
 public class OrderViewController {
 	@FXML
 	private Button order;
+	@FXML
+	private Button clear;
 	@FXML
 	private Button remove;
 	@FXML
@@ -50,11 +54,13 @@ public class OrderViewController {
 	private static List<Menu> foods;
 	private static List<Menu> drinks;
 	private static UserManager um = UserManager.getInstance();
+	private static Order o = Order.getInstance();
 
 	private boolean admin = um.isAdmin();
 
 	@FXML
 	public void initialize() {
+
 		if (!admin) {
 			remove.setDisable(true);
 			remove.setVisible(false);
@@ -62,23 +68,25 @@ public class OrderViewController {
 
 		// adding buttons to foodpane
 		System.out.println(tablenumber);
-		for (Menu foodname : foods) {
-			Button button = new Button(foodname.getName());
+		for (Menu food : foods) {
+			Button button = new Button(food.getName());
 			button.setPrefSize(100, 100);
 			button.setWrapText(true);
 			button.setTextAlignment(TextAlignment.CENTER);
+			button.setUserData(food);
 
 			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 				@Override
 				public void handle(MouseEvent event) {
-
+					o.addOrder((Menu) button.getUserData());
+					System.out.println(((Menu) button.getUserData()).getName());
 				}
 			});
 
 			foodpane.getChildren().add(button);
 		}
-		for (Menu drinkname : drinks) {
-			Button button = new Button(drinkname.getName());
+		for (Menu drink : drinks) {
+			Button button = new Button(drink.getName());
 			button.setPrefSize(100, 100);
 			button.setWrapText(true);
 			button.setTextAlignment(TextAlignment.CENTER);
@@ -86,22 +94,13 @@ public class OrderViewController {
 			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 				@Override
 				public void handle(MouseEvent event) {
-
+					o.addOrder((Menu) button.getUserData());
+					System.out.println(((Menu) button.getUserData()).getName());
 				}
 			});
 
 			drinkpane.getChildren().add(button);
 		}
-	}
-
-	/**
-	 * Handler for every menu button. When event receive the menu is added to
-	 * the Map<Menu,QTY>.
-	 * 
-	 * @param event
-	 */
-	public void menuButtonHandler(MouseEvent event) {
-
 	}
 
 	/**
@@ -111,7 +110,20 @@ public class OrderViewController {
 	 * @param event
 	 */
 	public void orderButtonHandler(MouseEvent event) {
+		o.printOrders();
+		System.out.println("Current order(s): " + o.getOrders().size());
+	}
 
+	/**
+	 * Handler for clear button. When event receive current orders from
+	 * Map<Menu,QTY> is removed.
+	 * 
+	 * @param event
+	 */
+	public void clearButtonHandler(MouseEvent event) {
+		o.clearOrders();
+		System.out.println("all current orders cleared.");
+		System.out.println("Map size: " + o.getOrders().size());
 	}
 
 	/**
