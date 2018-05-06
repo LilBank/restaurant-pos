@@ -54,11 +54,11 @@ public class CSOrderController {
 		setImage(drinkpane, drinkname, drinkUrl);
 	}
 
+	int i = 0;
 	public void setImage(FlowPane pane, List<String> name, List<String> url) {
-		int i = 0;
 		for (String text : name) {
 			Button button = new Button(text);
-			Image image = new Image(url.get(2));
+			Image image = new Image(url.get(1));
 			i++;
 			ImageView view = new ImageView(image);
 			view.setFitHeight(100);
