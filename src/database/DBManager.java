@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +17,8 @@ import util.PropertyManager;
 
 /**
  * DBManager contains method for managing data on database. Also associate with
- * classes that use the database.
+ * classes that use the database. With help from BCrypt all password are
+ * encrypted.
  * 
  * @author Piyawat & Vichaphol
  *
@@ -43,7 +43,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for retrieving data from the database to check the Login's input.
+	 * Method for getting data from the database to check the Login's input.
 	 * 
 	 * @param username
 	 *            from Login's input
@@ -122,7 +122,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for retrieving data from the database to check whether if the
+	 * Method for àÓÐÐÃ×à data from the database to check whether if the
 	 * username inputed has already exist or not.
 	 * 
 	 * @param username
@@ -187,7 +187,13 @@ public class DBManager {
 		return temp;
 	}
 
-	// during in test
+	/**
+	 * Method for getting data from the database which are food names and prices
+	 * to create a Menu object.
+	 * 
+	 * @param tablename
+	 * @return List<Menu>
+	 */
 	public static List<Menu> getFoodname(String foodkind) {
 		List<Menu> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + foodkind;

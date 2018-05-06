@@ -23,7 +23,7 @@
                   <Font name="Agency FB" size="29.0" />
                </font>
             </Label>
-          <Button fx:id="order" layoutX="133.0" layoutY="554.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="107.0" style="-fx-background-radius: 100;" text="Order">
+          <Button fx:id="order" layoutX="133.0" layoutY="554.0" mnemonicParsing="false" onMouseClicked="#orderButtonHandler" prefHeight="69.0" prefWidth="107.0" style="-fx-background-radius: 100;" text="Order">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
@@ -68,6 +68,11 @@
                 </Tab>
               </tabs>
             </TabPane>
+            <Button fx:id="remove" layoutX="14.0" layoutY="457.0" minWidth="69.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="76.0" style="-fx-background-radius: 50;" text="remove">
+               <font>
+                  <Font name="Agency FB" size="18.0" />
+               </font>
+            </Button>
          </children>
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
