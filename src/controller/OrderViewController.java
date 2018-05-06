@@ -43,22 +43,22 @@ public class OrderViewController {
 	private static String tablenumber;
 
 	// for single instantiation
-	private static List<Menu> foodname;
-	private static List<Menu> drinkname;
+	private static List<Menu> foods;
+	private static List<Menu> drinks;
 
 	@FXML
 	public void initialize() {
 		// adding buttons to foodpane
 		System.out.println(tablenumber);
-		for (Menu text : foodname) {
-			Button button = new Button(text.getName());
+		for (Menu foodname : foods) {
+			Button button = new Button(foodname.getName());
 			button.setPrefSize(100, 100);
 			button.setWrapText(true);
 			button.setTextAlignment(TextAlignment.CENTER);
 			foodpane.getChildren().add(button);
 		}
-		for (Menu text : drinkname) {
-			Button button = new Button(text.getName());
+		for (Menu drinkname : drinks) {
+			Button button = new Button(drinkname.getName());
 			button.setPrefSize(100, 100);
 			button.setWrapText(true);
 			button.setTextAlignment(TextAlignment.CENTER);
@@ -103,14 +103,14 @@ public class OrderViewController {
 
 	/**
 	 * Static method for scene before opening this scene to get list of menu
-	 * names and set the List<String> attribute above.
+	 * names and set the List<Menu> attribute above.
 	 * 
 	 * @param List
-	 *            of menu names List<String>
+	 *            of menu names List<Menu>
 	 */
-	public static void setMenu(List<Menu> foodnames, List<Menu> drinknames) {
-		foodname = foodnames;
-		drinkname = drinknames;
+	public static void setMenu(List<Menu> arg, List<Menu> arg2) {
+		foods = arg;
+		drinks = arg2;
 	}
 
 	// during in test
