@@ -27,6 +27,18 @@ public class DBManager {
 	private static String USER = pm.getProperty("database.user");
 	private static String PASS = pm.getProperty("database.password");
 	private static String sqlCommand;
+	private static Connection connection;
+
+	/**
+	 * Constructor for initialize DBManager.
+	 */
+	public DBManager() {
+		try {
+			connection = DriverManager.getConnection(DB_URL, USER, PASS);
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
 
 	/**
 	 * Method for retrieving data from the database to check the Login's input.
@@ -35,13 +47,18 @@ public class DBManager {
 	 *            from Login's input
 	 * @param password
 	 *            from Login's input
-	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 = user
-	 *         doesn't exists
+	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 =
+	 *         user doesn't exists
 	 */
 	public static int login(String user, String pass) {
-		sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
+		// sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
+		sqlCommand = "SELECT * FROM User WHERE name = ?";
+		PreparedStatement stmt = null;
 		try {
-			ResultSet rs = getData(sqlCommand);
+			connection = DriverManager.getConnection(DB_URL, USER, PASS);
+			stmt = connection.prepareStatement(sqlCommand);
+			stmt.setString(1, user);
+			ResultSet rs = stmt.executeQuery();
 			String dbPass = "";
 			if (rs.next()) {
 				dbPass = rs.getString("password");
@@ -57,14 +74,20 @@ public class DBManager {
 			ex.printStackTrace();
 		} catch (NullPointerException ex) {
 			ex.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		// not in any cases (ResultSet == null)
 		return -1;
 	}
 
 	/**
-	 * Method for inserting data(new user's data) to the database. The access type
-	 * is set to 1 by default but can be change later on.
+	 * Method for inserting data(new user's data) to the database. The access
+	 * type is set to 1 by default but can be change later on.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -72,20 +95,28 @@ public class DBManager {
 	 *            from SignUp window
 	 */
 	public static void signUp(String user, String pass) {
-		sqlCommand = "INSERT INTO `User` (`name`, `password`, `access type`)" + "VALUES" + "(" + "'" + user + "'"
-				+ ", '" + pass + "', '1')";
+		sqlCommand = "INSERT INTO `User` (`name`, `password`, `access type`) VALUES (?, ?, ?)";
+		PreparedStatement stmt = null;
 		try {
-			Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-			Statement statement = connection.createStatement();
-			statement.executeUpdate(sqlCommand);
+			stmt = connection.prepareStatement(sqlCommand);
+			stmt.setString(1, user);
+			stmt.setString(2, pass);
+			stmt.setInt(3, 1);
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
 	/**
-	 * Method for retrieving data from the database to check whether if the username
-	 * inputed has already exist or not.
+	 * Method for retrieving data from the database to check whether if the
+	 * username inputed has already exist or not.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -93,9 +124,12 @@ public class DBManager {
 	 */
 	public static boolean checkUser(String user) {
 		// check if username does exist
-		sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
+		sqlCommand = "SELECT * FROM User WHERE name = ?";
+		PreparedStatement stmt = null;
 		try {
-			ResultSet rs = getData(sqlCommand);
+			stmt = connection.prepareStatement(sqlCommand);
+			stmt.setString(1, user);
+			ResultSet rs = stmt.executeQuery();
 			int dbInt = 0;
 			// if username found in database then changed the value of dbInt
 			if (rs.next()) {
@@ -107,6 +141,12 @@ public class DBManager {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		// username does not exist
 		return true;
@@ -116,8 +156,10 @@ public class DBManager {
 	public static List<String> getFoodname(String table, String column) {
 		List<String> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + table;
+		PreparedStatement stmt = null;
 		try {
-			ResultSet rs = getData(sqlCommand);
+			stmt = connection.prepareStatement(sqlCommand);
+			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				String text = rs.getString(column);
 				temp.add(text);
@@ -130,11 +172,12 @@ public class DBManager {
 
 	// during in test
 	public static List<Menu> getFoodname(String foodkind) {
-		// change to List<Menu>
 		List<Menu> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + foodkind;
+		PreparedStatement stmt = null;
 		try {
-			ResultSet rs = getData(sqlCommand);
+			stmt = connection.prepareStatement(sqlCommand);
+			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				String text = rs.getString("name");
 				int price = rs.getInt("price");
@@ -143,51 +186,46 @@ public class DBManager {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return temp;
 	}
 
 	// during in test
-	public static List<User> getUser() {
-		// change to List<Menu>
-		List<User> temp = new ArrayList<>();
-		sqlCommand = "SELECT * FROM " + "User";
-		try {
-			ResultSet rs = getData(sqlCommand);
-			while (rs.next()) {
-				String text = rs.getString("name");
-				User user = new User(text, PrivilegeEnum.USER);
-				temp.add(user);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return temp;
-	}
-
-	// during in test for shortening codes
-	public static ResultSet getData(String sqlCommand) {
-		try {
-			Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-			Statement statement = connection.createStatement();
-			return statement.executeQuery(sqlCommand);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		// never reaches because DB_URL is always found
-		return null;
-	}
+	// public static List<User> getUser() {
+	// // change to List<Menu>
+	// List<User> temp = new ArrayList<>();
+	// sqlCommand = "SELECT * FROM " + "User";
+	// try {
+	// ResultSet rs = getData(sqlCommand);
+	// while (rs.next()) {
+	// String text = rs.getString("name");
+	// User user = new User(text, PrivilegeEnum.USER);
+	// temp.add(user);
+	// }
+	// } catch (SQLException e) {
+	// e.printStackTrace();
+	// }
+	// return temp;
+	// }
 
 	/**
 	 * Method for storing image from the database.
 	 */
 	public static void InsertTo(String foodtable, String name, String price, String url) {
-		// sqlCommand = "INSERT INTO `" + foodtable + "` (`name`, `price`, `url`)" +
+		// sqlCommand = "INSERT INTO `" + foodtable + "` (`name`, `price`,
+		// `url`)" +
 		// "VALUES" + "(" + "'" + name + "'"
 		// + ", '" + price + "'" + "'" + url + "'" + ")";
 		//
 		// try {
-		// Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
+		// Connection connection = DriverManager.getConnection(DB_URL, USER,
+		// PASS);
 		// Statement statement = connection.createStatement();
 		// statement.executeUpdate(sqlCommand);
 		// } catch (SQLException e) {
@@ -196,7 +234,6 @@ public class DBManager {
 
 		// test connection
 		String sql = "INSERT INTO " + foodtable + " VALUES (?,?,?)";
-		Connection connection;
 		try {
 			connection = DriverManager.getConnection(DB_URL, USER, PASS);
 			PreparedStatement stmt = connection.prepareStatement(sql);
