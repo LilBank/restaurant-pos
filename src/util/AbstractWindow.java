@@ -3,6 +3,7 @@ package util;
 import java.net.URL;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,6 +24,10 @@ public abstract class AbstractWindow extends Application {
 	public void start(Stage stage) {
 		try {
 			URL url = getClass().getResource(fxmlfile);
+			if (url == null) {
+				System.out.println("Couldn't find file: " + fxmlfile);
+				Platform.exit();
+			}
 			// Load the FXML and get reference to the loader
 			FXMLLoader loader = new FXMLLoader(url);
 			// Create scene graph from file (UI)
