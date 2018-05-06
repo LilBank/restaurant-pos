@@ -53,14 +53,14 @@ public class ManageUserController {
 	@FXML
 	private Button remove;
 
-	//private static List<User> userName = DBManager.getUser();
+	// private static List<User> userName = DBManager.getUser();
 
 	@FXML
 	public void initialize() {
 		// ObservableList<User> data = FXCollections.observableList(userName);
 		// table.setItems(data);
 		// table.getColumns().addAll(id, name, password);
-	//	listProperty.set(FXCollections.observableArrayList(userName));
+		// listProperty.set(FXCollections.observableArrayList(userName));
 		listView.itemsProperty().bind(listProperty);
 	}
 
@@ -72,9 +72,9 @@ public class ManageUserController {
 		Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure removing this user? ", ButtonType.OK);
 		alert.showAndWait().ifPresent(response -> {
 			if (response == ButtonType.OK) {
-			
+
 			}
 		});
-		
+
 	}
 }

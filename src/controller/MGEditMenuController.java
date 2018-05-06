@@ -66,22 +66,22 @@ public class MGEditMenuController {
 		return folderImage;
 	}
 
-//	/**
-//	 * Method for handling newImage button. Insert image to the list view.
-//	 * 
-//	 * @throws MalformedURLException
-//	 */
-//	public void insertFoodHandler(ActionEvent event) {
+	/**
+	 * Method for handling newImage button. Insert image to the list view.
+	 * 
+	 * @throws MalformedURLException
+	 */
+	public void insertFoodHandler(ActionEvent event) {
 //		createData("Foods", name, price, url);
-//	}
-//	/**
-//	 * Method for handling newImage button. Insert image to the list view.
-//	 * 
-//	 * @throws MalformedURLException
-//	 */
-//	public void insertDrinkHandler(ActionEvent event) {
-//		createData("Drinks", name, price, url);
-//	}
+	}
+	/**
+	 * Method for handling newImage button. Insert image to the list view.
+	 * 
+	 * @throws MalformedURLException
+	 */
+	public void insertDrinkHandler(ActionEvent event) {
+		// createData("Drinks", name, price, url);
+	}
 
 	/**
 	 * Method for handling newImage button. Insert image to the list view.
@@ -106,8 +106,7 @@ public class MGEditMenuController {
 		}
 		if (!result.get().contains(".jpg")) {
 			alert = new Alert(AlertType.ERROR, "Url is incorrect", ButtonType.OK);
-			alert.setHeaderText("Inputfield Error");
-			alert.show();
+		alert.show();
 		} else {
 			if (result.isPresent()) {
 				DBManager.InsertTo(table, name, price, url);
