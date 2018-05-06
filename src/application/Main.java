@@ -1,5 +1,6 @@
 package application;
 
+import database.DBManager;
 import javafx.stage.Stage;
 import util.AbstractWindow;
 
@@ -24,6 +25,7 @@ public class Main extends AbstractWindow {
 	}
 
 	public static void main(String[] args) {
+		DBManager.connect();
 		launch(args);
 	}
 }

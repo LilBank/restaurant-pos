@@ -32,7 +32,7 @@ public class DBManager {
 	/**
 	 * Constructor for initialize DBManager.
 	 */
-	public DBManager() {
+	public static void connect() {
 		try {
 			connection = DriverManager.getConnection(DB_URL, USER, PASS);
 		} catch (SQLException ex) {
@@ -55,7 +55,6 @@ public class DBManager {
 		sqlCommand = "SELECT * FROM User WHERE name = ?";
 		PreparedStatement stmt = null;
 		try {
-			connection = DriverManager.getConnection(DB_URL, USER, PASS);
 			stmt = connection.prepareStatement(sqlCommand);
 			stmt.setString(1, user);
 			ResultSet rs = stmt.executeQuery();
@@ -76,7 +75,9 @@ public class DBManager {
 			ex.printStackTrace();
 		} finally {
 			try {
-				stmt.close();
+				if (stmt != null) {
+					stmt.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -107,7 +108,9 @@ public class DBManager {
 			e.printStackTrace();
 		} finally {
 			try {
-				stmt.close();
+				if (stmt != null) {
+					stmt.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -143,7 +146,9 @@ public class DBManager {
 			e.printStackTrace();
 		} finally {
 			try {
-				stmt.close();
+				if (stmt != null) {
+					stmt.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -166,6 +171,14 @@ public class DBManager {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return temp;
 	}
@@ -188,7 +201,9 @@ public class DBManager {
 			e.printStackTrace();
 		} finally {
 			try {
-				stmt.close();
+				if (stmt != null) {
+					stmt.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
