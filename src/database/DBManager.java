@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import model.Menu;
 import model.PrivilegeEnum;
 import model.User;
@@ -58,11 +60,12 @@ public class DBManager {
 			stmt = connection.prepareStatement(sqlCommand);
 			stmt.setString(1, user);
 			ResultSet rs = stmt.executeQuery();
+			// if matches dbPass = hash password
 			String dbPass = "";
 			if (rs.next()) {
 				dbPass = rs.getString("password");
 			}
-			if (pass.equals(dbPass)) {
+			if (BCrypt.checkpw(pass, dbPass)) {
 				return rs.getInt("access type");
 			}
 			// wrong password
@@ -101,7 +104,8 @@ public class DBManager {
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
 			stmt.setString(1, user);
-			stmt.setString(2, pass);
+			String hashpw = BCrypt.hashpw(pass, BCrypt.gensalt());
+			stmt.setString(2, hashpw);
 			stmt.setInt(3, 1);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
