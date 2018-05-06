@@ -72,7 +72,6 @@ public class SignUpController {
 			if (allow) {
 				alert = new Alert(AlertType.NONE,
 						"You are registered as an restaurant employee. Press ok to continue...", ButtonType.OK);
-				alert.setHeaderText("Congratulations");
 				alert.showAndWait().ifPresent(response -> {
 					if (response == ButtonType.OK) {
 						DBManager.signUp(username.getText(), password.getText());

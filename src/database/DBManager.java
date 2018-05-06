@@ -125,6 +125,7 @@ public class DBManager {
 
 	// during in test
 	public static List<String> getFoodname(String foodkind) {
+		//change to List<Menu>
 		List<String> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + foodkind;
 		try {
