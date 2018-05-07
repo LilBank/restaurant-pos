@@ -4,16 +4,24 @@ import java.util.Observable;
 
 import controller.OrderViewController;
 
+/**
+ * Under construction.
+ * 
+ * @author Piyawat & Vichapol
+ *
+ */
 public class OrderTable implements java.util.Observer {
 
 	private static OrderViewController ovc;
 	private static Order o;
 
+	// during in test
 	public OrderTable() {
 		o = Order.getInstance();
 		ovc = OrderViewController.getInstance();
 	}
 
+	// during in test
 	public void display() {
 		String text = null;
 		try {
@@ -34,6 +42,7 @@ public class OrderTable implements java.util.Observer {
 		System.out.println("display in OrderTable is working");
 	}
 
+	// during in test
 	@Override
 	public void update(Observable o, Object arg) {
 		display();

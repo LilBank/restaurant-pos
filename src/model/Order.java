@@ -107,7 +107,11 @@ public class Order extends Observable {
 		notifyObservers();
 	}
 
-	// during in test
+	/**
+	 * Method for getting all orders and return them as group of text in lines.
+	 * 
+	 * @return orders in texts
+	 */
 	public String orderToText() {
 		String text = "";
 		for (Map.Entry<Menu, Integer> order : orders.entrySet()) {

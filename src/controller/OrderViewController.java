@@ -99,13 +99,14 @@ public class OrderViewController implements java.util.Observer {
 			ex.printStackTrace();
 		}
 	}
-
+	
+	// during in test
 	public TextArea getDisplay() {
 		return this.display;
 	}
-
-	@Override
-	public void update(Observable observable, Object arg) {
+	
+	// during in test
+	public void setDisplay() {
 		String text = null;
 		try {
 			text = o.orderToText();
@@ -121,8 +122,14 @@ public class OrderViewController implements java.util.Observer {
 			System.out.println("display is null");
 			ex.printStackTrace();
 		}
-		display.setText(text);
+		instance.getDisplay().setText(text);
 		System.out.println("method update in OVC is working");
+	}
+	
+	// during in test
+	@Override
+	public void update(Observable observable, Object arg) {
+		setDisplay();
 	}
 
 	/**
