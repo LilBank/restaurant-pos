@@ -89,11 +89,17 @@ public class OrderViewController implements java.util.Observer {
 		// adding buttons to each pane
 		setButtons(foods, foodpane);
 		setButtons(drinks, drinkpane);
+		setDisplayProp();
+	}
+
+	// during in test
+	private void setDisplayProp() {
 		display.setDisable(true);
 		display.setText(tablenumber);
 		display2.setDisable(true);
 		// every time OrderView must show ordered items
 		setDisplay2();
+		setTotal();
 	}
 
 	// during in test
@@ -151,6 +157,7 @@ public class OrderViewController implements java.util.Observer {
 		System.out.println("method update in OVC is working");
 	}
 
+	// for display to setText (temporary)
 	public void setTemporary() {
 		String text = o.orderToText(o.getOrders());
 		display.setText(text);
@@ -255,6 +262,8 @@ public class OrderViewController implements java.util.Observer {
 	 */
 	public void clearButtonHandler(MouseEvent event) {
 		o.clearOrders();
+		//must be after clear order prevent mixing
+		setTotal();
 		// for testing
 		System.out.println("all current orders cleared.");
 		System.out.println("Map size: " + o.getOrders().size());
