@@ -52,6 +52,8 @@ public class MGEditMenuController {
 	ListProperty<Button> listProperty = new SimpleListProperty<>();
 	/** List of all images */
 	public static List<Button> folderImage = new ArrayList<>();
+	//single instantiation
+		private static DBManager dbm = DBManager.getInstance();
 
 	/**
 	 * Bind listView with ListProperty at the beginning.
@@ -109,7 +111,7 @@ public class MGEditMenuController {
 		alert.show();
 		} else {
 			if (result.isPresent()) {
-				DBManager.InsertTo(table, name, price, url);
+				dbm.InsertTo(table, name, price, url);
 			}
 			image = new Image(result.get());
 			Button foods = new Button();

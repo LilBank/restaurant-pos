@@ -55,8 +55,9 @@ public class TableViewController {
 
 	// for single instantiation
 	private static UserManager um = UserManager.getInstance();
-	private static List<Menu> foodname = DBManager.getFoodname("Foods");
-	private static List<Menu> drinkname = DBManager.getFoodname("Drinks");
+	private static DBManager dbm = DBManager.getInstance();
+	private static List<Menu> foodname = dbm.getFoodname("Foods");
+	private static List<Menu> drinkname = dbm.getFoodname("Drinks");
 
 	private boolean admin = um.isAdmin();
 

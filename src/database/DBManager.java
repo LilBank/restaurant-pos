@@ -26,21 +26,26 @@ import util.PropertyManager;
  */
 public class DBManager {
 	private static PropertyManager pm = PropertyManager.getInstance();
-	private static String DB_URL = pm.getProperty("database.url");
-	private static String USER = pm.getProperty("database.user");
-	private static String PASS = pm.getProperty("database.password");
-	private static String sqlCommand;
-	private static Connection connection;
+	private static DBManager instance;
+	private Connection connection;
+	private String DB_URL = pm.getProperty("database.url");
+	private String USER = pm.getProperty("database.user");
+	private String PASS = pm.getProperty("database.password");
+	private String sqlCommand;
 
-	/**
-	 * Constructor for initialize DBManager.
-	 */
-	public static void connect() {
+	private DBManager() {
 		try {
 			connection = DriverManager.getConnection(DB_URL, USER, PASS);
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
+	}
+
+	public static DBManager getInstance() {
+		if (instance == null) {
+			instance = new DBManager();
+		}
+		return instance;
 	}
 
 	/**
@@ -53,7 +58,7 @@ public class DBManager {
 	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 =
 	 *         user doesn't exists
 	 */
-	public static int login(String user, String pass) {
+	public int login(String user, String pass) {
 		// sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
 		sqlCommand = "SELECT * FROM User WHERE name = ?";
 		PreparedStatement stmt = null;
@@ -97,7 +102,7 @@ public class DBManager {
 	 * @param password
 	 *            from SignUp window
 	 */
-	public static void signUp(String user, String pass) {
+	public void signUp(String user, String pass) {
 		sqlCommand = "INSERT INTO `User` (`name`, `password`, `access type`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;
 		try {
@@ -128,7 +133,7 @@ public class DBManager {
 	 *            from SignUp window
 	 * @return false if username match, true if no match
 	 */
-	public static boolean checkUser(String user) {
+	public boolean checkUser(String user) {
 		// check if username does exist
 		sqlCommand = "SELECT * FROM User WHERE name = ?";
 		PreparedStatement stmt = null;
@@ -161,7 +166,7 @@ public class DBManager {
 	}
 
 	// during in test
-	public static List<String> getFoodname(String table, String column) {
+	public List<String> getFoodname(String table, String column) {
 		List<String> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + table;
 		PreparedStatement stmt = null;
@@ -193,7 +198,7 @@ public class DBManager {
 	 * @param tablename
 	 * @return List<Menu>
 	 */
-	public static List<Menu> getFoodname(String foodkind) {
+	public List<Menu> getFoodname(String foodkind) {
 		List<Menu> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + foodkind;
 		PreparedStatement stmt = null;
@@ -223,7 +228,7 @@ public class DBManager {
 	/**
 	 * Method for storing image from the database.
 	 */
-	public static void InsertTo(String foodtable, String name, String price, String url) {
+	public void InsertTo(String foodtable, String name, String price, String url) {
 		// test connection
 		String sql = "INSERT INTO " + foodtable + " VALUES (?,?,?)";
 		try {
@@ -245,7 +250,7 @@ public class DBManager {
 	 *            number
 	 * @return true if table exist, false if not
 	 */
-	public static boolean checkTable(String tableNumber) {
+	public boolean checkTable(String tableNumber) {
 		DatabaseMetaData dbm = null;
 		try {
 			dbm = connection.getMetaData();
@@ -267,7 +272,7 @@ public class DBManager {
 	 * @param table
 	 *            number
 	 */
-	public static void createTable(String tableNumber) {
+	public void createTable(String tableNumber) {
 		sqlCommand = "CREATE TABLE " + tableNumber + "(name VARCHAR (255), quantity INT(11))";
 		PreparedStatement stmt = null;
 		try {

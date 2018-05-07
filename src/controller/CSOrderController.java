@@ -40,10 +40,12 @@ public class CSOrderController {
 	private FlowPane drinkpane;
 
 	private static String tablenumber;
-	private static List<String> foodname = DBManager.getFoodname("Foods", "name");
-	private static List<String> drinkname = DBManager.getFoodname("Drinks", "name");
-	private static List<String> foodUrl = DBManager.getFoodname("Foods", "url");
-	private static List<String> drinkUrl = DBManager.getFoodname("Foods", "url");
+	// single instantiation
+	private static DBManager dbm = DBManager.getInstance();
+	private static List<String> foodname = dbm.getFoodname("Foods", "name");
+	private static List<String> drinkname = dbm.getFoodname("Drinks", "name");
+	private static List<String> foodUrl = dbm.getFoodname("Foods", "url");
+	private static List<String> drinkUrl = dbm.getFoodname("Foods", "url");
 
 	@FXML
 	public void initialize() {
@@ -55,6 +57,7 @@ public class CSOrderController {
 	}
 
 	int i = 0;
+
 	public void setImage(FlowPane pane, List<String> name, List<String> url) {
 		for (String text : name) {
 			Button button = new Button(text);
@@ -85,7 +88,8 @@ public class CSOrderController {
 	}
 
 	/**
-	 * Handler for logout button. When event receive the Start up scene is shown.
+	 * Handler for logout button. When event receive the Start up scene is
+	 * shown.
 	 * 
 	 */
 	public void exitButtonHandler(ActionEvent event) {

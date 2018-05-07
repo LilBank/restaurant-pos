@@ -33,13 +33,16 @@ public class SignUpController {
 	private PasswordField password;
 	@FXML
 	private PasswordField password2;
-	// Alert dialog
+	@FXML
 	private Alert alert;
+	
+	//single instantiation
+	private static DBManager dbm = DBManager.getInstance();
 
 	/**
 	 * Method for handling confirm button. When event receive then the
-	 * implementation below is done. Every fail cases gives different Alert reply
-	 * message.
+	 * implementation below is done. Every fail cases gives different Alert
+	 * reply message.
 	 * 
 	 * @param event
 	 */
@@ -62,7 +65,7 @@ public class SignUpController {
 		// password match
 		else {
 			// check username existence
-			boolean allow = DBManager.checkUser(username.getText());
+			boolean allow = dbm.checkUser(username.getText());
 			if (!allow) {
 				alert = new Alert(AlertType.ERROR, "Username already exist! Please use another username.",
 						ButtonType.OK);
@@ -74,7 +77,7 @@ public class SignUpController {
 						"You are registered as an restaurant employee. Press ok to continue...", ButtonType.OK);
 				alert.showAndWait().ifPresent(response -> {
 					if (response == ButtonType.OK) {
-						DBManager.signUp(username.getText(), password.getText());
+						dbm.signUp(username.getText(), password.getText());
 						ScreenController.switchWindow((Stage) confirm.getScene().getWindow(), new Login());
 					}
 				});
@@ -83,7 +86,8 @@ public class SignUpController {
 	}
 
 	/**
-	 * Method for handling cancel button. When event receive Main scene is shown.
+	 * Method for handling cancel button. When event receive Main scene is
+	 * shown.
 	 * 
 	 * @param event
 	 */

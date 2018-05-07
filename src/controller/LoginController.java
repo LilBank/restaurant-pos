@@ -34,8 +34,11 @@ public class LoginController {
 	private TextField username;
 	@FXML
 	private PasswordField password;
-	// Alert dialog
+	@FXML
 	private Alert alert;
+	
+	//single instantiation
+	private static DBManager dbm = DBManager.getInstance();
 
 	/**
 	 * Method for handling cancel button. When event receive Main scene is
@@ -68,7 +71,7 @@ public class LoginController {
 		}
 		// check if this user is valid in which access level
 		else {
-			int accessLevel = DBManager.login(username.getText(), password.getText());
+			int accessLevel = dbm.login(username.getText(), password.getText());
 			// int = 2 for manager mode
 			if (accessLevel == 2) {
 				alert = new Alert(AlertType.NONE, "Welcome manager: " + username.getText(), ButtonType.OK);
