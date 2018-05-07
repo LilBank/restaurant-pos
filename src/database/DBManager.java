@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -36,7 +37,8 @@ public class DBManager {
 	private String sqlCommand;
 
 	/**
-	 * Private constructor for DBManger. Getting the connection from the database.
+	 * Private constructor for DBManger. Getting the connection from the
+	 * database.
 	 */
 	private DBManager() {
 		try {
@@ -66,8 +68,8 @@ public class DBManager {
 	 *            from Login's input
 	 * @param password
 	 *            from Login's input
-	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 = user
-	 *         doesn't exists
+	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 =
+	 *         user doesn't exists
 	 */
 	public int login(String user, String pass) {
 		// sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
@@ -105,8 +107,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for inserting data(new user's data) to the database. The access type
-	 * is set to 1 by default but can be change later on.
+	 * Method for inserting data(new user's data) to the database. The access
+	 * type is set to 1 by default but can be change later on.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -137,8 +139,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for àÓÐÐÃ×à data from the database to check whether if the username
-	 * inputed has already exist or not.
+	 * Method for àÓÐÐÃ×à data from the database to check whether if the
+	 * username inputed has already exist or not.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -203,8 +205,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for getting data from the database which are food names and prices to
-	 * create a Menu object.
+	 * Method for getting data from the database which are food names and prices
+	 * to create a Menu object.
 	 * 
 	 * @param tablename
 	 * @return List<Menu>
@@ -327,5 +329,32 @@ public class DBManager {
 			}
 		}
 		return temp;
+	}
+	
+	//during in test
+	public void orderToDB(String tableNumber, Map<Menu, Integer> map) {
+		String tabletmp = "table" + tableNumber;
+		sqlCommand = "INSERT INTO `" + tabletmp + "` (`name`, `quantity`) VALUES (?, ?)";
+		PreparedStatement stmt = null;
+		try {
+			for (Map.Entry<Menu, Integer> order : map.entrySet()) {
+				stmt = connection.prepareStatement(sqlCommand);
+				String name = order.getKey().getName();
+				int qty = order.getValue();
+				stmt.setString(1, name);
+				stmt.setInt(2, qty);
+				stmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

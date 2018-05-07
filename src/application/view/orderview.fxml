@@ -17,27 +17,27 @@
    <children>
       <Pane layoutX="5.0" layoutY="5.0" prefHeight="640.0" prefWidth="940.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
-            <Label layoutX="120.0" layoutY="495.0" prefHeight="49.0" prefWidth="58.0" text="Total: ">
+            <Label layoutX="120.0" layoutY="512.0" prefHeight="49.0" prefWidth="58.0" text="Total: ">
                <font>
                   <Font name="Agency FB" size="29.0" />
                </font>
             </Label>
-          <Button fx:id="order" layoutX="104.0" layoutY="566.0" mnemonicParsing="false" onMouseClicked="#orderButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 100;" text="Order">
+          <Button fx:id="order" layoutX="104.0" layoutY="574.0" mnemonicParsing="false" onMouseClicked="#orderButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 100;" text="Order">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="back" layoutX="14.0" layoutY="566.0" minWidth="74.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 50;" text="Back">
+            <Button fx:id="back" layoutX="14.0" layoutY="574.0" minWidth="74.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 50;" text="Back">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="checkBill" layoutX="286.0" layoutY="566.0" minWidth="74.0" mnemonicParsing="false" onMouseClicked="#billButtonHandler" prefHeight="58.0" prefWidth="114.0" style="-fx-background-radius: 50;" text="Check Bill">
+            <Button fx:id="checkBill" layoutX="284.0" layoutY="574.0" minWidth="74.0" mnemonicParsing="false" onMouseClicked="#billButtonHandler" prefHeight="58.0" prefWidth="114.0" style="-fx-background-radius: 50;" text="Check Bill">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <TextField fx:id="totalPrice" disable="true" layoutX="184.0" layoutY="495.0" prefHeight="49.0" prefWidth="182.0" />
+            <TextField fx:id="totalPrice" disable="true" layoutX="193.0" layoutY="512.0" prefHeight="49.0" prefWidth="182.0" />
             <TabPane layoutX="400.0" prefHeight="640.0" prefWidth="542.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Food">
@@ -67,19 +67,28 @@
                 </Tab>
               </tabs>
             </TabPane>
-            <Button fx:id="remove" layoutX="14.0" layoutY="495.0" minWidth="69.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 50;" text="remove">
+            <Button fx:id="remove" layoutX="14.0" layoutY="512.0" minWidth="69.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 50;" text="remove">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="clear" layoutX="194.0" layoutY="566.0" mnemonicParsing="false" onMouseClicked="#clearButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 100;" text="Clear">
+            <Button fx:id="clear" layoutX="194.0" layoutY="574.0" mnemonicParsing="false" onMouseClicked="#clearButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 100;" text="Clear">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" prefHeight="481.0" prefWidth="406.0">
+            <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" layoutY="23.0" prefHeight="225.0" prefWidth="406.0">
                <content>
-                  <TextArea fx:id="display" prefHeight="482.0" prefWidth="411.0" promptText="Order is empty">
+                  <TextArea fx:id="display" prefHeight="224.0" prefWidth="406.0" promptText="Order is empty">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+               </content>
+            </ScrollPane>
+            <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" layoutY="282.0" prefHeight="225.0" prefWidth="406.0">
+               <content>
+                  <TextArea fx:id="display2" prefHeight="224.0" prefWidth="406.0">
                      <font>
                         <Font size="18.0" />
                      </font>
