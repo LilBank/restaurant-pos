@@ -114,7 +114,7 @@ public class Order extends Observable {
 			Menu menu = order.getKey();
 			int qty = order.getValue();
 			String name = menu.getName();
-			int price = menu.getPrice();
+			int price = menu.getPrice() * qty;
 			// separate each order by \n
 			text += String.format("%-35s %10d %10d\n", name, qty, price);
 		}

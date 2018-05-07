@@ -42,6 +42,8 @@ public class OrderTable implements java.util.Observer {
 		}
 		ovc.setDisplay(text);
 		System.out.println("display in OrderTable is working");
+		// missing some action
+		// must do the same as normal menu adding button
 	}
 
 	// during in test

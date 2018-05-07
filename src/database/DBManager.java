@@ -365,7 +365,7 @@ public class DBManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			// must close statement everytime
+			// must close statement every time
 			try {
 				if (stmt != null) {
 					stmt.close();
