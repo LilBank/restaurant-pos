@@ -186,16 +186,23 @@ public class OrderViewController implements java.util.Observer {
 	 * @param event
 	 */
 	public void orderButtonHandler(MouseEvent event) {
-		alert = new Alert(AlertType.CONFIRMATION,
-				"Are you sure to order?", ButtonType.YES,ButtonType.NO);
-		alert.showAndWait().ifPresent(response -> {
-			if (response == ButtonType.YES) {
-				o.printOrders();
-				System.out.println("Current order(s): " + o.getOrders().size());
-				Map<Menu, Integer> temp = o.getOrders();
-				dbm.orderToDB(tablenumber, temp);
-			}
-		});		
+		// if order list is empty
+		if (o.getOrders().isEmpty()) {
+			alert = new Alert(AlertType.ERROR, "You have not order anything !", ButtonType.OK);
+			alert.show();
+		}
+		// order confirmation
+		else {
+			alert = new Alert(AlertType.CONFIRMATION, "Are you sure to order?", ButtonType.YES, ButtonType.NO);
+			alert.showAndWait().ifPresent(response -> {
+				if (response == ButtonType.YES) {
+					o.printOrders();
+					System.out.println("Current order(s): " + o.getOrders().size());
+					Map<Menu, Integer> temp = o.getOrders();
+					dbm.orderToDB(tablenumber, temp);
+				}
+			});
+		}
 	}
 
 	/**

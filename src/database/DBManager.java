@@ -286,7 +286,8 @@ public class DBManager {
 	 *            number
 	 */
 	public void createTable(String tableNumber) {
-		sqlCommand = "CREATE TABLE " + tableNumber + "(name VARCHAR (255), quantity INT(11))";
+		tableNumber = "table" + tableNumber;
+		sqlCommand = "CREATE TABLE " + tableNumber + "(name VARCHAR (255), price INT(11), quantity INT(11))";
 		PreparedStatement stmt = null;
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
@@ -330,19 +331,21 @@ public class DBManager {
 		}
 		return temp;
 	}
-	
-	//during in test
+
+	// during in test
 	public void orderToDB(String tableNumber, Map<Menu, Integer> map) {
 		String tabletmp = "table" + tableNumber;
-		sqlCommand = "INSERT INTO `" + tabletmp + "` (`name`, `quantity`) VALUES (?, ?)";
+		sqlCommand = "INSERT INTO `" + tabletmp + "` (`name`, `price`, `quantity`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;
 		try {
 			for (Map.Entry<Menu, Integer> order : map.entrySet()) {
 				stmt = connection.prepareStatement(sqlCommand);
 				String name = order.getKey().getName();
+				int price = order.getKey().getPrice();
 				int qty = order.getValue();
 				stmt.setString(1, name);
-				stmt.setInt(2, qty);
+				stmt.setInt(2, price);
+				stmt.setInt(3, qty);
 				stmt.executeUpdate();
 			}
 		} catch (SQLException e) {
