@@ -1,32 +1,23 @@
 # Restaurant Point Of Sale (POS)
 
-## About the application
+**About the application**
 
-***Restaurant POS*** replace the use of paper for ordering system. With security, every employee must sign up and login in work so we could classify which dish is ordered by who in case of responsibility needed. (all user’s data are stored in database)
+*Restaurant POS* replace the use of paper for ordering system. With security, every employee must sign up and login in work so we could classify which dish is ordered by who in case of responsibility needed. (all user’s data are stored in database)
 Daily sales are recorded for monthly progress. (also recorded in database)
 Manager mode will be added in this program. (adding or removing a menu or set a promotion.
 Menu buttons are created from menu stored in database.
 
-## Developers: 
-
-1. Piyawat Setthitikun ([bankkeez](https://github.com/bankkeez))
-2. Vichaphol Thamsuthikul ([kimvcp](https://github.com/kimvcp)) 
-
-## How to Download
-
-#### Install the required library
+## Prerequisites
 
 * MySQL-connector 
 * JBCrypt
 
-#### Run the application 
+## Installing
 
 1. Download the whole folder containing runnable RestaurantPOS.jar file
 2. Add these JAR file by follow the steps
 
 	Open the project -> Build Path -> Configure Build Path.. -> Add External JARS.
-
-
 
 ## Reason of Creating this application
 
@@ -37,6 +28,16 @@ Our program can be useful to restaurants that currently lack use of technology, 
 
 There are some design and technology used.
 - MVC (Model View Controller) pattern will be used in this program. 
-- Observer pattern used in display ordered items and more.
+- Observer pattern used in display ordered 
+items and more.
 
+## Built With
+
+- [Eclipse IDE](https://www.eclipse.org/ide/)
+- [Scene Builder JavaFx](http://gluonhq.com/products/scene-builder/)
+
+## Developers: 
+
+1. Piyawat Setthitikun ([bankkeez](https://github.com/bankkeez))
+2. Vichaphol Thamsuthikul ([kimvcp](https://github.com/kimvcp)) 
 
