@@ -2,8 +2,9 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MGEditMenuController">
@@ -14,10 +15,23 @@
          </padding>
          <children>
             <Button fx:id="back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="26.0" prefWidth="71.0" style="-fx-background-radius: 100;" text="Back" />
-            <Button fx:id="newFood" layoutX="131.0" layoutY="18.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="109.0" style="-fx-background-radius: 50;" text="Add Food" />
-            <ListView fx:id="listItems" layoutX="21.0" layoutY="85.0" prefHeight="523.0" prefWidth="888.0" />
+            <Button fx:id="newFood" layoutX="131.0" layoutY="18.0" mnemonicParsing="false" onAction="#insertFoodHandler" prefHeight="52.0" prefWidth="109.0" style="-fx-background-radius: 50;" text="Add Food" />
             <Button fx:id="deleteImage" layoutX="398.0" layoutY="18.0" mnemonicParsing="false" onAction="#deleteImageHandler" prefHeight="52.0" prefWidth="107.0" style="-fx-background-radius: 50;" text="Delete" />
-            <Button fx:id="newDrink" layoutX="265.0" layoutY="18.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="109.0" style="-fx-background-radius: 50;" text="Add Drinks" />
+            <Button fx:id="newDrink" layoutX="265.0" layoutY="18.0" mnemonicParsing="false" onAction="#insertDrinkHandler" prefHeight="52.0" prefWidth="109.0" style="-fx-background-radius: 50;" text="Add Drinks" />
+            <AnchorPane layoutX="-4.0" layoutY="107.0" prefHeight="530.0" prefWidth="940.0">
+               <children>
+                  <ScrollPane layoutX="14.0" prefHeight="502.0" prefWidth="426.0">
+                     <content>
+                        <FlowPane fx:id="foodpane" prefHeight="502.0" prefWidth="426.0" />
+                     </content>
+                  </ScrollPane>
+                  <ScrollPane layoutX="484.0" prefHeight="502.0" prefWidth="426.0">
+                     <content>
+                        <FlowPane fx:id="drinkpane" prefHeight="503.0" prefWidth="426.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
          </children>
       </Pane>
    </children>

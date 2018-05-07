@@ -12,6 +12,7 @@ import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -21,8 +22,13 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.Menu;
+import sun.nio.ch.SelectionKeyImpl;
 import util.ScreenController;
 
 /**
@@ -44,24 +50,27 @@ public class MGEditMenuController {
 	Button deleteImage;
 	@FXML
 	Button logout;
-	/** ListView showing the items */
 	@FXML
-	ListView<Button> listItems;
-	/** Combined with list view */
+	private FlowPane foodpane;
 	@FXML
-	ListProperty<Button> listProperty = new SimpleListProperty<>();
+	private FlowPane drinkpane;
 	/** List of all images */
 	public static List<Button> folderImage = new ArrayList<>();
-	//single instantiation
-		private static DBManager dbm = DBManager.getInstance();
+	// single instantiation
+	private static DBManager dbm = DBManager.getInstance();
+	private static List<Menu> foodname = dbm.getFoodname("Foods");
+	private static List<Menu> drinkname = dbm.getFoodname("Drinks");
+	private static List<String> foodUrl = dbm.getFoodUrl("Foods");
+	private static List<String> drinkUrl = dbm.getFoodUrl("Drinks");
 
 	/**
 	 * Bind listView with ListProperty at the beginning.
 	 */
 	@FXML
 	public void initialize() {
-		listProperty.set(FXCollections.observableArrayList(folderImage));
-		listItems.itemsProperty().bind(listProperty);
+		setFoodButtons(foodname, foodpane);
+		setDrinkButtons(drinkname, drinkpane);
+
 	}
 
 	public static List<Button> getImage() {
@@ -74,15 +83,8 @@ public class MGEditMenuController {
 	 * @throws MalformedURLException
 	 */
 	public void insertFoodHandler(ActionEvent event) {
-//		createData("Foods", name, price, url);
-	}
-	/**
-	 * Method for handling newImage button. Insert image to the list view.
-	 * 
-	 * @throws MalformedURLException
-	 */
-	public void insertDrinkHandler(ActionEvent event) {
-		// createData("Drinks", name, price, url);
+		createData("Foods", "Taco", "80");
+
 	}
 
 	/**
@@ -90,7 +92,17 @@ public class MGEditMenuController {
 	 * 
 	 * @throws MalformedURLException
 	 */
-	public void createData(String table, String name, String price, String url) {
+	public void insertDrinkHandler(ActionEvent event) {
+		// createData("Drinks", name, price, url);
+
+	}
+
+	/**
+	 * Method for handling newImage button. Insert image to the list view.
+	 * 
+	 * @throws MalformedURLException
+	 */
+	public void createData(String table, String name, String price) {
 		// Ask user to input dialog.
 		TextInputDialog dialog = new TextInputDialog("");
 		dialog.setTitle("Input URL");
@@ -108,21 +120,59 @@ public class MGEditMenuController {
 		}
 		if (!result.get().contains(".jpg")) {
 			alert = new Alert(AlertType.ERROR, "Url is incorrect", ButtonType.OK);
-		alert.show();
+			alert.show();
 		} else {
 			if (result.isPresent()) {
-				dbm.InsertTo(table, name, price, url);
+				// dbm.InsertTo(table, name, price, result.get());
+				Button button = new Button();
+				button.setPrefSize(150, 150);
+				image = new Image(result.get());
+				ImageView view = new ImageView(image);
+				button.setGraphic(view);
+				foodpane.getChildren().add(button);
 			}
-			image = new Image(result.get());
-			Button foods = new Button();
-			ImageView view = new ImageView(image);
+		}
+	}
 
-			/** Set size of the imported image */
+	/**
+	 * Private method for the controller to create and add buttons to the container.
+	 * 
+	 * @param List<Menu>
+	 *            any menu list
+	 */
+	private void setFoodButtons(List<Menu> items, FlowPane pane) {
+		Image image = null;
+		for (Menu item : items) {
+			Button button = new Button(item.getName());
+			image = new Image(foodUrl.get(1));
+			ImageView view = new ImageView(image);
 			view.setFitHeight(100);
 			view.setFitWidth(100);
-			foods.setGraphic(view);
-			folderImage.add(foods);
-			listProperty.set(FXCollections.observableArrayList(folderImage));
+			button.setPrefSize(100, 100);
+			button.setWrapText(true);
+			button.setTextAlignment(TextAlignment.CENTER);
+			button.setUserData(item);
+			button.setGraphic(view);
+			pane.getChildren().add(button);
+			folderImage.add(button);
+		}
+	}
+
+	private void setDrinkButtons(List<Menu> items, FlowPane pane) {
+		Image image = null;
+		for (Menu item : items) {
+			Button button = new Button(item.getName());
+			image = new Image(drinkUrl.get(1));
+			ImageView view = new ImageView(image);
+			view.setFitHeight(100);
+			view.setFitWidth(100);
+			button.setPrefSize(100, 100);
+			button.setWrapText(true);
+			button.setTextAlignment(TextAlignment.CENTER);
+			button.setUserData(item);
+			button.setGraphic(view);
+			pane.getChildren().add(button);
+			folderImage.add(button);
 		}
 	}
 
@@ -141,7 +191,6 @@ public class MGEditMenuController {
 	 */
 	public void deleteImageHandler(ActionEvent event) {
 		folderImage.remove(folderImage.size() - 1);
-		listProperty.set(FXCollections.observableArrayList(folderImage));
 	}
 
 	/**
