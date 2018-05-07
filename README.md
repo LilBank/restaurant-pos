@@ -11,6 +11,23 @@ Menu buttons are created from menu stored in database.
 1. Piyawat Setthitikun ([bankkeez](https://github.com/bankkeez))
 2. Vichaphol Thamsuthikul ([kimvcp](https://github.com/kimvcp)) 
 
+## How to Download
+
+### Install the required library
+
+* MySQL-connector 
+* JBCrypt
+
+### Run the application 
+
+1. Download the whole folder containing runnable RestaurantPOS.jar file
+
+2. Add these JAR file by follow the steps
+
+	Open the project -> Build Path -> Configure Build Path.. -> Add External JARS.
+
+
+
 ## Reason of Creating this application
 
 Our program can be useful to restaurants that currently lack use of technology, to improve efficiency and speed.  Maybe one day our program can be used in some restaurant because we are creating a good, valuable program, not just a program for kids. By the way, we have applied our knowledge learned in class to this program such as many patterns and techniques that can be used in the program, and we also learn about how beautiful the code is when it is designed.
