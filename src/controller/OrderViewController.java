@@ -1,17 +1,23 @@
 package controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 
 import application.CheckBill;
+import application.Login;
 import application.Main;
 import application.Tableview;
+import database.DBManager;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.TextAlignment;
@@ -49,7 +55,11 @@ public class OrderViewController implements java.util.Observer {
 	@FXML
 	private FlowPane drinkpane;
 	@FXML
-	private TextArea display = new TextArea();
+	private TextArea display;
+	@FXML
+	private TextArea display2;
+	@FXML
+	private Alert alert;
 
 	private static String tablenumber;
 
@@ -58,6 +68,9 @@ public class OrderViewController implements java.util.Observer {
 	private static List<Menu> drinks;
 	private static UserManager um = UserManager.getInstance();
 	private static Order o = Order.getInstance();
+	private static DBManager dbm = DBManager.getInstance();
+
+	// under construction
 	private static OrderViewController instance;
 
 	private boolean admin = um.isAdmin();
@@ -88,7 +101,7 @@ public class OrderViewController implements java.util.Observer {
 		return instance;
 	}
 
-	// during in test
+	// during in test (used in OrderTable)
 	public void setDisplay(String text) {
 		try {
 			display.setText(text);
@@ -100,12 +113,13 @@ public class OrderViewController implements java.util.Observer {
 		}
 	}
 
+	// during in test
 	public TextArea getDisplay() {
 		return this.display;
 	}
 
-	@Override
-	public void update(Observable observable, Object arg) {
+	// during in test (use in this class)
+	public void setDisplay() {
 		String text = null;
 		try {
 			text = o.orderToText();
@@ -121,8 +135,48 @@ public class OrderViewController implements java.util.Observer {
 			System.out.println("display is null");
 			ex.printStackTrace();
 		}
-		display.setText(text);
+		// this line below keeps null
+		instance.getDisplay().setText(text);
 		System.out.println("method update in OVC is working");
+	}
+
+	public void setTemporary() {
+		String text = o.orderToText();
+		display.setText(text);
+	}
+
+	// during in test (seems to work the most)
+	@Override
+	public void update(Observable observable, Object arg) {
+		setDisplay();
+	}
+
+	/**
+	 * Private method for the controller to create and add buttons to the
+	 * container.
+	 * 
+	 * @param List<Menu>
+	 *            any menu list
+	 */
+	private void setButtons(List<Menu> items, FlowPane pane) {
+		for (Menu item : items) {
+			Button button = new Button(item.getName());
+			button.setPrefSize(100, 100);
+			button.setWrapText(true);
+			button.setTextAlignment(TextAlignment.CENTER);
+			button.setUserData(item);
+			// set handler for the button
+			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+				@Override
+				public void handle(MouseEvent event) {
+					o.addOrder((Menu) button.getUserData());
+					setTemporary();
+					System.out.println(o.orderToText());
+				}
+			});
+			// add button to the pane
+			pane.getChildren().add(button);
+		}
 	}
 
 	/**
@@ -132,8 +186,16 @@ public class OrderViewController implements java.util.Observer {
 	 * @param event
 	 */
 	public void orderButtonHandler(MouseEvent event) {
-		o.printOrders();
-		System.out.println("Current order(s): " + o.getOrders().size());
+		alert = new Alert(AlertType.CONFIRMATION,
+				"Are you sure to order?", ButtonType.YES,ButtonType.NO);
+		alert.showAndWait().ifPresent(response -> {
+			if (response == ButtonType.YES) {
+				o.printOrders();
+				System.out.println("Current order(s): " + o.getOrders().size());
+				Map<Menu, Integer> temp = o.getOrders();
+				dbm.orderToDB(tablenumber, temp);
+			}
+		});		
 	}
 
 	/**
@@ -199,32 +261,4 @@ public class OrderViewController implements java.util.Observer {
 	public int getTable() {
 		return Integer.parseInt(tablenumber);
 	}
-
-	/**
-	 * Private method for the controller to create and add buttons to the
-	 * container.
-	 * 
-	 * @param List<Menu>
-	 *            any menu list
-	 */
-	private void setButtons(List<Menu> items, FlowPane pane) {
-		for (Menu item : items) {
-			Button button = new Button(item.getName());
-			button.setPrefSize(100, 100);
-			button.setWrapText(true);
-			button.setTextAlignment(TextAlignment.CENTER);
-			button.setUserData(item);
-			// set handler for the button
-			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-				@Override
-				public void handle(MouseEvent event) {
-					o.addOrder((Menu) button.getUserData());
-					System.out.println(o.orderToText());
-				}
-			});
-			// add button to the pane
-			pane.getChildren().add(button);
-		}
-	}
-
 }
