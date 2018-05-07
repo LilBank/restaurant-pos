@@ -5,6 +5,8 @@ import java.util.List;
 import controller.OrderViewController;
 import javafx.stage.Stage;
 import model.Menu;
+import model.Order;
+import model.OrderTable;
 import util.AbstractWindow;
 
 /**
@@ -21,6 +23,8 @@ public class OrderView extends AbstractWindow {
 	public OrderView(String input, List<Menu> foodnames, List<Menu> drinknames) {
 		OrderViewController.setTable(input);
 		OrderViewController.setMenu(foodnames, drinknames);
+		OrderTable ot = new OrderTable();
+		Order.getInstance().addObserver(ot);
 	}
 
 	public void start(Stage stage) {

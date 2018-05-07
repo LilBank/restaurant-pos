@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
@@ -78,7 +79,11 @@
             </Button>
             <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" prefHeight="481.0" prefWidth="406.0">
                <content>
-                  <TextField fx:id="display" prefHeight="483.0" prefWidth="404.0" />
+                  <TextArea fx:id="display" prefHeight="482.0" prefWidth="411.0" promptText="Order is empty">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
                </content>
             </ScrollPane>
          </children>

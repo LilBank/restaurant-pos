@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -47,7 +48,7 @@ public class OrderViewController {
 	@FXML
 	private FlowPane drinkpane;
 	@FXML
-	private static TextField display;
+	private TextArea display;
 
 	private static String tablenumber;
 
@@ -56,9 +57,9 @@ public class OrderViewController {
 	private static List<Menu> drinks;
 	private static UserManager um = UserManager.getInstance();
 	private static Order o = Order.getInstance();
+	private static OrderViewController ovc;
 
 	private boolean admin = um.isAdmin();
-	//private String HEADING = String.format("%-35s %-10s %-10s", "Name", "Quantity", "Price");
 
 	@FXML
 	public void initialize() {
@@ -70,6 +71,30 @@ public class OrderViewController {
 		System.out.println(tablenumber);
 		setButtons(foods, foodpane);
 		setButtons(drinks, drinkpane);
+		display.setDisable(true);
+	}
+
+	// during in test
+	public OrderViewController() {
+
+	}
+
+	// during in test
+	public static OrderViewController getInstance() {
+		if (ovc == null)
+			ovc = new OrderViewController();
+		return ovc;
+	}
+
+	// during in test
+	public void display(String text) {
+		System.out.println("display method is working");
+		try {
+			display.setText(text);
+		} catch (NullPointerException ex) {
+			ex.printStackTrace();
+			throw new NullPointerException();
+		}
 	}
 
 	/**
@@ -166,7 +191,7 @@ public class OrderViewController {
 				@Override
 				public void handle(MouseEvent event) {
 					o.addOrder((Menu) button.getUserData());
-					System.out.println(((Menu) button.getUserData()).getName());
+					System.out.println(o.orderToText());
 				}
 			});
 			// add button to the pane

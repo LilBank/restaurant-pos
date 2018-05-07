@@ -11,7 +11,7 @@ import java.util.Observable;
  * @author Piyawat & Vichaphol
  *
  */
-public class Order{
+public class Order extends Observable {
 
 	private Map<Menu, Integer> orders;
 	private static Order instance;
@@ -29,7 +29,7 @@ public class Order{
 	 */
 	public static Order getInstance() {
 		if (instance == null) {
-			instance = new Order();			
+			instance = new Order();
 		}
 		return instance;
 	}
@@ -62,6 +62,8 @@ public class Order{
 	 */
 	public void addOrder(Menu order) {
 		addToMap(order);
+		setChanged();
+		notifyObservers();
 	}
 
 	/**
@@ -94,36 +96,53 @@ public class Order{
 	 */
 	public void clearOrders() {
 		orders.clear();
+		setChanged();
+		notifyObservers();
 	}
 
 	// for testing
 	public void printOrders() {
 		orders.forEach((k, v) -> System.out.println("key: " + k.getName() + k.getPrice() + " value:" + v));
+		setChanged();
+		notifyObservers();
+	}
+
+	// during in test
+	public String orderToText() {
+		String text = "";
+		for (Map.Entry<Menu, Integer> order : orders.entrySet()) {
+			Menu menu = order.getKey();
+			int qty = order.getValue();
+			String name = menu.getName();
+			int price = menu.getPrice() * qty;
+			text += String.format("%-35s %10d %10d\n", name, qty, price);
+		}
+		return text;
 	}
 
 	// for testing
-	public static void main(String[] args) {
-		Order om = Order.getInstance();
-		// test adding
-		om.addOrder(new Menu("cocoa", 20));
-		om.addOrder(new Menu("Steak", 100));
-		om.addOrder(new Menu("water", 10));
-		om.addOrder(new Menu("water", 10));
-		om.addOrder(new Menu("Steak", 100));
-		om.addOrder(new Menu("water", 10));
-		om.addOrder(new Menu("cocoa", 20));
-		om.addOrder(new Menu("Steak", 100));
-
-		om.addOrder(new Menu("water", 10));
-		om.addOrder(new Menu("cocoa", 20));
-		om.addOrder(new Menu("cocoa", 20));
-		om.addOrder(new Menu("Steak", 100));
-		// test removing
-		om.removeOrder(new Menu("cocoa", 20));
-		om.removeOrder(new Menu("Steak", 100));
-		om.removeOrder(new Menu("water", 10));
-		om.printOrders();
-		System.out.println(om.getOrders().size());
-	}
+	// public static void main(String[] args) {
+	// Order om = Order.getInstance();
+	// // test adding
+	// om.addOrder(new Menu("cocoa", 20));
+	// om.addOrder(new Menu("Steak", 100));
+	// om.addOrder(new Menu("water", 10));
+	// om.addOrder(new Menu("water", 10));
+	// om.addOrder(new Menu("Steak", 100));
+	// om.addOrder(new Menu("water", 10));
+	// om.addOrder(new Menu("cocoa", 20));
+	// om.addOrder(new Menu("Steak", 100));
+	//
+	// om.addOrder(new Menu("water", 10));
+	// om.addOrder(new Menu("cocoa", 20));
+	// om.addOrder(new Menu("cocoa", 20));
+	// om.addOrder(new Menu("Steak", 100));
+	// // test removing
+	// om.removeOrder(new Menu("cocoa", 20));
+	// om.removeOrder(new Menu("Steak", 100));
+	// om.removeOrder(new Menu("water", 10));
+	// om.printOrders();
+	// System.out.println(om.getOrders().size());
+	// }
 
 }
