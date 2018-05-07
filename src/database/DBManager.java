@@ -241,13 +241,13 @@ public class DBManager {
 	/**
 	 * Method for storing image from the database.
 	 */
-	public void InsertTo(String foodtable, String name, String price, String url) {
+	public void InsertTo(String foodtable, String name, Integer price, String url) {
 		// test connection
 		String sql = "INSERT INTO " + foodtable + " VALUES (?,?,?)";
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, name);
-			stmt.setString(2, price);
+			stmt.setInt(2, price);
 			stmt.setString(3, url);
 			stmt.executeUpdate();
 		} catch (SQLException e) {

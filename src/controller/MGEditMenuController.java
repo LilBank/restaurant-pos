@@ -125,9 +125,11 @@ public class MGEditMenuController {
 			if (result.isPresent()) {
 				// dbm.InsertTo(table, name, price, result.get());
 				Button button = new Button();
-				button.setPrefSize(150, 150);
+				button.setPrefSize(100, 100);
 				image = new Image(result.get());
 				ImageView view = new ImageView(image);
+				view.setFitHeight(100);
+				view.setFitWidth(100);
 				button.setGraphic(view);
 				foodpane.getChildren().add(button);
 			}
