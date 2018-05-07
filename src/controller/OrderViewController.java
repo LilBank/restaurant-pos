@@ -58,6 +58,8 @@ public class OrderViewController implements java.util.Observer {
 	private static List<Menu> drinks;
 	private static UserManager um = UserManager.getInstance();
 	private static Order o = Order.getInstance();
+	
+	// under construction
 	private static OrderViewController instance;
 
 	private boolean admin = um.isAdmin();
@@ -88,7 +90,7 @@ public class OrderViewController implements java.util.Observer {
 		return instance;
 	}
 
-	// during in test
+	// during in test (used in OrderTable)
 	public void setDisplay(String text) {
 		try {
 			display.setText(text);
@@ -99,13 +101,13 @@ public class OrderViewController implements java.util.Observer {
 			ex.printStackTrace();
 		}
 	}
-	
+
 	// during in test
 	public TextArea getDisplay() {
 		return this.display;
 	}
-	
-	// during in test
+
+	// during in test (use in this class)
 	public void setDisplay() {
 		String text = null;
 		try {
@@ -122,11 +124,12 @@ public class OrderViewController implements java.util.Observer {
 			System.out.println("display is null");
 			ex.printStackTrace();
 		}
+		//this line below keeps null
 		instance.getDisplay().setText(text);
 		System.out.println("method update in OVC is working");
 	}
-	
-	// during in test
+
+	// during in test (seems to work the most)
 	@Override
 	public void update(Observable observable, Object arg) {
 		setDisplay();
