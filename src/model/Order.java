@@ -11,9 +11,11 @@ import java.util.Observable;
  * @author Piyawat & Vichaphol
  *
  */
+// write javadoc for extending Obsrvable is use
 public class Order extends Observable {
 
 	private Map<Menu, Integer> orders;
+	// singleton instance for Order
 	private static Order instance;
 
 	// private constructor
@@ -100,28 +102,56 @@ public class Order extends Observable {
 		notifyObservers();
 	}
 
-	// for testing
-	public void printOrders() {
-		orders.forEach((k, v) -> System.out.println("key: " + k.getName() + k.getPrice() + " value:" + v));
-		setChanged();
-		notifyObservers();
-	}
-
 	/**
-	 * Method for getting all orders and return them as group of text in lines.
+	 * Method for getting all orders from parameter and return them as group of
+	 * text in lines. for further use.
 	 * 
 	 * @return orders in texts
 	 */
-	public String orderToText(Map<Menu,Integer> map) {
+	public String orderToText(Map<Menu, Integer> map) {
 		String text = "";
 		for (Map.Entry<Menu, Integer> order : map.entrySet()) {
 			Menu menu = order.getKey();
 			int qty = order.getValue();
 			String name = menu.getName();
-			int price = menu.getPrice() * qty;
+			int price = menu.getPrice();
+			// separate each order by \n
 			text += String.format("%-35s %10d %10d\n", name, qty, price);
 		}
 		return text;
+	}
+
+	// during in test
+	public int getTotal() {
+		// named temp for temporary
+		int temp = 0;
+		for (Map.Entry<Menu, Integer> order : orders.entrySet()) {
+			Menu menu = order.getKey();
+			int qty = order.getValue();
+			int price = menu.getPrice();
+			temp += qty * price;
+		}
+		return temp;
+	}
+
+	// during in test
+	public int getTotal(Map<Menu, Integer> map) {
+		// named temp for temporary
+		int temp = 0;
+		for (Map.Entry<Menu, Integer> order : map.entrySet()) {
+			Menu menu = order.getKey();
+			int qty = order.getValue();
+			int price = menu.getPrice();
+			temp += qty * price;
+		}
+		return temp;
+	}
+
+	// for testing
+	public void printOrders() {
+		orders.forEach((k, v) -> System.out.println("key: " + k.getName() + k.getPrice() + " value:" + v));
+		setChanged();
+		notifyObservers();
 	}
 
 	// for testing

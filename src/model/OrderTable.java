@@ -12,10 +12,12 @@ import controller.OrderViewController;
  */
 public class OrderTable implements java.util.Observer {
 
+	// instance of classes
 	private static OrderViewController ovc;
 	private static Order o;
 
 	// during in test
+	// constructor is clarify in OrderView to add it into observable list
 	public OrderTable() {
 		o = Order.getInstance();
 		ovc = OrderViewController.getInstance();
