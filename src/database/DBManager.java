@@ -36,8 +36,7 @@ public class DBManager {
 	private String sqlCommand;
 
 	/**
-	 * Private constructor for DBManger. Getting the connection from the
-	 * database.
+	 * Private constructor for DBManger. Getting the connection from the database.
 	 */
 	private DBManager() {
 		try {
@@ -67,8 +66,8 @@ public class DBManager {
 	 *            from Login's input
 	 * @param password
 	 *            from Login's input
-	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 =
-	 *         user doesn't exists
+	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 = user
+	 *         doesn't exists
 	 */
 	public int login(String user, String pass) {
 		// sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
@@ -106,8 +105,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for inserting data(new user's data) to the database. The access
-	 * type is set to 1 by default but can be change later on.
+	 * Method for inserting data(new user's data) to the database. The access type
+	 * is set to 1 by default but can be change later on.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -138,8 +137,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for àÓÐÐÃ×à data from the database to check whether if the
-	 * username inputed has already exist or not.
+	 * Method for àÓÐÐÃ×à data from the database to check whether if the username
+	 * inputed has already exist or not.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -178,7 +177,7 @@ public class DBManager {
 	}
 
 	// during in test
-	public List<String> getFoodname(String table, String column) {
+	public List<String> getFoodUrl(String table) {
 		List<String> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + table;
 		PreparedStatement stmt = null;
@@ -186,7 +185,7 @@ public class DBManager {
 			stmt = connection.prepareStatement(sqlCommand);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				String text = rs.getString(column);
+				String text = rs.getString("url");
 				temp.add(text);
 			}
 		} catch (SQLException e) {
@@ -204,8 +203,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for getting data from the database which are food names and prices
-	 * to create a Menu object.
+	 * Method for getting data from the database which are food names and prices to
+	 * create a Menu object.
 	 * 
 	 * @param tablename
 	 * @return List<Menu>
@@ -303,21 +302,30 @@ public class DBManager {
 		}
 	}
 
-	// during in test
-	// public static List<User> getUser() {
-	// // change to List<Menu>
-	// List<User> temp = new ArrayList<>();
-	// sqlCommand = "SELECT * FROM " + "User";
-	// try {
-	// ResultSet rs = getData(sqlCommand);
-	// while (rs.next()) {
-	// String text = rs.getString("name");
-	// User user = new User(text, PrivilegeEnum.USER);
-	// temp.add(user);
-	// }
-	// } catch (SQLException e) {
-	// e.printStackTrace();
-	// }
-	// return temp;
-	// }
+	public List<User> getUser() {
+		// change to List<Menu>
+		List<User> temp = new ArrayList<>();
+		sqlCommand = "SELECT * FROM " + "User";
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				String text = rs.getString("name");
+				User user = new User(text, PrivilegeEnum.USER);
+				temp.add(user);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return temp;
+	}
 }

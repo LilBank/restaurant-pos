@@ -6,7 +6,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
@@ -17,7 +17,6 @@
    <children>
       <Pane layoutX="5.0" layoutY="5.0" prefHeight="640.0" prefWidth="940.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
-            <TableView prefHeight="440.0" prefWidth="402.0" />
             <Label layoutX="99.0" layoutY="457.0" prefHeight="49.0" prefWidth="58.0" text="Total: ">
                <font>
                   <Font name="Agency FB" size="29.0" />
@@ -64,6 +63,7 @@
                   </Tab>
                </tabs>
             </TabPane>
+            <TextArea layoutX="-8.0" layoutY="45.0" prefHeight="398.0" prefWidth="411.0" />
          </children>
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
