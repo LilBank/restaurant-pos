@@ -48,7 +48,12 @@ There are some design and technology used.
 * Observer pattern - Used in display ordered items and more.
 
 ## Technology
-Map
+
+#### Map Interface ####
+*Interface Map<K,V>* - K - the type of keys maintained, V - the type of mapped values
+
+**Concept:** If you call a key, you get a value. But the value does not return the key.
+
 
 ## Built With
 
