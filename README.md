@@ -1,7 +1,8 @@
 # Restaurant Point Of Sale (POS)
 
-This program replace the use of paper for ordering system. 
-With security, every employee must sign up and login in work so we could classify which dish is ordered by who in case of responsibility needed. (all user’s id are stored in database)
+## About the application
+
+***Restaurant POS*** replace the use of paper for ordering system. With security, every employee must sign up and login in work so we could classify which dish is ordered by who in case of responsibility needed. (all user’s data are stored in database)
 Daily sales are recorded for monthly progress. (also recorded in database)
 Manager mode will be added in this program. (adding or removing a menu or set a promotion.
 Menu buttons are created from menu stored in database.
@@ -13,15 +14,14 @@ Menu buttons are created from menu stored in database.
 
 ## How to Download
 
-### Install the required library
+#### Install the required library
 
 * MySQL-connector 
 * JBCrypt
 
-### Run the application 
+#### Run the application 
 
 1. Download the whole folder containing runnable RestaurantPOS.jar file
-
 2. Add these JAR file by follow the steps
 
 	Open the project -> Build Path -> Configure Build Path.. -> Add External JARS.
