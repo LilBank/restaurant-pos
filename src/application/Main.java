@@ -3,6 +3,7 @@ package application;
 import database.DBManager;
 import javafx.stage.Stage;
 import util.AbstractWindow;
+import util.ImageFactory;
 
 /**
  * Main class that runs StartUp of the program with three options. Login,

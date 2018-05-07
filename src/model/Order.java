@@ -81,8 +81,8 @@ public class Order extends Observable {
 	}
 
 	/*
-	 * Private method for removing an order requested by checking if the menu is
-	 * in the list yet or not.
+	 * Private method for removing an order requested by checking if the menu is in
+	 * the list yet or not.
 	 */
 	private boolean removeFromMap(Menu order) {
 		if (orders.containsKey(order)) {
@@ -103,8 +103,8 @@ public class Order extends Observable {
 	}
 
 	/**
-	 * Method for getting all orders from parameter and return them as group of
-	 * text in lines. for further use.
+	 * Method for getting all orders from parameter and return them as group of text
+	 * in lines. for further use.
 	 * 
 	 * @return orders in texts
 	 */
@@ -121,30 +121,39 @@ public class Order extends Observable {
 		return text;
 	}
 
+	// for lambda expression
+	private int tmpTotal;
+
 	// during in test
 	public int getTotal() {
 		// named temp for temporary
-		int temp = 0;
-		for (Map.Entry<Menu, Integer> order : orders.entrySet()) {
-			Menu menu = order.getKey();
-			int qty = order.getValue();
-			int price = menu.getPrice();
-			temp += qty * price;
-		}
-		return temp;
+		// int temp = 0;
+		// for (Map.Entry<Menu, Integer> order : orders.entrySet()) {
+		// Menu menu = order.getKey();
+		// int qty = order.getValue();
+		// int price = menu.getPrice();
+		// temp += qty * price;
+		// }
+		// return temp;
+		tmpTotal = 0;
+		orders.forEach((k, v) -> tmpTotal += k.getPrice() * v);
+		return tmpTotal;
 	}
 
 	// during in test
 	public int getTotal(Map<Menu, Integer> map) {
 		// named temp for temporary
-		int temp = 0;
-		for (Map.Entry<Menu, Integer> order : map.entrySet()) {
-			Menu menu = order.getKey();
-			int qty = order.getValue();
-			int price = menu.getPrice();
-			temp += qty * price;
-		}
-		return temp;
+		// int temp = 0;
+		// for (Map.Entry<Menu, Integer> order : map.entrySet()) {
+		// Menu menu = order.getKey();
+		// int qty = order.getValue();
+		// int price = menu.getPrice();
+		// temp += qty * price;
+		// }
+		// return temp;
+		tmpTotal = 0;
+		map.forEach((k, v) -> tmpTotal += k.getPrice() * v);
+		return tmpTotal;
 	}
 
 	// for testing

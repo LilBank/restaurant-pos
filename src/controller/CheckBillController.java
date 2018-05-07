@@ -138,7 +138,7 @@ public class CheckBillController {
 
 	/**
 	 * Handler for back button. When event receive the previous table OrderView
-	 * is shwon.
+	 * is shown.
 	 * 
 	 * @param event
 	 */

@@ -30,6 +30,7 @@ import javafx.stage.Stage;
 import model.Menu;
 import sun.nio.ch.SelectionKeyImpl;
 import util.DownloadTask;
+import util.ImageFactory;
 import util.ScreenController;
 
 /**
@@ -63,15 +64,16 @@ public class MGEditMenuController {
 	private static List<Menu> drinkname = dbm.getFoodname("Drinks");
 	private static List<String> foodUrl = dbm.getFoodUrl("Foods");
 	private static List<String> drinkUrl = dbm.getFoodUrl("Drinks");
+	ImageFactory instance = ImageFactory.getInstance();
 
 	/**
 	 * Bind listView with ListProperty at the beginning.
 	 */
 	@FXML
 	public void initialize() {
-//		setFoodButtons(foodname, foodpane);
-//		setDrinkButtons(drinkname, drinkpane);
-		
+		instance.getFoodButton().forEach(x ->foodpane.getChildren().add(x));
+		instance.getDrinkButton().forEach(x ->drinkpane.getChildren().add(x));
+
 
 	}
 
@@ -134,49 +136,6 @@ public class MGEditMenuController {
 			}
 		}
 	}
-
-	/**
-	 * Private method for the controller to create and add buttons to the container.
-	 * 
-	 * @param List<Menu>
-	 *            any menu list
-	 */
-	private void setFoodButtons(List<Menu> items, FlowPane pane) {
-		Image image = null;
-		for (Menu item : items) {
-			Button button = new Button(item.getName());
-			image = new Image(foodUrl.get(1));
-			ImageView view = new ImageView(image);
-			view.setFitHeight(100);
-			view.setFitWidth(100);
-			button.setPrefSize(100, 100);
-			button.setWrapText(true);
-			button.setTextAlignment(TextAlignment.CENTER);
-			button.setUserData(item);
-			button.setGraphic(view);
-			pane.getChildren().add(button);
-			folderImage.add(button);
-		}
-	}
-
-	private void setDrinkButtons(List<Menu> items, FlowPane pane) {
-		Image image = null;
-		for (Menu item : items) {
-			Button button = new Button(item.getName());
-			image = new Image(drinkUrl.get(1));
-			ImageView view = new ImageView(image);
-			view.setFitHeight(100);
-			view.setFitWidth(100);
-			button.setPrefSize(100, 100);
-			button.setWrapText(true);
-			button.setTextAlignment(TextAlignment.CENTER);
-			button.setUserData(item);
-			button.setGraphic(view);
-			pane.getChildren().add(button);
-			folderImage.add(button);
-		}
-	}
-
 	/**
 	 * during the test.
 	 */
