@@ -48,7 +48,7 @@ public class OrderViewController {
 	@FXML
 	private FlowPane drinkpane;
 	@FXML
-	private TextArea display;
+	private TextArea display = new TextArea();
 
 	private static String tablenumber;
 
@@ -57,7 +57,7 @@ public class OrderViewController {
 	private static List<Menu> drinks;
 	private static UserManager um = UserManager.getInstance();
 	private static Order o = Order.getInstance();
-	private static OrderViewController ovc;
+	private static OrderViewController instance;
 
 	private boolean admin = um.isAdmin();
 
@@ -81,20 +81,25 @@ public class OrderViewController {
 
 	// during in test
 	public static OrderViewController getInstance() {
-		if (ovc == null)
-			ovc = new OrderViewController();
-		return ovc;
+		if (instance == null)
+			instance = new OrderViewController();
+		return instance;
 	}
 
 	// during in test
 	public void display(String text) {
-		System.out.println("display method is working");
 		try {
 			display.setText(text);
+			System.out.println("display : " + text);
+			System.out.println("display method is working");
 		} catch (NullPointerException ex) {
 			ex.printStackTrace();
 			throw new NullPointerException();
 		}
+	}
+
+	public TextArea getDisplay() {
+		return this.display;
 	}
 
 	/**

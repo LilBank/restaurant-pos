@@ -42,18 +42,18 @@ public class CSOrderController {
 	private static String tablenumber;
 	// single instantiation
 	private static DBManager dbm = DBManager.getInstance();
-	private static List<String> foodname = dbm.getFoodname("Foods", "name");
-	private static List<String> drinkname = dbm.getFoodname("Drinks", "name");
-	private static List<String> foodUrl = dbm.getFoodname("Foods", "url");
-	private static List<String> drinkUrl = dbm.getFoodname("Foods", "url");
+//	private static List<String> foodname = dbm.getFoodname("Foods", "name");
+//	private static List<String> drinkname = dbm.getFoodname("Drinks", "name");
+//	private static List<String> foodUrl = dbm.getFoodname("Foods", "url");
+//	private static List<String> drinkUrl = dbm.getFoodname("Foods", "url");
 
 	@FXML
 	public void initialize() {
 		// adding buttons to foodpane
 		System.out.println(tablenumber);
-		System.out.println(drinkname);
-		setImage(foodpane, foodname, foodUrl);
-		setImage(drinkpane, drinkname, drinkUrl);
+//		System.out.println(drinkname);
+//		setImage(foodpane, foodname, foodUrl);
+//		setImage(drinkpane, drinkname, drinkUrl);
 	}
 
 	int i = 0;
