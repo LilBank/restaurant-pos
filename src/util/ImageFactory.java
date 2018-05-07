@@ -24,8 +24,12 @@ public class ImageFactory {
 	private static Order o = Order.getInstance();
 
 	private static List<Menu> foodname = dbm.getFoodname("Foods");
+	private static List<Menu> drinkname = dbm.getFoodname("Drinks");
 	private static List<String> foodUrl = dbm.getFoodUrl("Foods");
-	private static List<Button> buttonList = new ArrayList<Button>();
+	private static List<String> drinkUrl = dbm.getFoodUrl("Drinks");
+	private static List<Button> foodButtonList = new ArrayList<Button>();
+	private static List<Button> drinkButtonList = new ArrayList<Button>();
+
 
 	/**
 	 * Get an instance of ImageFactory.
@@ -43,16 +47,18 @@ public class ImageFactory {
 		return new ImageView(image);
 	}
 
-	public static List<Button> getButton() {
-		return buttonList;
-
+	public static List<Button> getFoodButton() {
+		return foodButtonList;
+	}
+	public static List<Button> getDrinkButton() {
+		return drinkButtonList;
 	}
 
-	public List<Button> setImageToButton() {
+	public List<Button> setFoodImage() {
 		int i = 0;
 		for (Menu item : foodname) {
 			Button button = new Button(item.getName());
-			Image image = new Image(foodUrl.get(i));
+			Image image = new Image(foodUrl.get(5));
 			i++;
 			ImageView view = new ImageView(image);
 			view.setFitHeight(100);
@@ -72,9 +78,37 @@ public class ImageFactory {
 
 				}
 			});
-			buttonList.add(button);
+			foodButtonList.add(button);
 		}
-		return buttonList;
+		return foodButtonList;
+
+	}
+	public List<Button> setDrinkImage() {
+//		int i = 0;
+		for (Menu item : drinkname) {
+			Button button = new Button(item.getName());
+			Image image = new Image(drinkUrl.get(1));
+			ImageView view = new ImageView(image);
+			view.setFitHeight(100);
+			view.setFitWidth(100);
+			button.setPrefSize(150, 150);
+			button.setWrapText(true);
+			button.setTextAlignment(TextAlignment.CENTER);
+			button.setGraphic(view);
+			button.setUserData(item);
+
+			// set handler for the button
+			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+				@Override
+				public void handle(MouseEvent event) {
+					o.addOrder((Menu) button.getUserData());
+					System.out.println(((Menu) button.getUserData()).getName());
+
+				}
+			});
+			drinkButtonList.add(button);
+		}
+		return drinkButtonList;
 
 	}
 }

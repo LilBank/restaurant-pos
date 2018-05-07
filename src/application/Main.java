@@ -44,6 +44,9 @@ public class Main extends AbstractWindow {
 	public static void main(String[] args) {
 		// opening connection to database with private constructor
 		DBManager.getInstance();
+		ImageFactory instance = ImageFactory.getInstance();
+		instance.setFoodImage();
+		instance.setDrinkImage();
 		launch(args);
 	}
 }
