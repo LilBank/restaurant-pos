@@ -262,7 +262,7 @@ public class OrderViewController implements java.util.Observer {
 	 */
 	public void clearButtonHandler(MouseEvent event) {
 		o.clearOrders();
-		//must be after clear order prevent mixing
+		// must be after clear order prevent mixing
 		setTotal();
 		// for testing
 		System.out.println("all current orders cleared.");
@@ -284,7 +284,8 @@ public class OrderViewController implements java.util.Observer {
 	 * 
 	 */
 	public void billButtonHandler(MouseEvent event) {
-		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new CheckBill(0 + ""));
+		String total = tmpTotal + "";
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new CheckBill(total, tablenumber));
 	}
 
 	/**

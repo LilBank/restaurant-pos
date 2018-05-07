@@ -85,7 +85,12 @@
             <TextField fx:id="total" alignment="CENTER_RIGHT" disable="true" layoutX="443.0" layoutY="49.0" prefHeight="25.0" prefWidth="123.0" />
             <TextField fx:id="customerPay" alignment="CENTER_RIGHT" disable="true" layoutX="443.0" layoutY="104.0" prefHeight="25.0" prefWidth="123.0" />
             <TextField fx:id="change" alignment="CENTER_RIGHT" disable="true" layoutX="443.0" layoutY="160.0" prefHeight="25.0" prefWidth="123.0" />
-            <Button layoutX="192.0" layoutY="301.0" mnemonicParsing="false" onAction="#clearButtonHandler" prefHeight="39.0" prefWidth="89.0" style="-fx-background-radius: 50;" text="Clear">
+            <Button fx:id="back" layoutX="14.0" layoutY="301.0" mnemonicParsing="false" onMouseClicked="#backButtonHandler" prefHeight="39.0" prefWidth="89.0" style="-fx-background-radius: 50;" text="Back">
+               <font>
+                  <Font name="Agency FB" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="clear" layoutX="192.0" layoutY="301.0" mnemonicParsing="false" onAction="#clearButtonHandler" prefHeight="39.0" prefWidth="89.0" style="-fx-background-radius: 50;" text="Clear">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>

@@ -76,7 +76,7 @@ public class CSOrderController {
 			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 				@Override
 				public void handle(MouseEvent event) {
-					o.addOrder((Menu) button.getUserData());
+	//				o.addOrder((Menu) button.getUserData());
 					System.out.println(((Menu) button.getUserData()).getName());
 
 				}
@@ -104,7 +104,7 @@ public class CSOrderController {
 			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 				@Override
 				public void handle(MouseEvent event) {
-					o.addOrder((Menu) button.getUserData());
+	//				o.addOrder((Menu) button.getUserData());
 					System.out.println(((Menu) button.getUserData()).getName());
 
 				}
