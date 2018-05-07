@@ -87,6 +87,8 @@ public class OrderViewController implements java.util.Observer {
 		setButtons(drinks, drinkpane);
 		display.setDisable(true);
 		display.setText(tablenumber);
+		display2.setDisable(true);
+		setDisplay2();
 	}
 
 	// during in test
@@ -122,7 +124,7 @@ public class OrderViewController implements java.util.Observer {
 	public void setDisplay() {
 		String text = null;
 		try {
-			text = o.orderToText();
+			text = o.orderToText(o.getOrders());
 			System.out.println("text is not null");
 		} catch (NullPointerException ex) {
 			System.out.println("text is null");
@@ -141,7 +143,7 @@ public class OrderViewController implements java.util.Observer {
 	}
 
 	public void setTemporary() {
-		String text = o.orderToText();
+		String text = o.orderToText(o.getOrders());
 		display.setText(text);
 	}
 
@@ -149,6 +151,12 @@ public class OrderViewController implements java.util.Observer {
 	@Override
 	public void update(Observable observable, Object arg) {
 		setDisplay();
+	}
+
+	public void setDisplay2() {
+		Map<Menu, Integer> temp = dbm.getDBOrders(tablenumber);
+		String text = o.orderToText(temp);
+		display2.setText(text);
 	}
 
 	/**
@@ -171,7 +179,7 @@ public class OrderViewController implements java.util.Observer {
 				public void handle(MouseEvent event) {
 					o.addOrder((Menu) button.getUserData());
 					setTemporary();
-					System.out.println(o.orderToText());
+					System.out.println(o.orderToText(o.getOrders()));
 				}
 			});
 			// add button to the pane
@@ -200,6 +208,10 @@ public class OrderViewController implements java.util.Observer {
 					System.out.println("Current order(s): " + o.getOrders().size());
 					Map<Menu, Integer> temp = o.getOrders();
 					dbm.orderToDB(tablenumber, temp);
+					o.clearOrders();
+					//during in test (will use observer pattern)
+					setDisplay2();
+					display.setText("");
 				}
 			});
 		}
@@ -215,6 +227,8 @@ public class OrderViewController implements java.util.Observer {
 		o.clearOrders();
 		System.out.println("all current orders cleared.");
 		System.out.println("Map size: " + o.getOrders().size());
+		//during in test (will use observer pattern)
+		display.setText("");
 	}
 
 	/**

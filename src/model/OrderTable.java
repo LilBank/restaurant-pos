@@ -25,7 +25,7 @@ public class OrderTable implements java.util.Observer {
 	public void display() {
 		String text = null;
 		try {
-			text = o.orderToText();
+			text = o.orderToText(o.getOrders());
 			System.out.println("text is not null");
 		} catch (NullPointerException ex) {
 			System.out.println("text is null");

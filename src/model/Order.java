@@ -112,9 +112,9 @@ public class Order extends Observable {
 	 * 
 	 * @return orders in texts
 	 */
-	public String orderToText() {
+	public String orderToText(Map<Menu,Integer> map) {
 		String text = "";
-		for (Map.Entry<Menu, Integer> order : orders.entrySet()) {
+		for (Map.Entry<Menu, Integer> order : map.entrySet()) {
 			Menu menu = order.getKey();
 			int qty = order.getValue();
 			String name = menu.getName();

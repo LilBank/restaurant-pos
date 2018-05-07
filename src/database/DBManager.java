@@ -7,11 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import jdk.management.resource.internal.inst.NetRMHooks;
 import model.Menu;
 import model.PrivilegeEnum;
 import model.User;
@@ -332,7 +334,7 @@ public class DBManager {
 		return temp;
 	}
 
-	// during in test
+	// write javadoc
 	public void orderToDB(String tableNumber, Map<Menu, Integer> map) {
 		String tabletmp = "table" + tableNumber;
 		sqlCommand = "INSERT INTO `" + tabletmp + "` (`name`, `price`, `quantity`) VALUES (?, ?, ?)";
@@ -359,5 +361,39 @@ public class DBManager {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	//during in test
+	public Map<Menu, Integer> getDBOrders(String tableNumber) {
+		Map<Menu, Integer> temp = new LinkedHashMap<>();
+		String tabletmp = "table" + tableNumber;
+		sqlCommand = "SELECT * FROM " + tabletmp;
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				String name = rs.getString("name");
+				int price = rs.getInt("price");
+				int qty = rs.getInt("quantity");
+				Menu menu = new Menu(name, price);
+				if (!temp.containsKey(menu)) {
+					temp.put(menu, qty);
+				} else {
+					temp.put(menu, temp.get(menu) + qty);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return temp;
 	}
 }
