@@ -29,6 +29,7 @@ With security, every employee must sign up and login in work so we could classif
 
 ## Running 
 
+
 ## Packages
 
 * application - Contains all the application classes including Main class.
@@ -45,6 +46,9 @@ There are some design and technology used.
 * MVC (Model View Controller) - Pattern will be used in this program. 
 * Singleton pattern - Used in order and menu.
 * Observer pattern - Used in display ordered items and more.
+
+## Technology
+Map
 
 ## Built With
 

@@ -24,7 +24,8 @@ public class OrderView extends AbstractWindow {
 		OrderViewController.setTable(input);
 		OrderViewController.setMenu(foodnames, drinknames);
 		OrderTable ot = new OrderTable();
-		Order.getInstance().addObserver(ot);
+		//Order.getInstance().addObserver(ot);
+		Order.getInstance().addObserver(OrderViewController.getInstance());
 	}
 
 	public void start(Stage stage) {

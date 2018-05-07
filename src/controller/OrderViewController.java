@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.List;
+import java.util.Observable;
 
 import application.CheckBill;
 import application.Main;
@@ -28,7 +29,7 @@ import util.UserManager;
  * @author Piyawat & Vichaphol & P'Jacky
  *
  */
-public class OrderViewController {
+public class OrderViewController implements java.util.Observer {
 	@FXML
 	private Button order;
 	@FXML
@@ -48,7 +49,7 @@ public class OrderViewController {
 	@FXML
 	private FlowPane drinkpane;
 	@FXML
-	private TextArea display;
+	private TextArea display = new TextArea();
 
 	private static String tablenumber;
 
@@ -57,7 +58,7 @@ public class OrderViewController {
 	private static List<Menu> drinks;
 	private static UserManager um = UserManager.getInstance();
 	private static Order o = Order.getInstance();
-	private static OrderViewController ovc;
+	private static OrderViewController instance;
 
 	private boolean admin = um.isAdmin();
 
@@ -72,6 +73,7 @@ public class OrderViewController {
 		setButtons(foods, foodpane);
 		setButtons(drinks, drinkpane);
 		display.setDisable(true);
+		display.setText(tablenumber);
 	}
 
 	// during in test
@@ -81,20 +83,46 @@ public class OrderViewController {
 
 	// during in test
 	public static OrderViewController getInstance() {
-		if (ovc == null)
-			ovc = new OrderViewController();
-		return ovc;
+		if (instance == null)
+			instance = new OrderViewController();
+		return instance;
 	}
 
 	// during in test
-	public void display(String text) {
-		System.out.println("display method is working");
+	public void setDisplay(String text) {
 		try {
 			display.setText(text);
+			System.out.println("display : " + text);
+			System.out.println("display method is working");
 		} catch (NullPointerException ex) {
+			System.out.println("display method is not working");
 			ex.printStackTrace();
-			throw new NullPointerException();
 		}
+	}
+
+	public TextArea getDisplay() {
+		return this.display;
+	}
+
+	@Override
+	public void update(Observable observable, Object arg) {
+		String text = null;
+		try {
+			text = o.orderToText();
+			System.out.println("text is not null");
+		} catch (NullPointerException ex) {
+			System.out.println("text is null");
+			ex.printStackTrace();
+		}
+		try {
+			instance.getDisplay();
+			System.out.println("display is not null");
+		} catch (NullPointerException ex) {
+			System.out.println("display is null");
+			ex.printStackTrace();
+		}
+		display.setText(text);
+		System.out.println("method update in OVC is working");
 	}
 
 	/**
