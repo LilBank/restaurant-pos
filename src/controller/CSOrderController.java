@@ -48,30 +48,15 @@ public class CSOrderController {
 	private FlowPane drinkpane;
 
 	private static String tablenumber;
-	// single instantiation
-	private static DBManager dbm = DBManager.getInstance();
-	private static Order o = Order.getInstance();
-	private static List<Menu> foodname = dbm.getFoodname("Foods");
-	private static List<Menu> drinkname = dbm.getFoodname("Drinks");
-	private static List<String> foodUrl = dbm.getFoodUrl("Foods");
-	private static List<String> drinkUrl = dbm.getFoodUrl("Drinks");
-	// private static List<String> foodname = dbm.getFoodname("Foods", "name");
-	// private static List<String> drinkname = dbm.getFoodname("Drinks", "name");
-	// private static List<String> foodUrl = dbm.getFoodname("Foods", "url");
-	// private static List<String> drinkUrl = dbm.getFoodname("Foods", "url");
+	
 
 	@FXML
 	public void initialize() {
 		// adding buttons to foodpane
-		Map<Menu, Integer> temp = o.getOrders();
 		System.out.println(tablenumber);
-		setFoodImage(foodname, foodUrl);
-		setDrinkImage(drinkname, drinkUrl);
+//		setFoodImage(foodname, foodUrl);
+//		setDrinkImage(drinkname, drinkUrl);
 	}
-	// System.out.println(drinkname);
-	// setImage(foodpane, foodname, foodUrl);
-	// setImage(drinkpane, drinkname, drinkUrl);
-
 	public void setFoodImage(List<Menu> items, List<String> url) {
 		int i = 0;
 		for (Menu item : items) {

@@ -29,6 +29,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Menu;
 import sun.nio.ch.SelectionKeyImpl;
+import util.DownloadTask;
 import util.ScreenController;
 
 /**
@@ -68,8 +69,9 @@ public class MGEditMenuController {
 	 */
 	@FXML
 	public void initialize() {
-		setFoodButtons(foodname, foodpane);
-		setDrinkButtons(drinkname, drinkpane);
+//		setFoodButtons(foodname, foodpane);
+//		setDrinkButtons(drinkname, drinkpane);
+		
 
 	}
 
@@ -126,10 +128,7 @@ public class MGEditMenuController {
 				// dbm.InsertTo(table, name, price, result.get());
 				Button button = new Button();
 				button.setPrefSize(100, 100);
-				image = new Image(result.get());
 				ImageView view = new ImageView(image);
-				view.setFitHeight(100);
-				view.setFitWidth(100);
 				button.setGraphic(view);
 				foodpane.getChildren().add(button);
 			}
