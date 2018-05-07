@@ -124,6 +124,7 @@ public class CheckBillController {
 	public void clearButtonHandler(ActionEvent event) {
 		this.csMoney = 0;
 		customerPay.clear();
+		change.clear();
 	}
 
 	// during in test
