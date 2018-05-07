@@ -1,12 +1,16 @@
 package controller;
 
+import java.util.List;
+
 import application.CSTable;
 import application.Login;
 import application.SignUp;
+import database.DBManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import model.Menu;
 import util.ScreenController;
 
 /**
@@ -24,9 +28,12 @@ public class StartUpController {
 	@FXML
 	private Button csMode;
 
+	@FXML
+	private void Initailize() {	
+	}
+
 	/**
-	 * Method for handling login button. When event receive Login scene is
-	 * shown.
+	 * Method for handling login button. When event receive Login scene is shown.
 	 * 
 	 * @param event
 	 */
@@ -35,8 +42,7 @@ public class StartUpController {
 	}
 
 	/**
-	 * Method for handling signUp button. When event receive SignUp scene is
-	 * shown.
+	 * Method for handling signUp button. When event receive SignUp scene is shown.
 	 * 
 	 * @param event
 	 */

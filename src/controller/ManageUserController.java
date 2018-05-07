@@ -60,7 +60,7 @@ public class ManageUserController {
 		// ObservableList<User> data = FXCollections.observableList(userName);
 		// table.setItems(data);
 		// table.getColumns().addAll(id, name, password);
-		// listProperty.set(FXCollections.observableArrayList(userName));
+		listProperty.set(FXCollections.observableArrayList());
 		listView.itemsProperty().bind(listProperty);
 	}
 

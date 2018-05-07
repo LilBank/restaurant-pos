@@ -63,7 +63,7 @@
                   </Tab>
                </tabs>
             </TabPane>
-            <TextArea layoutX="-8.0" layoutY="45.0" prefHeight="398.0" prefWidth="411.0" />
+            <TextArea fx:id="display" layoutX="-8.0" layoutY="45.0" prefHeight="398.0" prefWidth="411.0" />
          </children>
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />

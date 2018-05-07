@@ -1,19 +1,25 @@
 package controller;
 
 import java.util.List;
+import java.util.Map;
 
 import application.CSTable;
 import application.Main;
 import database.DBManager;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import model.Menu;
+import model.Order;
 //import model.Food;
 import util.ScreenController;
 
@@ -33,6 +39,8 @@ public class CSOrderController {
 	@FXML
 	private Button exit;
 	@FXML
+	private TextArea display;
+	@FXML
 	private TextField totalPrice;
 	@FXML
 	private FlowPane foodpane;
@@ -42,41 +50,81 @@ public class CSOrderController {
 	private static String tablenumber;
 	// single instantiation
 	private static DBManager dbm = DBManager.getInstance();
-	private static List<String> foodname = dbm.getFoodname("Foods", "name");
-	private static List<String> drinkname = dbm.getFoodname("Drinks", "name");
-	private static List<String> foodUrl = dbm.getFoodname("Foods", "url");
-	private static List<String> drinkUrl = dbm.getFoodname("Foods", "url");
+	private static Order o = Order.getInstance();
+	private static List<Menu> foodname = dbm.getFoodname("Foods");
+	private static List<Menu> drinkname = dbm.getFoodname("Drinks");
+	private static List<String> foodUrl = dbm.getFoodUrl("Foods");
+	private static List<String> drinkUrl = dbm.getFoodUrl("Drinks");
 
 	@FXML
 	public void initialize() {
 		// adding buttons to foodpane
+		Map<Menu,Integer> temp = o.getOrders();
 		System.out.println(tablenumber);
-		System.out.println(drinkname);
-		setImage(foodpane, foodname, foodUrl);
-		setImage(drinkpane, drinkname, drinkUrl);
+		setFoodImage(foodname, foodUrl);
+		setDrinkImage(drinkname, drinkUrl);
+
 	}
 
-	int i = 0;
-
-	public void setImage(FlowPane pane, List<String> name, List<String> url) {
-		for (String text : name) {
-			Button button = new Button(text);
-			Image image = new Image(url.get(1));
-			i++;
-			ImageView view = new ImageView(image);
-			view.setFitHeight(100);
-			view.setFitWidth(100);
+	public void setFoodImage(List<Menu> items, List<String> url) {
+		int i = 0;
+		for (Menu item : items) {
+			Button button = new Button(item.getName());
+			// Image image = new Image(url.get(0));
+			// i++;
+			// ImageView view = new ImageView(image);
+			// view.setFitHeight(100);
+			// view.setFitWidth(100);
 			button.setPrefSize(150, 150);
 			button.setWrapText(true);
 			button.setTextAlignment(TextAlignment.CENTER);
-			button.setGraphic(view);
-			pane.getChildren().add(button);
+			// button.setGraphic(view);
+			button.setUserData(item);
+
+			// set handler for the button
+			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+				@Override
+				public void handle(MouseEvent event) {
+					o.addOrder((Menu) button.getUserData());
+					System.out.println(((Menu) button.getUserData()).getName());
+
+				}
+			});
+			foodpane.getChildren().add(button);
+		}
+	}
+
+	public void setDrinkImage(List<Menu> items, List<String> url) {
+		int i = 0;
+		for (Menu item : items) {
+			Button button = new Button(item.getName());
+			// Image image = new Image(url.get(0));
+			// i++;
+			// ImageView view = new ImageView(image);
+			// view.setFitHeight(100);
+			// view.setFitWidth(100);
+			button.setPrefSize(150, 150);
+			button.setWrapText(true);
+			button.setTextAlignment(TextAlignment.CENTER);
+			// button.setGraphic(view);
+			button.setUserData(item);
+
+			// set handler for the button
+			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+				@Override
+				public void handle(MouseEvent event) {
+					o.addOrder((Menu) button.getUserData());
+					System.out.println(((Menu) button.getUserData()).getName());
+
+				}
+			});
+			foodpane.getChildren().add(button);
 		}
 	}
 
 	// during in test
 	public void orderButtonHandler(ActionEvent event) {
-
+		
 	}
 
 	/**
@@ -88,8 +136,7 @@ public class CSOrderController {
 	}
 
 	/**
-	 * Handler for logout button. When event receive the Start up scene is
-	 * shown.
+	 * Handler for logout button. When event receive the Start up scene is shown.
 	 * 
 	 */
 	public void exitButtonHandler(ActionEvent event) {
