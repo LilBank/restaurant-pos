@@ -30,7 +30,7 @@ public class OrderTable implements java.util.Observer {
 			System.out.println("display is null");
 			ex.printStackTrace();
 		}
-		ovc.display(text);
+		ovc.setDisplay(text);
 		System.out.println("display in OrderTable is working");
 	}
 
