@@ -5,7 +5,7 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import application.TableView;
+import application.Tableview;
 import application.Main;
 import database.DBManager;
 import javafx.beans.property.ListProperty;
@@ -149,7 +149,7 @@ public class MGEditMenuController {
 	 * 
 	 */
 	public void backButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new TableView());
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new Tableview());
 	}
 
 	/**

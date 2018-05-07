@@ -26,13 +26,19 @@ import util.PropertyManager;
  */
 public class DBManager {
 	private static PropertyManager pm = PropertyManager.getInstance();
+	/** Singleton instance of DBManager */
 	private static DBManager instance;
 	private Connection connection;
 	private String DB_URL = pm.getProperty("database.url");
 	private String USER = pm.getProperty("database.user");
 	private String PASS = pm.getProperty("database.password");
+	/** Command for mysql database using JDBC */
 	private String sqlCommand;
 
+	/**
+	 * Private constructor for DBManger. Getting the connection from the
+	 * database.
+	 */
 	private DBManager() {
 		try {
 			connection = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -41,6 +47,12 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Method for getting the instance of DBManager with the condition if the
+	 * instance is null, create new instance.
+	 * 
+	 * @return instance of the DBManager
+	 */
 	public static DBManager getInstance() {
 		if (instance == null) {
 			instance = new DBManager();

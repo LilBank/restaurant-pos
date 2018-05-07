@@ -2,14 +2,15 @@ package controller;
 
 import java.util.List;
 
-import application.TableView;
 import application.CheckBill;
 import application.Main;
+import application.Tableview;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -47,6 +48,8 @@ public class OrderViewController {
 	private FlowPane foodpane;
 	@FXML
 	private FlowPane drinkpane;
+	@FXML
+	private TableView table = new TableView();
 
 	private static String tablenumber;
 
@@ -60,12 +63,10 @@ public class OrderViewController {
 
 	@FXML
 	public void initialize() {
-
 		if (!admin) {
 			remove.setDisable(true);
 			remove.setVisible(false);
 		}
-
 		// adding buttons to foodpane
 		System.out.println(tablenumber);
 		setButtons(foods, foodpane);
@@ -100,7 +101,7 @@ public class OrderViewController {
 	 * 
 	 */
 	public void backButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new TableView());
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new Tableview());
 	}
 
 	/**
@@ -172,5 +173,14 @@ public class OrderViewController {
 			// add button to the pane
 			pane.getChildren().add(button);
 		}
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void setTable() {
+		table.setEditable(true);
+		TableColumn name = new TableColumn("Name");
+		TableColumn qty = new TableColumn("Quantity");
+		TableColumn price = new TableColumn("Price");
+		table.getColumns().addAll(name, qty, price);
 	}
 }

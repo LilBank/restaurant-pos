@@ -3,6 +3,8 @@ package util;
 import model.User;
 
 /**
+ * A singleton class to manage User when the program is running. Contains method
+ * for setting and getting the User's data.
  * 
  * @author Piyawat & Vichaphol
  *

@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
@@ -76,7 +77,7 @@
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <ScrollPane layoutX="-1.0" prefHeight="451.0" prefWidth="406.0" />
+            <TableView prefHeight="456.0" prefWidth="404.0" />
          </children>
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
