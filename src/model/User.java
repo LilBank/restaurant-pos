@@ -4,7 +4,7 @@ package model;
  * An object that represents a User. Consist of username and PrivilageEnum.
  * Contains method for getting private attributes and other uses.
  * 
- * @author Piyawat & Vichphol & Taweerat
+ * @author Piyawat & Vichphol & TA'Taweerat
  *
  */
 public class User {
