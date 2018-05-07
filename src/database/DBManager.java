@@ -13,7 +13,6 @@ import java.util.Map;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-import jdk.management.resource.internal.inst.NetRMHooks;
 import model.Menu;
 import model.PrivilegeEnum;
 import model.User;
@@ -28,8 +27,9 @@ import util.PropertyManager;
  *
  */
 public class DBManager {
+	// for single instantiation
 	private static PropertyManager pm = PropertyManager.getInstance();
-	/** Singleton instance of DBManager */
+	// singleton instance of DBManager
 	private static DBManager instance;
 	private Connection connection;
 	private String DB_URL = pm.getProperty("database.url");
@@ -96,6 +96,7 @@ public class DBManager {
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} finally {
+			// must close statement every time
 			try {
 				if (stmt != null) {
 					stmt.close();
@@ -130,6 +131,7 @@ public class DBManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			// must close statement every time
 			try {
 				if (stmt != null) {
 					stmt.close();
@@ -141,7 +143,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for àÓÐÐÃ×à data from the database to check whether if the
+	 * Method for getting data from the database to check whether if the
 	 * username inputed has already exist or not.
 	 * 
 	 * @param username
@@ -168,6 +170,7 @@ public class DBManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			// must close statement every time
 			try {
 				if (stmt != null) {
 					stmt.close();
@@ -211,9 +214,10 @@ public class DBManager {
 	 * to create a Menu object.
 	 * 
 	 * @param tablename
-	 * @return List<Menu>
+	 * @return List<Menu> of food names
 	 */
 	public List<Menu> getFoodname(String foodkind) {
+		// named variable temp for temporary
 		List<Menu> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + foodkind;
 		PreparedStatement stmt = null;
@@ -229,6 +233,7 @@ public class DBManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			// must close statement every time
 			try {
 				if (stmt != null) {
 					stmt.close();
@@ -334,8 +339,15 @@ public class DBManager {
 		return temp;
 	}
 
-	// write javadoc
+	/**
+	 * Method for inserting data into the requested table in database.
+	 * 
+	 * @param tablenumber
+	 * @param Map<Menu,Integer>
+	 *            of orders
+	 */
 	public void orderToDB(String tableNumber, Map<Menu, Integer> map) {
+		// name variable tmp for temporary
 		String tabletmp = "table" + tableNumber;
 		sqlCommand = "INSERT INTO `" + tabletmp + "` (`name`, `price`, `quantity`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;
@@ -353,6 +365,7 @@ public class DBManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			// must close statement everytime
 			try {
 				if (stmt != null) {
 					stmt.close();
@@ -362,9 +375,16 @@ public class DBManager {
 			}
 		}
 	}
-	
-	//during in test
+
+	/**
+	 * Method for getting all orders and from the wanted table in database and
+	 * collect them as Map<Menu,Integer>.
+	 * 
+	 * @param tableNumber
+	 * @return Map<Menu,Integer> of orders
+	 */
 	public Map<Menu, Integer> getDBOrders(String tableNumber) {
+		// name variable temp for temporary
 		Map<Menu, Integer> temp = new LinkedHashMap<>();
 		String tabletmp = "table" + tableNumber;
 		sqlCommand = "SELECT * FROM " + tabletmp;
@@ -372,6 +392,7 @@ public class DBManager {
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
 			ResultSet rs = stmt.executeQuery();
+			// loop until out of order
 			while (rs.next()) {
 				String name = rs.getString("name");
 				int price = rs.getInt("price");
@@ -380,12 +401,14 @@ public class DBManager {
 				if (!temp.containsKey(menu)) {
 					temp.put(menu, qty);
 				} else {
+					// if contain then oldQty + newQty
 					temp.put(menu, temp.get(menu) + qty);
 				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			// must close statement every time
 			try {
 				if (stmt != null) {
 					stmt.close();
@@ -394,6 +417,7 @@ public class DBManager {
 				e.printStackTrace();
 			}
 		}
+		// return Map<Menu,Integer> of orders
 		return temp;
 	}
 }

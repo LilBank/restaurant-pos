@@ -26,6 +26,7 @@ public class Main extends AbstractWindow {
 	}
 
 	public static void main(String[] args) {
+		// opening connection to database with private constructor
 		DBManager.getInstance();
 		launch(args);
 	}

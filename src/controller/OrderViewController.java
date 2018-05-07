@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Observable;
 
 import application.CheckBill;
-import application.Login;
 import application.Main;
 import application.Tableview;
 import database.DBManager;
@@ -49,7 +48,7 @@ public class OrderViewController implements java.util.Observer {
 	@FXML
 	private Button checkBill;
 	@FXML
-	private TextField totalPrice;
+	private TextField total;
 	@FXML
 	private FlowPane foodpane;
 	@FXML
@@ -66,34 +65,40 @@ public class OrderViewController implements java.util.Observer {
 	// for single instantiation
 	private static List<Menu> foods;
 	private static List<Menu> drinks;
+	// instance of classes
 	private static UserManager um = UserManager.getInstance();
 	private static Order o = Order.getInstance();
 	private static DBManager dbm = DBManager.getInstance();
 
-	// under construction
+	// under construction (testing observation)
 	private static OrderViewController instance;
 
 	private boolean admin = um.isAdmin();
+	// get total from DTB
+	private int tmpTotal;
 
 	@FXML
 	public void initialize() {
+		// if not admin then remove button is disabled
 		if (!admin) {
 			remove.setDisable(true);
 			remove.setVisible(false);
 		}
-		// adding buttons to foodpane
+		// testing able number
 		System.out.println(tablenumber);
+		// adding buttons to each pane
 		setButtons(foods, foodpane);
 		setButtons(drinks, drinkpane);
 		display.setDisable(true);
 		display.setText(tablenumber);
 		display2.setDisable(true);
+		// every time OrderView must show ordered items
 		setDisplay2();
 	}
 
 	// during in test
+	// constructor clarify at OrderView for adding it into Observable list
 	public OrderViewController() {
-
 	}
 
 	// during in test
@@ -123,13 +128,16 @@ public class OrderViewController implements java.util.Observer {
 	// during in test (use in this class)
 	public void setDisplay() {
 		String text = null;
+		// test text existence
 		try {
+			// convert current orders to texts
 			text = o.orderToText(o.getOrders());
 			System.out.println("text is not null");
 		} catch (NullPointerException ex) {
 			System.out.println("text is null");
 			ex.printStackTrace();
 		}
+		// test display existence
 		try {
 			instance.getDisplay();
 			System.out.println("display is not null");
@@ -139,6 +147,7 @@ public class OrderViewController implements java.util.Observer {
 		}
 		// this line below keeps null
 		instance.getDisplay().setText(text);
+		// for testing
 		System.out.println("method update in OVC is working");
 	}
 
@@ -151,12 +160,21 @@ public class OrderViewController implements java.util.Observer {
 	@Override
 	public void update(Observable observable, Object arg) {
 		setDisplay();
+		setDisplay2();
 	}
 
+	// for testing (temporary)
 	public void setDisplay2() {
+		// get orders from database
 		Map<Menu, Integer> temp = dbm.getDBOrders(tablenumber);
+		// convert all order to texts
 		String text = o.orderToText(temp);
 		display2.setText(text);
+		// use the DBmap before clearing
+		setTempTotal(temp);
+		System.out.println("tmpTotal value: " + tmpTotal);
+		// must clear orders otherwise DTBorders will combine with new orders
+		o.clearOrders();
 	}
 
 	/**
@@ -169,6 +187,7 @@ public class OrderViewController implements java.util.Observer {
 	private void setButtons(List<Menu> items, FlowPane pane) {
 		for (Menu item : items) {
 			Button button = new Button(item.getName());
+			// setting button properties
 			button.setPrefSize(100, 100);
 			button.setWrapText(true);
 			button.setTextAlignment(TextAlignment.CENTER);
@@ -177,8 +196,13 @@ public class OrderViewController implements java.util.Observer {
 			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 				@Override
 				public void handle(MouseEvent event) {
+					// adding order to map
 					o.addOrder((Menu) button.getUserData());
+					// after add set the total textfield
+					setTotal();
+					// for display to setText (temporary)
 					setTemporary();
+					// for testing
 					System.out.println(o.orderToText(o.getOrders()));
 				}
 			});
@@ -196,7 +220,7 @@ public class OrderViewController implements java.util.Observer {
 	public void orderButtonHandler(MouseEvent event) {
 		// if order list is empty
 		if (o.getOrders().isEmpty()) {
-			alert = new Alert(AlertType.ERROR, "You have not order anything !", ButtonType.OK);
+			alert = new Alert(AlertType.ERROR, "Must order atleast one item!", ButtonType.OK);
 			alert.show();
 		}
 		// order confirmation
@@ -205,12 +229,18 @@ public class OrderViewController implements java.util.Observer {
 			alert.showAndWait().ifPresent(response -> {
 				if (response == ButtonType.YES) {
 					o.printOrders();
+					// for testing
 					System.out.println("Current order(s): " + o.getOrders().size());
+					// get current orders
 					Map<Menu, Integer> temp = o.getOrders();
+					// insert order to database
 					dbm.orderToDB(tablenumber, temp);
+					// clear orders that are inserted to DTB (after insert must
+					// clear)
 					o.clearOrders();
-					//during in test (will use observer pattern)
+					// during in test (will use observer pattern)
 					setDisplay2();
+					// all order from display move to display2
 					display.setText("");
 				}
 			});
@@ -225,9 +255,10 @@ public class OrderViewController implements java.util.Observer {
 	 */
 	public void clearButtonHandler(MouseEvent event) {
 		o.clearOrders();
+		// for testing
 		System.out.println("all current orders cleared.");
 		System.out.println("Map size: " + o.getOrders().size());
-		//during in test (will use observer pattern)
+		// during in test (will use observer pattern)
 		display.setText("");
 	}
 
@@ -276,6 +307,18 @@ public class OrderViewController implements java.util.Observer {
 	public static void setMenu(List<Menu> arg, List<Menu> arg2) {
 		foods = arg;
 		drinks = arg2;
+	}
+
+	// during in test
+	private void setTotal() {
+		String temp = "" + (o.getTotal() + tmpTotal);
+		total.setText(temp);
+
+	}
+
+	// during in test
+	private void setTempTotal(Map<Menu, Integer> map) {
+		tmpTotal = o.getTotal(map);
 	}
 
 	// during in test
