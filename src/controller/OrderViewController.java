@@ -70,7 +70,6 @@ public class OrderViewController {
 		System.out.println(tablenumber);
 		setButtons(foods, foodpane);
 		setButtons(drinks, drinkpane);
-		//display.setText("hello");
 	}
 
 	/**
