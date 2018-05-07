@@ -1,9 +1,6 @@
 # Restaurant Point Of Sale (POS)
 
-**Restaurant POS** replace the use of paper for ordering system. With security, every employee must sign up and login in work so we could classify which dish is ordered by who in case of responsibility needed. (all user’s data are stored in database)
-Daily sales are recorded for monthly progress. (also recorded in database)
-Manager mode will be added in this program. (adding or removing a menu or set a promotion.
-Menu buttons are created from menu stored in database.
+**Restaurant POS** is the application replacing the use of paper for ordering system. It can be very useful to restaurants that currently lack uses of technology, to improve efficiency and speed of transaction.
 
 ## Prerequisites
 
@@ -19,12 +16,18 @@ What things you need to install in the application.
 
 	Open the project -> Build Path -> Configure Build Path.. -> Add External JARS..
 
-## Running 
-
-
 ## Deployment
 
-Our application can be useful to restaurants that currently lack use of technology, to improve efficiency and speed of usability.
+**Note:** This application required an *Internet Connection*
+
+There are 3 modes for user.
+1. Manager mode - Customize the menu and table and also remove the employee. 
+2. Employee mode - Receive the order from customer and Check bill of each table.
+3. Customer mode - Order the dishes and display to the Employee view.
+
+With security, every employee must sign up and login in work so we could classify which dish is ordered by who in case of responsibility needed. (all user, menu and table data are stored in database)
+
+## Running 
 
 ## Packages
 
@@ -47,6 +50,7 @@ There are some design and technology used.
 
 - [Eclipse IDE](https://www.eclipse.org/ide/) - Constructor of codes.
 - [Scene Builder JavaFx](http://gluonhq.com/products/scene-builder/) - Constructor of javafx FXML project.
+- [Chrome MySQL Admin](https://chrome.google.com/webstore/detail/chrome-mysql-admin/ndgnpnpakfcdjmpgmcaknimfgcldechn) - Database for storing the data of this application. 
 
 ## Developers 
 
