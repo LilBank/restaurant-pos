@@ -2,6 +2,7 @@ package application;
 
 import database.DBManager;
 import javafx.stage.Stage;
+import model.Order;
 import util.AbstractWindow;
 
 /**

@@ -2,6 +2,7 @@ package model;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Observable;
 
 /**
  * A singleton class represents customer order. Consist of method for managing
@@ -10,7 +11,7 @@ import java.util.Map;
  * @author Piyawat & Vichaphol
  *
  */
-public class Order {
+public class Order{
 
 	private Map<Menu, Integer> orders;
 	private static Order instance;
@@ -27,8 +28,9 @@ public class Order {
 	 * @return the OrderedMenu object
 	 */
 	public static Order getInstance() {
-		if (instance == null)
-			instance = new Order();
+		if (instance == null) {
+			instance = new Order();			
+		}
 		return instance;
 	}
 

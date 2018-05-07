@@ -9,8 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -49,7 +47,7 @@ public class OrderViewController {
 	@FXML
 	private FlowPane drinkpane;
 	@FXML
-	private TableView table = new TableView();
+	private static TextField display;
 
 	private static String tablenumber;
 
@@ -60,6 +58,7 @@ public class OrderViewController {
 	private static Order o = Order.getInstance();
 
 	private boolean admin = um.isAdmin();
+	//private String HEADING = String.format("%-35s %-10s %-10s", "Name", "Quantity", "Price");
 
 	@FXML
 	public void initialize() {
@@ -71,6 +70,7 @@ public class OrderViewController {
 		System.out.println(tablenumber);
 		setButtons(foods, foodpane);
 		setButtons(drinks, drinkpane);
+		//display.setText("hello");
 	}
 
 	/**
@@ -175,12 +175,4 @@ public class OrderViewController {
 		}
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void setTable() {
-		table.setEditable(true);
-		TableColumn name = new TableColumn("Name");
-		TableColumn qty = new TableColumn("Quantity");
-		TableColumn price = new TableColumn("Price");
-		table.getColumns().addAll(name, qty, price);
-	}
 }

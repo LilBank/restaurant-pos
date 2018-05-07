@@ -6,7 +6,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
@@ -17,7 +16,7 @@
    <children>
       <Pane layoutX="5.0" layoutY="5.0" prefHeight="640.0" prefWidth="940.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
-            <Label layoutX="99.0" layoutY="457.0" prefHeight="49.0" prefWidth="58.0" text="Total: ">
+            <Label layoutX="120.0" layoutY="495.0" prefHeight="49.0" prefWidth="58.0" text="Total: ">
                <font>
                   <Font name="Agency FB" size="29.0" />
                </font>
@@ -37,7 +36,7 @@
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <TextField fx:id="totalPrice" disable="true" layoutX="186.0" layoutY="457.0" prefHeight="49.0" prefWidth="182.0" />
+            <TextField fx:id="totalPrice" disable="true" layoutX="184.0" layoutY="495.0" prefHeight="49.0" prefWidth="182.0" />
             <TabPane layoutX="400.0" prefHeight="640.0" prefWidth="542.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Food">
@@ -67,7 +66,7 @@
                 </Tab>
               </tabs>
             </TabPane>
-            <Button fx:id="remove" layoutX="14.0" layoutY="499.0" minWidth="69.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 50;" text="remove">
+            <Button fx:id="remove" layoutX="14.0" layoutY="495.0" minWidth="69.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 50;" text="remove">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
@@ -77,7 +76,11 @@
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <TableView prefHeight="456.0" prefWidth="404.0" />
+            <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" prefHeight="481.0" prefWidth="406.0">
+               <content>
+                  <TextField fx:id="display" prefHeight="483.0" prefWidth="404.0" />
+               </content>
+            </ScrollPane>
          </children>
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
