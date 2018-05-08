@@ -3,6 +3,7 @@ package application;
 import database.DBManager;
 import javafx.stage.Stage;
 import util.AbstractWindow;
+import util.DownloadTask;
 import util.ImageFactory;
 
 /**
@@ -17,6 +18,9 @@ public class Main extends AbstractWindow {
 	@Override
 	public void start(Stage stage) {
 		try {
+			ImageFactory instance = ImageFactory.getInstance();
+			instance.setFoodImage();
+			instance.setDrinkImage();
 			super.setFilename("view/startup.fxml");
 			super.start(stage);
 			stage.setTitle("Start Up");
@@ -29,9 +33,6 @@ public class Main extends AbstractWindow {
 	public static void main(String[] args) {
 		// opening connection to database with private constructor
 		DBManager.getInstance();
-		ImageFactory instance = ImageFactory.getInstance();
-		instance.setFoodImage();
-		instance.setDrinkImage();
 		launch(args);
 	}
 }
