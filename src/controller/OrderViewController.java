@@ -70,9 +70,6 @@ public class OrderViewController implements java.util.Observer {
 	private static Order o = Order.getInstance();
 	private static DBManager dbm = DBManager.getInstance();
 
-	// under construction (testing observation)
-	private static OrderViewController instance;
-
 	private boolean admin = um.isAdmin();
 	// get total from DTB
 	private int tmpTotal;
@@ -84,6 +81,7 @@ public class OrderViewController implements java.util.Observer {
 			remove.setDisable(true);
 			remove.setVisible(false);
 		}
+		o.addObserver(this);
 		// testing able number
 		System.out.println(tablenumber);
 		// adding buttons to each pane
@@ -100,18 +98,6 @@ public class OrderViewController implements java.util.Observer {
 		// every time OrderView must show ordered items
 		setDisplay2();
 		setTotal();
-	}
-
-	// during in test
-	// constructor clarify at OrderView for adding it into Observable list
-	public OrderViewController() {
-	}
-
-	// during in test
-	public static OrderViewController getInstance() {
-		if (instance == null)
-			instance = new OrderViewController();
-		return instance;
 	}
 
 	// during in test (used in OrderTable)
@@ -144,15 +130,8 @@ public class OrderViewController implements java.util.Observer {
 			ex.printStackTrace();
 		}
 		// test display existence
-		try {
-			instance.getDisplay();
-			System.out.println("display is not null");
-		} catch (NullPointerException ex) {
-			System.out.println("display is null");
-			ex.printStackTrace();
-		}
 		// this line below keeps null
-		instance.getDisplay().setText(text);
+		display.setText(text);
 		// for testing
 		System.out.println("method update in OVC is working");
 	}
@@ -185,8 +164,7 @@ public class OrderViewController implements java.util.Observer {
 	}
 
 	/**
-	 * Private method for the controller to create and add buttons to the
-	 * container.
+	 * Private method for the controller to create and add buttons to the container.
 	 * 
 	 * @param List<Menu>
 	 *            any menu list
@@ -206,9 +184,9 @@ public class OrderViewController implements java.util.Observer {
 					// adding order to map
 					o.addOrder((Menu) button.getUserData());
 					// after add set the total textfield
-					setTotal();
-					// for display to setText (temporary)
-					setTemporary();
+//					setTotal();
+//					// for display to setText (temporary)
+//					setTemporary();
 					// for testing
 					System.out.println(o.orderToText(o.getOrders()));
 				}
@@ -289,8 +267,7 @@ public class OrderViewController implements java.util.Observer {
 	}
 
 	/**
-	 * Handler for logout button. When event receive the Start up scene is
-	 * shown.
+	 * Handler for logout button. When event receive the Start up scene is shown.
 	 * 
 	 */
 	public void exitButtonHandler(ActionEvent event) {
@@ -298,8 +275,8 @@ public class OrderViewController implements java.util.Observer {
 	}
 
 	/**
-	 * Static method for scene before opening this scene to get the button text
-	 * and set as table number.
+	 * Static method for scene before opening this scene to get the button text and
+	 * set as table number.
 	 * 
 	 * @param buttonText
 	 */
@@ -308,8 +285,8 @@ public class OrderViewController implements java.util.Observer {
 	}
 
 	/**
-	 * Static method for scene before opening this scene to get list of menu
-	 * names and set the List<Menu> attribute above.
+	 * Static method for scene before opening this scene to get list of menu names
+	 * and set the List<Menu> attribute above.
 	 * 
 	 * @param List
 	 *            of menu names List<Menu>

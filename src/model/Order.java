@@ -98,8 +98,8 @@ public class Order extends Observable {
 	 */
 	public void clearOrders() {
 		orders.clear();
-		setChanged();
-		notifyObservers();
+//		setChanged();
+//		notifyObservers();
 	}
 
 	/**
@@ -159,8 +159,8 @@ public class Order extends Observable {
 	// for testing
 	public void printOrders() {
 		orders.forEach((k, v) -> System.out.println("key: " + k.getName() + k.getPrice() + " value:" + v));
-		setChanged();
-		notifyObservers();
+//		setChanged();
+//		notifyObservers();
 	}
 
 	// for testing
