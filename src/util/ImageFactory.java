@@ -58,7 +58,8 @@ public class ImageFactory {
 		int i = 0;
 		for (Menu item : foodname) {
 			Button button = new Button(item.getName());
-			Image image = new Image(foodUrl.get(5));
+//			System.out.println(i + " " + foodUrl.get(8));
+			Image image = new Image(foodUrl.get(i),true);
 			i++;
 			ImageView view = new ImageView(image);
 			view.setFitHeight(100);
@@ -84,10 +85,11 @@ public class ImageFactory {
 
 	}
 	public List<Button> setDrinkImage() {
-//		int i = 0;
+		int i = 0;
 		for (Menu item : drinkname) {
 			Button button = new Button(item.getName());
-			Image image = new Image(drinkUrl.get(1));
+			Image image = new Image(drinkUrl.get(i),true);
+			i++;
 			ImageView view = new ImageView(image);
 			view.setFitHeight(100);
 			view.setFitWidth(100);

@@ -6,11 +6,14 @@ import application.CSTable;
 import application.Login;
 import application.SignUp;
 import database.DBManager;
+import javafx.beans.property.Property;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Menu;
+import util.DownloadTask;
 import util.ScreenController;
 
 /**
@@ -27,9 +30,11 @@ public class StartUpController {
 	private Button signUp;
 	@FXML
 	private Button csMode;
+	@FXML
+	private ProgressBar progressbar;
 
 	@FXML
-	private void Initailize() {	
+	private void initialize() {	
 	}
 
 	/**

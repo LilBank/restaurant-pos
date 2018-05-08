@@ -54,4 +54,8 @@ public class DownloadTask extends Task<List<Button>> {
 		return buttonList;
 
 	}
+	public static void main(String[] args) {
+		Task<List<Button>> download = new DownloadTask();
+		new Thread(download).start();
+	}
 }
