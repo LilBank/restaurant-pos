@@ -171,7 +171,8 @@ public class MGEditMenuController {
 	}
 
 	/**
-	 * Method for handling deleteImage button. Delete image in the list view.
+	 * Method for handling deleteImage button. Delete the selected button from the
+	 * flow pane.
 	 * 
 	 */
 	public void deleteImageHandler(ActionEvent event) {
