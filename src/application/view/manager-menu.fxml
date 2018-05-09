@@ -20,14 +20,14 @@
             <Button fx:id="newDrink" layoutX="265.0" layoutY="18.0" mnemonicParsing="false" onAction="#insertDrinkHandler" prefHeight="52.0" prefWidth="109.0" style="-fx-background-radius: 50;" text="Add Drinks" />
             <AnchorPane layoutX="-4.0" layoutY="107.0" prefHeight="530.0" prefWidth="940.0">
                <children>
-                  <ScrollPane layoutX="14.0" prefHeight="502.0" prefWidth="426.0">
+                  <ScrollPane layoutX="14.0" prefHeight="502.0" prefWidth="441.0">
                      <content>
-                        <FlowPane fx:id="foodpane" prefHeight="502.0" prefWidth="426.0" />
+                        <FlowPane fx:id="foodpane" prefHeight="502.0" prefWidth="441.0" />
                      </content>
                   </ScrollPane>
-                  <ScrollPane layoutX="484.0" prefHeight="502.0" prefWidth="426.0">
+                  <ScrollPane layoutX="483.0" prefHeight="502.0" prefWidth="442.0">
                      <content>
-                        <FlowPane fx:id="drinkpane" prefHeight="503.0" prefWidth="426.0" />
+                        <FlowPane fx:id="drinkpane" prefHeight="503.0" prefWidth="441.0" />
                      </content>
                   </ScrollPane>
                </children>

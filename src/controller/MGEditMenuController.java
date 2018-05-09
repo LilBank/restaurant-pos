@@ -44,8 +44,7 @@ import util.ScreenController;
 
 /**
  * MGTableController(manager) class contains method for handling event from the
- * UserInterface. Contains method for adding menu with picture or removing a
- * menu.
+ * UserInterface. Contains method for adding or removing menu with picture.
  * 
  * @author Piyawat & Vichaphol
  *
@@ -74,8 +73,7 @@ public class MGEditMenuController {
 	private static List<String> foodUrl = dbm.getFoodUrl("Foods");
 	private static List<String> drinkUrl = dbm.getFoodUrl("Drinks");
 	ImageFactory instance = ImageFactory.getInstance();
-	Order o = Order.getInstance();
-	;
+	Order o = Order.getInstance();;
 
 	/**
 	 * Bind listView with ListProperty at the beginning.
@@ -91,36 +89,33 @@ public class MGEditMenuController {
 	}
 
 	/**
-	 * Method for handling newImage button. Insert image to the list view.
+	 * Method for handling new Food button. Insert image into the flow pane.
 	 * 
-	 * @throws MalformedURLException
 	 */
 	public void insertFoodHandler(ActionEvent event) {
 		createMenu("Foods");
-
 	}
 
 	/**
-	 * Method for handling newImage button. Insert image to the list view.
+	 * Method for handling new Drink button. Insert image into the flow pane.
 	 * 
-	 * @throws MalformedURLException
 	 */
 	public void insertDrinkHandler(ActionEvent event) {
-		 createMenu("Drinks");
+		createMenu("Drinks");
 
 	}
 
 	/**
-	 * Method for handling newImage button. Insert image to the list view.
+	 * Method for handling newImage button. Insert image into the flow pane and
+	 * database.
 	 * 
-	 * @throws MalformedURLException
+	 * @param name
+	 *            of table in database.
 	 */
 	public void createMenu(String table) {
-		// Ask user to input dialog.
 		JTextField nameField = new JTextField(5);
 		JTextField priceField = new JTextField(5);
 		JTextField urlField = new JTextField(5);
-		// Get the response value.
 		Image image = null;
 		Alert alert = null;
 		JPanel myPanel = new JPanel();
@@ -133,10 +128,11 @@ public class MGEditMenuController {
 		myPanel.add(new JLabel("Url: "));
 		myPanel.add(urlField);
 
+		// Ask user to input dialog.
 		int result = JOptionPane.showConfirmDialog(null, myPanel, "Please Enter Name, Price and URL ",
 				JOptionPane.OK_CANCEL_OPTION);
+		// Get the response value.
 		if (result == JOptionPane.OK_OPTION) {
-			System.out.println(urlField.getText());
 			if (nameField.getText().equals("")) {
 				alert = new Alert(AlertType.ERROR, "Name is empty.", ButtonType.OK);
 				alert.setHeaderText("Inputfield Error");
@@ -160,9 +156,8 @@ public class MGEditMenuController {
 				alert.setHeaderText("Inputfield Error");
 				alert.show();
 			} else {
-				// dbm.InsertTo(table, name, price, result.get());
 				dbm.InsertTo(table, nameField.getText(), Integer.parseInt(priceField.getText()), urlField.getText());
-				Button button = new Button(foodname.get(foodname.size()-1).getName());
+				Button button = new Button(foodname.get(foodname.size() - 1).getName());
 				button.setPrefSize(150, 150);
 				image = new Image(urlField.getText());
 				ImageView view = new ImageView(image);
@@ -176,15 +171,6 @@ public class MGEditMenuController {
 	}
 
 	/**
-	 * during the test.
-	 */
-	public void chooseFile() {
-		FileChooser chooser = new FileChooser();
-		/** Open file dialog and save it to file */
-		File selectedFile = chooser.showOpenDialog(new Stage());
-	}
-
-	/**
 	 * Method for handling deleteImage button. Delete image in the list view.
 	 * 
 	 */
@@ -193,7 +179,7 @@ public class MGEditMenuController {
 	}
 
 	/**
-	 * Handler for back button. When event receive the CS table scene is shown.
+	 * Handler for back button. When event receive the table view scene is shown.
 	 * 
 	 */
 	public void backButtonHandler(ActionEvent event) {
@@ -201,7 +187,7 @@ public class MGEditMenuController {
 	}
 
 	/**
-	 * Handler for logout button. When event recieve the Start up scene is shown.
+	 * Handler for logout button. When event receive the Start up scene is shown.
 	 * 
 	 */
 	public void logoutHandler(ActionEvent event) {

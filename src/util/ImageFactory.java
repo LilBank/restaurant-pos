@@ -51,7 +51,7 @@ public class ImageFactory {
 		Image image = new Image(filename);
 		return new ImageView(image);
 	}
-
+	
 	public List<Button> getFoodButton() {
 		return foodButtonList;
 	}
