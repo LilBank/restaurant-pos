@@ -50,63 +50,68 @@ public class ImageFactory {
 		return drinkButtonList;
 	}
 
-	public List<Button> setFoodImage() {
-		int i = 0;
-		for (Menu item : foodname) {
-			Button button = new Button(item.getName());
-			Image image = new Image(foodUrl.get(i), true);
-			i++;
-			ImageView view = new ImageView(image);
-			view.setFitHeight(100);
-			view.setFitWidth(100);
-			button.setPrefSize(150, 150);
-			button.setWrapText(true);
-			button.setTextAlignment(TextAlignment.CENTER);
-			button.setGraphic(view);
-			button.setUserData(item);
+	public static void loadFoodImage() {
+		if (foodButtonList.size() == 0) {
+			int i = 0;
+			for (Menu item : foodname) {
+				Button button = new Button(item.getName());
+				Image image = new Image(foodUrl.get(i), true);
+				i++;
+				ImageView view = new ImageView(image);
+				view.setFitHeight(100);
+				view.setFitWidth(100);
+				button.setPrefSize(150, 150);
+				button.setWrapText(true);
+				button.setTextAlignment(TextAlignment.CENTER);
+				button.setGraphic(view);
+				button.setUserData(item);
 
-			// set handler for the button
-			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-				@Override
-				public void handle(MouseEvent event) {
-					o.addOrder((Menu) button.getUserData());
-					System.out.println(((Menu) button.getUserData()).getName());
+				// set handler for the button
+				button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent event) {
+						o.addOrder((Menu) button.getUserData());
+						System.out.println(((Menu) button.getUserData()).getName());
 
-				}
-			});
-			foodButtonList.add(button);
+					}
+				});
+				foodButtonList.add(button);
+				System.out.println("Done Loading");
+
+			}
 		}
-		return foodButtonList;
 
 	}
 
-	public List<Button> setDrinkImage() {
-		int i = 0;
-		for (Menu item : drinkname) {
-			Button button = new Button(item.getName());
-			Image image = new Image(drinkUrl.get(i), true);
-			i++;
-			ImageView view = new ImageView(image);
-			view.setFitHeight(100);
-			view.setFitWidth(100);
-			button.setPrefSize(150, 150);
-			button.setWrapText(true);
-			button.setTextAlignment(TextAlignment.CENTER);
-			button.setGraphic(view);
-			button.setUserData(item);
+	public static void loadDrinkImage() {
+		if (drinkButtonList.size() == 0) {
+			int i = 0;
+			for (Menu item : drinkname) {
+				Button button = new Button(item.getName());
+				Image image = new Image(drinkUrl.get(i), true);
+				i++;
+				ImageView view = new ImageView(image);
+				view.setFitHeight(100);
+				view.setFitWidth(100);
+				button.setPrefSize(150, 150);
+				button.setWrapText(true);
+				button.setTextAlignment(TextAlignment.CENTER);
+				button.setGraphic(view);
+				button.setUserData(item);
 
-			// set handler for the button
-			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-				@Override
-				public void handle(MouseEvent event) {
-					o.addOrder((Menu) button.getUserData());
-					System.out.println(((Menu) button.getUserData()).getName());
+				// set handler for the button
+				button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent event) {
+						o.addOrder((Menu) button.getUserData());
+						System.out.println(((Menu) button.getUserData()).getName());
 
-				}
-			});
-			drinkButtonList.add(button);
+					}
+				});
+				drinkButtonList.add(button);
+				System.out.println("Done Loading");
+			}
+
 		}
-		return drinkButtonList;
-
 	}
 }
