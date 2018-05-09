@@ -1,10 +1,7 @@
 package util;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.sun.org.apache.bcel.internal.util.ClassLoader;
 
 import database.DBManager;
 import javafx.event.EventHandler;
@@ -15,7 +12,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.TextAlignment;
 import model.Menu;
 import model.Order;
-import sun.security.jca.GetInstance;
 
 public class ImageFactory {
 	/** singleton instance of ImageFactory. */
@@ -29,7 +25,6 @@ public class ImageFactory {
 	private static List<String> drinkUrl = dbm.getFoodUrl("Drinks");
 	private static List<Button> foodButtonList = new ArrayList<Button>();
 	private static List<Button> drinkButtonList = new ArrayList<Button>();
-
 
 	/**
 	 * Get an instance of ImageFactory.
@@ -50,6 +45,7 @@ public class ImageFactory {
 	public static List<Button> getFoodButton() {
 		return foodButtonList;
 	}
+
 	public static List<Button> getDrinkButton() {
 		return drinkButtonList;
 	}
@@ -58,8 +54,7 @@ public class ImageFactory {
 		int i = 0;
 		for (Menu item : foodname) {
 			Button button = new Button(item.getName());
-//			System.out.println(i + " " + foodUrl.get(8));
-			Image image = new Image(foodUrl.get(i),true);
+			Image image = new Image(foodUrl.get(i), true);
 			i++;
 			ImageView view = new ImageView(image);
 			view.setFitHeight(100);
@@ -84,11 +79,12 @@ public class ImageFactory {
 		return foodButtonList;
 
 	}
+
 	public List<Button> setDrinkImage() {
 		int i = 0;
 		for (Menu item : drinkname) {
 			Button button = new Button(item.getName());
-			Image image = new Image(drinkUrl.get(i),true);
+			Image image = new Image(drinkUrl.get(i), true);
 			i++;
 			ImageView view = new ImageView(image);
 			view.setFitHeight(100);

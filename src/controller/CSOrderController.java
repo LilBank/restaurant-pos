@@ -55,129 +55,18 @@ public class CSOrderController {
 	public void initialize() {
 		// adding buttons to foodpane
 		System.out.println(tablenumber);
-		// instance.getFoodButton().forEach(x -> foodpane.getChildren().add(x));
-		foodpane.getChildren().addAll(instance.getFoodButton());
-		instance.getDrinkButton().forEach(x -> drinkpane.getChildren().add(x));
-		//
-//		setFoodImage(foodname, foodUrl);
-//		setDrinkImage(drinkname, drinkUrl);
+		System.out.println(instance.getDrinkButton());
+//		 instance.getFoodButton().forEach(x -> foodpane.getChildren().add(x));
+		 foodpane.getChildren().addAll(instance.getFoodButton());
+		 instance.getDrinkButton().forEach(x -> drinkpane.getChildren().add(x));
 	}
-	public void setFoodImage(List<Menu> items, List<String> url) {
-		int i = 0;
-		for (Menu item : items) {
-			Button button = new Button(item.getName());
-			// Image image = new Image(url.get(0));
-			// i++;
-			// ImageView view = new ImageView(image);
-			// view.setFitHeight(100);
-			// view.setFitWidth(100);
-			button.setPrefSize(150, 150);
-			button.setWrapText(true);
-			button.setTextAlignment(TextAlignment.CENTER);
-			// button.setGraphic(view);
-			button.setUserData(item);
-
-			// set handler for the button
-			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-				@Override
-				public void handle(MouseEvent event) {
-	//				o.addOrder((Menu) button.getUserData());
-					System.out.println(((Menu) button.getUserData()).getName());
-
-				}
-			});
-			foodpane.getChildren().add(button);
-		}
-	}
-
-	// public void setFoodImage(List<Menu> items, List<String> url) {
-	// int i = 0;
-	// for (Menu item : items) {
-	// Button button = new Button(item.getName());
-	// // Image image = new Image(url.get(0));
-	// // i++;
-	// // ImageView view = new ImageView(image);
-	// // view.setFitHeight(100);
-	// // view.setFitWidth(100);
-	// button.setPrefSize(150, 150);
-	// button.setWrapText(true);
-	// button.setTextAlignment(TextAlignment.CENTER);
-	// // button.setGraphic(view);
-	// button.setUserData(item);
-	//
-	// // set handler for the button
-	// button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-	// @Override
-	// public void handle(MouseEvent event) {
-	// o.addOrder((Menu) button.getUserData());
-	// System.out.println(((Menu) button.getUserData()).getName());
-	//
-	// }
-	// });
-	// foodpane.getChildren().add(button);
-	// }
-	// }
-	//
-	// public void setDrinkImage(List<Menu> items, List<String> url) {
-	// int i = 0;
-	// for (Menu item : items) {
-	// Button button = new Button(item.getName());
-	// // Image image = new Image(url.get(0));
-	// // i++;
-	// // ImageView view = new ImageView(image);
-	// // view.setFitHeight(100);
-	// // view.setFitWidth(100);
-	// button.setPrefSize(150, 150);
-	// button.setWrapText(true);
-	// button.setTextAlignment(TextAlignment.CENTER);
-	// // button.setGraphic(view);
-	// button.setUserData(item);
-	//
-	// // set handler for the button
-	// button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-	// @Override
-	// public void handle(MouseEvent event) {
-	// o.addOrder((Menu) button.getUserData());
-	// System.out.println(((Menu) button.getUserData()).getName());
-	//
-	// }
-	// });
-	// foodpane.getChildren().add(button);
-	// }
-	// }
-	public void setDrinkImage(List<Menu> items, List<String> url) {
-		int i = 0;
-		for (Menu item : items) {
-			Button button = new Button(item.getName());
-			// Image image = new Image(url.get(0));
-			// i++;
-			// ImageView view = new ImageView(image);
-			// view.setFitHeight(100);
-			// view.setFitWidth(100);
-			button.setPrefSize(150, 150);
-			button.setWrapText(true);
-			button.setTextAlignment(TextAlignment.CENTER);
-			// button.setGraphic(view);
-			button.setUserData(item);
-
-			// set handler for the button
-			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-				@Override
-				public void handle(MouseEvent event) {
-	//				o.addOrder((Menu) button.getUserData());
-					System.out.println(((Menu) button.getUserData()).getName());
-
-				}
-			});
-			foodpane.getChildren().add(button);
-		}
-	}
-
-	// during in test
+	
+	/**
+	 * Handler for back button. When event receive the CS table scene is shown.
+	 * 
+	 */
 	public void orderButtonHandler(ActionEvent event) {
-
 	}
-
 	/**
 	 * Handler for back button. When event receive the CS table scene is shown.
 	 * 

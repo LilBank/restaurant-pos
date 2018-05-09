@@ -6,7 +6,6 @@ import controller.OrderViewController;
 import javafx.stage.Stage;
 import model.Menu;
 import model.Order;
-import model.OrderTable;
 import util.AbstractWindow;
 
 /**
