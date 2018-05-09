@@ -5,6 +5,13 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import javax.swing.Box;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import application.Tableview;
 import application.Main;
 import database.DBManager;
@@ -28,6 +35,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Menu;
+import model.Order;
 import sun.nio.ch.SelectionKeyImpl;
 import util.DownloadTask;
 import util.ImageFactory;
@@ -65,16 +73,16 @@ public class MGEditMenuController {
 	private static List<String> foodUrl = dbm.getFoodUrl("Foods");
 	private static List<String> drinkUrl = dbm.getFoodUrl("Drinks");
 	ImageFactory instance = ImageFactory.getInstance();
+	Order o = Order.getInstance();
+	;
 
 	/**
 	 * Bind listView with ListProperty at the beginning.
 	 */
 	@FXML
 	public void initialize() {
-		instance.getFoodButton().forEach(x ->foodpane.getChildren().add(x));
-		instance.getDrinkButton().forEach(x ->drinkpane.getChildren().add(x));
-
-
+		instance.getFoodButton().forEach(x -> foodpane.getChildren().add(x));
+		instance.getDrinkButton().forEach(x -> drinkpane.getChildren().add(x));
 	}
 
 	public static List<Button> getImage() {
@@ -87,7 +95,7 @@ public class MGEditMenuController {
 	 * @throws MalformedURLException
 	 */
 	public void insertFoodHandler(ActionEvent event) {
-		createData("Foods", "Taco", "80");
+		createMenu("Foods");
 
 	}
 
@@ -97,7 +105,7 @@ public class MGEditMenuController {
 	 * @throws MalformedURLException
 	 */
 	public void insertDrinkHandler(ActionEvent event) {
-		// createData("Drinks", name, price, url);
+		 createMenu("Drinks");
 
 	}
 
@@ -106,36 +114,65 @@ public class MGEditMenuController {
 	 * 
 	 * @throws MalformedURLException
 	 */
-	public void createData(String table, String name, String price) {
+	public void createMenu(String table) {
 		// Ask user to input dialog.
-		TextInputDialog dialog = new TextInputDialog("");
-		dialog.setTitle("Input URL");
-		dialog.setHeaderText("Text Input Dialog");
-		dialog.setContentText("Please Input URL:");
+		JTextField nameField = new JTextField(5);
+		JTextField priceField = new JTextField(5);
+		JTextField urlField = new JTextField(5);
 		// Get the response value.
 		Image image = null;
 		Alert alert = null;
-		Optional<String> result = dialog.showAndWait();
-		if (result.get().equals("")) {
-			alert = new Alert(AlertType.ERROR, "Input is empty.", ButtonType.OK);
-			alert.setHeaderText("Inputfield Error");
-			alert.show();
+		JPanel myPanel = new JPanel();
+		myPanel.add(new JLabel("Name: "));
+		myPanel.add(nameField);
+		myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+		myPanel.add(new JLabel("Price: "));
+		myPanel.add(priceField);
+		myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+		myPanel.add(new JLabel("Url: "));
+		myPanel.add(urlField);
 
-		}
-		if (!result.get().contains(".jpg")) {
-			alert = new Alert(AlertType.ERROR, "Url is incorrect", ButtonType.OK);
-			alert.show();
-		} else {
-			if (result.isPresent()) {
+		int result = JOptionPane.showConfirmDialog(null, myPanel, "Please Enter Name, Price and URL ",
+				JOptionPane.OK_CANCEL_OPTION);
+		if (result == JOptionPane.OK_OPTION) {
+			System.out.println(urlField.getText());
+			if (nameField.getText().equals("")) {
+				alert = new Alert(AlertType.ERROR, "Name is empty.", ButtonType.OK);
+				alert.setHeaderText("Inputfield Error");
+				alert.show();
+
+			}
+			if (priceField.getText().equals("")) {
+				alert = new Alert(AlertType.ERROR, "Price is empty.", ButtonType.OK);
+				alert.setHeaderText("Inputfield Error");
+				alert.show();
+
+			}
+			if (urlField.getText().equals("")) {
+				alert = new Alert(AlertType.ERROR, "URL is empty.", ButtonType.OK);
+				alert.setHeaderText("Inputfield Error");
+				alert.show();
+			}
+
+			if (!urlField.getText().contains(".jpg")) {
+				alert = new Alert(AlertType.ERROR, "Url is incorrect", ButtonType.OK);
+				alert.setHeaderText("Inputfield Error");
+				alert.show();
+			} else {
 				// dbm.InsertTo(table, name, price, result.get());
-				Button button = new Button();
+				dbm.InsertTo(table, nameField.getText(), Integer.parseInt(priceField.getText()), urlField.getText());
+				Button button = new Button(foodname.get(foodname.size()-1).getName());
 				button.setPrefSize(100, 100);
+				image = new Image(urlField.getText());
 				ImageView view = new ImageView(image);
+				view.setFitWidth(100);
+				view.setFitHeight(100);
 				button.setGraphic(view);
 				foodpane.getChildren().add(button);
 			}
 		}
 	}
+
 	/**
 	 * during the test.
 	 */

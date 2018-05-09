@@ -250,9 +250,9 @@ public class DBManager {
 	 */
 	public void InsertTo(String foodtable, String name, Integer price, String url) {
 		// test connection
-		String sql = "INSERT INTO " + foodtable + " VALUES (?,?,?)";
+		sqlCommand = "INSERT INTO `" + foodtable + "` (`name`, `price`, `url`) VALUES (?, ?, ?)";
 		try {
-			PreparedStatement stmt = connection.prepareStatement(sql);
+			PreparedStatement stmt = connection.prepareStatement(sqlCommand);
 			stmt.setString(1, name);
 			stmt.setInt(2, price);
 			stmt.setString(3, url);
