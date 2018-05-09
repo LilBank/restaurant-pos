@@ -173,14 +173,22 @@ public class CheckBillController {
 		}
 	}
 
-	// during in test
-	public static void setBill(String arg) {
-		csBill = Integer.parseInt(arg);
+	/**
+	 * Static method for setting the customer bill.
+	 * 
+	 * @param customerBill
+	 */
+	public static void setBill(String customerBill) {
+		csBill = Integer.parseInt(customerBill);
 	}
 
-	// during in test
-	public static void setTable(String arg) {
-		tablenumber = arg;
+	/**
+	 * Static method for setting the customers tbale.
+	 * 
+	 * @param tablenumber
+	 */
+	public static void setTable(String tablenum) {
+		tablenumber = tablenum;
 	}
 
 }

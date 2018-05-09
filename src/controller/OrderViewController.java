@@ -1,8 +1,10 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
+import java.util.Optional;
 
 import application.CheckBill;
 import application.Main;
@@ -14,6 +16,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -185,6 +189,24 @@ public class OrderViewController implements java.util.Observer {
 	 */
 	public void exitButtonHandler(ActionEvent event) {
 		ScreenController.switchWindow((Stage) exit.getScene().getWindow(), new Main());
+	}
+
+	public void removeButtonHandler(MouseEvent event) {
+		
+//		Map<Menu, Integer> temp = dbm.getDBOrders(tablenumber);
+//		List<Menu> temp2 = new ArrayList<>();
+//		temp.forEach((k, v) -> temp2.add(k));
+//		o.clearOrders();
+//		Dialog dialog = new ChoiceDialog(temp2);
+//
+//		dialog.setTitle("Remove");
+//		dialog.setHeaderText("Select your choice");
+//		Optional<String> result = dialog.showAndWait();
+//		String selected = "cancelled.";
+//		if (result.isPresent()) {
+//			selected = result.get();
+//		}
+//		System.out.println(selected);
 	}
 
 	/**

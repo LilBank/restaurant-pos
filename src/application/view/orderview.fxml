@@ -67,7 +67,7 @@
                 </Tab>
               </tabs>
             </TabPane>
-            <Button fx:id="remove" layoutX="14.0" layoutY="512.0" minWidth="69.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 50;" text="remove">
+            <Button fx:id="remove" layoutX="14.0" layoutY="512.0" minWidth="69.0" mnemonicParsing="false" onMouseClicked="#removeButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 50;" text="remove">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>

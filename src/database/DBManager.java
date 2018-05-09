@@ -414,8 +414,12 @@ public class DBManager {
 		}
 		return temp;
 	}
-	
-	
+
+	/**
+	 * Method for clearing all records in the wanted database table.
+	 * 
+	 * @param tablenumber
+	 */
 	public void clearTable(String tableNumber) {
 		System.out.println("method clear table is working");
 		PreparedStatement stmt = null;
