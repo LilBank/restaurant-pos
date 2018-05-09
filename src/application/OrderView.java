@@ -22,10 +22,6 @@ public class OrderView extends AbstractWindow {
 	public OrderView(String input, List<Menu> foodnames, List<Menu> drinknames) {
 		OrderViewController.setTable(input);
 		OrderViewController.setMenu(foodnames, drinknames);
-		// under construction
-		// OrderTable ot = new OrderTable();
-		// Order.getInstance().addObserver(ot);
-		// Order.getInstance().addObserver(OrderViewController.getInstance());
 	}
 
 	public OrderView(String input) {
