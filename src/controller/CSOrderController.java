@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 
+import application.CSTable;
 import application.CheckBill;
 import application.Main;
 import application.Tableview;
@@ -76,7 +77,7 @@ public class CSOrderController {
 	@FXML
 	public void initialize() {
 		// adding buttons to each pane
-//		setDisplayProp();
+		// setDisplayProp();
 		System.out.println("Entering table: " + tablenumber);
 		instance.getFoodButton().forEach(x -> foodpane.getChildren().add(x));
 		instance.getDrinkButton().forEach(x -> drinkpane.getChildren().add(x));
@@ -127,11 +128,12 @@ public class CSOrderController {
 	 * 
 	 */
 	public void backButtonHandler(ActionEvent event) {
-		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new Tableview());
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new CSTable());
 	}
 
 	/**
-	 * Handler for logout button. When event receive the Start up scene is shown.
+	 * Handler for logout button. When event receive the Start up scene is
+	 * shown.
 	 * 
 	 */
 	public void exitButtonHandler(ActionEvent event) {
@@ -139,8 +141,8 @@ public class CSOrderController {
 	}
 
 	/**
-	 * Static method for scene before opening this scene to get the button text and
-	 * set as table number.
+	 * Static method for scene before opening this scene to get the button text
+	 * and set as table number.
 	 * 
 	 * @param buttonText
 	 */
@@ -149,8 +151,8 @@ public class CSOrderController {
 	}
 
 	/**
-	 * Static method for scene before opening this scene to get list of menu names
-	 * and set the List<Menu> attribute above.
+	 * Static method for scene before opening this scene to get list of menu
+	 * names and set the List<Menu> attribute above.
 	 * 
 	 * @param List
 	 *            of menu names List<Menu>
@@ -168,7 +170,8 @@ public class CSOrderController {
 	}
 
 	/*
-	 * set the temporary total attribute which is use to display the current total
+	 * set the temporary total attribute which is use to display the current
+	 * total
 	 */
 	private void setTempTotal(Map<Menu, Integer> map) {
 		tmpTotal = o.getTotal(map);
