@@ -15,33 +15,33 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CSOrderController">
    <children>
-      <Pane layoutX="5.0" layoutY="5.0" prefHeight="640.0" prefWidth="940.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <Pane layoutX="15.0" layoutY="15.0" prefHeight="640.0" prefWidth="940.0">
          <children>
-            <Label layoutX="99.0" layoutY="457.0" prefHeight="49.0" prefWidth="58.0" text="Total: ">
+            <Label layoutX="120.0" layoutY="512.0" prefHeight="49.0" prefWidth="58.0" text="Total: ">
                <font>
                   <Font name="Agency FB" size="29.0" />
                </font>
             </Label>
-          <Button fx:id="order" defaultButton="true" layoutX="277.0" layoutY="554.0" mnemonicParsing="false" onAction="#orderButtonHandler" prefHeight="69.0" prefWidth="107.0" style="-fx-background-radius: 100;" text="Order">
+            <Button fx:id="order" layoutX="228.0" layoutY="574.0" mnemonicParsing="false" onAction="#orderButtonHandler" onMouseClicked="#orderButtonHandler" prefHeight="58.0" prefWidth="147.0" style="-fx-background-radius: 100;" text="Order">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="back" layoutX="157.0" layoutY="554.0" minWidth="74.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="70.0" prefWidth="107.0" style="-fx-background-radius: 50;" text="Back">
+            <Button fx:id="back" layoutX="14.0" layoutY="574.0" minWidth="74.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 50;" text="Back">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <TextField fx:id="totalPrice" disable="true" layoutX="186.0" layoutY="457.0" prefHeight="49.0" prefWidth="182.0" />
+            <TextField fx:id="total" alignment="CENTER_RIGHT" disable="true" layoutX="193.0" layoutY="512.0" prefHeight="49.0" prefWidth="182.0" />
             <TabPane layoutX="400.0" prefHeight="640.0" prefWidth="542.0" tabClosingPolicy="UNAVAILABLE">
                <tabs>
                   <Tab text="Food">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ScrollPane hbarPolicy="NEVER" layoutX="1.0" layoutY="-1.0" prefHeight="614.0" prefWidth="542.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="-1.0">
+                              <ScrollPane hbarPolicy="NEVER" layoutX="3.700000047683716" layoutY="-3.0" prefHeight="608.0" prefWidth="532.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="-3.0">
                                  <content>
-                                    <FlowPane fx:id="foodpane" prefHeight="613.0" prefWidth="529.0" />
+                                    <FlowPane fx:id="foodpane" prefHeight="610.0" prefWidth="531.0" />
                                  </content>
                               </ScrollPane>
                            </children>
@@ -52,9 +52,9 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ScrollPane hbarPolicy="NEVER" prefHeight="612.0" prefWidth="542.0">
+                              <ScrollPane hbarPolicy="NEVER">
                                  <content>
-                                    <FlowPane fx:id="drinkpane" prefHeight="611.0" prefWidth="527.0" />
+                                    <FlowPane fx:id="drinkpane" prefHeight="616.0" prefWidth="538.0" />
                                  </content>
                               </ScrollPane>
                            </children>
@@ -63,7 +63,44 @@
                   </Tab>
                </tabs>
             </TabPane>
-            <TextArea fx:id="display" layoutX="-8.0" layoutY="45.0" prefHeight="398.0" prefWidth="411.0" />
+            <Button fx:id="remove" layoutX="11.0" layoutY="516.0" minWidth="69.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="97.0" style="-fx-background-radius: 50;" text="Remove">
+               <font>
+                  <Font name="Agency FB" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="clear" layoutX="116.0" layoutY="574.0" mnemonicParsing="false" onAction="#clearButtonHandler" onMouseClicked="#clearButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 100;" text="Clear">
+               <font>
+                  <Font name="Agency FB" size="24.0" />
+               </font>
+            </Button>
+            <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" layoutY="23.0" prefHeight="225.0" prefWidth="406.0">
+               <content>
+                  <TextArea fx:id="display" prefHeight="224.0" prefWidth="406.0" promptText="Order is empty">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+               </content>
+            </ScrollPane>
+            <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" layoutY="282.0" prefHeight="225.0" prefWidth="406.0">
+               <content>
+                  <TextArea fx:id="display2" prefHeight="224.0" prefWidth="406.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextArea>
+               </content>
+            </ScrollPane>
+            <Label layoutX="2.0" prefHeight="23.0" prefWidth="114.0" text="Current item(s) :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="2.0" layoutY="259.0" prefHeight="23.0" prefWidth="114.0" text="Ordered item(s) :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
