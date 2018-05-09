@@ -175,7 +175,11 @@ public class MGEditMenuController {
 	 * 
 	 */
 	public void deleteImageHandler(ActionEvent event) {
-		folderImage.remove(folderImage.size() - 1);
+		if (foodpane.getChildren().contains(instance.getSelectedButton())) {
+			foodpane.getChildren().remove(instance.getSelectedButton());
+		} else if (drinkpane.getChildren().contains(instance.getSelectedButton())) {
+			drinkpane.getChildren().remove(instance.getSelectedButton());
+		}
 	}
 
 	/**

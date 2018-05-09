@@ -26,6 +26,7 @@ public class ImageFactory {
 	private static List<String> drinkUrl;
 	private static List<Button> foodButtonList;
 	private static List<Button> drinkButtonList;
+	private Button selectedButton = null;
 
 	private ImageFactory() {
 		foodname = dbm.getFoodname("Foods");
@@ -51,7 +52,14 @@ public class ImageFactory {
 		Image image = new Image(filename);
 		return new ImageView(image);
 	}
-	
+
+	public Button getSelectedButton() {
+		return selectedButton;
+	}
+	public void setSelectedButton(Button button) {
+		this.selectedButton = button;
+	}
+
 	public List<Button> getFoodButton() {
 		return foodButtonList;
 	}
@@ -70,9 +78,8 @@ public class ImageFactory {
 				ImageView view = new ImageView(image);
 				view.setFitHeight(160);
 				view.setFitWidth(130);
-				button.setPrefSize(220,220);
+				button.setPrefSize(220, 220);
 				button.setWrapText(true);
-				//button.setTextAlignment(TextAlignment.CENTER);
 				button.setGraphic(view);
 				button.setUserData(item);
 
@@ -82,6 +89,7 @@ public class ImageFactory {
 					public void handle(MouseEvent event) {
 						o.addOrder((Menu) button.getUserData());
 						System.out.println(((Menu) button.getUserData()).getName());
+						selectedButton = button;
 
 					}
 				});
@@ -105,7 +113,6 @@ public class ImageFactory {
 				view.setFitWidth(130);
 				button.setPrefSize(220, 220);
 				button.setWrapText(true);
-//				button.setTextAlignment(TextAlignment.CENTER);
 				button.setGraphic(view);
 				button.setUserData(item);
 
@@ -115,7 +122,7 @@ public class ImageFactory {
 					public void handle(MouseEvent event) {
 						o.addOrder((Menu) button.getUserData());
 						System.out.println(((Menu) button.getUserData()).getName());
-
+						selectedButton = button;
 					}
 				});
 				drinkButtonList.add(button);
