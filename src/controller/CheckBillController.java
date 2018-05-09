@@ -166,7 +166,7 @@ public class CheckBillController {
 					alert = new Alert(AlertType.WARNING, "CHANGE: " + Change, ButtonType.OK);
 					alert.showAndWait().ifPresent(action -> {
 						if (action == ButtonType.OK) {
-							dbm.insertToSum(tablenumber, dbm.getDBOrders(tablenumber));
+							dbm.insertToSum(dbm.getDBOrders(tablenumber));
 							dbm.clearTable(tablenumber);
 							ScreenController.switchWindow((Stage) pay.getScene().getWindow(), new Tableview());
 						}

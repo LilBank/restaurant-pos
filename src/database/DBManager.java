@@ -312,6 +312,7 @@ public class DBManager {
 		}
 	}
 
+	// during in test
 	public List<User> getDBUser() {
 		// change to List<Menu>
 		List<User> temp = new ArrayList<>();
@@ -449,8 +450,8 @@ public class DBManager {
 	 * @param list
 	 *            of the table items
 	 */
-	public void insertToSum(String tableNumber, Map<Menu, Integer> map) {
-		sqlCommand = "INSERT INTO `Summary` (`Table Number`, `FoodName`, `FoodPrice`, `Quantity`) VALUES (?, ?, ?, ?)";
+	public void insertToSum(Map<Menu, Integer> map) {
+		sqlCommand = "INSERT INTO `Summary` (`FoodName`, `FoodPrice`, `Quantity`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;
 		try {
 			for (Map.Entry<Menu, Integer> order : map.entrySet()) {
@@ -458,10 +459,9 @@ public class DBManager {
 				String name = order.getKey().getName();
 				int price = order.getKey().getPrice();
 				int qty = order.getValue();
-				stmt.setString(1, tableNumber);
-				stmt.setString(2, name);
-				stmt.setInt(3, price);
-				stmt.setInt(4, qty);
+				stmt.setString(1, name);
+				stmt.setInt(2, price);
+				stmt.setInt(3, qty);
 				stmt.executeUpdate();
 			}
 		} catch (SQLException e) {
@@ -477,8 +477,4 @@ public class DBManager {
 		}
 	}
 
-	// during in test
-	public void getDBSum() {
-
-	}
 }

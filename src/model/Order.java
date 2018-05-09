@@ -76,21 +76,20 @@ public class Order extends Observable {
 	 * 
 	 * @return true if the requested is successfully remove, false for not
 	 */
-	public boolean removeOrder(Menu order) {
-		return removeFromMap(order);
+	public void removeOrder(Menu order) {
+		removeFromMap(order);
 	}
 
 	/*
-	 * Private method for removing an order requested by checking if the menu is in
-	 * the list yet or not.
+	 * Private method for removing an order requested by checking if the menu is
+	 * in the list yet or not.
 	 */
-	private boolean removeFromMap(Menu order) {
+	private void removeFromMap(Menu order) {
 		if (orders.containsKey(order)) {
 			orders.put(order, orders.get(order) - 1);
-			return true;
+		} else {
+			orders.put(order, -1);
 		}
-		// the menu requested has not been ordered yet
-		return false;
 	}
 
 	/**
@@ -103,8 +102,8 @@ public class Order extends Observable {
 	}
 
 	/**
-	 * Method for getting all orders from parameter and return them as group of text
-	 * in lines for further use.
+	 * Method for getting all orders from parameter and return them as group of
+	 * text in lines for further use.
 	 * 
 	 * @return orders in texts
 	 */
@@ -159,8 +158,8 @@ public class Order extends Observable {
 	// for testing
 	public void printOrders() {
 		orders.forEach((k, v) -> System.out.println("key: " + k.getName() + k.getPrice() + " value:" + v));
-//		setChanged();
-//		notifyObservers();
+		// setChanged();
+		// notifyObservers();
 	}
 
 	// for testing
