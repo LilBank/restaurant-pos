@@ -95,6 +95,16 @@
                   </TextArea>
                </content>
             </ScrollPane>
+            <Label layoutX="2.0" prefHeight="23.0" prefWidth="114.0" text="Current item(s) :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="2.0" layoutY="259.0" prefHeight="23.0" prefWidth="114.0" text="Ordered item(s) :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
          <padding>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
