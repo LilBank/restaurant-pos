@@ -237,6 +237,7 @@ public class OrderViewController implements java.util.Observer {
 	private void setDisplay() {
 		String text = o.orderToText(o.getOrders());
 		display.setText(text);
+		setTotal();
 	}
 
 	// set the lower display in the UI

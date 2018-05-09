@@ -1,9 +1,14 @@
 package controller;
 
 import application.OrderView;
+import application.Tableview;
+import database.DBManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -40,22 +45,27 @@ public class CheckBillController {
 	@FXML
 	private Button clear;
 	@FXML
+	private Button pay;
+	@FXML
 	private TextField total;
 	@FXML
 	private TextField customerPay;
 	@FXML
 	private TextField change;
+	@FXML
+	private Alert alert;
 
 	/* the money paid by the customer */
 	private int csMoney;
-
+	private int Change;
 	private static int csBill;
-
 	private static String tablenumber;
 
 	@FXML
 	public void initialize() {
 		total.setText(csBill + "");
+		System.out.println("customer bill" + csBill);
+		System.out.println("customer mony" + csMoney);
 	}
 
 	public void thousandButtonHandler(ActionEvent event) {
@@ -112,6 +122,17 @@ public class CheckBillController {
 	private void calculateChange() {
 		int totalMoney = Integer.parseInt(total.getText());
 		change.setText(this.csMoney - totalMoney + "");
+		Change = this.csMoney - totalMoney;
+	}
+
+	/**
+	 * Handler for back button. When event receive the previous table OrderView
+	 * is shown.
+	 * 
+	 * @param event
+	 */
+	public void backButtonHandler(MouseEvent event) {
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new OrderView(tablenumber));
 	}
 
 	/**
@@ -126,6 +147,32 @@ public class CheckBillController {
 		change.clear();
 	}
 
+	/**
+	 * Handler for pay button. When event receive and the customer pay is more
+	 * than bill then table view is shown.
+	 * 
+	 * @param event
+	 */
+	public void payButtonHandler(MouseEvent event) {
+		if (csBill > csMoney || csBill == 0) {
+			alert = new Alert(AlertType.ERROR, "Insufficient pay! ", ButtonType.OK);
+			alert.show();
+		} else {
+			alert = new Alert(AlertType.CONFIRMATION, "Are you sure?  ", ButtonType.OK);
+			alert.showAndWait().ifPresent(response -> {
+				if (response == ButtonType.OK) {
+					alert = new Alert(AlertType.WARNING, "CHANGE: " + Change, ButtonType.OK);
+					alert.showAndWait().ifPresent(action -> {
+						if (action == ButtonType.OK) {
+							DBManager.getInstance().clearTable(tablenumber);
+							ScreenController.switchWindow((Stage) pay.getScene().getWindow(), new Tableview());
+						}
+					});
+				}
+			});
+		}
+	}
+
 	// during in test
 	public static void setBill(String arg) {
 		csBill = Integer.parseInt(arg);
@@ -134,16 +181,6 @@ public class CheckBillController {
 	// during in test
 	public static void setTable(String arg) {
 		tablenumber = arg;
-	}
-
-	/**
-	 * Handler for back button. When event receive the previous table OrderView
-	 * is shown.
-	 * 
-	 * @param event
-	 */
-	public void backButtonHandler(MouseEvent event) {
-		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new OrderView(tablenumber));
 	}
 
 }
