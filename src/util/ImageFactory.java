@@ -19,12 +19,21 @@ public class ImageFactory {
 	private static DBManager dbm = DBManager.getInstance();
 	private static Order o = Order.getInstance();
 
-	private static List<Menu> foodname = dbm.getFoodname("Foods");
-	private static List<Menu> drinkname = dbm.getFoodname("Drinks");
-	private static List<String> foodUrl = dbm.getFoodUrl("Foods");
-	private static List<String> drinkUrl = dbm.getFoodUrl("Drinks");
-	private static List<Button> foodButtonList = new ArrayList<Button>();
-	private static List<Button> drinkButtonList = new ArrayList<Button>();
+	private static List<Menu> foodname;
+	private static List<Menu> drinkname;
+	private static List<String> foodUrl;
+	private static List<String> drinkUrl;
+	private static List<Button> foodButtonList;
+	private static List<Button> drinkButtonList;
+
+	private ImageFactory() {
+		foodname = dbm.getFoodname("Foods");
+		drinkname = dbm.getFoodname("Drinks");
+		foodUrl = dbm.getFoodUrl("Foods");
+		drinkUrl = dbm.getFoodUrl("Drinks");
+		foodButtonList = new ArrayList<Button>();
+		drinkButtonList = new ArrayList<Button>();
+	}
 
 	/**
 	 * Get an instance of ImageFactory.
@@ -42,15 +51,15 @@ public class ImageFactory {
 		return new ImageView(image);
 	}
 
-	public static List<Button> getFoodButton() {
+	public List<Button> getFoodButton() {
 		return foodButtonList;
 	}
 
-	public static List<Button> getDrinkButton() {
+	public List<Button> getDrinkButton() {
 		return drinkButtonList;
 	}
 
-	public static void loadFoodImage() {
+	public void loadFoodImage() {
 		if (foodButtonList.size() == 0) {
 			int i = 0;
 			for (Menu item : foodname) {
@@ -83,7 +92,7 @@ public class ImageFactory {
 
 	}
 
-	public static void loadDrinkImage() {
+	public void loadDrinkImage() {
 		if (drinkButtonList.size() == 0) {
 			int i = 0;
 			for (Menu item : drinkname) {
