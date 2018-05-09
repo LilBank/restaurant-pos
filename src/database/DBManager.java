@@ -340,7 +340,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for inserting data into the requested table in database.
+	 * Method for inserting current orders into the requested table in database.
 	 * 
 	 * @param tablenumber
 	 * @param Map<Menu,Integer>

@@ -37,7 +37,7 @@ public class Order extends Observable {
 	}
 
 	/**
-	 * Get all orders.
+	 * Get list of current orders.
 	 * 
 	 * @return orders in Map<K,V>
 	 */
@@ -98,13 +98,13 @@ public class Order extends Observable {
 	 */
 	public void clearOrders() {
 		orders.clear();
-//		setChanged();
-//		notifyObservers();
+		setChanged();
+		notifyObservers();
 	}
 
 	/**
 	 * Method for getting all orders from parameter and return them as group of text
-	 * in lines. for further use.
+	 * in lines for further use.
 	 * 
 	 * @return orders in texts
 	 */
