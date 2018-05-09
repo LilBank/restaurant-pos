@@ -15,7 +15,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CSOrderController">
    <children>
-      <Pane layoutX="15.0" layoutY="15.0" prefHeight="640.0" prefWidth="940.0">
+      <Pane layoutX="15.0" layoutY="15.0" prefHeight="640.0" prefWidth="1100.0">
          <children>
             <Label layoutX="120.0" layoutY="512.0" prefHeight="49.0" prefWidth="58.0" text="Total: ">
                <font>
@@ -33,15 +33,15 @@
                </font>
             </Button>
             <TextField fx:id="total" alignment="CENTER_RIGHT" disable="true" layoutX="193.0" layoutY="512.0" prefHeight="49.0" prefWidth="182.0" />
-            <TabPane layoutX="400.0" prefHeight="640.0" prefWidth="542.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane layoutX="400.0" prefHeight="640.0" prefWidth="697.0" tabClosingPolicy="UNAVAILABLE">
                <tabs>
                   <Tab text="Food">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="610.0" prefWidth="575.0">
                            <children>
-                              <ScrollPane hbarPolicy="NEVER" layoutX="3.700000047683716" layoutY="-3.0" prefHeight="608.0" prefWidth="532.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="-3.0">
+                              <ScrollPane hbarPolicy="NEVER" layoutX="3.700000047683716" layoutY="-3.0" prefHeight="608.0" prefWidth="588.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-51.0" AnchorPane.topAnchor="-3.0">
                                  <content>
-                                    <FlowPane fx:id="foodpane" prefHeight="610.0" prefWidth="531.0" />
+                                    <FlowPane fx:id="foodpane" prefHeight="610.0" prefWidth="690.0" />
                                  </content>
                               </ScrollPane>
                            </children>
@@ -52,9 +52,9 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ScrollPane hbarPolicy="NEVER">
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="618.0" prefWidth="697.0">
                                  <content>
-                                    <FlowPane fx:id="drinkpane" prefHeight="616.0" prefWidth="538.0" />
+                                    <FlowPane fx:id="drinkpane" prefHeight="616.0" prefWidth="695.0" />
                                  </content>
                               </ScrollPane>
                            </children>

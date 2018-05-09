@@ -21,6 +21,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -162,11 +163,12 @@ public class MGEditMenuController {
 				// dbm.InsertTo(table, name, price, result.get());
 				dbm.InsertTo(table, nameField.getText(), Integer.parseInt(priceField.getText()), urlField.getText());
 				Button button = new Button(foodname.get(foodname.size()-1).getName());
-				button.setPrefSize(100, 100);
+				button.setPrefSize(150, 150);
 				image = new Image(urlField.getText());
 				ImageView view = new ImageView(image);
 				view.setFitWidth(100);
 				view.setFitHeight(100);
+				button.setAlignment(Pos.TOP_CENTER);
 				button.setGraphic(view);
 				foodpane.getChildren().add(button);
 			}

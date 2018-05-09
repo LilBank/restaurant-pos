@@ -5,6 +5,7 @@ import java.util.List;
 
 import database.DBManager;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -58,11 +59,11 @@ public class ImageFactory {
 				Image image = new Image(foodUrl.get(i), true);
 				i++;
 				ImageView view = new ImageView(image);
-				view.setFitHeight(100);
-				view.setFitWidth(100);
-				button.setPrefSize(150, 150);
+				view.setFitHeight(160);
+				view.setFitWidth(130);
+				button.setPrefSize(220,220);
 				button.setWrapText(true);
-				button.setTextAlignment(TextAlignment.CENTER);
+				//button.setTextAlignment(TextAlignment.CENTER);
 				button.setGraphic(view);
 				button.setUserData(item);
 
@@ -91,11 +92,11 @@ public class ImageFactory {
 				Image image = new Image(drinkUrl.get(i), true);
 				i++;
 				ImageView view = new ImageView(image);
-				view.setFitHeight(100);
-				view.setFitWidth(100);
-				button.setPrefSize(150, 150);
+				view.setFitHeight(160);
+				view.setFitWidth(130);
+				button.setPrefSize(220, 220);
 				button.setWrapText(true);
-				button.setTextAlignment(TextAlignment.CENTER);
+//				button.setTextAlignment(TextAlignment.CENTER);
 				button.setGraphic(view);
 				button.setUserData(item);
 
