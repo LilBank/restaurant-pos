@@ -30,7 +30,6 @@ public class Main extends AbstractWindow {
 			instance.setDrinkImage();
 			System.out.println("insert: " + (System.nanoTime() - start / 10e9));
 			System.out.println("insert: " + (System.nanoTime() - start / 10e9));
-//			Future<List<Button>> future = ExecutorService.submit(new DownloadTask());
 			System.out.println("thread: " + (System.nanoTime() - start / 10e9));
 			super.setFilename("view/startup.fxml");
 			super.start(stage);
