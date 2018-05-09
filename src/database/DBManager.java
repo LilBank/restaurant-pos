@@ -365,7 +365,6 @@ public class DBManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			// must close statement every time
 			try {
 				if (stmt != null) {
 					stmt.close();
@@ -392,7 +391,6 @@ public class DBManager {
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
 			ResultSet rs = stmt.executeQuery();
-			// loop until out of order
 			while (rs.next()) {
 				String name = rs.getString("name");
 				int price = rs.getInt("price");
@@ -401,23 +399,42 @@ public class DBManager {
 				if (!temp.containsKey(menu)) {
 					temp.put(menu, qty);
 				} else {
-					// if contain then oldQty + newQty
 					temp.put(menu, temp.get(menu) + qty);
 				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			// must close statement every time
 			try {
-				if (stmt != null) {
+				if (stmt != null)
 					stmt.close();
-				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		// return Map<Menu,Integer> of orders
 		return temp;
+	}
+	
+	
+	public void clearTable(String tableNumber) {
+		System.out.println("method clear table is working");
+		PreparedStatement stmt = null;
+		String tabletmp = "table" + tableNumber;
+		sqlCommand = "DELETE FROM " + tabletmp;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			stmt.execute();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					System.out.println("Table is cleared");
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 }
