@@ -312,7 +312,7 @@ public class DBManager {
 		}
 	}
 
-	public List<User> getUser() {
+	public List<User> getDBUser() {
 		// change to List<Menu>
 		List<User> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + "User";
@@ -439,6 +439,46 @@ public class DBManager {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	/**
+	 * Method for inserting items, which is going to be paid, to the table in
+	 * database with specific tbale number.
+	 * 
+	 * @param tablenumber
+	 * @param list
+	 *            of the table items
+	 */
+	public void insertToSum(String tableNumber, Map<Menu, Integer> map) {
+		sqlCommand = "INSERT INTO `Summary` (`Table Number`, `FoodName`, `FoodPrice`, `Quantity`) VALUES (?, ?, ?, ?)";
+		PreparedStatement stmt = null;
+		try {
+			for (Map.Entry<Menu, Integer> order : map.entrySet()) {
+				stmt = connection.prepareStatement(sqlCommand);
+				String name = order.getKey().getName();
+				int price = order.getKey().getPrice();
+				int qty = order.getValue();
+				stmt.setString(1, tableNumber);
+				stmt.setString(2, name);
+				stmt.setInt(3, price);
+				stmt.setInt(4, qty);
+				stmt.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	// during in test
+	public void getDBSum() {
 
 	}
 }

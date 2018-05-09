@@ -12,6 +12,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import model.Order;
 import util.ScreenController;
 
 /**
@@ -60,6 +61,7 @@ public class CheckBillController {
 	private int Change;
 	private static int csBill;
 	private static String tablenumber;
+	private static DBManager dbm = DBManager.getInstance();
 
 	@FXML
 	public void initialize() {
@@ -164,7 +166,8 @@ public class CheckBillController {
 					alert = new Alert(AlertType.WARNING, "CHANGE: " + Change, ButtonType.OK);
 					alert.showAndWait().ifPresent(action -> {
 						if (action == ButtonType.OK) {
-							DBManager.getInstance().clearTable(tablenumber);
+							dbm.insertToSum(tablenumber, dbm.getDBOrders(tablenumber));
+							dbm.clearTable(tablenumber);
 							ScreenController.switchWindow((Stage) pay.getScene().getWindow(), new Tableview());
 						}
 					});
