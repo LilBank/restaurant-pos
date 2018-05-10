@@ -78,6 +78,8 @@ public class Order extends Observable {
 	 */
 	public void removeOrder(Menu order) {
 		removeFromMap(order);
+		setChanged();
+		notifyObservers();
 	}
 
 	/*

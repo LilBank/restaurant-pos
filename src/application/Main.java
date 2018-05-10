@@ -7,7 +7,6 @@ import com.sun.corba.se.impl.orbutil.closure.Future;
 import database.DBManager;
 import javafx.stage.Stage;
 import util.AbstractWindow;
-import util.DownloadTask;
 import util.ImageFactory;
 
 /**
