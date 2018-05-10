@@ -39,8 +39,7 @@ public class DBManager {
 	private String sqlCommand;
 
 	/**
-	 * Private constructor for DBManger. Getting the connection from the
-	 * database.
+	 * Private constructor for DBManger. Getting the connection from the database.
 	 */
 	private DBManager() {
 		try {
@@ -70,8 +69,8 @@ public class DBManager {
 	 *            from Login's input
 	 * @param password
 	 *            from Login's input
-	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 =
-	 *         user doesn't exists
+	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 = user
+	 *         doesn't exists
 	 */
 	public int login(String user, String pass) {
 		// sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
@@ -110,8 +109,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for inserting data(new user's data) to the database. The access
-	 * type is set to 1 by default but can be change later on.
+	 * Method for inserting data(new user's data) to the database. The access type
+	 * is set to 1 by default but can be change later on.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -143,8 +142,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for getting data from the database to check whether if the
-	 * username inputed has already exist or not.
+	 * Method for getting data from the database to check whether if the username
+	 * inputed has already exist or not.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -210,8 +209,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for getting data from the database which are food names and prices
-	 * to create a Menu object.
+	 * Method for getting data from the database which are food names and prices to
+	 * create a Menu object.
 	 * 
 	 * @param tablename
 	 * @return List<Menu> of food names
@@ -246,21 +245,63 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for storing image from the database.
+	 * Method for removing image data from the database.
+	 * 
+	 * @param tablename
+	 *            in the database
+	 * @param food's
+	 *            name
+	 * @param food's
+	 *            price
+	 * @param url
 	 */
 	public void InsertTo(String foodtable, String name, Integer price, String url) {
 		// test connection
 		sqlCommand = "INSERT INTO `" + foodtable + "` (`name`, `price`, `url`) VALUES (?, ?, ?)";
+		PreparedStatement stmt = null;
 		try {
-			PreparedStatement stmt = connection.prepareStatement(sqlCommand);
+			stmt = connection.prepareStatement(sqlCommand);
 			stmt.setString(1, name);
 			stmt.setInt(2, price);
 			stmt.setString(3, url);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
+	}
 
+	/**
+	 * Method for removing image data from the database.
+	 */
+	public void RemoveImage(String foodtable, String name, Integer price, String url) {
+		// test connection
+		sqlCommand = "DELETE FROM `" + foodtable + "` (`name`, `price`, `url`) VALUES (?, ?, ?)";
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			stmt.setString(1, name);
+			stmt.setInt(2, price);
+			stmt.setString(3, url);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	/**
