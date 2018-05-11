@@ -73,28 +73,33 @@ public class MGEditMenuController {
 	private FlowPane drinkpane;
 	/** List of all images */
 	public static List<Button> folderImage = new ArrayList<>();
-	// single instantiation
+	/** single instantiation */
 	private static DBManager dbm = DBManager.getInstance();
+	private ImageFactory instance = ImageFactory.getInstance();
 	private static List<Menu> foodname = dbm.getFoodname("Foods");
 	private static List<Menu> drinkname = dbm.getFoodname("Drinks");
-	private ImageFactory instance = ImageFactory.getInstance();
 	private Alert alert;
 
 	/**
-	 * Bind listView with ListProperty at the beginning.
+	 * Initialize the buttons to panes
 	 */
 	@FXML
 	public void initialize() {
 		instance.getFoodButton().forEach(x -> foodpane.getChildren().add(x));
 		instance.getDrinkButton().forEach(x -> drinkpane.getChildren().add(x));
 	}
-
+	
+	/**
+	 * Get the list of buttons with the set images.
+	 * 
+	 * @return list of Buttons
+	 */
 	public static List<Button> getImage() {
 		return folderImage;
 	}
 
 	/**
-	 * Method for handling new Food button. Insert image into the flow pane.
+	 * Method for handling new Food button. Insert food images into the flow pane.
 	 * 
 	 */
 	public void insertFoodHandler(ActionEvent event) {
@@ -102,7 +107,7 @@ public class MGEditMenuController {
 	}
 
 	/**
-	 * Method for handling new Drink button. Insert image into the flow pane.
+	 * Method for handling new Drink button. Insert drink images into the flow pane.
 	 * 
 	 */
 	public void insertDrinkHandler(ActionEvent event) {
@@ -160,11 +165,12 @@ public class MGEditMenuController {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+				label.setSize(200, 200);
 				myPanel.add(label);
 				int preview = JOptionPane.showConfirmDialog(null, myPanel, "Image Preview",
 						JOptionPane.OK_CANCEL_OPTION);
 				// Get the response value.
-				if (result == JOptionPane.OK_OPTION) {
+				if (preview == JOptionPane.OK_OPTION) {
 					dbm.insertTo(table, nameField.getText(), Integer.parseInt(priceField.getText()),
 							urlField.getText());
 					Button button = new Button(name.get(name.size() - 1).getName());
@@ -176,6 +182,9 @@ public class MGEditMenuController {
 					button.setWrapText(true);
 					button.setGraphic(view);
 					pane.getChildren().add(button);
+					alert = new Alert(AlertType.ERROR, "Please restart the application", ButtonType.OK);
+					alert.setHeaderText("Action Required");
+					alert.show();
 				}
 			}
 		}

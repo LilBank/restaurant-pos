@@ -44,9 +44,9 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ScrollPane hbarPolicy="NEVER" layoutX="3.700000047683716" layoutY="3.5999999046325684" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="611.0" prefWidth="542.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <content>
-                                    <FlowPane fx:id="foodpane" prefHeight="200.0" prefWidth="531.0" />
+                                    <FlowPane fx:id="foodpane" prefHeight="613.0" prefWidth="531.0" />
                                  </content>
                               </ScrollPane>
                            </children></AnchorPane>
@@ -56,9 +56,9 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ScrollPane hbarPolicy="NEVER">
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="610.0" prefWidth="542.0">
                                  <content>
-                                    <FlowPane fx:id="drinkpane" prefHeight="616.0" prefWidth="538.0" />
+                                    <FlowPane fx:id="drinkpane" prefHeight="613.0" prefWidth="538.0" />
                                  </content>
                               </ScrollPane>
                            </children>
