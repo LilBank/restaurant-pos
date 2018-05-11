@@ -56,18 +56,17 @@ public class CheckBillController {
 	@FXML
 	private Alert alert;
 
-	/* the money paid by the customer */
-	private int csMoney;
-	private int Change;
+	// instance of classes
 	private static int csBill;
 	private static String tablenumber;
 	private static DBManager dbm = DBManager.getInstance();
+	/* the money paid by the customer */
+	private int csMoney;
+	private int Change;
 
 	@FXML
 	public void initialize() {
 		total.setText(csBill + "");
-		System.out.println("customer bill" + csBill);
-		System.out.println("customer mony" + csMoney);
 	}
 
 	public void thousandButtonHandler(ActionEvent event) {

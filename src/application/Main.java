@@ -1,9 +1,5 @@
 package application;
 
-import java.util.concurrent.Executors;
-
-import com.sun.corba.se.impl.orbutil.closure.Future;
-
 import database.DBManager;
 import javafx.stage.Stage;
 import util.AbstractWindow;
@@ -26,7 +22,8 @@ public class Main extends AbstractWindow {
 			System.out.println("start: " + (System.nanoTime() - start / 10e9));
 			instance.loadDrinkImage();
 			instance.loadFoodImage();
-			// Future<List<Button>> future = ExecutorService.submit(new DownloadTask());
+			// Future<List<Button>> future = ExecutorService.submit(new
+			// DownloadTask());
 			super.setFilename("view/startup.fxml");
 			super.start(stage);
 			stage.setTitle("Start Up");

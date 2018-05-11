@@ -11,12 +11,13 @@ import java.util.Observable;
  * @author Piyawat & Vichaphol
  *
  */
-// write javadoc for extending Obsrvable is use
 public class Order extends Observable {
 
 	private Map<Menu, Integer> orders;
 	// singleton instance for Order
 	private static Order instance;
+	// for lambda expression
+	private int tmpTotal;
 
 	// private constructor
 	private Order() {
@@ -122,36 +123,25 @@ public class Order extends Observable {
 		return text;
 	}
 
-	// for lambda expression
-	private int tmpTotal;
-
-	// during in test
+	/**
+	 * Method for returning the current total.
+	 * 
+	 * @return
+	 */
 	public int getTotal() {
-		// named temp for temporary
-		// int temp = 0;
-		// for (Map.Entry<Menu, Integer> order : orders.entrySet()) {
-		// Menu menu = order.getKey();
-		// int qty = order.getValue();
-		// int price = menu.getPrice();
-		// temp += qty * price;
-		// }
-		// return temp;
 		tmpTotal = 0;
 		orders.forEach((k, v) -> tmpTotal += k.getPrice() * v);
 		return tmpTotal;
 	}
 
-	// during in test
+	/**
+	 * Method for getting the total of the ordered orders.
+	 * 
+	 * @param Map<K,V>
+	 *            wanted toget total
+	 * @return total
+	 */
 	public int getTotal(Map<Menu, Integer> map) {
-		// named temp for temporary
-		// int temp = 0;
-		// for (Map.Entry<Menu, Integer> order : map.entrySet()) {
-		// Menu menu = order.getKey();
-		// int qty = order.getValue();
-		// int price = menu.getPrice();
-		// temp += qty * price;
-		// }
-		// return temp;
 		tmpTotal = 0;
 		map.forEach((k, v) -> tmpTotal += k.getPrice() * v);
 		return tmpTotal;
@@ -160,33 +150,6 @@ public class Order extends Observable {
 	// for testing
 	public void printOrders() {
 		orders.forEach((k, v) -> System.out.println("key: " + k.getName() + k.getPrice() + " value:" + v));
-		// setChanged();
-		// notifyObservers();
 	}
-
-	// for testing
-	// public static void main(String[] args) {
-	// Order om = Order.getInstance();
-	// // test adding
-	// om.addOrder(new Menu("cocoa", 20));
-	// om.addOrder(new Menu("Steak", 100));
-	// om.addOrder(new Menu("water", 10));
-	// om.addOrder(new Menu("water", 10));
-	// om.addOrder(new Menu("Steak", 100));
-	// om.addOrder(new Menu("water", 10));
-	// om.addOrder(new Menu("cocoa", 20));
-	// om.addOrder(new Menu("Steak", 100));
-	//
-	// om.addOrder(new Menu("water", 10));
-	// om.addOrder(new Menu("cocoa", 20));
-	// om.addOrder(new Menu("cocoa", 20));
-	// om.addOrder(new Menu("Steak", 100));
-	// // test removing
-	// om.removeOrder(new Menu("cocoa", 20));
-	// om.removeOrder(new Menu("Steak", 100));
-	// om.removeOrder(new Menu("water", 10));
-	// om.printOrders();
-	// System.out.println(om.getOrders().size());
-	// }
 
 }
