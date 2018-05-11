@@ -257,6 +257,7 @@ public class DBManager {
 	 * @param url
 	 */
 	public void insertTo(String foodtable, String name, Integer price, String url) {
+		// test connection
 		sqlCommand = "INSERT INTO `" + foodtable + "` (`name`, `price`, `url`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;
 		try {
@@ -300,7 +301,6 @@ public class DBManager {
 			}
 		}
 	}
-
 
 	/**
 	 * Method for checking table existence in database.
