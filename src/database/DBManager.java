@@ -256,7 +256,7 @@ public class DBManager {
 	 *            price
 	 * @param url
 	 */
-	public void InsertTo(String foodtable, String name, Integer price, String url) {
+	public void insertTo(String foodtable, String name, Integer price, String url) {
 		// test connection
 		sqlCommand = "INSERT INTO `" + foodtable + "` (`name`, `price`, `url`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;
@@ -282,7 +282,7 @@ public class DBManager {
 	/**
 	 * Method for removing image data from the database.
 	 */
-	public void RemoveImage(String foodtable, String name, Integer price, String url) {
+	public void removeImage(String foodtable, String name, Integer price, String url) {
 		// test connection
 		sqlCommand = "DELETE FROM `" + foodtable + "` (`name`, `price`, `url`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;
