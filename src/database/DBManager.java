@@ -246,7 +246,7 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for removing image data from the database.
+	 * Method for inserting the data into the database.
 	 * 
 	 * @param tablename
 	 *            in the database
@@ -257,7 +257,6 @@ public class DBManager {
 	 * @param url
 	 */
 	public void insertTo(String foodtable, String name, Integer price, String url) {
-		// test connection
 		sqlCommand = "INSERT INTO `" + foodtable + "` (`name`, `price`, `url`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;
 		try {
@@ -539,6 +538,29 @@ public class DBManager {
 			}
 		}
 		return false;
+	}
+
+	// during in test
+	public void insertTo(String foodtable, Menu menu) {
+		sqlCommand = "INSERT INTO `" + foodtable + "` (`name`, `price`, `quantity`) VALUES (?, ?, ?)";
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			stmt.setString(1, menu.getName());
+			stmt.setInt(2, menu.getPrice());
+			stmt.setInt(3, -1);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

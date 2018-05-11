@@ -75,32 +75,6 @@ public class Order extends Observable {
 	}
 
 	/**
-	 * Remove the menu from the order list.
-	 * 
-	 * @param Menu
-	 *            wish to remove
-	 * 
-	 * @return true if the requested is successfully remove, false for not
-	 */
-	public void removeOrder(Menu order) {
-		removeFromMap(order);
-		setChanged();
-		notifyObservers();
-	}
-
-	/*
-	 * Private method for removing an order requested by checking if the menu is
-	 * in the list yet or not.
-	 */
-	private void removeFromMap(Menu order) {
-		if (orders.containsKey(order)) {
-			orders.put(order, orders.get(order) - 1);
-		} else {
-			orders.put(order, -1);
-		}
-	}
-
-	/**
 	 * Remove all current orders.
 	 */
 	public void clearOrders() {
@@ -168,6 +142,11 @@ public class Order extends Observable {
 		return dbm.getDBOrders(tableNumber);
 	}
 
+	// during in test
+	public void refreshDBOrders(String tableNumber) {
+		orders = this.getDBOrders(tableNumber);
+	}
+
 	/**
 	 * Using DBManager to insert current orders into the requested table in
 	 * database.
@@ -180,5 +159,29 @@ public class Order extends Observable {
 	public void orderToDB(String tableNumber, Map<Menu, Integer> map) {
 		dbm.orderToDB(tableNumber, map);
 	}
-	
+
+	/**
+	 * Using DBManager to orders in database whether the requested food exist or
+	 * not.
+	 * 
+	 * @param foodName
+	 * @param tableNumber
+	 * @return true if food exist, false if not
+	 */
+	public boolean checkDBFood(String foodName, String tableNumber) {
+		return dbm.checkDBFood(foodName, tableNumber);
+	}
+
+	// during in test
+	public Menu getMenu(String foodName) {
+		Menu menu = null;
+		for (Map.Entry<Menu, Integer> order : orders.entrySet()) {
+			System.out.println(order.getKey().getName());
+			if (order.getKey().getName().equals(foodName)) {
+				menu = order.getKey();
+			}
+		}
+		System.out.println(menu.getName());
+		return menu;
+	}
 }

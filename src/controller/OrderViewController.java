@@ -199,8 +199,6 @@ public class OrderViewController implements java.util.Observer {
 	 * @param event
 	 */
 	public void removeButtonHandler(MouseEvent event) {
-		// Menu tmpOrder = (Menu) tmpButton.getUserData();
-		// o.removeOrder(tmpOrder);
 		confirmRemove();
 	}
 
@@ -225,19 +223,38 @@ public class OrderViewController implements java.util.Observer {
 		foods = arg;
 		drinks = arg2;
 	}
-
+	
+	//use another map
 	private void confirmRemove() {
-		Map<Menu, Integer> temp = o.getDBOrders(tablenumber);
+		o.clearOrders();
+		o.refreshDBOrders(tablenumber);
 		List<String> temp2 = new ArrayList<>();
-		temp.forEach((k, v) -> temp2.add(k.getName()));
+		o.getDBOrders(tablenumber).forEach((k, v) -> temp2.add(k.getName()));
 		ChoiceDialog<String> dialog = new ChoiceDialog<>("SELECT", temp2);
 		dialog.setTitle("Remove");
 		dialog.setHeaderText("Please select an order wish to remove");
-		dialog.setContentText("Choose an order:");
+		dialog.setContentText("Choose which to remove:");
 		Optional<String> result = dialog.showAndWait();
-		if (result.isPresent()){
-		    System.out.println("Your choice: " + result.get());
+		if (result.isPresent()) {
+			if (result.get().equals("SELECT")) {
+				alert = new Alert(AlertType.ERROR, "Please select something!", ButtonType.OK);
+				alert.show();
+			} else if (!o.checkDBFood(result.get(), tablenumber)) {
+				alert = new Alert(AlertType.ERROR, "Food requested does not exist!", ButtonType.OK);
+				alert.show();
+			} else if (o.checkDBFood(result.get(), tablenumber)) {
+				alert = new Alert(AlertType.INFORMATION, result.get() + " is removed by 1.", ButtonType.OK);
+				alert.showAndWait().ifPresent(response -> {
+					if (response == ButtonType.OK) {
+						String tabletmp = "table" + tablenumber;
+						Menu menu = o.getMenu(result.get());
+						DBManager.getInstance().insertTo(tabletmp, menu);
+					}
+				});
+			}
 		}
+		o.clearOrders();
+		setDisplay2();
 	}
 
 	// set the current total
