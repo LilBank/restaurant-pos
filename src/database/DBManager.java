@@ -280,18 +280,15 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for removing image data from the database.
+	 * Method for removing image data from the database
 	 */
-	public void removeImage(String foodtable, String name, Integer price, String url) {
-		// test connection
-		sqlCommand = "DELETE FROM `" + foodtable + "` (`name`, `price`, `url`) VALUES (?, ?, ?)";
+	public void removeImage(String foodtable, Menu item) {
+		sqlCommand = "DELETE FROM " + foodtable + " WHERE name = ?";
 		PreparedStatement stmt = null;
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
-			stmt.setString(1, name);
-			stmt.setInt(2, price);
-			stmt.setString(3, url);
-			stmt.executeUpdate();
+			stmt.setString(1, item.getName());
+			stmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
