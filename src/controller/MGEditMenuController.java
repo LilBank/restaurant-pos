@@ -132,7 +132,6 @@ public class MGEditMenuController {
 		myPanel.add(Box.createHorizontalStrut(15)); // a spacer
 		myPanel.add(new JLabel("Url: "));
 		myPanel.add(urlField);
-
 		// Ask user to input dialog.
 		int result = JOptionPane.showConfirmDialog(null, myPanel, "Please Enter Your Menu",
 				JOptionPane.OK_CANCEL_OPTION);
