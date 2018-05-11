@@ -5,7 +5,6 @@ import application.Login;
 import application.SignUp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import util.ScreenController;

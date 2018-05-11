@@ -10,8 +10,8 @@ import java.util.Objects;
  *
  */
 
-public class Menu implements Comparable<Menu> {
-
+public class Menu {
+	
 	private String name;
 	private int price;
 
@@ -70,12 +70,6 @@ public class Menu implements Comparable<Menu> {
 	@Override
 	public int hashCode() {
 		return Objects.hash(this.name, this.price);
-	}
-
-	// under construction
-	@Override
-	public int compareTo(Menu o) {
-		return 0;
 	}
 
 }

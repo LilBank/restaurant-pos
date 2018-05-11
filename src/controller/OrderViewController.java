@@ -1,8 +1,10 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
+import java.util.Optional;
 
 import application.CheckBill;
 import application.Main;
@@ -14,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -70,7 +73,6 @@ public class OrderViewController implements java.util.Observer {
 	// instance of classes
 	private static UserManager um = UserManager.getInstance();
 	private static Order o = Order.getInstance();
-	private static DBManager dbm = DBManager.getInstance();
 
 	private boolean admin = um.isAdmin();
 	private int tmpTotal;
@@ -143,7 +145,7 @@ public class OrderViewController implements java.util.Observer {
 			alert.showAndWait().ifPresent(response -> {
 				if (response == ButtonType.YES) {
 					Map<Menu, Integer> temp = o.getOrders();
-					dbm.orderToDB(tablenumber, temp);
+					o.orderToDB(tablenumber, temp);
 					o.clearOrders();
 					setDisplay2();
 					display.setText("");
@@ -197,8 +199,9 @@ public class OrderViewController implements java.util.Observer {
 	 * @param event
 	 */
 	public void removeButtonHandler(MouseEvent event) {
-		Menu tmpOrder = (Menu) tmpButton.getUserData();
-		o.removeOrder(tmpOrder);
+		// Menu tmpOrder = (Menu) tmpButton.getUserData();
+		// o.removeOrder(tmpOrder);
+		confirmRemove();
 	}
 
 	/**
@@ -223,11 +226,24 @@ public class OrderViewController implements java.util.Observer {
 		drinks = arg2;
 	}
 
+	private void confirmRemove() {
+		Map<Menu, Integer> temp = o.getDBOrders(tablenumber);
+		List<String> temp2 = new ArrayList<>();
+		temp.forEach((k, v) -> temp2.add(k.getName()));
+		ChoiceDialog<String> dialog = new ChoiceDialog<>("SELECT", temp2);
+		dialog.setTitle("Remove");
+		dialog.setHeaderText("Please select an order wish to remove");
+		dialog.setContentText("Choose an order:");
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()){
+		    System.out.println("Your choice: " + result.get());
+		}
+	}
+
 	// set the current total
 	private void setTotal() {
 		String temp = "" + (o.getTotal() + tmpTotal);
 		total.setText(temp);
-
 	}
 
 	/*
@@ -256,7 +272,7 @@ public class OrderViewController implements java.util.Observer {
 
 	// set the lower display in the UI
 	private void setDisplay2() {
-		Map<Menu, Integer> temp = dbm.getDBOrders(tablenumber);
+		Map<Menu, Integer> temp = o.getDBOrders(tablenumber);
 		String text = o.orderToText(temp);
 		display2.setText(text);
 		setTempTotal(temp);

@@ -35,8 +35,8 @@ public class SignUpController {
 	private PasswordField password2;
 	@FXML
 	private Alert alert;
-	
-	//single instantiation
+
+	// single instantiation
 	private static DBManager dbm = DBManager.getInstance();
 
 	/**

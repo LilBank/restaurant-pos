@@ -4,6 +4,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Observable;
 
+import database.DBManager;
+
 /**
  * A singleton class represents customer order. Consist of method for managing
  * Menu's object in the Map<K,V> such as adding or removing the Menu's quantity.
@@ -13,11 +15,14 @@ import java.util.Observable;
  */
 public class Order extends Observable {
 
+	// current orders
 	private Map<Menu, Integer> orders;
 	// singleton instance for Order
 	private static Order instance;
 	// for lambda expression
 	private int tmpTotal;
+	// instance of DBManager
+	private static DBManager dbm = DBManager.getInstance();
 
 	// private constructor
 	private Order() {
@@ -138,7 +143,7 @@ public class Order extends Observable {
 	 * Method for getting the total of the ordered orders.
 	 * 
 	 * @param Map<K,V>
-	 *            wanted toget total
+	 *            wanted to get total
 	 * @return total
 	 */
 	public int getTotal(Map<Menu, Integer> map) {
@@ -152,4 +157,28 @@ public class Order extends Observable {
 		orders.forEach((k, v) -> System.out.println("key: " + k.getName() + k.getPrice() + " value:" + v));
 	}
 
+	/**
+	 * Using DBManager to get list of orders from the database.
+	 * 
+	 * @param tablenumber
+	 *            wanted to get the list
+	 * @return list of orders in Map<K,V>
+	 */
+	public Map<Menu, Integer> getDBOrders(String tableNumber) {
+		return dbm.getDBOrders(tableNumber);
+	}
+
+	/**
+	 * Using DBManager to insert current orders into the requested table in
+	 * database.
+	 * 
+	 * @param tablenumber
+	 *            wanted to insert
+	 * @param Map<Menu,Integer>
+	 *            of orders
+	 */
+	public void orderToDB(String tableNumber, Map<Menu, Integer> map) {
+		dbm.orderToDB(tableNumber, map);
+	}
+	
 }

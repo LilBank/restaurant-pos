@@ -39,7 +39,8 @@ public class DBManager {
 	private String sqlCommand;
 
 	/**
-	 * Private constructor for DBManger. Getting the connection from the database.
+	 * Private constructor for DBManger. Getting the connection from the
+	 * database.
 	 */
 	private DBManager() {
 		try {
@@ -69,8 +70,8 @@ public class DBManager {
 	 *            from Login's input
 	 * @param password
 	 *            from Login's input
-	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 = user
-	 *         doesn't exists
+	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 =
+	 *         user doesn't exists
 	 */
 	public int login(String user, String pass) {
 		// sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
@@ -109,8 +110,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for inserting data(new user's data) to the database. The access type
-	 * is set to 1 by default but can be change later on.
+	 * Method for inserting data(new user's data) to the database. The access
+	 * type is set to 1 by default but can be change later on.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -142,8 +143,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for getting data from the database to check whether if the username
-	 * inputed has already exist or not.
+	 * Method for getting data from the database to check whether if the
+	 * username inputed has already exist or not.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -209,8 +210,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for getting data from the database which are food names and prices to
-	 * create a Menu object.
+	 * Method for getting data from the database which are food names and prices
+	 * to create a Menu object.
 	 * 
 	 * @param tablename
 	 * @return List<Menu> of food names
@@ -255,7 +256,8 @@ public class DBManager {
 	 *            price
 	 * @param url
 	 */
-	public void insertTo(String foodtable, String name, Integer price, String url) {
+	public void InsertTo(String foodtable, String name, Integer price, String url) {
+		// test connection
 		sqlCommand = "INSERT INTO `" + foodtable + "` (`name`, `price`, `url`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;
 		try {
@@ -278,15 +280,18 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for removing image data from the database
+	 * Method for removing image data from the database.
 	 */
-	public void removeImage(String foodtable, Menu item) {
-		sqlCommand = "DELETE FROM " + foodtable + " WHERE name = ?";
+	public void RemoveImage(String foodtable, String name, Integer price, String url) {
+		// test connection
+		sqlCommand = "DELETE FROM `" + foodtable + "` (`name`, `price`, `url`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
-			stmt.setString(1, item.getName());
-			stmt.execute();
+			stmt.setString(1, name);
+			stmt.setInt(2, price);
+			stmt.setString(3, url);
+			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -459,7 +464,6 @@ public class DBManager {
 	 * @param tablenumber
 	 */
 	public void clearTable(String tableNumber) {
-		System.out.println("method clear table is working");
 		PreparedStatement stmt = null;
 		String tabletmp = "table" + tableNumber;
 		sqlCommand = "DELETE FROM " + tabletmp;
@@ -471,8 +475,7 @@ public class DBManager {
 		} finally {
 			try {
 				if (stmt != null)
-					System.out.println("Table is cleared");
-				stmt.close();
+					stmt.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -512,6 +515,33 @@ public class DBManager {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	// during in test
+	public boolean checkDBFood(String foodName, String tableNumber) {
+		String tabletmp = "table" + tableNumber;
+		sqlCommand = "SELECT * FROM " + tabletmp + " WHERE name = ?";
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			stmt.setString(1, foodName);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				return true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
 	}
 
 }
