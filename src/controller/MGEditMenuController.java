@@ -1,16 +1,23 @@
 package controller;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.imageio.ImageIO;
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import com.sun.xml.internal.ws.org.objectweb.asm.Label;
 
 import application.Tableview;
 import application.Main;
@@ -142,17 +149,35 @@ public class MGEditMenuController {
 				alert.show();
 			} else {
 				myPanel = new JPanel();
-				dbm.InsertTo(table, nameField.getText(), Integer.parseInt(priceField.getText()), urlField.getText());
-				Button button = new Button(name.get(name.size() - 1).getName());
-				button.setPrefSize(220, 220);
-				image = new Image(urlField.getText());
-				ImageView view = new ImageView(image);
-				view.setFitWidth(130);
-				view.setFitHeight(160);
-				button.setWrapText(true);
-				button.setGraphic(view);
-				pane.getChildren().add(button);
-
+				JLabel label = new JLabel();
+				URL url;
+				BufferedImage bufferImage;
+				try {
+					url = new URL(urlField.getText());
+					bufferImage = ImageIO.read(url);
+					label.setIcon(new ImageIcon(bufferImage));
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				myPanel.add(label);
+				int preview = JOptionPane.showConfirmDialog(null, myPanel, "Image Preview",
+						JOptionPane.OK_CANCEL_OPTION);
+				// Get the response value.
+				if (result == JOptionPane.OK_OPTION) {
+					dbm.insertTo(table, nameField.getText(), Integer.parseInt(priceField.getText()),
+							urlField.getText());
+					Button button = new Button(name.get(name.size() - 1).getName());
+					button.setPrefSize(220, 220);
+					image = new Image(urlField.getText());
+					ImageView view = new ImageView(image);
+					view.setFitWidth(130);
+					view.setFitHeight(160);
+					button.setWrapText(true);
+					button.setGraphic(view);
+					pane.getChildren().add(button);
+				}
 			}
 		}
 	}
@@ -172,10 +197,12 @@ public class MGEditMenuController {
 		if (foodpane.getChildren().contains(button)) {
 			menu = (Menu) instance.getSelectedButton().getUserData();
 			foodpane.getChildren().remove(button);
-			dbm.RemoveImage("Foods", menu);
-		} else if (drinkpane.getChildren().contains(button)) {
+			dbm.removeImage("Foods", menu);
+		}
+		if (drinkpane.getChildren().contains(button)) {
+			menu = (Menu) instance.getSelectedButton().getUserData();
 			drinkpane.getChildren().remove(button);
-			dbm.RemoveImage("Drinks", menu);
+			dbm.removeImage("Drinks", menu);
 		}
 	}
 
