@@ -70,10 +70,8 @@ public class MGEditMenuController {
 	private static DBManager dbm = DBManager.getInstance();
 	private static List<Menu> foodname = dbm.getFoodname("Foods");
 	private static List<Menu> drinkname = dbm.getFoodname("Drinks");
-	private static List<String> foodUrl = dbm.getFoodUrl("Foods");
-	private static List<String> drinkUrl = dbm.getFoodUrl("Drinks");
-	ImageFactory instance = ImageFactory.getInstance();
-	Order o = Order.getInstance();;
+	private ImageFactory instance = ImageFactory.getInstance();
+	private Alert alert;
 
 	/**
 	 * Bind listView with ListProperty at the beginning.
@@ -93,7 +91,7 @@ public class MGEditMenuController {
 	 * 
 	 */
 	public void insertFoodHandler(ActionEvent event) {
-		createMenu("Foods");
+		createMenu("Foods", foodname, foodpane);
 	}
 
 	/**
@@ -101,7 +99,7 @@ public class MGEditMenuController {
 	 * 
 	 */
 	public void insertDrinkHandler(ActionEvent event) {
-		createMenu("Drinks");
+		createMenu("Drinks", drinkname, drinkpane);
 
 	}
 
@@ -112,7 +110,7 @@ public class MGEditMenuController {
 	 * @param name
 	 *            of table in database.
 	 */
-	public void createMenu(String table) {
+	public void createMenu(String table, List<Menu> name, FlowPane pane) {
 		JTextField nameField = new JTextField(5);
 		JTextField priceField = new JTextField(5);
 		JTextField urlField = new JTextField(5);
@@ -129,43 +127,32 @@ public class MGEditMenuController {
 		myPanel.add(urlField);
 
 		// Ask user to input dialog.
-		int result = JOptionPane.showConfirmDialog(null, myPanel, "Please Enter Name, Price and URL ",
+		int result = JOptionPane.showConfirmDialog(null, myPanel, "Please Enter Your Menu",
 				JOptionPane.OK_CANCEL_OPTION);
 		// Get the response value.
 		if (result == JOptionPane.OK_OPTION) {
-			if (nameField.getText().equals("")) {
-				alert = new Alert(AlertType.ERROR, "Name is empty.", ButtonType.OK);
-				alert.setHeaderText("Inputfield Error");
-				alert.show();
-
-			}
-			if (priceField.getText().equals("")) {
-				alert = new Alert(AlertType.ERROR, "Price is empty.", ButtonType.OK);
-				alert.setHeaderText("Inputfield Error");
-				alert.show();
-
-			}
-			if (urlField.getText().equals("")) {
-				alert = new Alert(AlertType.ERROR, "URL is empty.", ButtonType.OK);
+			if (nameField.getText().equals("") || priceField.getText().equals("") || urlField.getText().equals("")) {
+				alert = new Alert(AlertType.ERROR, "Please input all the box", ButtonType.OK);
 				alert.setHeaderText("Inputfield Error");
 				alert.show();
 			}
-
 			if (!urlField.getText().contains(".jpg")) {
 				alert = new Alert(AlertType.ERROR, "Url is incorrect", ButtonType.OK);
 				alert.setHeaderText("Inputfield Error");
 				alert.show();
 			} else {
+				myPanel = new JPanel();
 				dbm.InsertTo(table, nameField.getText(), Integer.parseInt(priceField.getText()), urlField.getText());
-				Button button = new Button(foodname.get(foodname.size() - 1).getName());
-				button.setPrefSize(150, 150);
+				Button button = new Button(name.get(name.size() - 1).getName());
+				button.setPrefSize(220, 220);
 				image = new Image(urlField.getText());
 				ImageView view = new ImageView(image);
-				view.setFitWidth(100);
-				view.setFitHeight(100);
-				button.setAlignment(Pos.TOP_CENTER);
+				view.setFitWidth(130);
+				view.setFitHeight(160);
+				button.setWrapText(true);
 				button.setGraphic(view);
-				foodpane.getChildren().add(button);
+				pane.getChildren().add(button);
+
 			}
 		}
 	}
@@ -176,10 +163,19 @@ public class MGEditMenuController {
 	 * 
 	 */
 	public void deleteImageHandler(ActionEvent event) {
-		if (foodpane.getChildren().contains(instance.getSelectedButton())) {
-			foodpane.getChildren().remove(instance.getSelectedButton());
-		} else if (drinkpane.getChildren().contains(instance.getSelectedButton())) {
-			drinkpane.getChildren().remove(instance.getSelectedButton());
+		Button button = instance.getSelectedButton();
+		Menu menu = null;
+		if (button == null) {
+			alert = new Alert(AlertType.ERROR, "Must select atleast one dish!", ButtonType.OK);
+			alert.show();
+		}
+		if (foodpane.getChildren().contains(button)) {
+			menu = (Menu) instance.getSelectedButton().getUserData();
+			foodpane.getChildren().remove(button);
+			dbm.RemoveImage("Foods", menu);
+		} else if (drinkpane.getChildren().contains(button)) {
+			drinkpane.getChildren().remove(button);
+			dbm.RemoveImage("Drinks", menu);
 		}
 	}
 
