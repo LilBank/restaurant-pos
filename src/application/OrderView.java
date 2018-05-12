@@ -17,7 +17,6 @@ import util.AbstractWindow;
  */
 public class OrderView extends AbstractWindow {
 
-	// for setting the tablenumber to EMOrderController
 	public OrderView(String input, List<Menu> foodnames, List<Menu> drinknames) {
 		OrderViewController.setTable(input);
 		OrderViewController.setMenu(foodnames, drinknames);

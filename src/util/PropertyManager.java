@@ -17,7 +17,6 @@ public class PropertyManager {
 	private Properties properties;
 
 	private PropertyManager() {
-		// need the properties so load them all now
 		loadProperties(RESTAURANT_CONFIG);
 	}
 

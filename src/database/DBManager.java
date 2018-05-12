@@ -74,14 +74,12 @@ public class DBManager {
 	 *         user doesn't exists
 	 */
 	public int login(String user, String pass) {
-		// sqlCommand = "SELECT * FROM User WHERE name = " + "'" + user + "'";
 		sqlCommand = "SELECT * FROM User WHERE name = ?";
 		PreparedStatement stmt = null;
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
 			stmt.setString(1, user);
 			ResultSet rs = stmt.executeQuery();
-			// if matches dbPass = hash password
 			String dbPass = "";
 			if (rs.next()) {
 				dbPass = rs.getString("password");
@@ -89,14 +87,12 @@ public class DBManager {
 			if (BCrypt.checkpw(pass, dbPass)) {
 				return rs.getInt("access type");
 			}
-			// wrong password
 			if (!dbPass.equals("")) {
 				return 0;
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} finally {
-			// must close statement every time
 			try {
 				if (stmt != null) {
 					stmt.close();
@@ -105,7 +101,6 @@ public class DBManager {
 				e.printStackTrace();
 			}
 		}
-		// not in any cases (ResultSet == null)
 		return -1;
 	}
 
@@ -131,7 +126,6 @@ public class DBManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			// must close statement every time
 			try {
 				if (stmt != null) {
 					stmt.close();
@@ -151,7 +145,6 @@ public class DBManager {
 	 * @return false if username match, true if no match
 	 */
 	public boolean checkUser(String user) {
-		// check if username does exist
 		sqlCommand = "SELECT * FROM User WHERE name = ?";
 		PreparedStatement stmt = null;
 		try {
@@ -159,18 +152,15 @@ public class DBManager {
 			stmt.setString(1, user);
 			ResultSet rs = stmt.executeQuery();
 			int dbInt = 0;
-			// if username found in database then changed the value of dbInt
 			if (rs.next()) {
 				dbInt = rs.getInt("access type");
 			}
 			if (dbInt == 1 || dbInt == 2) {
-				// username exist
 				return false;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			// must close statement every time
 			try {
 				if (stmt != null) {
 					stmt.close();
@@ -179,7 +169,6 @@ public class DBManager {
 				e.printStackTrace();
 			}
 		}
-		// username does not exist
 		return true;
 	}
 
@@ -222,7 +211,6 @@ public class DBManager {
 	 * @return List<Menu> of food names
 	 */
 	public List<Menu> getFoodname(String foodkind) {
-		// named variable temp for temporary
 		List<Menu> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + foodkind;
 		PreparedStatement stmt = null;
@@ -238,7 +226,6 @@ public class DBManager {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			// must close statement every time
 			try {
 				if (stmt != null) {
 					stmt.close();
@@ -339,7 +326,6 @@ public class DBManager {
 	 * @return List<User> of users
 	 */
 	public List<User> getDBUser() {
-		// change to List<Menu>
 		List<User> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + "User";
 		PreparedStatement stmt = null;
@@ -373,7 +359,6 @@ public class DBManager {
 	 *            of orders
 	 */
 	public void orderToDB(String tableNumber, Map<Menu, Integer> map) {
-		// name variable tmp for temporary
 		String tabletmp = "table" + tableNumber;
 		sqlCommand = "INSERT INTO `" + tabletmp + "` (`name`, `price`, `quantity`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;
@@ -409,7 +394,6 @@ public class DBManager {
 	 * @return Map<Menu,Integer> of orders
 	 */
 	public Map<Menu, Integer> getDBOrders(String tableNumber) {
-		// name variable temp for temporary
 		Map<Menu, Integer> temp = new LinkedHashMap<>();
 		Map<Menu, Integer> temp2 = new LinkedHashMap<>();
 		sqlCommand = "SELECT * FROM " + tableNumber;

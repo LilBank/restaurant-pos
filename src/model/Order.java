@@ -15,20 +15,13 @@ import database.DBManager;
  */
 public class Order extends Observable {
 
-	// current orders
 	private Map<Menu, Integer> orders;
-	// orders from database
 	private Map<Menu, Integer> ordersTmp;
-	// singleton instance for Order
 	private static Order instance;
-	// for lambda expression
 	private int tmpTotal;
-	// instance of DBManager
 	private static DBManager dbm = DBManager.getInstance();
 
-	// private constructor
 	private Order() {
-		// Lazy instantiation
 		orders = new LinkedHashMap<>();
 	}
 
@@ -105,7 +98,7 @@ public class Order extends Observable {
 			int qty = order.getValue();
 			String name = menu.getName();
 			int price = menu.getPrice() * qty;
-			text += String.format("%-35s %10d %10d\n", name, qty, price);
+			text += String.format("%-28s %5d %5d\n", name, qty, price);
 		}
 		return text;
 	}

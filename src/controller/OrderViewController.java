@@ -84,6 +84,10 @@ public class OrderViewController implements java.util.Observer {
 		setButtons(foods, foodpane);
 		setButtons(drinks, drinkpane);
 		setDisplayProp();
+		display.setPrefHeight(400);
+		display2.setPrefHeight(400);
+		display.setStyle("-fx-font-family: monospace");
+		display2.setStyle("-fx-font-family: monospace");
 	}
 
 	/**

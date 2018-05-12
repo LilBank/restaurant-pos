@@ -37,7 +37,6 @@ public class LoginController {
 	@FXML
 	private Alert alert;
 	
-	//single instantiation
 	private static DBManager dbm = DBManager.getInstance();
 
 	/**
@@ -87,6 +86,7 @@ public class LoginController {
 				alert = new Alert(AlertType.ERROR, "Wrong password!", ButtonType.OK);
 				alert.setHeaderText("Inputfield Error");
 				alert.show();
+				password.clear();
 			}
 			if (accessLevel == -1) {
 				alert = new Alert(AlertType.ERROR, "User does not exist!", ButtonType.OK);
