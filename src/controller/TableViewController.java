@@ -72,7 +72,6 @@ public class TableViewController {
 	@FXML
 	Alert alert;
 
-	// for single instantiation
 	private static UserManager um = UserManager.getInstance();
 	private static DBManager dbm = DBManager.getInstance();
 	private static List<Menu> foodname = dbm.getFoodname("Foods");
@@ -82,16 +81,14 @@ public class TableViewController {
 
 	@FXML
 	public void initialize() {
-		System.out.println("initializing");
 		if (!admin) {
 			editMenu.setDisable(true);
 			editMenu.setVisible(false);
 			manageUser.setDisable(true);
 			manageUser.setVisible(false);
+			endday.setDisable(true);
+			endday.setVisible(false);
 		}
-		System.out.println("username: " + um.getUser().getUsername());
-		System.out.println("access level: " + um.getUser().getAccessLevel());
-		System.out.println("is admin: " + admin);
 		createButton();
 	}
 
@@ -182,7 +179,7 @@ public class TableViewController {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Summary");
 		alert.setHeaderText("Information");
-		String text = Order.getInstance().orderToText(DBManager.getInstance().getDBOrders("Summary"));
+		String text = Order.getInstance().orderToText(dbm.getDBOrders("Summary"));
 		alert.setContentText(text);
 		alert.show();
 
@@ -219,13 +216,13 @@ public class TableViewController {
 									ButtonType.OK);
 							alert.show();
 							return;
-						} else if (DBManager.getInstance().checkTable(tmp + "")) {
+						} else if (dbm.checkTable(tmp + "")) {
 							alert = new Alert(AlertType.ERROR, "Table exist already!", ButtonType.OK);
 							alert.show();
 							return;
 						} else {
-							DBManager.getInstance().insertTableNumber(result2.get());
-							DBManager.getInstance().createTable(result2.get());
+							dbm.insertTableNumber(result2.get());
+							dbm.createTable(result2.get());
 							createButton();
 							alert = new Alert(AlertType.INFORMATION, "Table created!", ButtonType.OK);
 							alert.show();
@@ -237,16 +234,16 @@ public class TableViewController {
 					}
 				}
 			} else if (result.get().equals(choices[1])) {
-				List<String> tables = DBManager.getInstance().getDBTables();
+				List<String> tables = dbm.getDBTables();
 				ChoiceDialog<String> dialog3 = new ChoiceDialog<>("SELECT", tables);
 				dialog.setTitle("Remove Table");
 				dialog.setHeaderText("Please select a table");
 				dialog.setContentText("table:");
 				Optional<String> result3 = dialog3.showAndWait();
 				if (result3.isPresent()) {
-					if (DBManager.getInstance().checkTableData(result3.get())) {
-						DBManager.getInstance().deleteTable(result3.get());
-						DBManager.getInstance().removeTableinTables(result3.get());
+					if (dbm.checkTableData(result3.get())) {
+						dbm.deleteTable(result3.get());
+						dbm.removeTableinTables(result3.get());
 						createButton();
 						alert = new Alert(AlertType.WARNING, "Table removed!", ButtonType.OK);
 						alert.show();
@@ -280,7 +277,7 @@ public class TableViewController {
 	 */
 	private void createButton() {
 		buttonPane.getChildren().clear();
-		List<String> temp = DBManager.getInstance().getDBTables();
+		List<String> temp = dbm.getDBTables();
 		for (String tablenum : temp) {
 			Button button = new Button(tablenum);
 			button.setWrapText(true);

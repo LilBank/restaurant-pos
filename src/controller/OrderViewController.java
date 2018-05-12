@@ -65,12 +65,10 @@ public class OrderViewController implements java.util.Observer {
 
 	private static String tablenumber;
 
-	// for single instantiation
 	private static List<Menu> foods;
 	private static List<Menu> drinks;
-	// instance of classes
-	private static UserManager um = UserManager.getInstance();
-	private static Order o = Order.getInstance();
+	private UserManager um = UserManager.getInstance();
+	private Order o = Order.getInstance();
 	private static DBManager dbm = DBManager.getInstance();
 
 	private boolean admin = um.isAdmin();
@@ -78,13 +76,11 @@ public class OrderViewController implements java.util.Observer {
 
 	@FXML
 	public void initialize() {
-		// if not admin then remove button is disabled
 		if (!admin) {
 			remove.setDisable(true);
 			remove.setVisible(false);
 		}
 		o.addObserver(this);
-		// adding buttons to each pane
 		setButtons(foods, foodpane);
 		setButtons(drinks, drinkpane);
 		setDisplayProp();
@@ -109,12 +105,10 @@ public class OrderViewController implements java.util.Observer {
 	private void setButtons(List<Menu> items, FlowPane pane) {
 		for (Menu item : items) {
 			Button button = new Button(item.getName());
-			// setting button properties
 			button.setPrefSize(100, 100);
 			button.setWrapText(true);
 			button.setTextAlignment(TextAlignment.CENTER);
 			button.setUserData(item);
-			// set handler for the button
 			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 				@Override
 				public void handle(MouseEvent event) {
@@ -132,12 +126,10 @@ public class OrderViewController implements java.util.Observer {
 	 * @param event
 	 */
 	public void orderButtonHandler(MouseEvent event) {
-		// if order list is empty
 		if (o.getOrders().isEmpty()) {
 			alert = new Alert(AlertType.ERROR, "Must order atleast one item!", ButtonType.OK);
 			alert.show();
 		}
-		// order confirmation
 		else {
 			alert = new Alert(AlertType.CONFIRMATION, "Are you sure to order?", ButtonType.YES, ButtonType.NO);
 			alert.showAndWait().ifPresent(response -> {

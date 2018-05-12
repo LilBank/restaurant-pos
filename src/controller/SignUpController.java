@@ -36,8 +36,7 @@ public class SignUpController {
 	@FXML
 	private Alert alert;
 
-	// single instantiation
-	private static DBManager dbm = DBManager.getInstance();
+	private DBManager dbm = DBManager.getInstance();
 
 	/**
 	 * Method for handling confirm button. When event receive then the
@@ -47,24 +46,16 @@ public class SignUpController {
 	 * @param event
 	 */
 	public void confirmButtonHandler(ActionEvent event) {
-		// empty username textfield
 		if (username.getText().equals("")) {
 			alert = new Alert(AlertType.ERROR, "Username is empty.", ButtonType.OK);
 			alert.show();
-		}
-		// either password or password2 field is empty
-		else if (password.getText().equals("") || password2.getText().equals("")) {
+		} else if (password.getText().equals("") || password2.getText().equals("")) {
 			alert = new Alert(AlertType.ERROR, "Password or the confirmation is empty!", ButtonType.OK);
 			alert.show();
-		}
-		// password mismatch
-		else if (!password.getText().equals(password2.getText())) {
+		} else if (!password.getText().equals(password2.getText())) {
 			alert = new Alert(AlertType.ERROR, "Password and the confirmation does not match.", ButtonType.OK);
 			alert.show();
-		}
-		// password match
-		else {
-			// check username existence
+		} else {
 			boolean allow = dbm.checkUser(username.getText());
 			if (!allow) {
 				alert = new Alert(AlertType.ERROR, "Username already exist! Please use another username.",

@@ -14,12 +14,12 @@
       <Pane layoutY="379.0" prefHeight="640.0" prefWidth="940.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
             <Button fx:id="logout" layoutX="863.0" layoutY="31.0" mnemonicParsing="false" onAction="#logoutButtonHandler" style="-fx-background-radius: 50;" text="Logout" />
-            <Button fx:id="summary" alignment="CENTER" layoutX="714.0" layoutY="21.0" minWidth="33.0" mnemonicParsing="false" onMouseClicked="#sumButtonHandler" prefHeight="45.0" prefWidth="115.0" style="-fx-background-radius: 100;" text="Summary">
+            <Button fx:id="summary" alignment="CENTER" layoutX="577.0" layoutY="21.0" minWidth="33.0" mnemonicParsing="false" onMouseClicked="#sumButtonHandler" prefHeight="45.0" prefWidth="115.0" style="-fx-background-radius: 100;" text="Summary">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="manageTable" alignment="CENTER" layoutX="565.0" layoutY="21.0" minWidth="33.0" mnemonicParsing="false" onMouseClicked="#manageTableButtonHandler" prefHeight="45.0" prefWidth="134.0" style="-fx-background-radius: 100;" text="Manage Table">
+            <Button fx:id="manageTable" alignment="CENTER" layoutX="429.0" layoutY="21.0" minWidth="33.0" mnemonicParsing="false" onMouseClicked="#manageTableButtonHandler" prefHeight="45.0" prefWidth="134.0" style="-fx-background-radius: 100;" text="Manage Table">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
@@ -73,12 +73,12 @@
                   </Label>
                </children>
             </Pane>
-            <Button fx:id="editMenu" alignment="CENTER" layoutX="435.0" layoutY="21.0" minWidth="33.0" mnemonicParsing="false" onMouseClicked="#editMenuButtonHandler" prefHeight="45.0" prefWidth="115.0" style="-fx-background-radius: 100;" text="Edit Menu">
+            <Button fx:id="editMenu" alignment="CENTER" layoutX="299.0" layoutY="21.0" minWidth="33.0" mnemonicParsing="false" onMouseClicked="#editMenuButtonHandler" prefHeight="45.0" prefWidth="115.0" style="-fx-background-radius: 100;" text="Edit Menu">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="manageUser" alignment="CENTER" layoutX="286.0" layoutY="21.0" minWidth="33.0" mnemonicParsing="false" onMouseClicked="#manageUserButtonHandler" prefHeight="45.0" prefWidth="134.0" style="-fx-background-radius: 100;" text="Manage User">
+            <Button fx:id="manageUser" alignment="CENTER" layoutX="147.0" layoutY="21.0" minWidth="33.0" mnemonicParsing="false" onMouseClicked="#manageUserButtonHandler" prefHeight="45.0" prefWidth="134.0" style="-fx-background-radius: 100;" text="Manage User">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
@@ -88,6 +88,11 @@
                   <FlowPane fx:id="buttonPane" prefHeight="150.0" prefWidth="688.0" />
                </content>
             </ScrollPane>
+            <Button fx:id="endday" alignment="CENTER" layoutX="710.0" layoutY="21.0" minWidth="33.0" mnemonicParsing="false" onMouseClicked="#endButtonHandler" prefHeight="45.0" prefWidth="115.0" style="-fx-background-radius: 100;" text="End Day">
+               <font>
+                  <Font name="Agency FB" size="24.0" />
+               </font>
+            </Button>
          </children>
          <padding>
             <Insets top="1.0" />

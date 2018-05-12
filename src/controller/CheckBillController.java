@@ -12,7 +12,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import model.Order;
 import util.ScreenController;
 
 /**
@@ -56,11 +55,9 @@ public class CheckBillController {
 	@FXML
 	private Alert alert;
 
-	// instance of classes
 	private static int csBill;
 	private static String tablenumber;
-	private static DBManager dbm = DBManager.getInstance();
-	/* the money paid by the customer */
+	private DBManager dbm = DBManager.getInstance();
 	private int csMoney;
 	private int Change;
 

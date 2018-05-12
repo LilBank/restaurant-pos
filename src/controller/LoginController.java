@@ -57,22 +57,18 @@ public class LoginController {
 	 * @param event
 	 */
 	public void loginButtonHandler(ActionEvent event) {
-		// empty username textfield
 		if (username.getText().equals("")) {
 			alert = new Alert(AlertType.ERROR, "Username is empty.", ButtonType.OK);
 			alert.setHeaderText("Inputfield Error");
 			alert.show();
 		}
-		// either password field is empty
 		else if (password.getText().equals("")) {
 			alert = new Alert(AlertType.ERROR, "Password is empty!", ButtonType.OK);
 			alert.setHeaderText("Inputfield Error");
 			alert.show();
 		}
-		// check if this user is valid in which access level
 		else {
 			int accessLevel = dbm.login(username.getText(), password.getText());
-			// int = 2 for manager mode
 			if (accessLevel == 2) {
 				alert = new Alert(AlertType.NONE, "Welcome manager: " + username.getText(), ButtonType.OK);
 				alert.setHeaderText("Login Success");
@@ -80,7 +76,6 @@ public class LoginController {
 				UserManager.getInstance().setUser(new User(username.getText(), PrivilegeEnum.ADMIN));
 				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new Tableview());
 			}
-			// int = 1 for normal mode
 			if (accessLevel == 1) {
 				alert = new Alert(AlertType.NONE, "Welcome waiter: " + username.getText(), ButtonType.OK);
 				alert.setHeaderText("Login Success");
@@ -88,13 +83,11 @@ public class LoginController {
 				UserManager.getInstance().setUser(new User(username.getText(), PrivilegeEnum.USER));
 				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new Tableview());
 			}
-			// wrong password
 			if (accessLevel == 0) {
 				alert = new Alert(AlertType.ERROR, "Wrong password!", ButtonType.OK);
 				alert.setHeaderText("Inputfield Error");
 				alert.show();
 			}
-			// User does not exists
 			if (accessLevel == -1) {
 				alert = new Alert(AlertType.ERROR, "User does not exist!", ButtonType.OK);
 				alert.setHeaderText("Inputfield Error");

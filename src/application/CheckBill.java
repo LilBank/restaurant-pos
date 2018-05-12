@@ -14,7 +14,6 @@ import util.AbstractWindow;
  */
 public class CheckBill extends AbstractWindow {
 
-	// for setting the bill in CheckBillController
 	public CheckBill(String total, String tablenumber) {
 		CheckBillController.setBill(total);
 		CheckBillController.setTable(tablenumber);

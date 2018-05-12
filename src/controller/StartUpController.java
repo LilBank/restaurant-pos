@@ -24,7 +24,8 @@ public class StartUpController {
 	private Button csMode;
 
 	/**
-	 * Method for handling login button. When event receive Login scene is shown.
+	 * Method for handling login button. When event receive Login scene is
+	 * shown.
 	 * 
 	 * @param event
 	 */
@@ -33,7 +34,8 @@ public class StartUpController {
 	}
 
 	/**
-	 * Method for handling signUp button. When event receive SignUp scene is shown.
+	 * Method for handling signUp button. When event receive SignUp scene is
+	 * shown.
 	 * 
 	 * @param event
 	 */

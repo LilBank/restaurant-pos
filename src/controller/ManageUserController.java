@@ -35,11 +35,10 @@ public class ManageUserController {
 	@FXML
 	private Button back;
 
-	ListProperty<String> listProperty = new SimpleListProperty<>();
-	DBManager dbm = DBManager.getInstance();
-	List<User> listname = dbm.getDBUser();
+	private ListProperty<String> listProperty = new SimpleListProperty<>();
+	private DBManager dbm = DBManager.getInstance();
+	private List<User> listname = dbm.getDBUser();
 
-	@FXML
 	public void initialize() {
 		List<String> name = new ArrayList<>();
 		listname.forEach(x -> name.add(x.getUsername()));
@@ -48,8 +47,10 @@ public class ManageUserController {
 	}
 
 	/**
-	 * Method for handling remove button. When event receive, remove user from the
-	 * table and database.
+	 * Method for handling remove button. When event receive, remove user from
+	 * the table and database.
+	 * 
+	 * @param event
 	 */
 	public void removeButtonHandler(MouseEvent event) {
 		Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure removing this user? ", ButtonType.OK);
@@ -64,6 +65,7 @@ public class ManageUserController {
 	/**
 	 * Handler for back button. When event receive the CS table scene is shown.
 	 * 
+	 * @param event
 	 */
 	public void backButtonHandler(ActionEvent event) {
 		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new Tableview());
