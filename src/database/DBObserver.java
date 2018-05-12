@@ -8,7 +8,7 @@ import java.util.Observable;
  * Observer class for Database. Contains method for getting and comparing data
  * changes by table rows.
  * 
- * @author Piyawat Setthitikun
+ * @author Piyawat Setthitikun & Vichphol
  *
  */
 public class DBObserver extends Observable {

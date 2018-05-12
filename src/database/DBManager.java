@@ -376,7 +376,6 @@ public class DBManager {
 	 *            of orders
 	 */
 	public void orderToDB(String tableNumber, Map<Menu, Integer> map) {
-		// name variable tmp for temporary
 		String tabletmp = "table" + tableNumber;
 		sqlCommand = "INSERT INTO `" + tabletmp + "` (`name`, `price`, `quantity`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;

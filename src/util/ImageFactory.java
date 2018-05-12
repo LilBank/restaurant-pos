@@ -84,15 +84,12 @@ public class ImageFactory {
 					@Override
 					public void handle(MouseEvent event) {
 						o.addOrder((Menu) button.getUserData());
-						System.out.println(((Menu) button.getUserData()).getName());
 						selectedButton = button;
 
 					}
 				});
 				foodButtonList.add(button);
-
 			}
-			System.out.println("Foods loaded");
 		}
 
 	}
@@ -112,7 +109,6 @@ public class ImageFactory {
 				button.setGraphic(view);
 				button.setUserData(item);
 
-				// set handler for the button
 				button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
@@ -123,8 +119,6 @@ public class ImageFactory {
 				});
 				drinkButtonList.add(button);
 			}
-
-			System.out.println("Drinks Loaded");
 		}
 	}
 }

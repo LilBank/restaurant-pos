@@ -87,7 +87,6 @@ public class TableViewController implements Observer {
 	private boolean admin = um.isAdmin();
 
 	static {
-		System.out.println("test static");
 		dbo.setAllRows();
 		dbo.setChanges();
 		runTask();
