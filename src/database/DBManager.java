@@ -148,7 +148,6 @@ public class DBManager {
 	 * @return false if username match, true if no match
 	 */
 	public boolean checkUser(String user) {
-		// check if username does exist
 		sqlCommand = "SELECT * FROM User WHERE name = ?";
 		PreparedStatement stmt = null;
 		try {

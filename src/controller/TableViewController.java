@@ -20,15 +20,20 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import model.Menu;
@@ -160,8 +165,8 @@ public class TableViewController implements Observer {
 	}
 
 	/**
-	 * Handler for Manage user button. When event receive the Manage menu scene
-	 * is shown.
+	 * Handler for Manage user button. When event receive the Manage menu scene is
+	 * shown.
 	 * 
 	 * @param event
 	 */
@@ -190,12 +195,21 @@ public class TableViewController implements Observer {
 	 * @param event
 	 */
 	public void sumButtonHandler(MouseEvent event) {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("");
-		alert.setHeaderText("Summary");
 		String text = Order.getInstance().orderToText(dbm.getDBOrders("Summary"));
-		alert.setContentText(text);
-		alert.show();
+		Stage stage = new Stage();
+		HBox box = new HBox();
+		box.setPrefHeight(400);
+		box.setPadding(new Insets(10));
+		box.setAlignment(Pos.TOP_LEFT);
+		TextArea area = new TextArea();
+		area.setStyle("-fx-font-family: monospace");
+		area.appendText(text);
+		box.getChildren().add(area);
+		Scene scene = new Scene(box);
+		stage.setScene(scene);
+		stage.setTitle("Summary");
+		stage.sizeToScene();
+		stage.show();
 
 	}
 
@@ -270,8 +284,8 @@ public class TableViewController implements Observer {
 	}
 
 	/**
-	 * Handler for end day button. When event receive all data in summary is
-	 * cleared and the program is close.
+	 * Handler for end day button. When event receive all data in summary is cleared
+	 * and the program is close.
 	 * 
 	 * @param event
 	 */

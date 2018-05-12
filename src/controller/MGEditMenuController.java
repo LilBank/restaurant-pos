@@ -54,6 +54,7 @@ public class MGEditMenuController {
 	private FlowPane foodpane;
 	@FXML
 	private FlowPane drinkpane;
+	
 	private static DBManager dbm = DBManager.getInstance();
 	private ImageFactory instance = ImageFactory.getInstance();
 	public static List<Button> folderImage = new ArrayList<>();
@@ -82,6 +83,7 @@ public class MGEditMenuController {
 	/**
 	 * Method for handling new Food button. Insert food images into the flow pane.
 	 * 
+	 * @param event
 	 */
 	public void insertFoodHandler(ActionEvent event) {
 		createMenu("Foods", foodname, foodpane);
@@ -90,6 +92,7 @@ public class MGEditMenuController {
 	/**
 	 * Method for handling new Drink button. Insert drink images into the flow pane.
 	 * 
+	 * @param event
 	 */
 	public void insertDrinkHandler(ActionEvent event) {
 		createMenu("Drinks", drinkname, drinkpane);
@@ -97,7 +100,7 @@ public class MGEditMenuController {
 	}
 
 	/**
-	 * Method for handling newImage button. Insert image into the flow pane and
+	 * Method for handling newImage button. Insert an image into the flow pane and
 	 * database.
 	 * 
 	 * @param name
@@ -172,6 +175,7 @@ public class MGEditMenuController {
 	 * Method for handling deleteImage button. Delete the selected button from the
 	 * flow pane.
 	 * 
+	 * @param event
 	 */
 	public void deleteImageHandler(ActionEvent event) {
 		Button button = instance.getSelectedButton();
@@ -195,6 +199,7 @@ public class MGEditMenuController {
 	/**
 	 * Handler for back button. When event receive the table view scene is shown.
 	 * 
+	 * @param event
 	 */
 	public void backButtonHandler(ActionEvent event) {
 		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new Tableview());
@@ -203,6 +208,7 @@ public class MGEditMenuController {
 	/**
 	 * Handler for logout button. When event receive the Start up scene is shown.
 	 * 
+	 * @param event
 	 */
 	public void logoutHandler(ActionEvent event) {
 		ScreenController.switchWindow((Stage) logout.getScene().getWindow(), new Main());

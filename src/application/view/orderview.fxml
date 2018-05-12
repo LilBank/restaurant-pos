@@ -22,17 +22,17 @@
                   <Font name="Agency FB" size="29.0" />
                </font>
             </Label>
-          <Button fx:id="order" layoutX="104.0" layoutY="574.0" mnemonicParsing="false" onMouseClicked="#orderButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 100;" text="Order">
+          <Button fx:id="order" layoutX="187.0" layoutY="573.0" mnemonicParsing="false" onMouseClicked="#orderButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 100;" text="Order">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="back" layoutX="14.0" layoutY="574.0" minWidth="74.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 50;" text="Back">
+            <Button fx:id="back" layoutX="14.0" layoutY="578.0" minWidth="72.0" mnemonicParsing="false" onAction="#backButtonHandler" prefHeight="49.0" prefWidth="72.0" style="-fx-background-radius: 50;" text="Back">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="checkBill" layoutX="284.0" layoutY="574.0" minWidth="74.0" mnemonicParsing="false" onMouseClicked="#billButtonHandler" prefHeight="58.0" prefWidth="114.0" style="-fx-background-radius: 50;" text="Check Bill">
+            <Button fx:id="checkBill" layoutX="284.0" layoutY="573.0" minWidth="74.0" mnemonicParsing="false" onMouseClicked="#billButtonHandler" prefHeight="58.0" prefWidth="108.0" style="-fx-background-radius: 50;" text="Check Bill">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
@@ -67,32 +67,40 @@
                 </Tab>
               </tabs>
             </TabPane>
-            <Button fx:id="remove" layoutX="14.0" layoutY="512.0" minWidth="69.0" mnemonicParsing="false" onMouseClicked="#removeButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 50;" text="remove">
+            <Button fx:id="remove" layoutX="14.0" layoutY="512.0" minWidth="69.0" mnemonicParsing="false" onMouseClicked="#removeButtonHandler" prefHeight="49.0" prefWidth="90.0" style="-fx-background-radius: 50;" text="remove">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="clear" layoutX="194.0" layoutY="574.0" mnemonicParsing="false" onMouseClicked="#clearButtonHandler" prefHeight="58.0" prefWidth="90.0" style="-fx-background-radius: 100;" text="Clear">
+            <Button fx:id="clear" layoutX="99.0" layoutY="578.0" mnemonicParsing="false" onMouseClicked="#clearButtonHandler" prefHeight="49.0" prefWidth="79.0" style="-fx-background-radius: 100;" text="Clear">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" layoutY="23.0" prefHeight="225.0" prefWidth="406.0" vbarPolicy="ALWAYS">
+            <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" layoutY="23.0" prefHeight="225.0" prefWidth="398.0" vbarPolicy="ALWAYS">
                <content>
-                  <TextArea fx:id="display" prefHeight="224.0" prefWidth="406.0" promptText="Order is empty">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextArea>
+                  <FlowPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="display" prefHeight="224.0" prefWidth="396.0" promptText="Order is empty" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </FlowPane>
                </content>
             </ScrollPane>
-            <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" layoutY="282.0" prefHeight="225.0" prefWidth="406.0" vbarPolicy="ALWAYS">
+            <ScrollPane hbarPolicy="NEVER" layoutX="-2.0" layoutY="282.0" prefHeight="217.0" prefWidth="398.0" vbarPolicy="ALWAYS">
                <content>
-                  <TextArea fx:id="display2" prefHeight="224.0" prefWidth="406.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextArea>
+                  <FlowPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="display2" prefHeight="226.0" prefWidth="396.0" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextArea>
+                     </children>
+                  </FlowPane>
                </content>
             </ScrollPane>
             <Label layoutX="2.0" prefHeight="23.0" prefWidth="114.0" text="Current item(s) :">

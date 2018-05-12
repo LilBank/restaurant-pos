@@ -98,7 +98,7 @@ public class Order extends Observable {
 			int qty = order.getValue();
 			String name = menu.getName();
 			int price = menu.getPrice() * qty;
-			text += String.format("%-35s %10d %10d\n", name, qty, price);
+			text += String.format("%-28s %5d %5d\n", name, qty, price);
 		}
 		return text;
 	}

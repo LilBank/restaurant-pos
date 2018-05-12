@@ -37,7 +37,7 @@ public class LoginController {
 	@FXML
 	private Alert alert;
 	
-	private DBManager dbm = DBManager.getInstance();
+	private static DBManager dbm = DBManager.getInstance();
 
 	/**
 	 * Method for handling cancel button. When event receive Main scene is
@@ -86,6 +86,7 @@ public class LoginController {
 				alert = new Alert(AlertType.ERROR, "Wrong password!", ButtonType.OK);
 				alert.setHeaderText("Inputfield Error");
 				alert.show();
+				password.clear();
 			}
 			if (accessLevel == -1) {
 				alert = new Alert(AlertType.ERROR, "User does not exist!", ButtonType.OK);

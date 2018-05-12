@@ -12,6 +12,12 @@ import javafx.scene.input.MouseEvent;
 import model.Menu;
 import model.Order;
 
+/**
+ * A class for create button with image graphics which, is pulled from database
+ * 
+ * @author Piyawat & Vichaphol
+ *
+ */
 public class ImageFactory {
 	protected static ImageFactory factory;
 	private static DBManager dbm = DBManager.getInstance();
@@ -24,7 +30,9 @@ public class ImageFactory {
 	private static List<Button> foodButtonList;
 	private static List<Button> drinkButtonList;
 	private Button selectedButton = null;
-
+	/**
+	 * Constructor for ImageFactory using lazy instantiation. 
+	 */
 	private ImageFactory() {
 		foodname = dbm.getFoodname("Foods");
 		drinkname = dbm.getFoodname("Drinks");
@@ -44,27 +52,38 @@ public class ImageFactory {
 			factory = new ImageFactory();
 		return factory;
 	}
-
-	public ImageView getImage(String filename) {
-		Image image = new Image(filename);
-		return new ImageView(image);
-	}
-
+	/**
+	 * Get the selected button waiting to be removed.
+	 * 
+	 * @return selected button
+	 */
 	public Button getSelectedButton() {
 		return selectedButton;
 	}
+
 	public void setSelectedButton(Button button) {
 		this.selectedButton = button;
 	}
-
+	/**
+	 * Get all the food's buttons
+	 * 
+	 * @return buttons of food list
+	 */
 	public List<Button> getFoodButton() {
 		return foodButtonList;
 	}
-
+	/**
+	 * Get all the drink's buttons
+	 * 
+	 * @return buttons of drink list
+	 */
 	public List<Button> getDrinkButton() {
 		return drinkButtonList;
 	}
-
+	
+	/**
+	 * Create the buttons for foods according to the database.
+	 */
 	public void loadFoodImage() {
 		if (foodButtonList.size() == 0) {
 			int i = 0;
@@ -79,7 +98,10 @@ public class ImageFactory {
 				button.setWrapText(true);
 				button.setGraphic(view);
 				button.setUserData(item);
+<<<<<<< HEAD
+=======
 
+>>>>>>> branch 'master' of https://github.com/bankkeez/projectx-restaurantPOS.git
 				button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
@@ -93,7 +115,9 @@ public class ImageFactory {
 		}
 
 	}
-
+	/**
+	 * Create the buttons for drinks according to the database.
+	 */
 	public void loadDrinkImage() {
 		if (drinkButtonList.size() == 0) {
 			int i = 0;
@@ -108,7 +132,10 @@ public class ImageFactory {
 				button.setWrapText(true);
 				button.setGraphic(view);
 				button.setUserData(item);
+<<<<<<< HEAD
+=======
 
+>>>>>>> branch 'master' of https://github.com/bankkeez/projectx-restaurantPOS.git
 				button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
