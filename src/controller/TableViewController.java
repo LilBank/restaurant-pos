@@ -90,6 +90,7 @@ public class TableViewController {
 		System.out.println("username: " + um.getUser().getUsername());
 		System.out.println("access level: " + um.getUser().getAccessLevel());
 		System.out.println("is admin: " + admin);
+		createButton();
 	}
 
 	public void button01Handler(ActionEvent event) {
@@ -202,18 +203,14 @@ public class TableViewController {
 									ButtonType.OK);
 							alert.show();
 							return;
+						} else if (DBManager.getInstance().checkTable(tmp + "")) {
+							alert = new Alert(AlertType.ERROR, "Table exist already!", ButtonType.OK);
+							alert.show();
+							return;
 						} else {
-							Button button = new Button(result2.get());
-							button.setWrapText(true);
-							button.setPrefSize(100, 100);
-							button.setTextAlignment(TextAlignment.CENTER);
-							button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-								@Override
-								public void handle(MouseEvent event) {
-									tableButtonHandler(button);
-								}
-							});
-							buttonPane.getChildren().add(button);
+							DBManager.getInstance().insertTableNumber(result2.get());
+							DBManager.getInstance().createTable(result2.get());
+							createButton();
 						}
 					} catch (NumberFormatException ex) {
 						alert = new Alert(AlertType.ERROR, "Please input numbers only!", ButtonType.OK);
@@ -222,8 +219,33 @@ public class TableViewController {
 					}
 				}
 			} else if (result.get().equals(choices[1])) {
-				
+				List<String> tables = DBManager.getInstance().getDBTables();
+				ChoiceDialog<String> dialog3 = new ChoiceDialog<>("SELECT", tables);
+				dialog.setTitle("Remove Table");
+				dialog.setHeaderText("Please select a table");
+				dialog.setContentText("table:");
+				Optional<String> result3 = dialog3.showAndWait();
+				if (result3.isPresent()) {
+
+				}
 			}
+		}
+	}
+
+	private void createButton() {
+		List<String> temp = DBManager.getInstance().getDBTables();
+		for (String tablenum : temp) {
+			Button button = new Button(tablenum);
+			button.setWrapText(true);
+			button.setPrefSize(140, 140);
+			button.setTextAlignment(TextAlignment.CENTER);
+			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+				@Override
+				public void handle(MouseEvent event) {
+					tableButtonHandler(button);
+				}
+			});
+			buttonPane.getChildren().add(button);
 		}
 	}
 }
