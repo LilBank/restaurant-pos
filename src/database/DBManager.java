@@ -718,12 +718,12 @@ public class DBManager {
 	 * @param foodtable
 	 * @param Menu
 	 */
-	public void removeUserDB(Menu user) {
+	public void removeUserDB(User user) {
 		sqlCommand = "DELETE FROM " + "User" + " WHERE name = ?";
 		PreparedStatement stmt = null;
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
-			stmt.setString(1, user.getName());
+			stmt.setString(1, user.getUsername());
 			stmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
