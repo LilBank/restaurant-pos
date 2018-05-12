@@ -28,13 +28,9 @@ public abstract class AbstractWindow extends Application {
 				System.out.println("Couldn't find file: " + fxmlfile);
 				Platform.exit();
 			}
-			// Load the FXML and get reference to the loader
 			FXMLLoader loader = new FXMLLoader(url);
-			// Create scene graph from file (UI)
 			Parent root = loader.load();
-			// Show the scene
 			Scene scene = new Scene(root);
-			// sets a beautiful theme
 			stage.setScene(scene);
 			stage.sizeToScene();
 			stage.setResizable(false);

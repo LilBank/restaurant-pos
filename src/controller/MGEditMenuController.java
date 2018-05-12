@@ -1,13 +1,11 @@
 package controller;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.imageio.ImageIO;
 import javax.swing.Box;
@@ -17,34 +15,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.sun.xml.internal.ws.org.objectweb.asm.Label;
-
 import application.Tableview;
 import application.Main;
 import database.DBManager;
-import javafx.beans.property.ListProperty;
-import javafx.beans.property.SimpleListProperty;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.text.TextAlignment;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Menu;
-import model.Order;
-import sun.nio.ch.SelectionKeyImpl;
 import util.ImageFactory;
 import util.ScreenController;
 
@@ -70,11 +54,9 @@ public class MGEditMenuController {
 	private FlowPane foodpane;
 	@FXML
 	private FlowPane drinkpane;
-	/** List of all images */
-	public static List<Button> folderImage = new ArrayList<>();
-	/** single instantiation */
 	private static DBManager dbm = DBManager.getInstance();
 	private ImageFactory instance = ImageFactory.getInstance();
+	public static List<Button> folderImage = new ArrayList<>();
 	private static List<Menu> foodname = dbm.getFoodname("Foods");
 	private static List<Menu> drinkname = dbm.getFoodname("Drinks");
 	private Alert alert;
@@ -130,16 +112,14 @@ public class MGEditMenuController {
 		JPanel myPanel = new JPanel();
 		myPanel.add(new JLabel("Name: "));
 		myPanel.add(nameField);
-		myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+		myPanel.add(Box.createHorizontalStrut(15)); 
 		myPanel.add(new JLabel("Price: "));
 		myPanel.add(priceField);
-		myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+		myPanel.add(Box.createHorizontalStrut(15)); 
 		myPanel.add(new JLabel("Url: "));
 		myPanel.add(urlField);
-		// Ask user to input dialog.
 		int result = JOptionPane.showConfirmDialog(null, myPanel, "Please Enter Your Menu",
 				JOptionPane.OK_CANCEL_OPTION);
-		// Get the response value.
 		if (result == JOptionPane.OK_OPTION) {
 			if (nameField.getText().equals("") || priceField.getText().equals("") || urlField.getText().equals("")) {
 				alert = new Alert(AlertType.ERROR, "Please input all the box", ButtonType.OK);
@@ -168,7 +148,6 @@ public class MGEditMenuController {
 				myPanel.add(label);
 				int preview = JOptionPane.showConfirmDialog(null, myPanel, "Image Preview",
 						JOptionPane.OK_CANCEL_OPTION);
-				// Get the response value.
 				if (preview == JOptionPane.OK_OPTION) {
 					dbm.insertTo(table, nameField.getText(), Integer.parseInt(priceField.getText()),
 							urlField.getText());

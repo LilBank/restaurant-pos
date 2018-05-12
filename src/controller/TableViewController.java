@@ -4,7 +4,6 @@ import application.OrderView;
 import database.DBManager;
 import database.DBObserver;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +29,6 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import model.Menu;
@@ -78,9 +76,9 @@ public class TableViewController implements Observer {
 	@FXML
 	private FlowPane buttonPane;
 	@FXML
-	Alert alert;
+	private Alert alert;
 
-	private static UserManager um = UserManager.getInstance();
+	private UserManager um = UserManager.getInstance();
 	private static DBManager dbm = DBManager.getInstance();
 	private static List<Menu> foodname = dbm.getFoodname("Foods");
 	private static List<Menu> drinkname = dbm.getFoodname("Drinks");
@@ -326,9 +324,9 @@ public class TableViewController implements Observer {
 	}
 
 	/**
-	 * Single implementation to keep track database table changes.
+	 * Single implementation to keep track of database table changes.
 	 */
-	public static void runTask() {
+	private static void runTask() {
 		Runnable runTask = new Runnable() {
 			public void run() {
 				dbo.findChanges();
@@ -348,21 +346,21 @@ public class TableViewController implements Observer {
 		List<Integer> tmp = dbo.getChanges();
 		for (int i = 0; i < tmp.size(); i++) {
 			if (tmp.get(i) == 1) {
-				button01.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
+				button01.setStyle("-fx-border-color: #ff0000; -fx-border-width: 3px;");
 			} else if (tmp.get(i) == 2) {
-				button02.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
+				button02.setStyle("-fx-border-color: #ff0000; -fx-border-width: 3px;");
 			} else if (tmp.get(i) == 3) {
-				button03.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
+				button03.setStyle("-fx-border-color: #ff0000; -fx-border-width: 3px;");
 			} else if (tmp.get(i) == 4) {
-				button04.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
+				button04.setStyle("-fx-border-color: #ff0000; -fx-border-width: 3px;");
 			} else if (tmp.get(i) == 5) {
-				button05.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
+				button05.setStyle("-fx-border-color: #ff0000; -fx-border-width: 3px;");
 			} else if (tmp.get(i) == 6) {
-				button06.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
+				button06.setStyle("-fx-border-color: #ff0000; -fx-border-width: 3px;");
 			} else if (tmp.get(i) == 7) {
-				button07.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
+				button07.setStyle("-fx-border-color: #ff0000; -fx-border-width: 3px;");
 			} else if (tmp.get(i) == 8) {
-				button08.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
+				button08.setStyle("-fx-border-color: #ff0000; -fx-border-width: 3px;");
 			}
 		}
 	}

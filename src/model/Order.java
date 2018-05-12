@@ -15,20 +15,13 @@ import database.DBManager;
  */
 public class Order extends Observable {
 
-	// current orders
 	private Map<Menu, Integer> orders;
-	// orders from database
 	private Map<Menu, Integer> ordersTmp;
-	// singleton instance for Order
 	private static Order instance;
-	// for lambda expression
 	private int tmpTotal;
-	// instance of DBManager
 	private static DBManager dbm = DBManager.getInstance();
 
-	// private constructor
 	private Order() {
-		// Lazy instantiation
 		orders = new LinkedHashMap<>();
 	}
 

@@ -68,8 +68,6 @@ public class DBObserver extends Observable {
 		for (int i = 0; i < 8; i++) {
 			changes.set(i, false);
 		}
-		System.out.println("method changes set back");
-		changes.forEach((x) -> System.out.println(x));
 	}
 
 	/**
@@ -84,7 +82,6 @@ public class DBObserver extends Observable {
 				tmp.add(i);
 			}
 		}
-		tmp.forEach((x) -> System.out.println("changes at table:" + x));
 		return tmp;
 	}
 

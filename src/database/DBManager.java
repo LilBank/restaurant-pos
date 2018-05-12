@@ -767,6 +767,12 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Refresh records by getting tale rows for comparing later.
+	 * 
+	 * @param tableNumber
+	 * @return amount of rows in table
+	 */
 	public int refreshRecords(String tableNumber) {
 		String table = "table" + tableNumber;
 		int count = 0;

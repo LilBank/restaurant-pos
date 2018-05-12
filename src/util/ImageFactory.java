@@ -5,17 +5,14 @@ import java.util.List;
 
 import database.DBManager;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.TextAlignment;
 import model.Menu;
 import model.Order;
 
 public class ImageFactory {
-	/** singleton instance of ImageFactory. */
 	protected static ImageFactory factory;
 	private static DBManager dbm = DBManager.getInstance();
 	private static Order o = Order.getInstance();
@@ -83,7 +80,6 @@ public class ImageFactory {
 				button.setGraphic(view);
 				button.setUserData(item);
 
-				// set handler for the button
 				button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {

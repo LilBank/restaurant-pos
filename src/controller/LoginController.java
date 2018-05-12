@@ -37,8 +37,7 @@ public class LoginController {
 	@FXML
 	private Alert alert;
 	
-	//single instantiation
-	private static DBManager dbm = DBManager.getInstance();
+	private DBManager dbm = DBManager.getInstance();
 
 	/**
 	 * Method for handling cancel button. When event receive Main scene is
