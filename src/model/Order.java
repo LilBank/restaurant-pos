@@ -85,7 +85,9 @@ public class Order extends Observable {
 		notifyObservers();
 	}
 
-	// during in test
+	/*
+	 * Remove all database orders.
+	 */
 	public void clearOrdersTmp() {
 		ordersTmp.clear();
 	}
@@ -103,7 +105,6 @@ public class Order extends Observable {
 			int qty = order.getValue();
 			String name = menu.getName();
 			int price = menu.getPrice() * qty;
-			// separate each order by \n
 			text += String.format("%-35s %10d %10d\n", name, qty, price);
 		}
 		return text;

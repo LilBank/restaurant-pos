@@ -3,17 +3,26 @@ package controller;
 import application.OrderView;
 import database.DBManager;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import application.Login;
 import application.MGEditMenu;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import model.Menu;
 import model.Order;
@@ -53,6 +62,10 @@ public class TableViewController {
 	private Button button08;
 	@FXML
 	private Button summary;
+	@FXML
+	private Button manageTable;
+	@FXML
+	private FlowPane buttonPane;
 	@FXML
 	Alert alert;
 
@@ -152,5 +165,55 @@ public class TableViewController {
 		alert.setContentText(text);
 		alert.show();
 
+	}
+
+	public void manageTableButtonHandler(MouseEvent event) {
+		System.out.println("button press");
+		String[] choices = { "Add table", "Remove table" };
+		List<String> temp = new ArrayList<>(Arrays.asList(choices));
+		ChoiceDialog<String> dialog = new ChoiceDialog<>("SELECT", temp);
+		dialog.setTitle("Manage Table");
+		dialog.setHeaderText("Please select an operation");
+		dialog.setContentText("operation:");
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()) {
+			if (result.get().equals("SELECT")) {
+				alert = new Alert(AlertType.ERROR, "Please select something!", ButtonType.OK);
+				alert.show();
+			} else if (result.get().equals(choices[0])) {
+				Dialog<String> dialog2 = new TextInputDialog();
+				dialog2.setHeaderText("Enter table number:");
+				Optional<String> result2 = dialog2.showAndWait();
+				if (result2.isPresent()) {
+					try {
+						int tmp = Integer.parseInt(result2.get());
+						if (tmp < 8 || tmp >= 100) {
+							alert = new Alert(AlertType.ERROR, "Please input numbers between 8 and 99 only!",
+									ButtonType.OK);
+							alert.show();
+							return;
+						} else {
+							Button button = new Button(result2.get());
+							button.setWrapText(true);
+							button.setPrefSize(100, 100);
+							button.setTextAlignment(TextAlignment.CENTER);
+							button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+								@Override
+								public void handle(MouseEvent event) {
+									tableButtonHandler(button);
+								}
+							});
+							buttonPane.getChildren().add(button);
+						}
+					} catch (NumberFormatException ex) {
+						alert = new Alert(AlertType.ERROR, "Please input numbers only!", ButtonType.OK);
+						alert.show();
+						return;
+					}
+				}
+			} else if (result.get().equals(choices[1])) {
+				
+			}
+		}
 	}
 }
