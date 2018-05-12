@@ -30,8 +30,9 @@ public class ImageFactory {
 	private static List<Button> foodButtonList;
 	private static List<Button> drinkButtonList;
 	private Button selectedButton = null;
+
 	/**
-	 * Constructor for ImageFactory using lazy instantiation. 
+	 * Constructor for ImageFactory using lazy instantiation.
 	 */
 	private ImageFactory() {
 		foodname = dbm.getFoodname("Foods");
@@ -52,6 +53,7 @@ public class ImageFactory {
 			factory = new ImageFactory();
 		return factory;
 	}
+
 	/**
 	 * Get the selected button waiting to be removed.
 	 * 
@@ -64,6 +66,7 @@ public class ImageFactory {
 	public void setSelectedButton(Button button) {
 		this.selectedButton = button;
 	}
+
 	/**
 	 * Get all the food's buttons
 	 * 
@@ -72,6 +75,7 @@ public class ImageFactory {
 	public List<Button> getFoodButton() {
 		return foodButtonList;
 	}
+
 	/**
 	 * Get all the drink's buttons
 	 * 
@@ -80,7 +84,7 @@ public class ImageFactory {
 	public List<Button> getDrinkButton() {
 		return drinkButtonList;
 	}
-	
+
 	/**
 	 * Create the buttons for foods according to the database.
 	 */
@@ -98,10 +102,7 @@ public class ImageFactory {
 				button.setWrapText(true);
 				button.setGraphic(view);
 				button.setUserData(item);
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/bankkeez/projectx-restaurantPOS.git
 				button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
@@ -115,6 +116,7 @@ public class ImageFactory {
 		}
 
 	}
+
 	/**
 	 * Create the buttons for drinks according to the database.
 	 */
@@ -132,10 +134,7 @@ public class ImageFactory {
 				button.setWrapText(true);
 				button.setGraphic(view);
 				button.setUserData(item);
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/bankkeez/projectx-restaurantPOS.git
 				button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
