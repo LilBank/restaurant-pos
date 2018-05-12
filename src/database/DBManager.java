@@ -280,6 +280,9 @@ public class DBManager {
 
 	/**
 	 * Method for removing image data from the database
+	 * 
+	 * @param foodtable
+	 * @param Menu
 	 */
 	public void removeImage(String foodtable, Menu item) {
 		sqlCommand = "DELETE FROM " + foodtable + " WHERE name = ?";
@@ -310,9 +313,10 @@ public class DBManager {
 	 */
 	public boolean checkTable(String tableNumber) {
 		DatabaseMetaData dbm = null;
+		String t = "table" + tableNumber;
 		try {
 			dbm = connection.getMetaData();
-			ResultSet table = dbm.getTables(null, null, tableNumber, null);
+			ResultSet table = dbm.getTables(null, null, t, null);
 			// table exists
 			if (table.next()) {
 				return true;
@@ -490,7 +494,7 @@ public class DBManager {
 	 * @param list
 	 *            of the table items
 	 */
-	public void insertToSum(Map<Menu, Integer> map) {
+	public void insertToSummary(Map<Menu, Integer> map) {
 		sqlCommand = "INSERT INTO `Summary` (`name`, `price`, `quantity`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;
 		try {
@@ -581,4 +585,78 @@ public class DBManager {
 		}
 	}
 
+	// during in test
+	public void insertTableNumber(String tableNumber) {
+		sqlCommand = "INSERT INTO `Tables` (`table`) VALUES (?)";
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			stmt.setString(1, tableNumber);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	// during in test
+	public List<String> getDBTables() {
+		// name variable temp for temporary
+		List<String> tables = new ArrayList<>();
+		sqlCommand = "SELECT * FROM Tables";
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				String table = rs.getString("table");
+				tables.add(table);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return tables;
+	}
+
+	// during in test
+	public boolean checkTableData(String tableNumber) {
+		String tabletmp = "table" + tableNumber;
+		sqlCommand = "SELECT * FROM " + tabletmp;
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			ResultSet rs = stmt.executeQuery();
+			// table is empty
+			if (!rs.next()) {
+				return true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
 }
