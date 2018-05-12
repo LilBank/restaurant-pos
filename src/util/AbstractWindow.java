@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  * An abstract class that extends Application for subclass to contain method for
  * launching javafx scenes.
  * 
- * @author Piyawat & Vichapol
+ * @author Piyawat & Vichaphol
  *
  */
 public abstract class AbstractWindow extends Application {

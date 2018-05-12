@@ -11,7 +11,7 @@ import java.util.Properties;
  *
  */
 public class PropertyManager {
-	
+
 	public static final String RESTAURANT_CONFIG = "restaurant.config";
 	private static PropertyManager pm;
 	private Properties properties;
@@ -48,7 +48,7 @@ public class PropertyManager {
 			try {
 				in.close();
 			} catch (IOException ex2) {
-				/* ignore it */ }
+			}
 		}
 
 	}

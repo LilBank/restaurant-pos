@@ -98,17 +98,19 @@ public class ImageFactory {
 				button.setWrapText(true);
 				button.setGraphic(view);
 				button.setUserData(item);
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/bankkeez/projectx-restaurantPOS.git
 				button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {
 						o.addOrder((Menu) button.getUserData());
-						System.out.println(((Menu) button.getUserData()).getName());
 						selectedButton = button;
 
 					}
 				});
 				foodButtonList.add(button);
-
 			}
 		}
 
@@ -130,6 +132,10 @@ public class ImageFactory {
 				button.setWrapText(true);
 				button.setGraphic(view);
 				button.setUserData(item);
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/bankkeez/projectx-restaurantPOS.git
 				button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 					@Override
 					public void handle(MouseEvent event) {

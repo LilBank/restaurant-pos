@@ -52,15 +52,12 @@ public class Menu {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		// if both are null return true
 		if (obj == this)
 			return true;
-		// similar to obj.getClass() != this.getClass()
 		if (!(obj instanceof Menu)) {
 			return false;
 		}
 		Menu o = (Menu) obj;
-		// similar to this.name.equals(o.getName())
 		return Objects.equals(this.name, o.getName());
 	}
 

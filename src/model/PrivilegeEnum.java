@@ -10,10 +10,8 @@ public enum PrivilegeEnum {
 
 	USER(1), ADMIN(2);
 
-	// attributes of the constant members
 	private int number;
 
-	// private constructor for constant
 	private PrivilegeEnum(int i) {
 		this.number = i;
 	}

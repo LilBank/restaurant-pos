@@ -44,9 +44,12 @@ public class DBManager {
 	 */
 	private DBManager() {
 		try {
+			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection(DB_URL, USER, PASS);
 		} catch (SQLException ex) {
 			ex.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -696,6 +699,7 @@ public class DBManager {
 			}
 		}
 	}
+
 	/**
 	 * Method for removing user from the database
 	 * 
@@ -720,6 +724,7 @@ public class DBManager {
 			}
 		}
 	}
+
 	/**
 	 * Method for removing image data from the database
 	 * 
@@ -745,4 +750,36 @@ public class DBManager {
 			}
 		}
 	}
+
+	/**
+	 * Refresh records by getting tale rows for comparing later.
+	 * 
+	 * @param tableNumber
+	 * @return amount of rows in table
+	 */
+	public int refreshRecords(String tableNumber) {
+		String table = "table" + tableNumber;
+		int count = 0;
+		sqlCommand = "SELECT * FROM " + table;
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				count++;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+
 }

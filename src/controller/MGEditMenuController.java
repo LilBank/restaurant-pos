@@ -15,7 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
 import application.Tableview;
 import application.Main;
 import database.DBManager;
@@ -56,9 +55,9 @@ public class MGEditMenuController {
 	@FXML
 	private FlowPane drinkpane;
 	
-	public static List<Button> folderImage = new ArrayList<>();
 	private static DBManager dbm = DBManager.getInstance();
 	private ImageFactory instance = ImageFactory.getInstance();
+	public static List<Button> folderImage = new ArrayList<>();
 	private static List<Menu> foodname = dbm.getFoodname("Foods");
 	private static List<Menu> drinkname = dbm.getFoodname("Drinks");
 	private Alert alert;
@@ -116,10 +115,10 @@ public class MGEditMenuController {
 		JPanel myPanel = new JPanel();
 		myPanel.add(new JLabel("Name: "));
 		myPanel.add(nameField);
-		myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+		myPanel.add(Box.createHorizontalStrut(15)); 
 		myPanel.add(new JLabel("Price: "));
 		myPanel.add(priceField);
-		myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+		myPanel.add(Box.createHorizontalStrut(15)); 
 		myPanel.add(new JLabel("Url: "));
 		myPanel.add(urlField);
 		int result = JOptionPane.showConfirmDialog(null, myPanel, "Please Enter Your Menu",

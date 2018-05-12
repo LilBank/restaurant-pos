@@ -2,15 +2,21 @@ package controller;
 
 import application.OrderView;
 import database.DBManager;
+import database.DBObserver;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Optional;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import application.Login;
 import application.MGEditMenu;
 import application.ManageUser;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -43,7 +49,7 @@ import util.UserManager;
  * @author Piyawat & Vichapol
  *
  */
-public class TableViewController {
+public class TableViewController implements Observer {
 	@FXML
 	private Button editMenu;
 	@FXML
@@ -75,16 +81,22 @@ public class TableViewController {
 	@FXML
 	private FlowPane buttonPane;
 	@FXML
-	Alert alert;
+	private Alert alert;
 
-	private static UserManager um = UserManager.getInstance();
+	private UserManager um = UserManager.getInstance();
 	private static DBManager dbm = DBManager.getInstance();
 	private static List<Menu> foodname = dbm.getFoodname("Foods");
 	private static List<Menu> drinkname = dbm.getFoodname("Drinks");
-
+	private static Timer timer = new Timer();
+	private static DBObserver dbo = DBObserver.getInstance();
 	private boolean admin = um.isAdmin();
 
-	@FXML
+	static {
+		dbo.setAllRows();
+		dbo.setChanges();
+		runTask();
+	}
+
 	public void initialize() {
 		if (!admin) {
 			editMenu.setDisable(true);
@@ -95,6 +107,7 @@ public class TableViewController {
 			endday.setVisible(false);
 		}
 		createButton();
+		dbo.addObserver(this);
 	}
 
 	public void button01Handler(ActionEvent event) {
@@ -136,6 +149,7 @@ public class TableViewController {
 	 * @param button
 	 */
 	public void tableButtonHandler(Button button) {
+		button.setStyle(null);
 		ScreenController.switchWindow((Stage) button.getScene().getWindow(),
 				new OrderView(button.getText(), foodname, drinkname));
 	}
@@ -200,8 +214,8 @@ public class TableViewController {
 	}
 
 	/**
-	 * Handler for Manage Table button. When event receive managing table dialog is
-	 * swhown.
+	 * Handler for Manage Table button. When event receive managing table dialog
+	 * is shown.
 	 * 
 	 * @param event
 	 */
@@ -321,4 +335,47 @@ public class TableViewController {
 			buttonPane.getChildren().add(button);
 		}
 	}
+
+	/**
+	 * Single implementation to keep track of database table changes.
+	 */
+	private static void runTask() {
+		Runnable runTask = new Runnable() {
+			public void run() {
+				dbo.findChanges();
+				dbo.setChangesBack();
+			}
+		};
+		TimerTask task = new TimerTask() {
+			public void run() {
+				Platform.runLater(runTask);
+			}
+		};
+		timer.schedule(task, 0, 5000);
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		List<Integer> tmp = dbo.getChanges();
+		for (int i = 0; i < tmp.size(); i++) {
+			if (tmp.get(i) == 1) {
+				button01.setStyle("-fx-border-color: #ff0000; -fx-border-width: 3px;");
+			} else if (tmp.get(i) == 2) {
+				button02.setStyle("-fx-border-color: #ff0000; -fx-border-width: 3px;");
+			} else if (tmp.get(i) == 3) {
+				button03.setStyle("-fx-border-color: #ff0000; -fx-border-width: 3px;");
+			} else if (tmp.get(i) == 4) {
+				button04.setStyle("-fx-border-color: #ff0000; -fx-border-width: 3px;");
+			} else if (tmp.get(i) == 5) {
+				button05.setStyle("-fx-border-color: #ff0000; -fx-border-width: 3px;");
+			} else if (tmp.get(i) == 6) {
+				button06.setStyle("-fx-border-color: #ff0000; -fx-border-width: 3px;");
+			} else if (tmp.get(i) == 7) {
+				button07.setStyle("-fx-border-color: #ff0000; -fx-border-width: 3px;");
+			} else if (tmp.get(i) == 8) {
+				button08.setStyle("-fx-border-color: #ff0000; -fx-border-width: 3px;");
+			}
+		}
+	}
+
 }
