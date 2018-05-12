@@ -1,6 +1,5 @@
 package model;
 
-import java.util.ConcurrentModificationException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Observable;
@@ -149,7 +148,7 @@ public class Order extends Observable {
 	 * Private method for getting orders from the wanted table in the database.
 	 */
 	private void refreshDBOrders(String tableNumber) {
-		ordersTmp = dbm.getDBOrders(tableNumber);
+		ordersTmp = dbm.getDBOrders("table" + tableNumber);
 	}
 
 	/**

@@ -12,7 +12,7 @@
       <Pane layoutY="379.0" prefHeight="640.0" prefWidth="940.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
             <Button fx:id="logout" layoutX="863.0" layoutY="31.0" mnemonicParsing="false" onAction="#logoutButtonHandler" style="-fx-background-radius: 50;" text="Logout" />
-            <Button alignment="CENTER" layoutX="714.0" layoutY="21.0" minWidth="33.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="115.0" style="-fx-background-radius: 100;" text="Summary">
+            <Button fx:id="summary" alignment="CENTER" layoutX="714.0" layoutY="21.0" minWidth="33.0" mnemonicParsing="false" onMouseClicked="#sumButtonHandler" prefHeight="45.0" prefWidth="115.0" style="-fx-background-radius: 100;" text="Summary">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>

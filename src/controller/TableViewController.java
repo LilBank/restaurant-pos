@@ -16,6 +16,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Menu;
+import model.Order;
 import util.ScreenController;
 import util.UserManager;
 
@@ -35,8 +36,6 @@ public class TableViewController {
 	@FXML
 	private Button logout;
 	@FXML
-	Alert alert;
-	@FXML
 	private Button button01;
 	@FXML
 	private Button button02;
@@ -52,6 +51,10 @@ public class TableViewController {
 	private Button button07;
 	@FXML
 	private Button button08;
+	@FXML
+	private Button summary;
+	@FXML
+	Alert alert;
 
 	// for single instantiation
 	private static UserManager um = UserManager.getInstance();
@@ -139,5 +142,15 @@ public class TableViewController {
 				ScreenController.switchWindow((Stage) logout.getScene().getWindow(), new Login());
 			}
 		});
+	}
+
+	public void sumButtonHandler(MouseEvent event) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Summary");
+		alert.setHeaderText("Information");
+		String text = Order.getInstance().orderToText(DBManager.getInstance().getDBOrders("Summary"));
+		alert.setContentText(text);
+		alert.show();
+
 	}
 }

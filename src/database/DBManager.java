@@ -425,8 +425,7 @@ public class DBManager {
 		// name variable temp for temporary
 		Map<Menu, Integer> temp = new LinkedHashMap<>();
 		Map<Menu, Integer> temp2 = new LinkedHashMap<>();
-		String tabletmp = "table" + tableNumber;
-		sqlCommand = "SELECT * FROM " + tabletmp;
+		sqlCommand = "SELECT * FROM " + tableNumber;
 		PreparedStatement stmt = null;
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
@@ -492,7 +491,7 @@ public class DBManager {
 	 *            of the table items
 	 */
 	public void insertToSum(Map<Menu, Integer> map) {
-		sqlCommand = "INSERT INTO `Summary` (`FoodName`, `FoodPrice`, `Quantity`) VALUES (?, ?, ?)";
+		sqlCommand = "INSERT INTO `Summary` (`name`, `price`, `quantity`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;
 		try {
 			for (Map.Entry<Menu, Integer> order : map.entrySet()) {

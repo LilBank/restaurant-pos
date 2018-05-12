@@ -194,7 +194,7 @@ public class CSOrderController {
 
 	// set the lower display in the UI
 	private void setDisplay2() {
-		Map<Menu, Integer> temp = dbm.getDBOrders(tablenumber);
+		Map<Menu, Integer> temp = dbm.getDBOrders("table" + tablenumber);
 		String text = o.orderToText(temp);
 		display2.setText(text);
 		setTempTotal(temp);
