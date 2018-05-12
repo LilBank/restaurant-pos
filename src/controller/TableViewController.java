@@ -30,6 +30,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import model.Menu;
 import model.Order;
+import util.DBObserver;
 import util.ScreenController;
 import util.UserManager;
 
@@ -80,12 +81,16 @@ public class TableViewController {
 	private static List<Menu> foodname = dbm.getFoodname("Foods");
 	private static List<Menu> drinkname = dbm.getFoodname("Drinks");
 	private static Timer timer = new Timer();
+	private static DBObserver dbo = DBObserver.getInstance();
 	private boolean admin = um.isAdmin();
-	static{
+
+	static {
+		System.out.println("test static");
+		dbo.setAllRows();
+		dbo.setChanges();
 		runTask();
 	}
 
-	@FXML
 	public void initialize() {
 		if (!admin) {
 			editMenu.setDisable(true);
@@ -315,16 +320,25 @@ public class TableViewController {
 	}
 
 	public static void runTask() {
-		Runnable runner = new Runnable() {
+		Runnable runTask = new Runnable() {
 			public void run() {
 				System.out.println("testing");
+				dbo.findChanges();
+				List<Boolean> changes = dbo.getChanges();
+				System.out.println(changes.size());
+				for (Boolean change : changes) {
+					if (change) {
+						System.out.println(change);
+					}
+				}
+				dbo.setChangesBack();
 			}
 		};
 		TimerTask task = new TimerTask() {
 			public void run() {
-				Platform.runLater(runner);
+				Platform.runLater(runTask);
 			}
 		};
-		timer.schedule(task, 0, 1000);
+		timer.schedule(task, 0, 5000);
 	}
 }
