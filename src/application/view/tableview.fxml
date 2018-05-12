@@ -78,7 +78,7 @@
                   <Font name="Agency FB" size="24.0" />
                </font>
             </Button>
-            <Button fx:id="manageUser" alignment="CENTER" layoutX="286.0" layoutY="21.0" minWidth="33.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" style="-fx-background-radius: 100;" text="Manage User">
+            <Button fx:id="manageUser" alignment="CENTER" layoutX="286.0" layoutY="21.0" minWidth="33.0" mnemonicParsing="false" onMouseClicked="#manageUserButtonHandler" prefHeight="45.0" prefWidth="134.0" style="-fx-background-radius: 100;" text="Manage User">
                <font>
                   <Font name="Agency FB" size="24.0" />
                </font>

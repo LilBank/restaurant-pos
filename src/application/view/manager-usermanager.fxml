@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManagerUserController">
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageUserController">
    <children>
       <Pane prefHeight="640.0" prefWidth="940.0">
          <children>
@@ -16,7 +16,7 @@
                   <Font name="Agency FB" size="36.0" />
                </font>
             </Label>
-            <Button fx:id="remove" layoutX="694.0" layoutY="550.0" mnemonicParsing="false" onAction="#removeButtonHandler" prefHeight="61.0" prefWidth="136.0" text="Remove">
+            <Button fx:id="remove" layoutX="699.0" layoutY="551.0" mnemonicParsing="false" onMouseClicked="#removeButtonHandler" prefHeight="61.0" prefWidth="136.0" text="Remove">
                <font>
                   <Font name="Agency FB" size="27.0" />
                </font>

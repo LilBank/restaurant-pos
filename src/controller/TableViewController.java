@@ -10,6 +10,7 @@ import java.util.Optional;
 
 import application.Login;
 import application.MGEditMenu;
+import application.ManageUser;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -135,12 +136,21 @@ public class TableViewController {
 	}
 
 	/**
-	 * Handler for image button. When event receive the edit menu scene is
+	 * Handler for Edit image button. When event receive the Edit menu scene is
 	 * shown.
 	 * 
 	 */
 	public void editMenuButtonHandler(MouseEvent event) {
 		ScreenController.switchWindow((Stage) editMenu.getScene().getWindow(), new MGEditMenu());
+	}
+
+	/**
+	 * Handler for Manage user button. When event receive the Manage menu scene is
+	 * shown.
+	 * 
+	 */
+	public void manageUserButtonHandler(MouseEvent event) {
+		ScreenController.switchWindow((Stage) manageUser.getScene().getWindow(), new ManageUser());
 	}
 
 	/**
