@@ -192,7 +192,6 @@ public class TableViewController {
 	 * @param event
 	 */
 	public void manageTableButtonHandler(MouseEvent event) {
-		System.out.println("button press");
 		String[] choices = { "Add table", "Remove table" };
 		List<String> temp = new ArrayList<>(Arrays.asList(choices));
 		ChoiceDialog<String> dialog = new ChoiceDialog<>("SELECT", temp);
@@ -263,11 +262,27 @@ public class TableViewController {
 	 * @param event
 	 */
 	public void endButtonHandler(MouseEvent event) {
-		alert = new Alert(AlertType.WARNING, "Are you sure to ENDDAY, this operation can't be undone?", ButtonType.OK);
+		alert = new Alert(AlertType.WARNING,
+				"Are you sure to ENDDAY, all table(s) including added table(s) ordered item(s) will be remove without paying and will not be add to summary, this operation can't be undone?",
+				ButtonType.OK);
 		alert.showAndWait().ifPresent(response -> {
 			if (response == ButtonType.OK) {
-				dbm.clearTable("Summary");
-				System.exit(0);
+				alert = new Alert(AlertType.WARNING, "ARE YOU SURE?", ButtonType.YES, ButtonType.NO);
+				alert.showAndWait().ifPresent(response2 -> {
+					if (response2 == ButtonType.YES) {
+						for (int i = 1; i <= 8; i++) {
+							String table = "table" + i;
+							dbm.clearTable(table);
+						}
+						for (int i = 0; i < buttonPane.getChildren().size(); i++) {
+							Button button = (Button) buttonPane.getChildren().get(i);
+							dbm.deleteTable(button.getText());
+						}
+						dbm.clearTable("Summary");
+						dbm.clearTable("Tables");
+						System.exit(0);
+					}
+				});
 			}
 		});
 	}
