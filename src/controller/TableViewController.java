@@ -146,8 +146,8 @@ public class TableViewController {
 	}
 
 	/**
-	 * Handler for Manage user button. When event receive the Manage menu scene is
-	 * shown.
+	 * Handler for Manage user button. When event receive the Manage menu scene
+	 * is shown.
 	 * 
 	 */
 	public void manageUserButtonHandler(MouseEvent event) {
@@ -167,7 +167,7 @@ public class TableViewController {
 			}
 		});
 	}
-
+	
 	public void sumButtonHandler(MouseEvent event) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Summary");
@@ -177,7 +177,11 @@ public class TableViewController {
 		alert.show();
 
 	}
-
+	
+	/**
+	 * Handler for Manage Table button. When 
+	 * @param event
+	 */
 	public void manageTableButtonHandler(MouseEvent event) {
 		System.out.println("button press");
 		String[] choices = { "Add table", "Remove table" };
@@ -211,6 +215,8 @@ public class TableViewController {
 							DBManager.getInstance().insertTableNumber(result2.get());
 							DBManager.getInstance().createTable(result2.get());
 							createButton();
+							alert = new Alert(AlertType.INFORMATION, "Table created!", ButtonType.OK);
+							alert.show();
 						}
 					} catch (NumberFormatException ex) {
 						alert = new Alert(AlertType.ERROR, "Please input numbers only!", ButtonType.OK);
@@ -226,18 +232,28 @@ public class TableViewController {
 				dialog.setContentText("table:");
 				Optional<String> result3 = dialog3.showAndWait();
 				if (result3.isPresent()) {
-
+					if (DBManager.getInstance().checkTableData(result3.get())) {
+						DBManager.getInstance().deleteTable(result3.get());
+						DBManager.getInstance().removeTableinTables(result3.get());
+						createButton();
+						alert = new Alert(AlertType.WARNING, "Table removed!", ButtonType.OK);
+						alert.show();
+					} else {
+						alert = new Alert(AlertType.ERROR, "Table still contain orders!", ButtonType.OK);
+						alert.show();
+					}
 				}
 			}
 		}
 	}
 
 	private void createButton() {
+		buttonPane.getChildren().clear();
 		List<String> temp = DBManager.getInstance().getDBTables();
 		for (String tablenum : temp) {
 			Button button = new Button(tablenum);
 			button.setWrapText(true);
-			button.setPrefSize(140, 140);
+			button.setPrefSize(150, 150);
 			button.setTextAlignment(TextAlignment.CENTER);
 			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 				@Override

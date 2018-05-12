@@ -28,7 +28,7 @@ import util.PropertyManager;
  */
 public class DBManager {
 	// for single instantiation
-	private static PropertyManager pm = PropertyManager.getInstance();
+	private PropertyManager pm = PropertyManager.getInstance();
 	// singleton instance of DBManager
 	private static DBManager instance;
 	private Connection connection;
@@ -183,7 +183,12 @@ public class DBManager {
 		return true;
 	}
 
-	// during in test
+	/**
+	 * Method for getting all the food urls from the database.
+	 * 
+	 * @param table
+	 * @return List<String> of food urls
+	 */
 	public List<String> getFoodUrl(String table) {
 		List<String> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + table;
@@ -279,32 +284,6 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for removing image data from the database
-	 * 
-	 * @param foodtable
-	 * @param Menu
-	 */
-	public void removeImage(String foodtable, Menu item) {
-		sqlCommand = "DELETE FROM " + foodtable + " WHERE name = ?";
-		PreparedStatement stmt = null;
-		try {
-			stmt = connection.prepareStatement(sqlCommand);
-			stmt.setString(1, item.getName());
-			stmt.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (stmt != null) {
-					stmt.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	/**
 	 * Method for checking table existence in database.
 	 * 
 	 * @param table
@@ -354,7 +333,11 @@ public class DBManager {
 		}
 	}
 
-	// during in test
+	/**
+	 * Method for getting list of users from the database.
+	 * 
+	 * @return List<User> of users
+	 */
 	public List<User> getDBUser() {
 		// change to List<Menu>
 		List<User> temp = new ArrayList<>();
@@ -585,9 +568,13 @@ public class DBManager {
 		}
 	}
 
-	// during in test
+	/**
+	 * Method for inserting tablenumber into 'Tables'.
+	 * 
+	 * @param tableNumber
+	 */
 	public void insertTableNumber(String tableNumber) {
-		sqlCommand = "INSERT INTO `Tables` (`table`) VALUES (?)";
+		sqlCommand = "INSERT INTO `Tables` (`number`) VALUES (?)";
 		PreparedStatement stmt = null;
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
@@ -606,7 +593,11 @@ public class DBManager {
 		}
 	}
 
-	// during in test
+	/**
+	 * Method for getting all number of tables from database.
+	 * 
+	 * @return List<String> of tables that is created
+	 */
 	public List<String> getDBTables() {
 		// name variable temp for temporary
 		List<String> tables = new ArrayList<>();
@@ -616,7 +607,7 @@ public class DBManager {
 			stmt = connection.prepareStatement(sqlCommand);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				String table = rs.getString("table");
+				String table = rs.getString("number");
 				tables.add(table);
 			}
 
@@ -633,15 +624,20 @@ public class DBManager {
 		return tables;
 	}
 
-	// during in test
+	/**
+	 * Method for checking is there is orders in the table.
+	 * 
+	 * @param tableNumber
+	 * @return true if table is empty, false if not
+	 */
 	public boolean checkTableData(String tableNumber) {
+		int value = 1;
 		String tabletmp = "table" + tableNumber;
 		sqlCommand = "SELECT * FROM " + tabletmp;
 		PreparedStatement stmt = null;
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
 			ResultSet rs = stmt.executeQuery();
-			// table is empty
 			if (!rs.next()) {
 				return true;
 			}
@@ -657,6 +653,89 @@ public class DBManager {
 				e.printStackTrace();
 			}
 		}
+		Map<Menu, Integer> temp = getDBOrders("table" + tableNumber);
+		for (Map.Entry<Menu, Integer> tmp : temp.entrySet()) {
+			int tmpValue = tmp.getValue();
+			value += tmpValue;
+		}
+		if (value == 1) {
+			return true;
+		}
 		return false;
+	}
+
+	/**
+	 * Method for deleting requested table in database.
+	 * 
+	 * @param tableNumber
+	 */
+	public void deleteTable(String tableNumber) {
+		String table = "table" + tableNumber;
+		sqlCommand = "DROP TABLE " + table;
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			stmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	/**
+	 * Method for removing requested tablenumber from 'Tables'.
+	 * 
+	 * @param tableNumber
+	 */
+	public void removeTableinTables(String tableNumber) {
+		sqlCommand = "DELETE FROM Tables WHERE number = ?";
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			stmt.setString(1, tableNumber);
+			stmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	/**
+	 * Method for removing image data from the database
+	 * 
+	 * @param foodtable
+	 * @param Menu
+	 */
+	public void removeImage(String foodtable, Menu item) {
+		sqlCommand = "DELETE FROM " + foodtable + " WHERE name = ?";
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			stmt.setString(1, item.getName());
+			stmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
