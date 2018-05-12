@@ -2,18 +2,23 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import application.Tableview;
 import database.DBManager;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import model.User;
+import util.ScreenController;
 
 /**
  * ManagerUserController contains method for handling all event receive from the
@@ -23,25 +28,17 @@ import model.User;
  *
  */
 public class ManageUserController {
-
-	// /** id Column */
-	// @FXML
-	// private TableColumn<User, Integer> id;
-	// /** name Column */
-	// @FXML
-	// private TableColumn<User, String> name;
-	// /** password Column */
-	// @FXML
-	// private TableColumn<User, String> password;
 	@FXML
 	private ListView<String> listView;
 	@FXML
 	private Button remove;
-	
+	@FXML
+	private Button back;
+
 	ListProperty<String> listProperty = new SimpleListProperty<>();
 	DBManager dbm = DBManager.getInstance();
 	List<User> listname = dbm.getDBUser();
-	
+
 	@FXML
 	public void initialize() {
 		List<String> name = new ArrayList<>();
@@ -62,5 +59,13 @@ public class ManageUserController {
 			}
 		});
 
+	}
+
+	/**
+	 * Handler for back button. When event receive the CS table scene is shown.
+	 * 
+	 */
+	public void backButtonHandler(ActionEvent event) {
+		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new Tableview());
 	}
 }

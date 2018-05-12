@@ -16,12 +16,17 @@
                   <Font name="Agency FB" size="36.0" />
                </font>
             </Label>
-            <Button fx:id="remove" layoutX="699.0" layoutY="551.0" mnemonicParsing="false" onMouseClicked="#removeButtonHandler" prefHeight="61.0" prefWidth="136.0" text="Remove">
+            <Button fx:id="remove" layoutX="699.0" layoutY="545.0" mnemonicParsing="false" onMouseClicked="#removeButtonHandler" prefHeight="61.0" prefWidth="136.0" style="-fx-background-radius: 50;" text="Remove">
                <font>
                   <Font name="Agency FB" size="27.0" />
                </font>
             </Button>
-            <ListView fx:id="listView" layoutX="106.0" layoutY="111.0" prefHeight="377.0" prefWidth="729.0" />
+            <ListView fx:id="listView" layoutX="106.0" layoutY="125.0" prefHeight="377.0" prefWidth="729.0" />
+            <Button fx:id="back" layoutX="857.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonHandler" onMouseClicked="#removeButtonHandler" prefHeight="36.0" prefWidth="69.0" style="-fx-background-radius: 50;" text="Back">
+               <font>
+                  <Font name="Agency FB" size="17.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>
