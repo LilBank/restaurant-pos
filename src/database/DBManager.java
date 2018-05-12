@@ -717,12 +717,12 @@ public class DBManager {
 	 * 
 	 * @param User
 	 */
-	public void removeUserDB(User user) {
-		sqlCommand = "DELETE FROM " + "User" + " WHERE name = ?";
+	public void removeUserDB(String name) {
+		sqlCommand = "DELETE FROM User WHERE name = ?";
 		PreparedStatement stmt = null;
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
-			stmt.setString(1, user.getUsername());
+			stmt.setString(1, name);
 			stmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();

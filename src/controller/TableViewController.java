@@ -177,8 +177,8 @@ public class TableViewController {
 	 */
 	public void sumButtonHandler(MouseEvent event) {
 		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Summary");
-		alert.setHeaderText("Information");
+		alert.setTitle("");
+		alert.setHeaderText("Summary");
 		String text = Order.getInstance().orderToText(dbm.getDBOrders("Summary"));
 		alert.setContentText(text);
 		alert.show();

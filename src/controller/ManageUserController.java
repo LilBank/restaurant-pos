@@ -35,8 +35,8 @@ public class ManageUserController {
 	@FXML
 	private Button back;
 
-	private ListProperty<String> listProperty = new SimpleListProperty<>();
 	private DBManager dbm = DBManager.getInstance();
+	private ListProperty<String> listProperty = new SimpleListProperty<>();
 	private List<User> listname = dbm.getDBUser();
 
 	public void initialize() {
@@ -47,8 +47,8 @@ public class ManageUserController {
 	}
 
 	/**
-	 * Method for handling remove button. When event receive, remove user from
-	 * the table and database.
+	 * Method for handling remove button. When event receive, remove user from the
+	 * table and database.
 	 * 
 	 * @param event
 	 */
@@ -56,8 +56,8 @@ public class ManageUserController {
 		Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure removing this user? ", ButtonType.OK);
 		alert.showAndWait().ifPresent(response -> {
 			if (response == ButtonType.OK) {
+				dbm.removeUserDB(listView.getSelectionModel().getSelectedItem());
 				listProperty.remove(listView.getSelectionModel().getSelectedItem());
-				
 			}
 		});
 
