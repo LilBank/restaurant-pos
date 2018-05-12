@@ -1,6 +1,5 @@
 package controller;
 
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 import database.DBManager;
@@ -59,7 +58,7 @@ public class ManageUserController {
 		Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure removing this user? ", ButtonType.OK);
 		alert.showAndWait().ifPresent(response -> {
 			if (response == ButtonType.OK) {
-				listProperty.remove(listProperty.getValue());
+				listProperty.remove(listView.getSelectionModel().getSelectedItem());
 			}
 		});
 
