@@ -712,7 +712,30 @@ public class DBManager {
 			}
 		}
 	}
-
+	/**
+	 * Method for removing user from the database
+	 * 
+	 * @param User
+	 */
+	public void removeUserDB(User user) {
+		sqlCommand = "DELETE FROM " + "User" + " WHERE name = ?";
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			stmt.setString(1, user.getUsername());
+			stmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	/**
 	 * Method for removing image data from the database
 	 * 
