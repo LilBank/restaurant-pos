@@ -165,8 +165,8 @@ public class TableViewController implements Observer {
 	}
 
 	/**
-	 * Handler for Manage user button. When event receive the Manage menu scene is
-	 * shown.
+	 * Handler for Manage user button. When event receive the Manage menu scene
+	 * is shown.
 	 * 
 	 * @param event
 	 */
@@ -204,6 +204,7 @@ public class TableViewController implements Observer {
 		TextArea area = new TextArea();
 		area.setStyle("-fx-font-family: monospace");
 		area.appendText(text);
+		area.setEditable(false);
 		box.getChildren().add(area);
 		Scene scene = new Scene(box);
 		stage.setScene(scene);
@@ -284,8 +285,8 @@ public class TableViewController implements Observer {
 	}
 
 	/**
-	 * Handler for end day button. When event receive all data in summary is cleared
-	 * and the program is close.
+	 * Handler for end day button. When event receive all data in summary is
+	 * cleared and the program is close.
 	 * 
 	 * @param event
 	 */
