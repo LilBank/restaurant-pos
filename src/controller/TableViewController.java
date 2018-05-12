@@ -2,10 +2,14 @@ package controller;
 
 import application.OrderView;
 import database.DBManager;
+import database.DBObserver;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,11 +30,11 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import model.Menu;
 import model.Order;
-import util.DBObserver;
 import util.ScreenController;
 import util.UserManager;
 
@@ -42,7 +46,7 @@ import util.UserManager;
  * @author Piyawat & Vichapol
  *
  */
-public class TableViewController {
+public class TableViewController implements Observer {
 	@FXML
 	private Button editMenu;
 	@FXML
@@ -101,6 +105,7 @@ public class TableViewController {
 			endday.setVisible(false);
 		}
 		createButton();
+		dbo.addObserver(this);
 	}
 
 	public void button01Handler(ActionEvent event) {
@@ -142,6 +147,7 @@ public class TableViewController {
 	 * @param button
 	 */
 	public void tableButtonHandler(Button button) {
+		button.setUnderline(false);
 		ScreenController.switchWindow((Stage) button.getScene().getWindow(),
 				new OrderView(button.getText(), foodname, drinkname));
 	}
@@ -198,7 +204,7 @@ public class TableViewController {
 
 	/**
 	 * Handler for Manage Table button. When event receive managing table dialog
-	 * is swhown.
+	 * is shown.
 	 * 
 	 * @param event
 	 */
@@ -319,18 +325,13 @@ public class TableViewController {
 		}
 	}
 
+	/**
+	 * Single implementation to keep track database table changes.
+	 */
 	public static void runTask() {
 		Runnable runTask = new Runnable() {
 			public void run() {
-				System.out.println("testing");
 				dbo.findChanges();
-				List<Boolean> changes = dbo.getChanges();
-				System.out.println(changes.size());
-				for (Boolean change : changes) {
-					if (change) {
-						System.out.println(change);
-					}
-				}
 				dbo.setChangesBack();
 			}
 		};
@@ -341,4 +342,29 @@ public class TableViewController {
 		};
 		timer.schedule(task, 0, 5000);
 	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		List<Integer> tmp = dbo.getChanges();
+		for (int i = 0; i < tmp.size(); i++) {
+			if (tmp.get(i) == 1) {
+				button01.setUnderline(true);
+			} else if (tmp.get(i) == 2) {
+				button02.setText("Income");
+			} else if (tmp.get(i) == 3) {
+				button03.setText("Income");
+			} else if (tmp.get(i) == 4) {
+				button04.setText("Income");
+			} else if (tmp.get(i) == 5) {
+				button05.setText("Income");
+			} else if (tmp.get(i) == 6) {
+				button06.setText("Income");
+			} else if (tmp.get(i) == 7) {
+				button07.setText("Income");
+			} else if (tmp.get(i) == 8) {
+				button08.setText("Income");
+			}
+		}
+	}
+
 }
