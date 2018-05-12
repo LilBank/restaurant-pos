@@ -632,7 +632,7 @@ public class DBManager {
 				e.printStackTrace();
 			}
 		}
-		Map<Menu, Integer> temp = getDBOrders(tableNumber);
+		Map<Menu, Integer> temp = getDBOrders("table" + tableNumber);
 		for (Map.Entry<Menu, Integer> tmp : temp.entrySet()) {
 			int tmpValue = tmp.getValue();
 			value += tmpValue;

@@ -146,8 +146,8 @@ public class TableViewController {
 	}
 
 	/**
-	 * Handler for Manage user button. When event receive the Manage menu scene is
-	 * shown.
+	 * Handler for Manage user button. When event receive the Manage menu scene
+	 * is shown.
 	 * 
 	 */
 	public void manageUserButtonHandler(MouseEvent event) {
@@ -167,7 +167,7 @@ public class TableViewController {
 			}
 		});
 	}
-
+	
 	public void sumButtonHandler(MouseEvent event) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Summary");
@@ -177,7 +177,11 @@ public class TableViewController {
 		alert.show();
 
 	}
-
+	
+	/**
+	 * Handler for Manage Table button. When 
+	 * @param event
+	 */
 	public void manageTableButtonHandler(MouseEvent event) {
 		System.out.println("button press");
 		String[] choices = { "Add table", "Remove table" };
@@ -244,11 +248,12 @@ public class TableViewController {
 	}
 
 	private void createButton() {
+		buttonPane.getChildren().clear();
 		List<String> temp = DBManager.getInstance().getDBTables();
 		for (String tablenum : temp) {
 			Button button = new Button(tablenum);
 			button.setWrapText(true);
-			button.setPrefSize(140, 140);
+			button.setPrefSize(150, 150);
 			button.setTextAlignment(TextAlignment.CENTER);
 			button.setOnMouseClicked(new EventHandler<MouseEvent>() {
 				@Override
