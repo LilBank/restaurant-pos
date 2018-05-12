@@ -147,7 +147,7 @@ public class TableViewController implements Observer {
 	 * @param button
 	 */
 	public void tableButtonHandler(Button button) {
-		button.setUnderline(false);
+		button.setStyle(null);
 		ScreenController.switchWindow((Stage) button.getScene().getWindow(),
 				new OrderView(button.getText(), foodname, drinkname));
 	}
@@ -348,21 +348,21 @@ public class TableViewController implements Observer {
 		List<Integer> tmp = dbo.getChanges();
 		for (int i = 0; i < tmp.size(); i++) {
 			if (tmp.get(i) == 1) {
-				button01.setUnderline(true);
+				button01.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
 			} else if (tmp.get(i) == 2) {
-				button02.setText("Income");
+				button02.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
 			} else if (tmp.get(i) == 3) {
-				button03.setText("Income");
+				button03.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
 			} else if (tmp.get(i) == 4) {
-				button04.setText("Income");
+				button04.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
 			} else if (tmp.get(i) == 5) {
-				button05.setText("Income");
+				button05.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
 			} else if (tmp.get(i) == 6) {
-				button06.setText("Income");
+				button06.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
 			} else if (tmp.get(i) == 7) {
-				button07.setText("Income");
+				button07.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
 			} else if (tmp.get(i) == 8) {
-				button08.setText("Income");
+				button08.setStyle("-fx-border-color: #ff0000; -fx-border-width: 5px;");
 			}
 		}
 	}
