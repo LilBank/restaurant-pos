@@ -712,7 +712,31 @@ public class DBManager {
 			}
 		}
 	}
-
+	/**
+	 * Method for removing image data from the database
+	 * 
+	 * @param foodtable
+	 * @param Menu
+	 */
+	public void removeUserDB(Menu user) {
+		sqlCommand = "DELETE FROM " + "User" + " WHERE name = ?";
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			stmt.setString(1, user.getName());
+			stmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	/**
 	 * Method for removing image data from the database
 	 * 
