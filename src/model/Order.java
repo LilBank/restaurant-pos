@@ -134,18 +134,31 @@ public class Order extends Observable {
 		return tmpTotal;
 	}
 
-	// during in test
+	/**
+	 * Getting the orders from the wanted table in database.
+	 * 
+	 * @param tableNumber
+	 * @return orders from database
+	 */
 	public Map<Menu, Integer> getDBOrders(String tableNumber) {
 		refreshDBOrders(tableNumber);
 		return ordersTmp;
 	}
 
+	/*
+	 * Private method for getting orders from the wanted table in the database.
+	 */
 	private void refreshDBOrders(String tableNumber) {
 		ordersTmp = dbm.getDBOrders(tableNumber);
-		ordersTmp.forEach((k, v) -> System.out.printf("%s %d\n", k.getName(), v));
 	}
 
-	// during in test
+	/**
+	 * Method for getting the Menu object with String receive.
+	 * 
+	 * @param foodName
+	 *            as String
+	 * @return Menu object
+	 */
 	public Menu getMenu(String foodName) {
 		Menu menu = null;
 		for (Map.Entry<Menu, Integer> order : ordersTmp.entrySet()) {

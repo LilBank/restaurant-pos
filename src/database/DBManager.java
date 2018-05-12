@@ -424,6 +424,7 @@ public class DBManager {
 	public Map<Menu, Integer> getDBOrders(String tableNumber) {
 		// name variable temp for temporary
 		Map<Menu, Integer> temp = new LinkedHashMap<>();
+		Map<Menu, Integer> temp2 = new LinkedHashMap<>();
 		String tabletmp = "table" + tableNumber;
 		sqlCommand = "SELECT * FROM " + tabletmp;
 		PreparedStatement stmt = null;
@@ -442,8 +443,8 @@ public class DBManager {
 				}
 			}
 			for (Map.Entry<Menu, Integer> x : temp.entrySet()) {
-				if (x.getValue() <= 0)
-					temp.remove(x.getKey());
+				if (x.getValue() > 0)
+					temp2.put(x.getKey(), x.getValue());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -455,7 +456,7 @@ public class DBManager {
 				e.printStackTrace();
 			}
 		}
-		return temp;
+		return temp2;
 	}
 
 	/**
@@ -517,7 +518,14 @@ public class DBManager {
 		}
 	}
 
-	// during in test
+	/**
+	 * Boolean method to check whether the requested menu exist in the table
+	 * database or not.
+	 * 
+	 * @param foodName
+	 * @param tableNumber
+	 * @return true if the order exist, false if not
+	 */
 	public boolean checkDBFood(String foodName, String tableNumber) {
 		String tabletmp = "table" + tableNumber;
 		sqlCommand = "SELECT * FROM " + tabletmp + " WHERE name = ?";
@@ -544,9 +552,16 @@ public class DBManager {
 		return false;
 	}
 
-	// during in test
-	public void insertTo(String foodtable, Menu menu) {
-		sqlCommand = "INSERT INTO `" + foodtable + "` (`name`, `price`, `quantity`) VALUES (?, ?, ?)";
+	/**
+	 * Method for inserting data directly to the database without using the
+	 * model.
+	 * 
+	 * @param tableNumber
+	 * @param Menu
+	 *            wish to remove
+	 */
+	public void insertTo(String tableNumber, Menu menu) {
+		sqlCommand = "INSERT INTO `" + tableNumber + "` (`name`, `price`, `quantity`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;
 		try {
 			stmt = connection.prepareStatement(sqlCommand);

@@ -220,7 +220,9 @@ public class OrderViewController implements java.util.Observer {
 		drinks = arg2;
 	}
 
-	// use another map
+	/*
+	 * Private method for removeButtonHandler. This method do all the jobs.
+	 */
 	private void confirmRemove() {
 		Map<Menu, Integer> temp = o.getDBOrders(tablenumber);
 		List<String> temp2 = new ArrayList<>();
@@ -252,7 +254,9 @@ public class OrderViewController implements java.util.Observer {
 		setDisplay();
 	}
 
-	// set the current total
+	/*
+	 * set the current total
+	 */
 	private void setTotal() {
 		String temp = "" + (o.getTotal() + tmpTotal);
 		total.setText(temp);
@@ -266,7 +270,9 @@ public class OrderViewController implements java.util.Observer {
 		tmpTotal = o.getTotal(map);
 	}
 
-	// set the display properties
+	/*
+	 * set the display properties
+	 */
 	private void setDisplayProp() {
 		display.setDisable(true);
 		display.setText(tablenumber);
@@ -275,14 +281,18 @@ public class OrderViewController implements java.util.Observer {
 		setTotal();
 	}
 
-	// set the top display in the UI
+	/*
+	 * set the top display in the UI
+	 */
 	private void setDisplay() {
 		String text = o.orderToText(o.getOrders());
 		display.setText(text);
 		setTotal();
 	}
 
-	// set the lower display in the UI
+	/*
+	 * set the lower display in the UI
+	 */
 	private void setDisplay2() {
 		Map<Menu, Integer> temp = o.getDBOrders(tablenumber);
 		String text = o.orderToText(temp);
