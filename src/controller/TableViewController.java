@@ -216,7 +216,16 @@ public class TableViewController {
 				dialog.setContentText("table:");
 				Optional<String> result3 = dialog3.showAndWait();
 				if (result3.isPresent()) {
-
+					if (DBManager.getInstance().checkTableData(result3.get())) {
+						DBManager.getInstance().deleteTable(result3.get());
+						DBManager.getInstance().removeTableinTables(result3.get());
+						createButton();
+						alert = new Alert(AlertType.WARNING, "Table removed!", ButtonType.OK);
+						alert.show();
+					} else {
+						alert = new Alert(AlertType.ERROR, "Table still contain orders!", ButtonType.OK);
+						alert.show();
+					}
 				}
 			}
 		}

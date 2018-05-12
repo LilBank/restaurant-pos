@@ -28,7 +28,7 @@ import util.PropertyManager;
  */
 public class DBManager {
 	// for single instantiation
-	private static PropertyManager pm = PropertyManager.getInstance();
+	private PropertyManager pm = PropertyManager.getInstance();
 	// singleton instance of DBManager
 	private static DBManager instance;
 	private Connection connection;
@@ -265,32 +265,6 @@ public class DBManager {
 			stmt.setInt(2, price);
 			stmt.setString(3, url);
 			stmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (stmt != null) {
-					stmt.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	/**
-	 * Method for removing image data from the database
-	 * 
-	 * @param foodtable
-	 * @param Menu
-	 */
-	public void removeImage(String foodtable, Menu item) {
-		sqlCommand = "DELETE FROM " + foodtable + " WHERE name = ?";
-		PreparedStatement stmt = null;
-		try {
-			stmt = connection.prepareStatement(sqlCommand);
-			stmt.setString(1, item.getName());
-			stmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -587,7 +561,7 @@ public class DBManager {
 
 	// during in test
 	public void insertTableNumber(String tableNumber) {
-		sqlCommand = "INSERT INTO `Tables` (`table`) VALUES (?)";
+		sqlCommand = "INSERT INTO `Tables` (`number`) VALUES (?)";
 		PreparedStatement stmt = null;
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
@@ -616,7 +590,7 @@ public class DBManager {
 			stmt = connection.prepareStatement(sqlCommand);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				String table = rs.getString("table");
+				String table = rs.getString("number");
 				tables.add(table);
 			}
 
@@ -635,6 +609,7 @@ public class DBManager {
 
 	// during in test
 	public boolean checkTableData(String tableNumber) {
+		int value = 1;
 		String tabletmp = "table" + tableNumber;
 		sqlCommand = "SELECT * FROM " + tabletmp;
 		PreparedStatement stmt = null;
@@ -657,6 +632,80 @@ public class DBManager {
 				e.printStackTrace();
 			}
 		}
+		Map<Menu, Integer> temp = getDBOrders(tableNumber);
+		for (Map.Entry<Menu, Integer> tmp : temp.entrySet()) {
+			int tmpValue = tmp.getValue();
+			value += tmpValue;
+		}
+		if (value == 1) {
+			return true;
+		}
 		return false;
+	}
+
+	// during in test
+	public void deleteTable(String tableNumber) {
+		String table = "table" + tableNumber;
+		sqlCommand = "DROP TABLE " + table;
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			stmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void removeTableinTables(String tableNumber) {
+		sqlCommand = "DELETE FROM Tables WHERE number = ?";
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			stmt.setString(1, tableNumber);
+			stmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	/**
+	 * Method for removing image data from the database
+	 * 
+	 * @param foodtable
+	 * @param Menu
+	 */
+	public void removeImage(String foodtable, Menu item) {
+		sqlCommand = "DELETE FROM " + foodtable + " WHERE name = ?";
+		PreparedStatement stmt = null;
+		try {
+			stmt = connection.prepareStatement(sqlCommand);
+			stmt.setString(1, item.getName());
+			stmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
