@@ -448,12 +448,12 @@ public class DBManager {
 	/**
 	 * Method for clearing all records in the wanted database table.
 	 * 
-	 * @param tablenumber
+	 * @param table
+	 *            requested
 	 */
-	public void clearTable(String tableNumber) {
+	public void clearTable(String table) {
 		PreparedStatement stmt = null;
-		String tabletmp = "table" + tableNumber;
-		sqlCommand = "DELETE FROM " + tabletmp;
+		sqlCommand = "DELETE FROM " + table;
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
 			stmt.execute();

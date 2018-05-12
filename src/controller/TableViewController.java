@@ -66,6 +66,8 @@ public class TableViewController {
 	@FXML
 	private Button manageTable;
 	@FXML
+	private Button endday;
+	@FXML
 	private FlowPane buttonPane;
 	@FXML
 	Alert alert;
@@ -140,6 +142,7 @@ public class TableViewController {
 	 * Handler for Edit image button. When event receive the Edit menu scene is
 	 * shown.
 	 * 
+	 * @param event
 	 */
 	public void editMenuButtonHandler(MouseEvent event) {
 		ScreenController.switchWindow((Stage) editMenu.getScene().getWindow(), new MGEditMenu());
@@ -149,6 +152,7 @@ public class TableViewController {
 	 * Handler for Manage user button. When event receive the Manage menu scene
 	 * is shown.
 	 * 
+	 * @param event
 	 */
 	public void manageUserButtonHandler(MouseEvent event) {
 		ScreenController.switchWindow((Stage) manageUser.getScene().getWindow(), new ManageUser());
@@ -157,6 +161,7 @@ public class TableViewController {
 	/**
 	 * Handler for logout button. When event receive the login scene is shown.
 	 * 
+	 * @param event
 	 */
 	public void logoutButtonHandler(ActionEvent event) {
 		alert = new Alert(AlertType.CONFIRMATION, "Are you sure you want to log out ?", ButtonType.OK);
@@ -167,7 +172,12 @@ public class TableViewController {
 			}
 		});
 	}
-	
+
+	/**
+	 * Handler for summary button. When event receive summary dialod is shown.
+	 * 
+	 * @param event
+	 */
 	public void sumButtonHandler(MouseEvent event) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Summary");
@@ -177,9 +187,11 @@ public class TableViewController {
 		alert.show();
 
 	}
-	
+
 	/**
-	 * Handler for Manage Table button. When 
+	 * Handler for Manage Table button. When event receive managing table dialog
+	 * is swhown.
+	 * 
 	 * @param event
 	 */
 	public void manageTableButtonHandler(MouseEvent event) {
@@ -247,6 +259,25 @@ public class TableViewController {
 		}
 	}
 
+	/**
+	 * Handler for end day button. When event receive all data in summary is
+	 * cleared and the program is close.
+	 * 
+	 * @param event
+	 */
+	public void endButtonHandler(MouseEvent event) {
+		alert = new Alert(AlertType.WARNING, "Are you sure to ENDDAY, this operation can't be undone?", ButtonType.OK);
+		alert.showAndWait().ifPresent(response -> {
+			if (response == ButtonType.OK) {
+				dbm.clearTable("Summary");
+				System.exit(0);
+			}
+		});
+	}
+
+	/*
+	 * Private method for creating buttons with List<String> from database.
+	 */
 	private void createButton() {
 		buttonPane.getChildren().clear();
 		List<String> temp = DBManager.getInstance().getDBTables();
