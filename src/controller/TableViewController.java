@@ -211,6 +211,8 @@ public class TableViewController {
 							DBManager.getInstance().insertTableNumber(result2.get());
 							DBManager.getInstance().createTable(result2.get());
 							createButton();
+							alert = new Alert(AlertType.INFORMATION, "Table created!", ButtonType.OK);
+							alert.show();
 						}
 					} catch (NumberFormatException ex) {
 						alert = new Alert(AlertType.ERROR, "Please input numbers only!", ButtonType.OK);
