@@ -7,10 +7,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import application.Login;
 import application.MGEditMenu;
 import application.ManageUser;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -76,8 +79,11 @@ public class TableViewController {
 	private static DBManager dbm = DBManager.getInstance();
 	private static List<Menu> foodname = dbm.getFoodname("Foods");
 	private static List<Menu> drinkname = dbm.getFoodname("Drinks");
-
+	private static Timer timer = new Timer();
 	private boolean admin = um.isAdmin();
+	static{
+		runTask();
+	}
 
 	@FXML
 	public void initialize() {
@@ -306,5 +312,19 @@ public class TableViewController {
 			});
 			buttonPane.getChildren().add(button);
 		}
+	}
+
+	public static void runTask() {
+		Runnable runner = new Runnable() {
+			public void run() {
+				System.out.println("testing");
+			}
+		};
+		TimerTask task = new TimerTask() {
+			public void run() {
+				Platform.runLater(runner);
+			}
+		};
+		timer.schedule(task, 0, 1000);
 	}
 }
