@@ -183,7 +183,12 @@ public class DBManager {
 		return true;
 	}
 
-	// during in test
+	/**
+	 * Method for getting all the food urls from the database.
+	 * 
+	 * @param table
+	 * @return List<String> of food urls
+	 */
 	public List<String> getFoodUrl(String table) {
 		List<String> temp = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + table;
@@ -328,7 +333,11 @@ public class DBManager {
 		}
 	}
 
-	// during in test
+	/**
+	 * Method for getting list of users from the database.
+	 * 
+	 * @return List<User> of users
+	 */
 	public List<User> getDBUser() {
 		// change to List<Menu>
 		List<User> temp = new ArrayList<>();
@@ -559,7 +568,11 @@ public class DBManager {
 		}
 	}
 
-	// during in test
+	/**
+	 * Method for inserting tablenumber into 'Tables'.
+	 * 
+	 * @param tableNumber
+	 */
 	public void insertTableNumber(String tableNumber) {
 		sqlCommand = "INSERT INTO `Tables` (`number`) VALUES (?)";
 		PreparedStatement stmt = null;
@@ -580,7 +593,11 @@ public class DBManager {
 		}
 	}
 
-	// during in test
+	/**
+	 * Method for getting all number of tables from database.
+	 * 
+	 * @return List<String> of tables that is created
+	 */
 	public List<String> getDBTables() {
 		// name variable temp for temporary
 		List<String> tables = new ArrayList<>();
@@ -607,7 +624,12 @@ public class DBManager {
 		return tables;
 	}
 
-	// during in test
+	/**
+	 * Method for checking is there is orders in the table.
+	 * 
+	 * @param tableNumber
+	 * @return true if table is empty, false if not
+	 */
 	public boolean checkTableData(String tableNumber) {
 		int value = 1;
 		String tabletmp = "table" + tableNumber;
@@ -616,7 +638,6 @@ public class DBManager {
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
 			ResultSet rs = stmt.executeQuery();
-			// table is empty
 			if (!rs.next()) {
 				return true;
 			}
@@ -643,7 +664,11 @@ public class DBManager {
 		return false;
 	}
 
-	// during in test
+	/**
+	 * Method for deleting requested table in database.
+	 * 
+	 * @param tableNumber
+	 */
 	public void deleteTable(String tableNumber) {
 		String table = "table" + tableNumber;
 		sqlCommand = "DROP TABLE " + table;
@@ -663,6 +688,11 @@ public class DBManager {
 		}
 	}
 
+	/**
+	 * Method for removing requested tablenumber from 'Tables'.
+	 * 
+	 * @param tableNumber
+	 */
 	public void removeTableinTables(String tableNumber) {
 		sqlCommand = "DELETE FROM Tables WHERE number = ?";
 		PreparedStatement stmt = null;
