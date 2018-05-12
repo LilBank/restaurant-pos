@@ -441,6 +441,10 @@ public class DBManager {
 					temp.put(menu, temp.get(menu) + qty);
 				}
 			}
+			for (Map.Entry<Menu, Integer> x : temp.entrySet()) {
+				if (x.getValue() <= 0)
+					temp.remove(x.getKey());
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

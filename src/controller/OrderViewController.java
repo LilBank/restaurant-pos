@@ -63,8 +63,6 @@ public class OrderViewController implements java.util.Observer {
 	@FXML
 	private Alert alert;
 
-	private Button tmpButton;
-
 	private static String tablenumber;
 
 	// for single instantiation
@@ -73,6 +71,7 @@ public class OrderViewController implements java.util.Observer {
 	// instance of classes
 	private static UserManager um = UserManager.getInstance();
 	private static Order o = Order.getInstance();
+	private static DBManager dbm = DBManager.getInstance();
 
 	private boolean admin = um.isAdmin();
 	private int tmpTotal;
@@ -120,7 +119,6 @@ public class OrderViewController implements java.util.Observer {
 				@Override
 				public void handle(MouseEvent event) {
 					o.addOrder((Menu) button.getUserData());
-					tmpButton = button;
 				}
 			});
 			pane.getChildren().add(button);
@@ -144,11 +142,9 @@ public class OrderViewController implements java.util.Observer {
 			alert = new Alert(AlertType.CONFIRMATION, "Are you sure to order?", ButtonType.YES, ButtonType.NO);
 			alert.showAndWait().ifPresent(response -> {
 				if (response == ButtonType.YES) {
-					Map<Menu, Integer> temp = o.getOrders();
-					o.orderToDB(tablenumber, temp);
-					o.clearOrders();
+					dbm.orderToDB(tablenumber, o.getOrders());
 					setDisplay2();
-					display.setText("");
+					o.clearOrders();
 				}
 			});
 		}
@@ -162,8 +158,6 @@ public class OrderViewController implements java.util.Observer {
 	 */
 	public void clearButtonHandler(MouseEvent event) {
 		o.clearOrders();
-		setTotal();
-		display.setText("");
 	}
 
 	/**
@@ -171,6 +165,7 @@ public class OrderViewController implements java.util.Observer {
 	 * 
 	 */
 	public void backButtonHandler(ActionEvent event) {
+		o.clearOrders();
 		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new Tableview());
 	}
 
@@ -179,6 +174,7 @@ public class OrderViewController implements java.util.Observer {
 	 * 
 	 */
 	public void billButtonHandler(MouseEvent event) {
+		o.clearOrders();
 		String total = tmpTotal + "";
 		ScreenController.switchWindow((Stage) back.getScene().getWindow(), new CheckBill(total, tablenumber));
 	}
@@ -223,13 +219,12 @@ public class OrderViewController implements java.util.Observer {
 		foods = arg;
 		drinks = arg2;
 	}
-	
-	//use another map
+
+	// use another map
 	private void confirmRemove() {
-		o.clearOrders();
-		o.refreshDBOrders(tablenumber);
+		Map<Menu, Integer> temp = o.getDBOrders(tablenumber);
 		List<String> temp2 = new ArrayList<>();
-		o.getDBOrders(tablenumber).forEach((k, v) -> temp2.add(k.getName()));
+		temp.forEach((k, v) -> temp2.add(k.getName()));
 		ChoiceDialog<String> dialog = new ChoiceDialog<>("SELECT", temp2);
 		dialog.setTitle("Remove");
 		dialog.setHeaderText("Please select an order wish to remove");
@@ -239,10 +234,10 @@ public class OrderViewController implements java.util.Observer {
 			if (result.get().equals("SELECT")) {
 				alert = new Alert(AlertType.ERROR, "Please select something!", ButtonType.OK);
 				alert.show();
-			} else if (!o.checkDBFood(result.get(), tablenumber)) {
+			} else if (!dbm.checkDBFood(result.get(), tablenumber)) {
 				alert = new Alert(AlertType.ERROR, "Food requested does not exist!", ButtonType.OK);
 				alert.show();
-			} else if (o.checkDBFood(result.get(), tablenumber)) {
+			} else if (dbm.checkDBFood(result.get(), tablenumber)) {
 				alert = new Alert(AlertType.INFORMATION, result.get() + " is removed by 1.", ButtonType.OK);
 				alert.showAndWait().ifPresent(response -> {
 					if (response == ButtonType.OK) {
@@ -253,8 +248,8 @@ public class OrderViewController implements java.util.Observer {
 				});
 			}
 		}
-		o.clearOrders();
 		setDisplay2();
+		setDisplay();
 	}
 
 	// set the current total
@@ -293,6 +288,6 @@ public class OrderViewController implements java.util.Observer {
 		String text = o.orderToText(temp);
 		display2.setText(text);
 		setTempTotal(temp);
-		o.clearOrders();
+		o.clearOrdersTmp();
 	}
 }

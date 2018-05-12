@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ConcurrentModificationException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Observable;
@@ -17,6 +18,8 @@ public class Order extends Observable {
 
 	// current orders
 	private Map<Menu, Integer> orders;
+	// orders from database
+	private Map<Menu, Integer> ordersTmp;
 	// singleton instance for Order
 	private static Order instance;
 	// for lambda expression
@@ -83,6 +86,11 @@ public class Order extends Observable {
 		notifyObservers();
 	}
 
+	// during in test
+	public void clearOrdersTmp() {
+		ordersTmp.clear();
+	}
+
 	/**
 	 * Method for getting all orders from parameter and return them as group of
 	 * text in lines for further use.
@@ -126,62 +134,25 @@ public class Order extends Observable {
 		return tmpTotal;
 	}
 
-	// for testing
-	public void printOrders() {
-		orders.forEach((k, v) -> System.out.println("key: " + k.getName() + k.getPrice() + " value:" + v));
-	}
-
-	/**
-	 * Using DBManager to get list of orders from the database.
-	 * 
-	 * @param tablenumber
-	 *            wanted to get the list
-	 * @return list of orders in Map<K,V>
-	 */
-	public Map<Menu, Integer> getDBOrders(String tableNumber) {
-		return dbm.getDBOrders(tableNumber);
-	}
-
 	// during in test
-	public void refreshDBOrders(String tableNumber) {
-		orders = this.getDBOrders(tableNumber);
+	public Map<Menu, Integer> getDBOrders(String tableNumber) {
+		refreshDBOrders(tableNumber);
+		return ordersTmp;
 	}
 
-	/**
-	 * Using DBManager to insert current orders into the requested table in
-	 * database.
-	 * 
-	 * @param tablenumber
-	 *            wanted to insert
-	 * @param Map<Menu,Integer>
-	 *            of orders
-	 */
-	public void orderToDB(String tableNumber, Map<Menu, Integer> map) {
-		dbm.orderToDB(tableNumber, map);
-	}
-
-	/**
-	 * Using DBManager to orders in database whether the requested food exist or
-	 * not.
-	 * 
-	 * @param foodName
-	 * @param tableNumber
-	 * @return true if food exist, false if not
-	 */
-	public boolean checkDBFood(String foodName, String tableNumber) {
-		return dbm.checkDBFood(foodName, tableNumber);
+	private void refreshDBOrders(String tableNumber) {
+		ordersTmp = dbm.getDBOrders(tableNumber);
+		ordersTmp.forEach((k, v) -> System.out.printf("%s %d\n", k.getName(), v));
 	}
 
 	// during in test
 	public Menu getMenu(String foodName) {
 		Menu menu = null;
-		for (Map.Entry<Menu, Integer> order : orders.entrySet()) {
-			System.out.println(order.getKey().getName());
+		for (Map.Entry<Menu, Integer> order : ordersTmp.entrySet()) {
 			if (order.getKey().getName().equals(foodName)) {
 				menu = order.getKey();
 			}
 		}
-		System.out.println(menu.getName());
 		return menu;
 	}
 }
