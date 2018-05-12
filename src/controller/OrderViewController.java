@@ -87,8 +87,8 @@ public class OrderViewController implements java.util.Observer {
 	}
 
 	/**
-	 * Overridden method from java.util.Observer to set the display everytime a
-	 * menu button is pressed.
+	 * Overridden method from java.util.Observer to set the display everytime a menu
+	 * button is pressed.
 	 */
 	@Override
 	public void update(Observable observable, Object arg) {
@@ -96,8 +96,7 @@ public class OrderViewController implements java.util.Observer {
 	}
 
 	/**
-	 * Private method for the controller to create and add buttons to the
-	 * container.
+	 * Private method for the controller to create and add buttons to the container.
 	 * 
 	 * @param List<Menu>
 	 *            any menu list
@@ -129,8 +128,7 @@ public class OrderViewController implements java.util.Observer {
 		if (o.getOrders().isEmpty()) {
 			alert = new Alert(AlertType.ERROR, "Must order atleast one item!", ButtonType.OK);
 			alert.show();
-		}
-		else {
+		} else {
 			alert = new Alert(AlertType.CONFIRMATION, "Are you sure to order?", ButtonType.YES, ButtonType.NO);
 			alert.showAndWait().ifPresent(response -> {
 				if (response == ButtonType.YES) {
@@ -172,8 +170,7 @@ public class OrderViewController implements java.util.Observer {
 	}
 
 	/**
-	 * Handler for logout button. When event receive the Start up scene is
-	 * shown.
+	 * Handler for logout button. When event receive the Start up scene is shown.
 	 * 
 	 */
 	public void exitButtonHandler(ActionEvent event) {
@@ -181,8 +178,8 @@ public class OrderViewController implements java.util.Observer {
 	}
 
 	/**
-	 * Handler for remove button. When event receive, the selected menu is
-	 * removed out of list by 1.
+	 * Handler for remove button. When event receive, the selected menu is removed
+	 * out of list by 1.
 	 * 
 	 * @param event
 	 */
@@ -191,8 +188,8 @@ public class OrderViewController implements java.util.Observer {
 	}
 
 	/**
-	 * Static method for scene before opening this scene to get the button text
-	 * and set as table number.
+	 * Static method for scene before opening this scene to get the button text and
+	 * set as table number.
 	 * 
 	 * @param buttonText
 	 */
@@ -201,8 +198,8 @@ public class OrderViewController implements java.util.Observer {
 	}
 
 	/**
-	 * Static method for scene before opening this scene to get list of menu
-	 * names and set the List<Menu> attribute above.
+	 * Static method for scene before opening this scene to get list of menu names
+	 * and set the List<Menu> attribute above.
 	 * 
 	 * @param List
 	 *            of menu names List<Menu>
@@ -246,24 +243,23 @@ public class OrderViewController implements java.util.Observer {
 		setDisplay();
 	}
 
-	/*
-	 * set the current total
+	/**
+	 * Set the current total
 	 */
 	private void setTotal() {
 		String temp = "" + (o.getTotal() + tmpTotal);
 		total.setText(temp);
 	}
 
-	/*
-	 * set the temporary total attribute which is use to display the current
-	 * total
+	/**
+	 * Set the temporary total attribute which is use to display the current total
 	 */
 	private void setTempTotal(Map<Menu, Integer> map) {
 		tmpTotal = o.getTotal(map);
 	}
 
-	/*
-	 * set the display properties
+	/**
+	 * Set the display properties
 	 */
 	private void setDisplayProp() {
 		display.setDisable(true);
@@ -273,8 +269,8 @@ public class OrderViewController implements java.util.Observer {
 		setTotal();
 	}
 
-	/*
-	 * set the top display in the UI
+	/**
+	 * Set the top display in the UI
 	 */
 	private void setDisplay() {
 		String text = o.orderToText(o.getOrders());
@@ -282,8 +278,8 @@ public class OrderViewController implements java.util.Observer {
 		setTotal();
 	}
 
-	/*
-	 * set the lower display in the UI
+	/**
+	 * Set the lower display in the UI
 	 */
 	private void setDisplay2() {
 		Map<Menu, Integer> temp = o.getDBOrders(tablenumber);

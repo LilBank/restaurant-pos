@@ -713,10 +713,9 @@ public class DBManager {
 		}
 	}
 	/**
-	 * Method for removing image data from the database
+	 * Method for removing user from the database
 	 * 
-	 * @param foodtable
-	 * @param Menu
+	 * @param User
 	 */
 	public void removeUserDB(User user) {
 		sqlCommand = "DELETE FROM " + "User" + " WHERE name = ?";

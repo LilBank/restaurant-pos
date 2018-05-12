@@ -102,10 +102,11 @@ public class CheckBillController {
 		sumMoney(Integer.parseInt(one.getText()));
 	}
 
-	/*
+	/**
 	 * A method for increasing the customer's money according to the button
 	 * pressed.
 	 * 
+	 * @param number to sum
 	 */
 	private void sumMoney(int number) {
 		this.csMoney += number;

@@ -57,6 +57,7 @@ public class ManageUserController {
 		alert.showAndWait().ifPresent(response -> {
 			if (response == ButtonType.OK) {
 				listProperty.remove(listView.getSelectionModel().getSelectedItem());
+				
 			}
 		});
 
