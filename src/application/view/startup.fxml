@@ -14,22 +14,22 @@
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
          </padding>
          <children>
-            <Label layoutX="238.0" layoutY="14.0" prefHeight="61.0" prefWidth="131.0" text="Start Up">
+            <Label layoutX="229.0" layoutY="25.0" prefHeight="71.0" prefWidth="150.0" text="Start Up">
                <font>
-                  <Font name="MS Gothic" size="30.0" />
+                  <Font name="MS Gothic" size="37.0" />
                </font>
             </Label>
-            <Button fx:id="login" defaultButton="true" layoutX="79.0" layoutY="146.0" mnemonicParsing="false" onMouseClicked="#loginButtonHandler" prefHeight="177.0" prefWidth="185.0" style="-fx-background-radius: 100;" text="Login">
+            <Button fx:id="login" defaultButton="true" layoutX="79.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#loginButtonHandler" prefHeight="177.0" prefWidth="185.0" style="-fx-background-radius: 100;" text="Login">
                <font>
-                  <Font name="MS Gothic" size="24.0" />
+                  <Font name="MS Gothic" size="33.0" />
                </font>
             </Button>
-            <Button fx:id="signUp" layoutX="343.0" layoutY="146.0" mnemonicParsing="false" onMouseClicked="#signUpButtonHandler" prefHeight="177.0" prefWidth="185.0" style="-fx-background-radius: 100;" text="Sign Up">
+            <Button fx:id="signUp" layoutX="343.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#signUpButtonHandler" prefHeight="177.0" prefWidth="185.0" style="-fx-background-radius: 100;" text="Sign Up">
                <font>
-                  <Font name="MS Gothic" size="24.0" />
+                  <Font name="MS Gothic" size="33.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" layoutX="79.0" layoutY="88.0" prefHeight="26.0" prefWidth="449.0" text="_____________________________________________________________________________________________________________" textAlignment="CENTER">
+            <Label alignment="CENTER" layoutX="79.0" layoutY="96.0" prefHeight="26.0" prefWidth="449.0" text="_____________________________________________________________________________________________________________" textAlignment="CENTER">
                <font>
                   <Font size="9.0" />
                </font>
