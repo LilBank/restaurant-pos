@@ -30,33 +30,34 @@ With security, every employee must sign up and login in work so we could classif
 ## Running 
 
 ### Login ###
+
 Manager mode or Employee mode is shown depending on user's access level.
 
 ![capture2](https://user-images.githubusercontent.com/32285706/39966793-c68a3bb6-56db-11e8-97f7-b00e6bbba7f1.JPG)
 
 ### Manager Mode ###
 
-Be able to access to the Table View.
+Manager has more functions than Employee
 
 ![capture10](https://user-images.githubusercontent.com/32285706/39966931-bf2a65d8-56dd-11e8-82cc-1a850606df27.JPG)
 
-Be able to edit menu 
+Edit Menu Function 
 
 ![capture5](https://user-images.githubusercontent.com/32285706/39966943-e488732e-56dd-11e8-9967-cd560474b8dd.JPG)
 
-Be able to remove user
+Remove User Function
 
 ![capture6](https://user-images.githubusercontent.com/32285706/39966944-fbb5626e-56dd-11e8-8f55-c649f61c2e2b.JPG)
 
-Be able to edit table
+Manage Table Function
 
 ![capture7](https://user-images.githubusercontent.com/32285706/39966949-12c47b70-56de-11e8-8744-4e573586758f.JPG)
 
-Be able to order foods and drinks
+Order Foods and Drinks Function
 
 ![capture12](https://user-images.githubusercontent.com/32285706/39966988-9a5bb882-56de-11e8-9030-0ed44f94f802.JPG)
 
-Be able to see summary
+Summary Function
 
 ![capture9](https://user-images.githubusercontent.com/32285706/39966954-24e2e670-56de-11e8-8aeb-20c8b2349605.JPG)
 
@@ -68,7 +69,7 @@ Sign up for new employee.
 
 ![capture3](https://user-images.githubusercontent.com/32285706/39966796-c8e6b934-56db-11e8-9ac6-a340bc0ded63.JPG)
 
-Be able to access to the Table View. (Same as manager but less function) 
+Employee is able to access to the Table View. (Same as manager but less function) 
 
 ![capture8](https://user-images.githubusercontent.com/32285706/39966873-e5d7eb52-56dc-11e8-86e9-18ce9b4b2fc7.JPG)
 
