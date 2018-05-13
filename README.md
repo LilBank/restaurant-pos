@@ -29,6 +29,18 @@ With security, every employee must sign up and login in work so we could classif
 
 ## Running 
 
+### Manager Mode ###
+
+### Employee Mode ###
+
+### Customer Mode ###
+
+#### Login ####
+
+![capture1](https://user-images.githubusercontent.com/32285706/39966645-922bc1f2-56d9-11e8-8eb0-6c3d21f27775.JPG)
+
+#### User Interface ####
+![capture](https://user-images.githubusercontent.com/32285706/39966594-ceb0a2a6-56d8-11e8-8369-76cb5076bd48.JPG)
 
 ## Packages
 
@@ -49,17 +61,23 @@ There are some design and technology used.
 
 ## Technology
 
-#### Map Interface ####
+### Map Interface ###
 
 *Interface Map<K,V>* ( K - the type of keys maintained, V - the type of mapped values )
 
 **Concept:** If you call a key, you get a value. But the value does not return the key.
 
-#### jBCrypt ####
+### Database ###
+
+*Database* is a storage of data, where user can access the data any time and any where using  
+
+**Usability:** Both Customer's and Manager's program can access the same data .
+
+### jBCrypt ###
 
 *jBCrypt* is a java used for hashing password. With high quality of algorithm, it prevents the hacker from hacking the password in the database. Users can use the method **checkpw( your password, password in database)** to check if the password matches or not.
 
-**Additional: ** Try using PreparedStatement with wildcard (?) for values 
+**Additional:** Try using PreparedStatement with wildcard (?) for preventing SQL Injection 
 
 	sqlCommand = "SELECT * FROM User WHERE name = ?";
 		PreparedStatement stmt = connection.prepareStatement(sqlCommand);
