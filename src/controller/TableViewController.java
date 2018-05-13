@@ -222,8 +222,8 @@ public class TableViewController implements Observer {
 	 */
 	public void manageTableButtonHandler(MouseEvent event) {
 		String[] choices = { "Add table", "Remove table" };
-		List<String> temp = new ArrayList<>(Arrays.asList(choices));
-		ChoiceDialog<String> dialog = new ChoiceDialog<>("SELECT", temp);
+		List<String> option = new ArrayList<>(Arrays.asList(choices));
+		ChoiceDialog<String> dialog = new ChoiceDialog<>("SELECT", option);
 		dialog.setTitle("Manage Table");
 		dialog.setHeaderText("Please select an operation");
 		dialog.setContentText("operation:");
@@ -238,13 +238,13 @@ public class TableViewController implements Observer {
 				Optional<String> result2 = dialog2.showAndWait();
 				if (result2.isPresent()) {
 					try {
-						int tmp = Integer.parseInt(result2.get());
-						if (tmp < 8 || tmp >= 100) {
+						int input = Integer.parseInt(result2.get());
+						if (input < 8 || input >= 100) {
 							alert = new Alert(AlertType.ERROR, "Please input numbers between 8 and 99 only!",
 									ButtonType.OK);
 							alert.show();
 							return;
-						} else if (dbm.checkTable(tmp + "")) {
+						} else if (dbm.checkTable(input + "")) {
 							alert = new Alert(AlertType.ERROR, "Table exist already!", ButtonType.OK);
 							alert.show();
 							return;

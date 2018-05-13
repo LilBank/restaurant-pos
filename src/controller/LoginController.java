@@ -36,7 +36,7 @@ public class LoginController {
 	private PasswordField password;
 	@FXML
 	private Alert alert;
-	
+
 	private static DBManager dbm = DBManager.getInstance();
 
 	/**
@@ -51,48 +51,43 @@ public class LoginController {
 
 	/**
 	 * Method for handling login button. When event receive the implementation
-	 * below is done. Login when the username and password match .
+	 * below is done. Only login when the username and password match .
 	 * 
 	 * @param event
 	 */
 	public void loginButtonHandler(ActionEvent event) {
 		if (username.getText().equals("")) {
-			alert = new Alert(AlertType.ERROR, "Username is empty.", ButtonType.OK);
-			alert.setHeaderText("Inputfield Error");
-			alert.show();
-		}
-		else if (password.getText().equals("")) {
-			alert = new Alert(AlertType.ERROR, "Password is empty!", ButtonType.OK);
-			alert.setHeaderText("Inputfield Error");
-			alert.show();
-		}
-		else {
+			showAlert(AlertType.ERROR, "Username is empty!", "Inputfield Error");
+		} else if (password.getText().equals("")) {
+			showAlert(AlertType.ERROR, "Password is empty!", "Inputfield Error");
+		} else {
 			int accessLevel = dbm.login(username.getText(), password.getText());
 			if (accessLevel == 2) {
-				alert = new Alert(AlertType.NONE, "Welcome manager: " + username.getText(), ButtonType.OK);
-				alert.setHeaderText("Login Success");
-				alert.show();
+				showAlert(AlertType.NONE, "Welcome manager " + username.getText(), "Login Success");
 				UserManager.getInstance().setUser(new User(username.getText(), PrivilegeEnum.ADMIN));
 				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new Tableview());
 			}
 			if (accessLevel == 1) {
-				alert = new Alert(AlertType.NONE, "Welcome waiter: " + username.getText(), ButtonType.OK);
-				alert.setHeaderText("Login Success");
-				alert.show();
+				showAlert(AlertType.NONE, "Welcome waiter " + username.getText(), "Login Success");
 				UserManager.getInstance().setUser(new User(username.getText(), PrivilegeEnum.USER));
 				ScreenController.switchWindow((Stage) login.getScene().getWindow(), new Tableview());
 			}
 			if (accessLevel == 0) {
-				alert = new Alert(AlertType.ERROR, "Wrong password!", ButtonType.OK);
-				alert.setHeaderText("Inputfield Error");
-				alert.show();
+				showAlert(AlertType.ERROR, "Wrong password!", "Inputfield Error");
 				password.clear();
 			}
 			if (accessLevel == -1) {
-				alert = new Alert(AlertType.ERROR, "User does not exist!", ButtonType.OK);
-				alert.setHeaderText("Inputfield Error");
-				alert.show();
+				showAlert(AlertType.ERROR, "User does not exist!", "Inputfield Error");
 			}
 		}
+	}
+
+	/*
+	 * Method for shortening alert codes.
+	 */
+	private void showAlert(AlertType alert, String message, String header) {
+		this.alert = new Alert(alert, message, ButtonType.OK);
+		this.alert.setHeaderText(header);
+		this.alert.show();
 	}
 }

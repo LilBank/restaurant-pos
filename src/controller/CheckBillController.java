@@ -59,7 +59,7 @@ public class CheckBillController {
 	private static String tablenumber;
 	private DBManager dbm = DBManager.getInstance();
 	private int csMoney;
-	private int Change;
+	private int csChange;
 
 	@FXML
 	public void initialize() {
@@ -106,7 +106,8 @@ public class CheckBillController {
 	 * A method for increasing the customer's money according to the button
 	 * pressed.
 	 * 
-	 * @param number to sum
+	 * @param number
+	 *            to sum
 	 */
 	private void sumMoney(int number) {
 		this.csMoney += number;
@@ -121,7 +122,7 @@ public class CheckBillController {
 	private void calculateChange() {
 		int totalMoney = Integer.parseInt(total.getText());
 		change.setText(this.csMoney - totalMoney + "");
-		Change = this.csMoney - totalMoney;
+		csChange = this.csMoney - totalMoney;
 	}
 
 	/**
@@ -160,11 +161,11 @@ public class CheckBillController {
 			alert = new Alert(AlertType.CONFIRMATION, "Are you sure?  ", ButtonType.OK);
 			alert.showAndWait().ifPresent(response -> {
 				if (response == ButtonType.OK) {
-					alert = new Alert(AlertType.WARNING, "CHANGE: " + Change, ButtonType.OK);
+					alert = new Alert(AlertType.WARNING, "CHANGE: " + csChange, ButtonType.OK);
 					alert.showAndWait().ifPresent(action -> {
 						if (action == ButtonType.OK) {
 							dbm.insertToSummary(dbm.getDBOrders("table" + tablenumber));
-							dbm.clearTable("table"+tablenumber);
+							dbm.clearTable("table" + tablenumber);
 							ScreenController.switchWindow((Stage) pay.getScene().getWindow(), new Tableview());
 						}
 					});
@@ -183,7 +184,7 @@ public class CheckBillController {
 	}
 
 	/**
-	 * Static method for setting the customers tbale.
+	 * Static method for setting the customers table.
 	 * 
 	 * @param tablenumber
 	 */

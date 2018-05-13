@@ -64,13 +64,11 @@ public class OrderViewController implements java.util.Observer {
 	private Alert alert;
 
 	private static String tablenumber;
-
 	private static List<Menu> foods;
 	private static List<Menu> drinks;
 	private UserManager um = UserManager.getInstance();
 	private Order o = Order.getInstance();
 	private static DBManager dbm = DBManager.getInstance();
-
 	private boolean admin = um.isAdmin();
 	private int tmpTotal;
 
@@ -146,7 +144,7 @@ public class OrderViewController implements java.util.Observer {
 
 	/**
 	 * Handler for clear button. When event receive current orders from
-	 * Map<Menu,QTY> is removed.
+	 * Map<Menu,Integer> is removed.
 	 * 
 	 * @param event
 	 */

@@ -20,8 +20,6 @@ public class StartUpController {
 	private Button login;
 	@FXML
 	private Button signUp;
-	@FXML
-	private Button csMode;
 
 	/**
 	 * Method for handling login button. When event receive Login scene is

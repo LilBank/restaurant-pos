@@ -182,7 +182,7 @@ public class DBManager {
 	 * @return List<String> of food urls
 	 */
 	public List<String> getFoodUrl(String table) {
-		List<String> temp = new ArrayList<>();
+		List<String> tmpUrl = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + table;
 		PreparedStatement stmt = null;
 		try {
@@ -190,7 +190,7 @@ public class DBManager {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				String text = rs.getString("url");
-				temp.add(text);
+				tmpUrl.add(text);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -203,7 +203,7 @@ public class DBManager {
 				e.printStackTrace();
 			}
 		}
-		return temp;
+		return tmpUrl;
 	}
 
 	/**
@@ -214,7 +214,7 @@ public class DBManager {
 	 * @return List<Menu> of food names
 	 */
 	public List<Menu> getFoodname(String foodkind) {
-		List<Menu> temp = new ArrayList<>();
+		List<Menu> tmpFoodname = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + foodkind;
 		PreparedStatement stmt = null;
 		try {
@@ -224,7 +224,7 @@ public class DBManager {
 				String text = rs.getString("name");
 				int price = rs.getInt("price");
 				Menu mn = new Menu(text, price);
-				temp.add(mn);
+				tmpFoodname.add(mn);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -237,7 +237,7 @@ public class DBManager {
 				e.printStackTrace();
 			}
 		}
-		return temp;
+		return tmpFoodname;
 	}
 
 	/**
@@ -282,10 +282,10 @@ public class DBManager {
 	 */
 	public boolean checkTable(String tableNumber) {
 		DatabaseMetaData dbm = null;
-		String t = "table" + tableNumber;
+		String tmpTable = "table" + tableNumber;
 		try {
 			dbm = connection.getMetaData();
-			ResultSet table = dbm.getTables(null, null, t, null);
+			ResultSet table = dbm.getTables(null, null, tmpTable, null);
 			if (table.next()) {
 				return true;
 			}
@@ -302,8 +302,8 @@ public class DBManager {
 	 *            number
 	 */
 	public void createTable(String tableNumber) {
-		tableNumber = "table" + tableNumber;
-		sqlCommand = "CREATE TABLE " + tableNumber + "(name VARCHAR (255), price INT(11), quantity INT(11))";
+		String table = "table" + tableNumber;
+		sqlCommand = "CREATE TABLE " + table + "(name VARCHAR (255), price INT(11), quantity INT(11))";
 		PreparedStatement stmt = null;
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
@@ -327,7 +327,7 @@ public class DBManager {
 	 * @return List<User> of users
 	 */
 	public List<User> getDBUser() {
-		List<User> temp = new ArrayList<>();
+		List<User> tmpUser = new ArrayList<>();
 		sqlCommand = "SELECT * FROM " + "User";
 		PreparedStatement stmt = null;
 		try {
@@ -336,7 +336,7 @@ public class DBManager {
 			while (rs.next()) {
 				String text = rs.getString("name");
 				User user = new User(text, PrivilegeEnum.USER);
-				temp.add(user);
+				tmpUser.add(user);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -349,7 +349,7 @@ public class DBManager {
 				e.printStackTrace();
 			}
 		}
-		return temp;
+		return tmpUser;
 	}
 
 	/**
@@ -360,8 +360,8 @@ public class DBManager {
 	 *            of orders
 	 */
 	public void orderToDB(String tableNumber, Map<Menu, Integer> map) {
-		String tabletmp = "table" + tableNumber;
-		sqlCommand = "INSERT INTO `" + tabletmp + "` (`name`, `price`, `quantity`) VALUES (?, ?, ?)";
+		String tmpTable = "table" + tableNumber;
+		sqlCommand = "INSERT INTO `" + tmpTable + "` (`name`, `price`, `quantity`) VALUES (?, ?, ?)";
 		PreparedStatement stmt = null;
 		try {
 			for (Map.Entry<Menu, Integer> order : map.entrySet()) {
@@ -498,8 +498,8 @@ public class DBManager {
 	 * @return true if the order exist, false if not
 	 */
 	public boolean checkDBFood(String foodName, String tableNumber) {
-		String tabletmp = "table" + tableNumber;
-		sqlCommand = "SELECT * FROM " + tabletmp + " WHERE name = ?";
+		String tmpTable = "table" + tableNumber;
+		sqlCommand = "SELECT * FROM " + tmpTable + " WHERE name = ?";
 		PreparedStatement stmt = null;
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
@@ -616,8 +616,8 @@ public class DBManager {
 	 */
 	public boolean checkTableData(String tableNumber) {
 		int value = 1;
-		String tabletmp = "table" + tableNumber;
-		sqlCommand = "SELECT * FROM " + tabletmp;
+		String tmpTable = "table" + tableNumber;
+		sqlCommand = "SELECT * FROM " + tmpTable;
 		PreparedStatement stmt = null;
 		try {
 			stmt = connection.prepareStatement(sqlCommand);
