@@ -11,7 +11,7 @@ What things you need to install in the application.
 
 ## Installing
 
-1. Download the whole folder containing *runnable* RestaurantPOS.jar file.
+1. Download the whole folder containing *runnable* jar file.
 2. Add these JAR files by following the steps below.
 
 	Open the project -> Build Path -> Configure Build Path.. -> Add External JARS..
@@ -43,23 +43,40 @@ With security, every employee must sign up and login in work so we could classif
 
 There are some design and technology used.
 
-* MVC (Model View Controller) - Pattern will be used in this program. 
-* Singleton pattern - Used in order and menu.
-* Observer pattern - Used in display ordered items and more.
+* MVC Pattern (Model-View-Controller) - Used for separating application's concerns. 
+* Singleton Pattern - Used for encapsulating customer's orders and can be used in many classes.
+* Observer Pattern - Used for displaying ordered items and observing changes in database.
 
 ## Technology
 
 #### Map Interface ####
-*Interface Map<K,V>* - K - the type of keys maintained, V - the type of mapped values
+
+*Interface Map<K,V>* ( K - the type of keys maintained, V - the type of mapped values )
 
 **Concept:** If you call a key, you get a value. But the value does not return the key.
+
+#### jBCrypt ####
+
+*jBCrypt* is a java used for hashing password. With high quality of algorithm, it prevents the hacker from hacking the password in the database. Users can use the method **checkpw( your password, password in database)** to check if the password matches or not.
+
+**Additional: ** Try using PreparedStatement with wildcard (?) for values 
+
+	sqlCommand = "SELECT * FROM User WHERE name = ?";
+		PreparedStatement stmt = connection.prepareStatement(sqlCommand);
+			stmt.setString(1, user);
+			if (BCrypt.checkpw(yourPass, databasePass)) {
+				dowork();
+			}
+			stmt.executeQuery();
+		
+		
 
 
 ## Built With
 
 - [Eclipse IDE](https://www.eclipse.org/ide/) - Constructor of codes.
 - [Scene Builder JavaFx](http://gluonhq.com/products/scene-builder/) - Constructor of javafx FXML project.
-- [Chrome MySQL Admin](https://chrome.google.com/webstore/detail/chrome-mysql-admin/ndgnpnpakfcdjmpgmcaknimfgcldechn) - Database for storing the data of this application. 
+- [Chrome MySQL Admin](https://chrome.google.com/webstore/detail/chrome-mysql-admin/ndgnpnpakfcdjmpgmcaknimfgcldechn) - Database for managing the data of this application. 
 
 ## Developers 
 
