@@ -1,6 +1,6 @@
 # Restaurant Point Of Sale (POS)
 
-**Restaurant POS** is the application replacing the use of paper for ordering system. It can be very useful to restaurants that currently lack uses of technology, and alson improve efficiency and speed of transaction.
+**Restaurant POS** is the application replacing the use of paper for ordering system. It can be very useful to restaurants that currently lack uses of technology, and also improve efficiency and speed of transaction.
 
 ## Prerequisites
 
@@ -37,7 +37,7 @@ Manager mode or Employee mode is shown depending on user's access level.
 
 ### Manager Mode ###
 
-Manager has more functions than Employee
+Manager has more functions than Employee.
 
 ![capture10](https://user-images.githubusercontent.com/32285706/39966931-bf2a65d8-56dd-11e8-82cc-1a850606df27.JPG)
 
@@ -106,7 +106,7 @@ There are some design and technology used.
 
 ### Map Interface ###
 
-*Interface Map<K,V>* ( K - the type of keys maintained, V - the type of mapped values )
+*Interface Map<K,V>* - ( K - the type of keys maintained, V - the type of mapped values )
 
 **Concept:** If you call a key, you get a value. But the value does not return the key.
 
