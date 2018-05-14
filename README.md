@@ -1,6 +1,6 @@
 # Restaurant Point Of Sale (POS)
 
-**Restaurant POS** is the application replacing the use of paper for ordering system. It can be very useful to restaurants that currently lack uses of technology, to improve efficiency and speed of transaction.
+**Restaurant POS** is the application replacing the use of paper for ordering system. It can be very useful to restaurants that currently lack uses of technology, and alson improve efficiency and speed of transaction.
 
 ## Prerequisites
 
