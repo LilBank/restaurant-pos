@@ -142,10 +142,8 @@ public class MGEditMenuController {
 					url = new URL(urlField.getText());
 					bufferImage = ImageIO.read(url);
 					label.setIcon(new ImageIcon(bufferImage));
-				} catch (MalformedURLException e) {
-					e.printStackTrace();
 				} catch (IOException e) {
-					e.printStackTrace();
+					System.out.println("Couldn't read url: " + urlField.getText());
 				}
 				label.setSize(200, 200);
 				myPanel.add(label);

@@ -36,17 +36,16 @@ public class DBManager {
 	private String sqlCommand;
 
 	/**
-	 * Private constructor for DBManger. Getting the connection from the
-	 * database.
+	 * Private constructor for DBManger. Getting the connection from the database.
 	 */
 	private DBManager() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection(DB_URL, USER, PASS);
 		} catch (SQLException ex) {
-			ex.printStackTrace();
+			System.out.println("Couldn't connect to the database");
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't find the class");
 		}
 	}
 
@@ -70,8 +69,8 @@ public class DBManager {
 	 *            from Login's input
 	 * @param password
 	 *            from Login's input
-	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 =
-	 *         user doesn't exists
+	 * @return 2 for manager, 1 for normal employee, 0 = wrong password, -1 = user
+	 *         doesn't exists
 	 */
 	public int login(String user, String pass) {
 		sqlCommand = "SELECT * FROM User WHERE name = ?";
@@ -91,7 +90,7 @@ public class DBManager {
 				return 0;
 			}
 		} catch (SQLException ex) {
-			ex.printStackTrace();
+			System.out.println("Couldn't get data from the database");
 		} catch (StringIndexOutOfBoundsException ex) {
 			return -1;
 		} finally {
@@ -100,7 +99,7 @@ public class DBManager {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 		return -1;
@@ -108,8 +107,8 @@ public class DBManager {
 	}
 
 	/**
-	 * Method for inserting data(new user's data) to the database. The access
-	 * type is set to 1 by default but can be change later on.
+	 * Method for inserting data(new user's data) to the database. The access type
+	 * is set to 1 by default but can be change later on.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -127,21 +126,21 @@ public class DBManager {
 			stmt.setInt(3, 1);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't update the data to database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 	}
 
 	/**
-	 * Method for getting data from the database to check whether if the
-	 * username inputed has already exist or not.
+	 * Method for getting data from the database to check whether if the username
+	 * inputed has already exist or not.
 	 * 
 	 * @param username
 	 *            from SignUp window
@@ -162,14 +161,14 @@ public class DBManager {
 				return false;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't get data from the database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 		return true;
@@ -193,22 +192,22 @@ public class DBManager {
 				tmpUrl.add(text);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't get data from the database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 		return tmpUrl;
 	}
 
 	/**
-	 * Method for getting data from the database which are food names and prices
-	 * to create a Menu object.
+	 * Method for getting data from the database which are food names and prices to
+	 * create a Menu object.
 	 * 
 	 * @param tablename
 	 * @return List<Menu> of food names
@@ -227,14 +226,14 @@ public class DBManager {
 				tmpFoodname.add(mn);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't get data from the database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database.");
 			}
 		}
 		return tmpFoodname;
@@ -261,14 +260,14 @@ public class DBManager {
 			stmt.setString(3, url);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't update the data to database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 	}
@@ -290,7 +289,7 @@ public class DBManager {
 				return true;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't get data from the database");
 		}
 		return false;
 	}
@@ -309,14 +308,14 @@ public class DBManager {
 			stmt = connection.prepareStatement(sqlCommand);
 			stmt.execute();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't connect to the database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 	}
@@ -339,14 +338,14 @@ public class DBManager {
 				tmpUser.add(user);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't get data from the database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 		return tmpUser;
@@ -375,14 +374,14 @@ public class DBManager {
 				stmt.executeUpdate();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't update the data to database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 	}
@@ -418,13 +417,13 @@ public class DBManager {
 					temp2.put(x.getKey(), x.getValue());
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't get data from the database");
 		} finally {
 			try {
 				if (stmt != null)
 					stmt.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 		return temp2;
@@ -443,13 +442,13 @@ public class DBManager {
 			stmt = connection.prepareStatement(sqlCommand);
 			stmt.execute();
 		} catch (SQLException ex) {
-			ex.printStackTrace();
+			System.out.println("Couldn't connect to the database");
 		} finally {
 			try {
 				if (stmt != null)
 					stmt.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 	}
@@ -477,14 +476,14 @@ public class DBManager {
 				stmt.executeUpdate();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't update the data to database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 	}
@@ -510,22 +509,21 @@ public class DBManager {
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't get data from the database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 		return false;
 	}
 
 	/**
-	 * Method for inserting data directly to the database without using the
-	 * model.
+	 * Method for inserting data directly to the database without using the model.
 	 * 
 	 * @param tableNumber
 	 * @param Menu
@@ -541,14 +539,14 @@ public class DBManager {
 			stmt.setInt(3, -1);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't insert the data to database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 	}
@@ -566,14 +564,14 @@ public class DBManager {
 			stmt.setString(1, tableNumber);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't insert the data to database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 	}
@@ -596,13 +594,13 @@ public class DBManager {
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't get data from the database");
 		} finally {
 			try {
 				if (stmt != null)
 					stmt.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 		return tables;
@@ -627,14 +625,14 @@ public class DBManager {
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't connect to the database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 		Map<Menu, Integer> temp = getDBOrders("table" + tableNumber);
@@ -661,13 +659,13 @@ public class DBManager {
 			stmt = connection.prepareStatement(sqlCommand);
 			stmt.execute();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't connect to the database");
 		} finally {
 			try {
 				if (stmt != null)
 					stmt.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 	}
@@ -685,14 +683,14 @@ public class DBManager {
 			stmt.setString(1, tableNumber);
 			stmt.execute();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't connect to the database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 	}
@@ -710,14 +708,14 @@ public class DBManager {
 			stmt.setString(1, name);
 			stmt.execute();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't connect to the database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 	}
@@ -736,14 +734,14 @@ public class DBManager {
 			stmt.setString(1, item.getName());
 			stmt.execute();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't connect to the database");
 		} finally {
 			try {
 				if (stmt != null) {
 					stmt.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 	}
@@ -767,13 +765,13 @@ public class DBManager {
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't connect to the database");
 		} finally {
 			try {
 				if (stmt != null)
 					stmt.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				System.out.println("Couldn't close the connection from the database");
 			}
 		}
 		return count;

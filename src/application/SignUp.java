@@ -20,7 +20,7 @@ public class SignUp extends AbstractWindow {
 			super.start(stage);
 			stage.setTitle("Sign Up");
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Couldn't find the fxml file.");
 		}
 	}
 

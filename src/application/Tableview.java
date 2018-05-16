@@ -19,7 +19,7 @@ public class Tableview extends AbstractWindow {
 			super.start(stage);
 			stage.setTitle("Tableview");
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Couldn't find the fxml file.");
 		}
 	}
 }

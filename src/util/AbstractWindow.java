@@ -37,7 +37,7 @@ public abstract class AbstractWindow extends Application {
 			stage.centerOnScreen();
 			stage.show();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Couldn't load the url");
 		}
 	}
 

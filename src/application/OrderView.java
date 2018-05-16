@@ -32,7 +32,7 @@ public class OrderView extends AbstractWindow {
 			super.start(stage);
 			stage.setTitle("Menu");
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Couldn't find the fxml file.");
 		}
 	}
 }

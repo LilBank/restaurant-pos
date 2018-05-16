@@ -26,7 +26,7 @@ public class CheckBill extends AbstractWindow {
 			super.start(stage);
 			stage.setTitle("Check Bill");
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Couldn't find the fxml file.");
 		}
 	}
 }

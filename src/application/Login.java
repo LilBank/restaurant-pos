@@ -19,7 +19,8 @@ public class Login extends AbstractWindow {
 			super.start(stage);
 			stage.setTitle("Login");
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Couldn't find the fxml file.");
+
 		}
 
 	}

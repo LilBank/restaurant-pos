@@ -19,7 +19,7 @@ public class ManageUser extends AbstractWindow {
 			super.start(stage);
 			stage.setTitle("User Manager");
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Couldn't find the fxml file.");
 		}
 	}
 }

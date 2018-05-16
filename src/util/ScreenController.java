@@ -11,8 +11,8 @@ import javafx.stage.Stage;
  */
 public interface ScreenController {
 	/**
-	 * Method for switching scene by receiving current stage and another window
-	 * that extends Application.(switchWindow(from,to))
+	 * Method for switching scene by receiving current stage and another window that
+	 * extends Application.(switchWindow(from,to))
 	 * 
 	 * @param Stage
 	 * @param Application
@@ -21,7 +21,7 @@ public interface ScreenController {
 		try {
 			app.start(window);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Couldn't switch to " + window.getTitle() + "window");
 		}
 	}
 }
