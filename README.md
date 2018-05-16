@@ -1,6 +1,9 @@
 # Restaurant Point Of Sale (POS)
 
+
 **Restaurant POS** is the application replacing the use of paper for ordering system. It can be very useful to restaurants that currently lack uses of technology, and also improve efficiency and speed of transaction.
+
+## [CUSTOMER MODE](https://github.com/kimvcp/projecty-restaurantPOS-customer)
 
 ## Prerequisites
 
